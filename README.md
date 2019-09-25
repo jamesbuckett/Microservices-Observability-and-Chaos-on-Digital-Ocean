@@ -415,4 +415,18 @@ k delete pod front-end-xxxxxxx
 
 Observe in the Locust page that Failures are still 0%
 
+## Clean Up 
+
+Login to Digital Ocean
+
+Kubernetes 
+* Left side bar select Kubernetes
+* Select your cluster 
+* Top right select `Actions` button
+* Select `Destroy`
+* On next page confirm by selecting `Destroy` again
+
+Load Balancer
+* Left side bar select Networking
+
 *End of Section*
