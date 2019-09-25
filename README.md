@@ -136,6 +136,74 @@ Install the sock shop microservice application from this URL:
 
 `k apply -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"`
 
+Use this command to verify a successful deployment: `kubectl get all -n sock-shop`
+
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ kubectl get all -n sock-shop
+NAME                                READY   STATUS    RESTARTS   AGE
+pod/carts-56c6fb966b-nrwx4          1/1     Running   0          22h
+pod/carts-db-5678cc578f-w99cf       1/1     Running   0          22h
+pod/catalogue-644549d46f-mpwrz      1/1     Running   0          22h
+pod/catalogue-db-6ddc796b66-rbp7h   1/1     Running   0          22h
+pod/front-end-6f9db4fd44-6mcw7      1/1     Running   0          19h
+pod/orders-749cdc8c9-kqhsw          1/1     Running   0          22h
+pod/orders-db-5cfc68c4cf-pf7sq      1/1     Running   0          22h
+pod/payment-54f55b96b9-8x8z2        1/1     Running   0          22h
+pod/queue-master-6fff667867-fkxj6   1/1     Running   0          22h
+pod/rabbitmq-bdfd84d55-nx495        1/1     Running   0          22h
+pod/shipping-78794fdb4f-9fvfv       1/1     Running   0          22h
+pod/user-77cff48476-lk4rs           1/1     Running   0          22h
+pod/user-db-99685d75b-mzhqv         1/1     Running   0          22h
+
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
+service/carts          ClusterIP      10.245.9.190     <none>         80/TCP         22h
+service/carts-db       ClusterIP      10.245.183.3     <none>         27017/TCP      22h
+service/catalogue      ClusterIP      10.245.157.236   <none>         80/TCP         22h
+service/catalogue-db   ClusterIP      10.245.2.69      <none>         3306/TCP       22h
+service/front-end      LoadBalancer   10.245.255.112   167.99.28.13   80:30001/TCP   22h
+service/orders         ClusterIP      10.245.71.35     <none>         80/TCP         22h
+service/orders-db      ClusterIP      10.245.227.95    <none>         27017/TCP      22h
+service/payment        ClusterIP      10.245.45.90     <none>         80/TCP         22h
+service/queue-master   ClusterIP      10.245.21.101    <none>         80/TCP         22h
+service/rabbitmq       ClusterIP      10.245.195.66    <none>         5672/TCP       22h
+service/shipping       ClusterIP      10.245.2.73      <none>         80/TCP         22h
+service/user           ClusterIP      10.245.188.69    <none>         80/TCP         22h
+service/user-db        ClusterIP      10.245.194.49    <none>         27017/TCP      22h
+
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/carts          1/1     1            1           22h
+deployment.apps/carts-db       1/1     1            1           22h
+deployment.apps/catalogue      1/1     1            1           22h
+deployment.apps/catalogue-db   1/1     1            1           22h
+deployment.apps/front-end      4/4     4            4           22h
+deployment.apps/kube-monkey    1/1     1            1           18h
+deployment.apps/orders         1/1     1            1           22h
+deployment.apps/orders-db      1/1     1            1           22h
+deployment.apps/payment        1/1     1            1           22h
+deployment.apps/queue-master   1/1     1            1           22h
+deployment.apps/rabbitmq       1/1     1            1           22h
+deployment.apps/shipping       1/1     1            1           22h
+deployment.apps/user           1/1     1            1           22h
+deployment.apps/user-db        1/1     1            1           22h
+
+NAME                                      DESIRED   CURRENT   READY   AGE
+replicaset.apps/carts-56c6fb966b          1         1         1       22h
+replicaset.apps/carts-db-5678cc578f       1         1         1       22h
+replicaset.apps/catalogue-644549d46f      1         1         1       22h
+replicaset.apps/catalogue-db-6ddc796b66   1         1         1       22h
+replicaset.apps/front-end-5594987df6      0         0         0       22h
+replicaset.apps/front-end-6f9db4fd44      4         4         4       19h
+replicaset.apps/kube-monkey-6b7c69cdd5    1         1         1       18h
+replicaset.apps/orders-749cdc8c9          1         1         1       22h
+replicaset.apps/orders-db-5cfc68c4cf      1         1         1       22h
+replicaset.apps/payment-54f55b96b9        1         1         1       22h
+replicaset.apps/queue-master-6fff667867   1         1         1       22h
+replicaset.apps/rabbitmq-bdfd84d55        1         1         1       22h
+replicaset.apps/shipping-78794fdb4f       1         1         1       22h
+replicaset.apps/user-77cff48476           1         1         1       22h
+replicaset.apps/user-db-99685d75b         1         1         1       22h
+```
+
 ## Grafana
 
 ![image](https://user-images.githubusercontent.com/18049790/65003256-3c2ae580-d8e7-11e9-992d-30358d52e731.png)
