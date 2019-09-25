@@ -236,7 +236,7 @@ cd kube-monkey/examples
 ```
 Update the Sock Shop Front End with Kube Monkey Labels: 
 
-`vi front-end.yml`
+`vi kube-monkey-front-end.yml`
 ```
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -282,7 +282,7 @@ spec:
 ```
 Create Configuration Map for Kube Monkey for Socks Shop: 
 
-`vi debug-mode-configmap.yaml`
+`vi kube-monkey-cm-socks-shop.yml`
 ```
 apiVersion: v1
 kind: ConfigMap
@@ -305,7 +305,7 @@ data:
 ```
 Create the Kube Monkey Deployment for Socks Shop: 
 
-`vi deployment.yaml`
+`vi kube-monkey-deploy-socks-shop.yml`
 ```
   apiVersion: extensions/v1beta1
   kind: Deployment
@@ -335,7 +335,7 @@ Create the Kube Monkey Deployment for Socks Shop:
 ```
 Create the file responsible for Role Base Access: 
 
-`vi rbac.yaml`
+`vi kube-monkey-rbac-socks-shop.yml`
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -353,10 +353,30 @@ subjects:
 
 Apply the mainifest files to install Kube Monkey.
 ```
-k apply -f rbac.yaml
-k apply -f debug-mode-configmap.yaml 
-k apply -f deployment.yaml
-k get deployments -n kube-system
+k apply -f kube-monkey-rbac-socks-shop.yml
+k apply -f kube-monkey-front-end.yml
+k apply -f kube-monkey-cm-socks-shop.yml
+k apply -f kube-monkey-deploy-socks-shop.yml
+k get deployments -n sock-shop
+```
+
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get deployments -n sock-shop
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+carts          1/1     1            1           22h
+carts-db       1/1     1            1           22h
+catalogue      1/1     1            1           22h
+catalogue-db   1/1     1            1           22h
+front-end      4/4     4            4           22h
+kube-monkey    1/1     1            1           18h
+orders         1/1     1            1           22h
+orders-db      1/1     1            1           22h
+payment        1/1     1            1           22h
+queue-master   1/1     1            1           22h
+rabbitmq       1/1     1            1           22h
+shipping       1/1     1            1           22h
+user           1/1     1            1           22h
+user-db        1/1     1            1           22h
 ```
 
 ## Locust
@@ -371,10 +391,9 @@ Configure Locust:
 ```
 mkdir locust
 cd locust
-vi locustfile.py
 ```
 
-vi locustfile.py
+Create a configuration file for Locust: `vi locustfile-socks-shop.py`
 ```
 from locust import HttpLocust, TaskSet, task
 
