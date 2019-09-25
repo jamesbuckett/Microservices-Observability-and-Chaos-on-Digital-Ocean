@@ -12,6 +12,7 @@
 ## Requirements
 * A Digital Ocean Account
 * A terminal to interact with the cluster 
+* A sense of humour
 
 ## Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
@@ -33,6 +34,7 @@
 * [Prometheus NodeExporter](https://github.com/prometheus/node_exporter/blob/master/README.md)
 * [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics/blob/master/README.md)
 * [metrics-server](https://github.com/kubernetes-incubator/metrics-server/blob/master/README.md)
+* [Kube Monkey](https://github.com/asobti/kube-monkey)
 
 ## Description
 
@@ -75,8 +77,9 @@ Most Prometheus components are written in Go, making them easy to build and depl
 #### Architecture
 
 This diagram illustrates the architecture of Prometheus and some of its ecosystem components:
-
+Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
 ![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
+
 
 ## Digital Ocean
 
@@ -100,9 +103,9 @@ Installation:
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
-DigitalOcean Kubernetes clusters are typically managed from a local machine or sometimes from a remote management server. 
+Digital Ocean Kubernetes clusters are typically managed from a local machine or sometimes from a remote management server. 
 
-The management machine needs:
+In your terminal that you will use to interact with the Digital Ocean cluster install kubectl.
 
 #### kubectl
 
