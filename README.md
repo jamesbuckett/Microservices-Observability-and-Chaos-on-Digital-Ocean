@@ -267,7 +267,6 @@ digital-ocean-pool-bdyl   164m         16%    1296Mi          82%
 digital-ocean-pool-bdyt   186m         18%    1427Mi          90%
 ```
 
-
 or forthe Socks SHop Namespaces enter:
 
 `k top pods -n sock-shop`
@@ -511,11 +510,53 @@ user-db        1/1     1            1           22h
 To verify that Kube Monkey is working: kubectl get pods -n sock-shop
 
 
-`kubectl logs kube-monkey -n sock-shop`
+`k get pods -n sock-shop`
 
 ```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ kubectl get pods -n sock-shop
+NAME                            READY   STATUS    RESTARTS   AGE
+carts-56c6fb966b-nrwx4          1/1     Running   0          23h
+carts-db-5678cc578f-w99cf       1/1     Running   0          23h
+catalogue-644549d46f-mpwrz      1/1     Running   0          23h
+catalogue-db-6ddc796b66-rbp7h   1/1     Running   0          23h
+front-end-6f9db4fd44-6mcw7      1/1     Running   0          21h
+front-end-6f9db4fd44-7n228      1/1     Running   0          21h
+front-end-6f9db4fd44-bn6t6      1/1     Running   0          21h
+front-end-6f9db4fd44-lsm6z      1/1     Running   0          21h
+kube-monkey-6b7c69cdd5-tt24h    1/1     Running   0          19h
+orders-749cdc8c9-kqhsw          1/1     Running   0          23h
+orders-db-5cfc68c4cf-pf7sq      1/1     Running   0          23h
+payment-54f55b96b9-8x8z2        1/1     Running   0          23h
+queue-master-6fff667867-fkxj6   1/1     Running   0          23h
+rabbitmq-bdfd84d55-nx495        1/1     Running   0          23h
+shipping-78794fdb4f-9fvfv       1/1     Running   0          23h
+user-77cff48476-lk4rs           1/1     Running   0          23h
+user-db-99685d75b-mzhqv         1/1     Running   0          23h
+```
+
+Using the name of the Kube Monkey pod get its logs: `k logs kube-monkey-xxxxxxxxxx`
 
 ```
+I0925 03:09:18.205972       1 kubemonkey.go:62] Status Update: Waiting to run scheduled terminations.
+I0925 03:10:05.235847       1 victims.go:130] [DryRun Mode] Terminated pod front-end-6f9db4fd44-6mcw7 for sock-shop/front-end
+I0925 03:10:05.236113       1 victims.go:130] [DryRun Mode] Terminated pod front-end-6f9db4fd44-7n228 for sock-shop/front-end
+I0925 03:10:05.236215       1 kubemonkey.go:70] Termination successfully executed for v1.Deployment front-end
+I0925 03:10:05.236298       1 kubemonkey.go:73] Status Update: 0 scheduled terminations left.
+I0925 03:10:05.236352       1 kubemonkey.go:76] Status Update: All terminations done.
+I0925 03:10:05.236519       1 kubemonkey.go:19] Debug mode detected!
+I0925 03:10:05.236594       1 kubemonkey.go:20] Status Update: Generating next schedule in 30 sec
+I0925 03:10:35.236843       1 schedule.go:64] Status Update: Generating schedule for terminations
+I0925 03:10:35.257632       1 schedule.go:57] Status Update: 1 terminations scheduled today
+I0925 03:10:35.257848       1 schedule.go:59] v1.Deployment front-end scheduled for termination at 09/24/2019 23:11:32 -0400 EDT
+        ********** Today's schedule **********
+        k8 Api Kind     Kind Name               Termination Time
+        -----------     ---------               ----------------
+        v1.Deployment   front-end               09/24/2019 23:11:32 -0400 EDT
+        ********** End of schedule **********
+```
+
+Look for these messages that indicate successful deployment: `[DryRun Mode] Terminated pod front-end-xxxxxx for sock-shop/front-end` 
+
 
 ## Locust
 
