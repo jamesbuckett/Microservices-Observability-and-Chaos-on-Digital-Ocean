@@ -23,8 +23,8 @@
 * Prometheus Operator Helm Chart - Installer for Prometheus Operator.    
 * Prometheus Operator - The Prometheus Operator provides easy monitoring for k8s services and deployments besides managing Prometheus, Alertmanager and Grafana configuration. 
 * Kube State Metrics - Kube-state-metrics is a simple service that listens to the Kubernetes API server and generates metrics about the state of the objects. 
-* Prometheus NodeExporter - The Prometheus Node Exporter exposes a wide variety of hardware- and kernel-related metrics.
-* Kubernetes Metrics Server - Starting from Kubernetes 1.8, resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
+* Prometheus NodeExporter - UNIX/Linux hardware and Operating System metrics.
+* Kubernetes Metrics Server - Kubernetes resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
 * Kube Monkey - Kube-Monkey periodically kills pods in your Kubernetes cluster,that are opt-in based on their own rules.
 
 ## Documentation 
@@ -47,6 +47,8 @@ Use this Stack to monitor your Kubernetes cluster and Socks Shop application.
 Note: This stack requires a minimum configuration of
 * 2 Nodes at the $10/month plan (2GB memory / 1 vCPU) 
 * 1 $10/month DigitalOcean Load Balancer
+
+**Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month !!!
 
 ### Prometheus
 ![logo_prom](https://user-images.githubusercontent.com/18049790/64942965-faa02900-d859-11e9-8f2b-730b9851c763.png)
@@ -123,6 +125,12 @@ alias k='cd ~/.kube && kubectl --kubeconfig="digital-ocean-cluster-kubeconfig.ya
 k version
 ```
 * Use 'k version' to make sure that your installation is working and within one minor version of your cluster.
+
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k version
+Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.0", GitCommit:"2bd9643cee5b3b3a5ecbd3af49d09018f0773c77", GitTreeState:"clean", BuildDate:"2019-09-18T14:36:53Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCommit:"2d3c76f9091b6bec110a5e63777c332469e0cba2", GitTreeState:"clean", BuildDate:"2019-08-19T11:05:50Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
+```
 
 ## Socks Shop
 
@@ -214,6 +222,12 @@ You can get the IP address to access your Grafana instance either by looking for
 
 `k -n prometheus-operator get svc prometheus-operator-grafana`
 
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k -n prometheus-operator get svc prometheus-operator-grafana
+NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+prometheus-operator-grafana   LoadBalancer   10.245.70.78   139.x.x.x       80:30600/TCP   23h
+```
+
 Paste the EXTERNAL-IP or IP address found in the Load Balancer dashboard into your web browser.
 
 The default username and password are `admin` and `changeme` respectively.
@@ -245,9 +259,53 @@ To view the metrics made available by metrics server, run the following command 
 
 `k top nodes`
 
-or for all Kubernetes Namespaces enter:
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top nodes
+NAME                      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+digital-ocean-pool-bdy6   269m         26%    1438Mi          91%
+digital-ocean-pool-bdyl   164m         16%    1296Mi          82%
+digital-ocean-pool-bdyt   186m         18%    1427Mi          90%
+```
 
-`k top pods --all-namespaces`
+
+or forthe Socks SHop Namespaces enter:
+
+`k top pods -n sock-shop`
+
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top pods -n sock-shop
+NAME                            CPU(cores)   MEMORY(bytes)
+carts-56c6fb966b-nrwx4          3m           268Mi
+carts-db-5678cc578f-w99cf       5m           79Mi
+catalogue-644549d46f-mpwrz      1m           5Mi
+catalogue-db-6ddc796b66-rbp7h   1m           196Mi
+front-end-6f9db4fd44-6mcw7      30m          74Mi
+front-end-6f9db4fd44-7n228      20m          68Mi
+front-end-6f9db4fd44-bn6t6      28m          66Mi
+front-end-6f9db4fd44-lsm6z      25m          79Mi
+kube-monkey-6b7c69cdd5-tt24h    0m           7Mi
+orders-749cdc8c9-kqhsw          2m           258Mi
+orders-db-5cfc68c4cf-pf7sq      5m           67Mi
+payment-54f55b96b9-8x8z2        1m           1Mi
+queue-master-6fff667867-fkxj6   2m           148Mi
+rabbitmq-bdfd84d55-nx495        1m           67Mi
+shipping-78794fdb4f-9fvfv       2m           252Mi
+user-77cff48476-lk4rs           1m           3Mi
+user-db-99685d75b-mzhqv         8m           35Mi
+```
+
+[Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)
+* Limits and requests for memory are measured in bytes. 
+* You can express memory as a plain integer or as a fixed-point integer using one of these suffixes: E, P, T, G, M, K. 
+* You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, **Mi**, Ki. 
+
+[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)
+* Limits and requests for CPU resources are measured in cpu units. One cpu, in Kubernetes, is equivalent to:
+ * 1 AWS vCPU
+ * 1 GCP Core
+ * 1 Azure vCore
+ * 1 IBM vCPU
+ * 1 Hyperthread on a bare-metal Intel processor with Hyperthreading
 
 As metrics server is running on your cluster you can also see metrics in the DigitalOcean Kubernetes Dashboard. 
 
@@ -428,6 +486,9 @@ k apply -f kube-monkey-deploy-socks-shop.yml
 k get deployments -n sock-shop
 ```
 
+To verify that everything is working as expected use this command: `k get deployments -n sock-shop`
+
+Check for `kube-monkey` and check `front-end` is 4/4.
 ```
 [jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get deployments -n sock-shop
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
@@ -445,6 +506,15 @@ rabbitmq       1/1     1            1           22h
 shipping       1/1     1            1           22h
 user           1/1     1            1           22h
 user-db        1/1     1            1           22h
+```
+
+To verify that Kube Monkey is working: kubectl get pods -n sock-shop
+
+
+`kubectl logs kube-monkey -n sock-shop`
+
+```
+
 ```
 
 ## Locust
@@ -495,9 +565,33 @@ Top Right note Failures are 0%
 
 From the terminal kill front-end pods to simulate chaos.
 
+`k get pods -n sock-shop`
+
 ```
-k get pods 
-k delete pod front-end-xxxxxxx
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get pods -n sock-shop
+NAME                            READY   STATUS    RESTARTS   AGE
+carts-56c6fb966b-nrwx4          1/1     Running   0          23h
+carts-db-5678cc578f-w99cf       1/1     Running   0          23h
+catalogue-644549d46f-mpwrz      1/1     Running   0          23h
+catalogue-db-6ddc796b66-rbp7h   1/1     Running   0          23h
+front-end-6f9db4fd44-6mcw7      1/1     Running   0          20h
+front-end-6f9db4fd44-7n228      1/1     Running   0          20h
+front-end-6f9db4fd44-bn6t6      1/1     Running   0          20h
+front-end-6f9db4fd44-lsm6z      1/1     Running   0          20h
+kube-monkey-6b7c69cdd5-tt24h    1/1     Running   0          18h
+orders-749cdc8c9-kqhsw          1/1     Running   0          23h
+orders-db-5cfc68c4cf-pf7sq      1/1     Running   0          23h
+payment-54f55b96b9-8x8z2        1/1     Running   0          23h
+queue-master-6fff667867-fkxj6   1/1     Running   0          23h
+rabbitmq-bdfd84d55-nx495        1/1     Running   0          23h
+shipping-78794fdb4f-9fvfv       1/1     Running   0          23h
+user-77cff48476-lk4rs           1/1     Running   0          23h
+user-db-99685d75b-mzhqv         1/1     Running   0          23h
+```
+
+```
+k delete front-end-6f9db4fd44-6mcw7 -n sock-shop
+k delete front-end-6f9db4fd44-7n228 -n sock-shop
 ```
 
 Observe in the Locust page that Failures are still 0%
