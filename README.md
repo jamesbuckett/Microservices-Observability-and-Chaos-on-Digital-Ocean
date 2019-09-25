@@ -77,7 +77,9 @@ Most Prometheus components are written in Go, making them easy to build and depl
 #### Architecture
 
 This diagram illustrates the architecture of Prometheus and some of its ecosystem components:
+
 Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
+
 ![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
 
 
