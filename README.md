@@ -141,7 +141,8 @@ Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCom
 
 tl;dr - [Example microservices application](https://microservices-demo.github.io) 
 
-
+![image](https://user-images.githubusercontent.com/18049790/65854068-1d6c2a80-e38e-11e9-9337-cc398eb9a1f0.png)
+[Credit](https://medium.com/@panan_songyu/learn-micro-service-from-sock-shop-1-d80e815f3394)
 
 Create a namespace for sock shop.
 
