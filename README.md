@@ -48,7 +48,9 @@ Note: This stack requires a minimum configuration of
 * 2 Nodes at the $10/month plan (2GB memory / 1 vCPU) 
 * 1 $10/month DigitalOcean Load Balancer
 
-**Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month !!!**
+```diff
+- **Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month !!!**
+```
 
 ### Prometheus
 ![logo_prom](https://user-images.githubusercontent.com/18049790/64942965-faa02900-d859-11e9-8f2b-730b9851c763.png)
