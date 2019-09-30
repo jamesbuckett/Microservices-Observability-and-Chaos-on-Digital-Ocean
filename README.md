@@ -113,7 +113,7 @@ Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCom
 
 ## Socks Shop - Micro-service
 
-[Example micro-services application](https://microservices-demo.github.io) 
+[Socks Shop](https://microservices-demo.github.io) 
 * This project provides a realistic micro-services oriented e-commerce application. 
 * See the diagram below for the diverse languages, frameworks and databases used in the microservices application.
 
