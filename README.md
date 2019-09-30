@@ -123,12 +123,12 @@ Credit to [Learn Micro-service from Sock Shop](https://medium.com/@panan_songyu/
 To install the Socks Shop Application 
 * Create a namespace for sock shop.
 * `k create namespace sock-shop`
-* `k apply -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"`
+* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
 
 Use this command to verify a successful deployment: `k get all -n sock-shop`
 
 ```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ kubectl get all -n sock-shop
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get all -n sock-shop
 NAME                                READY   STATUS    RESTARTS   AGE
 pod/carts-56c6fb966b-nrwx4          1/1     Running   0          22h
 pod/carts-db-5678cc578f-w99cf       1/1     Running   0          22h
