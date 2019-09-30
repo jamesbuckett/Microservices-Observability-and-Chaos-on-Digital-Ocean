@@ -12,9 +12,6 @@
 ## Requirements
 * A Digital Ocean Account
 * A terminal to interact with the cluster
- * Mac Terminal
- * WLS Terminal 
- * Windows Powershell
 * A sense of humour
 
 ## Buzz Words
