@@ -26,6 +26,7 @@
 * Prometheus NodeExporter - UNIX/Linux hardware and Operating System metrics.
 * Kubernetes Metrics Server - Kubernetes resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
 * Kube Monkey - Kube-Monkey periodically kills pods in your Kubernetes cluster,that are opt-in based on their own rules.
+* Locust - Stress testing tool
 
 ## Documentation 
 * [Kubernetes](https://kubernetes.io)
@@ -50,7 +51,7 @@ Note: This stack requires a minimum configuration of
 * 1 $10/month DigitalOcean Load Balancer
 
 ```diff
-- Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month !!!
+- Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
 ```
 
 ### Prometheus
