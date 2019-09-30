@@ -49,7 +49,7 @@ Note: This stack requires a minimum configuration of
 * 1 $10/month DigitalOcean Load Balancer
 
 ```diff
-- **Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month !!!**
+- Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month !!!
 ```
 
 ### Prometheus
