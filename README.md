@@ -111,6 +111,11 @@ Digital Ocean Kubernetes clusters are typically managed from a local machine or 
 
 In your terminal that you will use to interact with the Digital Ocean cluster install kubectl.
 
+In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
+
+![image](https://user-images.githubusercontent.com/18049790/65854426-30332f00-e38f-11e9-89a9-b19cc005db91.png)
+Credit to [What is Kubernetes](https://www.learnitguide.net/2018/08/what-is-kubernetes-learn-kubernetes.html)
+
 #### kubectl
 
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview), the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
