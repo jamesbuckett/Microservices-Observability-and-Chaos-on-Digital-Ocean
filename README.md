@@ -438,33 +438,14 @@ Configure Locust:
 ```
 mkdir locust
 cd locust
-cp ~./home/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean
-```
-
-Create a configuration file for Locust: `vi locustfile-socks-shop.py`
-```
-from locust import HttpLocust, TaskSet, task
-
-class WebsiteTasks(TaskSet):
-    @task
-    def index(self):
-        self.client.get("/")
-
-class WebsiteUser(HttpLocust):
-    task_set = WebsiteTasks
-    min_wait = 5000
-    max_wait = 15000
+https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
 ```
 
 Obtain the external IP address of Socks Shop.
-
-`k -n sock-shop get svc front-end`
-
-The IP address under EXTERNAL-IPis the external IP address of Socks Shop.
-
-Use that address to stress the micro-services application.
-
-Start locust : `locust --host=http://<EXTERNAL-IP>`
+* `k -n sock-shop get svc front-end`
+* The IP address under EXTERNAL-IPis the external IP address of Socks Shop.
+* Use that address to stress the micro-services application.
+* Start locust : `locust --host=http://<EXTERNAL-IP>`
 
 Browse to : `http://127.0.0.1:8089/`
 * Number of Users to Simulate: 500
@@ -527,5 +508,9 @@ Login to Digital Ocean
 
 ### Load Balancer
 * Left side bar select Networking
+* Select Load Balancers
+* Select Settings
+* Scroll to bottom and select Destroy
+* Repeat for all Load Balancers
 
 *End of Section*
