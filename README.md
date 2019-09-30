@@ -11,7 +11,10 @@
 
 ## Requirements
 * A Digital Ocean Account
-* A terminal to interact with the cluster 
+* A terminal to interact with the cluster
+ * Mac Terminal
+ * WLS Terminal 
+ * Windows Powershell
 * A sense of humour
 
 ## Buzz Words
@@ -116,14 +119,16 @@ In your terminal that you will use to interact with the Digital Ocean cluster in
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview), the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
 * The Kubernetes project provides [installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl) for kubectl on a variety of platforms. 
 
-Linux install instructions for kubectl
+Once kubectl is installed setup an alias to call kubectl with the Digital Ocean Kubeconfig file
+
+Linux
 ```
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
-alias k='cd ~/.kube && kubectl --kubeconfig="digital-ocean-cluster-kubeconfig.yaml"'
+alias k='cd ~/.kube && kubectl --kubeconfig="<YOUR CLUSTER NAME>-kubeconfig.yaml"'
 k version
 ```
+
+
+
 * Use 'k version' to make sure that your installation is working and within one minor version of your cluster.
 
 ```
@@ -135,6 +140,8 @@ Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCom
 ## Socks Shop
 
 tl;dr - [Example microservices application](https://microservices-demo.github.io) 
+
+
 
 Create a namespace for sock shop.
 
@@ -243,9 +250,18 @@ Once you have logged in the default Grafana Home dashboard will be displayed.
 
 To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
 
-Pull down the Home Menu and select a dashboard.
-* Kubernetes/Compute Resources/Namespace (Pods)
-* namespace: sock-shop
+### Socks Shop
+
+Top left click on `Home`
+
+Under `General` select `Kubernetes Pods`
+* datasource: Prometheus
+* Namespace: sock-shop
+* Pod : front-end-xxxxxxxxxx (random numbers)
+* Top Right click Clock Icon with text `Last 1 hour`
+* Select `Last 5 minutes`
+* Top Right click last icon that looks like Recycle Icon
+* In drop down select `5s`
 
 Explore other Prometheus datasource based Kubernetes dashboards at: https://grafana.com/dashboards?dataSource=prometheus&search=kubernetes
 
@@ -267,7 +283,7 @@ digital-ocean-pool-bdyl   164m         16%    1296Mi          82%
 digital-ocean-pool-bdyt   186m         18%    1427Mi          90%
 ```
 
-or forthe Socks SHop Namespaces enter:
+or for the Socks Shop Namespaces enter:
 
 `k top pods -n sock-shop`
 
@@ -314,42 +330,6 @@ To see your cluster metrics
 * click on “Insights” tab
 
 For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
-
-## Socks Shop
-
-Login to Grafana
-
-Top left click on `Home`
-
-Under `General` select `Kubernetes Pods`
-* datasource: Prometheus
-* Namespace: sock-shop
-* Pod : front-end-xxxxxxxxxx (random numbers)
-* Top Right click Clock Icon with text `Last 1 hour`
-* Select `Last 5 minutes`
-* Top Right click last icon that looks like Recycle Icon
-* In drop down select `5s`
-
-### Apache Benchmark (optional)
-
-Now install Apache Benchmark to stress the micro-services application.
-
-`sudo apt install apache2-utils`
-
-Obtain the external IP address of Socks Shop.
-
-`k -n sock-shop get svc front-end`
-
-The IP address under EXTERNAL-IPis the external IP address of Socks Shop.
-
-Use that address to stress the micro-services application.
-
-Run the stress command a few times and observe the Grafana Dashboard.
-`ab -n 1000 -c 5 -C "somecookie=rawr" http://<EXTERNAL-IP>/`
-
-After a few minutes you should see something similar to this.
-
-![grafana-ab](https://user-images.githubusercontent.com/18049790/65480844-829db880-de82-11e9-8b8c-e2b33605e3e1.png)
 
 ## Kube Monkey
 
