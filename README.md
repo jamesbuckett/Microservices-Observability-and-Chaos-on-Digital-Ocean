@@ -341,126 +341,11 @@ For additional information on metrics-server see https://github.com/kubernetes-i
 ## Kube Monkey
 
 Clone [Kube Monkey](https://github.com/asobti/kube-monkey/tree/master/helm/kubemonkey)
+Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
 
 ```
-git clone https://github.com/asobti/kube-monkey
-cd kube-monkey/examples
-```
-Update the Sock Shop Front End with Kube Monkey labels: 
-
-`vi kube-monkey-front-end.yml`
-```
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: front-end
-  namespace: sock-shop
-  labels:
-    kube-monkey/enabled: enabled
-    kube-monkey/identifier: front-end
-    kube-monkey/mtbf: '1'
-    kube-monkey/kill-mode: "fixed"
-    kube-monkey/kill-value: '2'
-spec:
-  replicas: 4
-  template:
-    metadata:
-      labels:
-        name: front-end
-        kube-monkey/enabled: enabled
-        kube-monkey/identifier: front-end
-        kube-monkey/mtbf: '1'
-        kube-monkey/kill-mode: "fixed"
-        kube-monkey/kill-value: '2'
-    spec:
-      containers:
-      - name: front-end
-        image: weaveworksdemos/front-end:0.3.12
-        resources:
-          requests:
-            cpu: 100m
-            memory: 100Mi
-        ports:
-        - containerPort: 8079
-        securityContext:
-          runAsNonRoot: true
-          runAsUser: 10001
-          capabilities:
-            drop:
-              - all
-          readOnlyRootFilesystem: true
-      nodeSelector:
-        beta.kubernetes.io/os: linux
-```
-Create Configuration Map for Kube Monkey for Socks Shop: 
-
-`vi kube-monkey-cm-socks-shop.yml`
-```
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kube-monkey-config-map
-  namespace: sock-shop
-data:
-  config.toml: |
-    [kubemonkey]
-    run_hour = 8                              # Run scheduling at 8am on weekdays
-    start_hour = 10                           # Don't schedule any pod deaths before 10am
-    end_hour = 16                             # Don't schedule any pod deaths after 4pm
-    blacklisted_namespaces = ["kube-system"]  # Critical apps live here
-    whitelisted_namespaces = ["sock-shop"]    # Target Namespace
-    time_zone = "Singapore/Singapore"
-    graceperiod_sec= 10
-    [debug]
-    enabled= true
-    schedule_immediate_kill= true
-```
-Create the Kube Monkey Deployment for Socks Shop: 
-
-`vi kube-monkey-deploy-socks-shop.yml`
-```
-  apiVersion: extensions/v1beta1
-  kind: Deployment
-  metadata:
-    name: kube-monkey
-    namespace: sock-shop
-  spec:
-    replicas: 1
-    template:
-      metadata:
-        labels:
-          app: kube-monkey
-      spec:
-        containers:
-          -  name: kube-monkey
-             command:
-               - "/kube-monkey"
-             args: ["-v=5", "-log_dir=/var/log/kube-monkey"]
-             image: ayushsobti/kube-monkey:v0.3.0
-             volumeMounts:
-               - name: config-volume
-                 mountPath: "/etc/kube-monkey"
-        volumes:
-          - name: config-volume
-            configMap:
-              name: kube-monkey-config-map
-```
-Create the file responsible for Role Base Access: 
-
-`vi kube-monkey-rbac-socks-shop.yml`
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: default
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: sock-shop
+git clone https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git
+cd Microservices-Observability-and-Chaos-on-Digital-Ocean
 ```
 
 Apply the mainifest files to install Kube Monkey.
@@ -494,13 +379,10 @@ user           1/1     1            1           22h
 user-db        1/1     1            1           22h
 ```
 
-To verify that Kube Monkey is working: kubectl get pods -n sock-shop
-
-
-`k get pods -n sock-shop`
+To verify that Kube Monkey is working: `k get pods -n sock-shop`
 
 ```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ kubectl get pods -n sock-shop
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get pods -n sock-shop
 NAME                            READY   STATUS    RESTARTS   AGE
 carts-56c6fb966b-nrwx4          1/1     Running   0          23h
 carts-db-5678cc578f-w99cf       1/1     Running   0          23h
@@ -544,7 +426,6 @@ I0925 03:10:35.257848       1 schedule.go:59] v1.Deployment front-end scheduled 
 
 Look for these messages that indicate successful deployment: `[DryRun Mode] Terminated pod front-end-xxxxxx for sock-shop/front-end` 
 
-
 ## Locust
 
 Install [Locust](https://locust.io/)
@@ -557,6 +438,7 @@ Configure Locust:
 ```
 mkdir locust
 cd locust
+cp ~./home/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean
 ```
 
 Create a configuration file for Locust: `vi locustfile-socks-shop.py`
