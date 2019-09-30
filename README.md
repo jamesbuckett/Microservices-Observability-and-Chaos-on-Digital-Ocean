@@ -127,8 +127,6 @@ alias k='cd ~/.kube && kubectl --kubeconfig="<YOUR CLUSTER NAME>-kubeconfig.yaml
 k version
 ```
 
-
-
 * Use 'k version' to make sure that your installation is working and within one minor version of your cluster.
 
 ```
@@ -142,17 +140,14 @@ Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCom
 tl;dr - [Example microservices application](https://microservices-demo.github.io) 
 
 ![image](https://user-images.githubusercontent.com/18049790/65854068-1d6c2a80-e38e-11e9-9337-cc398eb9a1f0.png)
-[Credit](https://medium.com/@panan_songyu/learn-micro-service-from-sock-shop-1-d80e815f3394)
+Credit to [Learn Micro-service from Sock Shop](https://medium.com/@panan_songyu/learn-micro-service-from-sock-shop-1-d80e815f3394)
 
-Create a namespace for sock shop.
+To install the Socks Shop Application 
+* Create a namespace for sock shop.
+* `k create namespace sock-shop`
+* `k apply -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"`
 
-`k create namespace sock-shop`
-
-Install the sock shop microservice application from this URL:
-
-`k apply -n sock-shop -f "https://github.com/microservices-demo/microservices-demo/blob/master/deploy/kubernetes/complete-demo.yaml?raw=true"`
-
-Use this command to verify a successful deployment: `kubectl get all -n sock-shop`
+Use this command to verify a successful deployment: `k get all -n sock-shop`
 
 ```
 [jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ kubectl get all -n sock-shop
