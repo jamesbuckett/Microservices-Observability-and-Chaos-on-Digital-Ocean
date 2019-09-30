@@ -2,33 +2,31 @@
 
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
-## Agenda
+## Tutorial Agenda
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
-* Deploy the Socks Shop microservices application onto the Kubernetes cluster on Digital Ocean
-* Verify operation of the Socks Shop microservice
-* Observe the Socks Shop microservice with the Observability software
-* Perform Chaos Engineering on the Socks Shop microservice
+* Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
+* Verify operation of the Socks Shop micro-service
+* Observe the Socks Shop micro-service with the Observability software
+* Perform Chaos Engineering on the Socks Shop micro-service
 
-## Requirements
+## Tutorial Requirements
 * A Digital Ocean Account
 * A terminal to interact with the cluster
 * A sense of humour
 
-## Buzz Words
+## Tutorial Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
-* Microservice - Collection of **loosely coupled services** that are **independently deployable and scalable**.
+* Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
 * Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
 * Prometheus - Prometheus is an open source toolkit to monitor and alert.
 * Grafana - Grafana offers data visualization & Monitoring with support for Graphite, InfluxDB, Prometheus.
-* Prometheus Operator Helm Chart - Installer for Prometheus Operator.    
-* Prometheus Operator - The Prometheus Operator provides easy monitoring for k8s services and deployments besides managing Prometheus, Alertmanager and Grafana configuration. 
-* Kube State Metrics - Kube-state-metrics is a simple service that listens to the Kubernetes API server and generates metrics about the state of the objects. 
+* Kube State Metrics - A simple service that listens to the Kubernetes API server and generates metrics about the state of the objects. 
 * Prometheus NodeExporter - UNIX/Linux hardware and Operating System metrics.
 * Kubernetes Metrics Server - Kubernetes resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
 * Kube Monkey - Kube-Monkey periodically kills pods in your Kubernetes cluster,that are opt-in based on their own rules.
 * Locust - Stress testing tool
 
-## Documentation 
+## Tutorial Documentation 
 * [Kubernetes](https://kubernetes.io)
 * [Prometheus](https://prometheus.io)
 * [Grafana](https://grafana.com)
@@ -38,13 +36,17 @@
 * [Kube Monkey](https://github.com/asobti/kube-monkey)
 * [Locust](https://locust.io/)
 
-## Description
+## Tutorial Description
 
-The Kubernetes Monitoring Stack distills operational knowledge of integrating Prometheus, Grafana, and metrics-server for deployment onto DigitalOcean Kubernetes clusters.
+This Tutorial will give you hands on deployment and operation of the following technologies:
+* Digital Ocean
+* Kubernetes
+* Prometheus
+* Grafana
+* Kube Monkey
+* Locust
 
-This stack provides core metrics configured with cluster specific graphs tested to ensure that they function properly on DigitalOcean Kubernetes. 
-
-Use this Stack to monitor your Kubernetes cluster and Socks Shop application.
+## Cost Warning
 
 Note: This stack requires a minimum configuration of
 * 2 Nodes at the $10/month plan (2GB memory / 1 vCPU) 
@@ -54,7 +56,7 @@ Note: This stack requires a minimum configuration of
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
 ```
 
-### Prometheus
+### Prometheus - Time Series Database
 ![logo_prom](https://user-images.githubusercontent.com/18049790/64942965-faa02900-d859-11e9-8f2b-730b9851c763.png)
 #### What is Prometheus?
 * Prometheus is an open-source *systems monitoring and alerting* toolkit originally built at SoundCloud. 
@@ -88,7 +90,7 @@ Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
 
 ![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
 
-## Digital Ocean
+## Digital Ocean - Cloud Provider
 
 ![image](https://user-images.githubusercontent.com/18049790/43352593-2dbb84de-9269-11e8-9ae9-374690064767.png)
 
@@ -142,9 +144,9 @@ Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.0", GitCom
 Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCommit:"2d3c76f9091b6bec110a5e63777c332469e0cba2", GitTreeState:"clean", BuildDate:"2019-08-19T11:05:50Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-## Socks Shop
+## Socks Shop - Micro-service
 
-[Example microservices application](https://microservices-demo.github.io) 
+[Example micro-services application](https://microservices-demo.github.io) 
 * This project provides a realistic micro-services oriented e-commerce application. 
 * See the diagram below for the diverse languages, frameworks and databases used in the microservices application.
 
@@ -224,7 +226,7 @@ replicaset.apps/user-77cff48476           1         1         1       22h
 replicaset.apps/user-db-99685d75b         1         1         1       22h
 ```
 
-## Grafana
+## Grafana - UI
 
 ![image](https://user-images.githubusercontent.com/18049790/65003256-3c2ae580-d8e7-11e9-992d-30358d52e731.png)
 
@@ -255,7 +257,7 @@ Once you have logged in the default Grafana Home dashboard will be displayed.
 
 To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
 
-### Observing Socks Shop
+### Observing Socks Shop with Grafana
 
 Top left click on `Home`
 
@@ -272,7 +274,7 @@ Explore other Prometheus datasource based Kubernetes dashboards at: https://graf
 
 For more information on how to build your own dashboard check out: https://grafana.com/docs/guides/getting_started/
 
-## metrics-server
+## metrics-server - Kubernetes Metrics
 
 The metrics-server provides cluster metrics, such as container CPU and memory usage via the Kubernetes Metrics API.
 
@@ -338,7 +340,7 @@ To see your cluster metrics
 
 For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
 
-## Kube Monkey
+## Kube Monkey - Chaos
 
 Clone [Kube Monkey](https://github.com/asobti/kube-monkey/tree/master/helm/kubemonkey)
 Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
@@ -426,7 +428,7 @@ I0925 03:10:35.257848       1 schedule.go:59] v1.Deployment front-end scheduled 
 
 Look for these messages that indicate successful deployment: `[DryRun Mode] Terminated pod front-end-xxxxxx for sock-shop/front-end` 
 
-## Locust
+## Locust - Stress 
 
 Install [Locust](https://locust.io/)
 
