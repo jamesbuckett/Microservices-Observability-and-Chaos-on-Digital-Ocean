@@ -335,6 +335,8 @@ To see your cluster metrics
 * click on your cluster 
 * click on “Insights” tab
 
+![do-cluster-insights](https://user-images.githubusercontent.com/18049790/65855878-b13ff580-e392-11e9-91dc-92ed31bbddad.png)
+
 For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
 
 ## Kube Monkey
@@ -587,8 +589,12 @@ Browse to : `http://127.0.0.1:8089/`
 * Number of Users to Simulate: 500
 * Hatch Rate: 10
 
+![loc-500-10](https://user-images.githubusercontent.com/18049790/65855900-bb61f400-e392-11e9-9f7b-232ae10473b0.png)
+
 On main panel select `Charts`
 Top Right note Failures are 0%
+
+![loc-no-fail](https://user-images.githubusercontent.com/18049790/65855903-bd2bb780-e392-11e9-835f-3613f52998c1.png)
 
 From the terminal kill front-end pods to simulate chaos.
 
@@ -623,18 +629,22 @@ k delete front-end-6f9db4fd44-7n228 -n sock-shop
 
 Observe in the Locust page that Failures are still 0%
 
+![loc-no-fail](https://user-images.githubusercontent.com/18049790/65855903-bd2bb780-e392-11e9-835f-3613f52998c1.png)
+
 ## Clean Up 
 
 Login to Digital Ocean
 
-Kubernetes 
+### Kubernetes 
 * Left side bar select Kubernetes
 * Select your cluster 
 * Top right select `Actions` button
 * Select `Destroy`
 * On next page confirm by selecting `Destroy` again
 
-Load Balancer
+![do-k8s-delete](https://user-images.githubusercontent.com/18049790/65855888-b4d37c80-e392-11e9-9f8a-4ca36d70f0f0.png)
+
+### Load Balancer
 * Left side bar select Networking
 
 *End of Section*
