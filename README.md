@@ -50,8 +50,8 @@ This Tutorial will give you hands on deployment and operation of the following t
 
 Note: This stack requires a minimum configuration of
 * 2 Nodes at the $10/month plan (2GB memory / 1 vCPU) 
-* 1 $10/month DigitalOcean Load Balancer
-* Total cost of $30 per month if kept running
+* 2 $10/month DigitalOcean Load Balancer
+* Total cost of $40 per month if kept running
 
 ```diff
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
