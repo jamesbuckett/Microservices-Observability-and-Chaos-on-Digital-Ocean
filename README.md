@@ -1,20 +1,20 @@
-# Microservices, Observability and Chaos on Digital Ocean
+# Microservices, Observability and Chaos on Digital Ocean Tutorial
 
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
-## Tutorial Agenda
+## Agenda
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
 * Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
 * Verify operation of the Socks Shop micro-service
 * Observe the Socks Shop micro-service with the Observability software
 * Perform Chaos Engineering on the Socks Shop micro-service
 
-## Tutorial Requirements
+## Requirements
 * A Digital Ocean Account
 * A terminal to interact with the cluster
 * A sense of humour
 
-## Tutorial Buzz Words
+## Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
 * Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
 * Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
@@ -26,7 +26,7 @@
 * Kube Monkey - Kube-Monkey periodically kills pods in your Kubernetes cluster,that are opt-in based on their own rules.
 * Locust - Stress testing tool
 
-## Tutorial Documentation 
+## Documentation 
 * [Kubernetes](https://kubernetes.io)
 * [Prometheus](https://prometheus.io)
 * [Grafana](https://grafana.com)
@@ -51,44 +51,11 @@ This Tutorial will give you hands on deployment and operation of the following t
 Note: This stack requires a minimum configuration of
 * 2 Nodes at the $10/month plan (2GB memory / 1 vCPU) 
 * 1 $10/month DigitalOcean Load Balancer
+* Total cost of $30 per month if kept running
 
 ```diff
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
 ```
-
-### Prometheus - Time Series Database
-![logo_prom](https://user-images.githubusercontent.com/18049790/64942965-faa02900-d859-11e9-8f2b-730b9851c763.png)
-#### What is Prometheus?
-* Prometheus is an open-source *systems monitoring and alerting* toolkit originally built at SoundCloud. 
-* It is now a standalone open source project and maintained independently of any company. 
-* Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes.
-
-#### Prometheus's main features are:
-* a multi-dimensional data model with **time series data** identified by metric name and key/value pairs
-* PromQL, a flexible query language to leverage this dimensionality
-* no reliance on distributed storage; single server nodes are autonomous
-* time series collection happens via a **pull model over HTTP**
-* pushing time series is supported via an intermediary gateway
-* targets are discovered via service discovery or static configuration
-* multiple modes of graphing and dashboarding support
-
-#### Components
-* the main Prometheus server which scrapes and stores time series data
-* client libraries for instrumenting application code
-* a push gateway for supporting short-lived jobs
-* special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.
-* an alertmanager to handle alerts
-* various support tools
-
-Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
-
-#### Architecture
-
-This diagram illustrates the architecture of Prometheus and some of its ecosystem components:
-
-Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
-
-![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
 
 ## Digital Ocean - Cloud Provider
 
@@ -274,72 +241,6 @@ Explore other Prometheus datasource based Kubernetes dashboards at: https://graf
 
 For more information on how to build your own dashboard check out: https://grafana.com/docs/guides/getting_started/
 
-## metrics-server - Kubernetes Metrics
-
-The metrics-server provides cluster metrics, such as container CPU and memory usage via the Kubernetes Metrics API.
-
-To view the metrics made available by metrics server, run the following command in a terminal shell:
-
-`k top nodes`
-
-```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top nodes
-NAME                      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
-digital-ocean-pool-bdy6   269m         26%    1438Mi          91%
-digital-ocean-pool-bdyl   164m         16%    1296Mi          82%
-digital-ocean-pool-bdyt   186m         18%    1427Mi          90%
-```
-
-or for the Socks Shop Namespaces enter:
-
-`k top pods -n sock-shop`
-
-```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top pods -n sock-shop
-NAME                            CPU(cores)   MEMORY(bytes)
-carts-56c6fb966b-nrwx4          3m           268Mi
-carts-db-5678cc578f-w99cf       5m           79Mi
-catalogue-644549d46f-mpwrz      1m           5Mi
-catalogue-db-6ddc796b66-rbp7h   1m           196Mi
-front-end-6f9db4fd44-6mcw7      30m          74Mi
-front-end-6f9db4fd44-7n228      20m          68Mi
-front-end-6f9db4fd44-bn6t6      28m          66Mi
-front-end-6f9db4fd44-lsm6z      25m          79Mi
-kube-monkey-6b7c69cdd5-tt24h    0m           7Mi
-orders-749cdc8c9-kqhsw          2m           258Mi
-orders-db-5cfc68c4cf-pf7sq      5m           67Mi
-payment-54f55b96b9-8x8z2        1m           1Mi
-queue-master-6fff667867-fkxj6   2m           148Mi
-rabbitmq-bdfd84d55-nx495        1m           67Mi
-shipping-78794fdb4f-9fvfv       2m           252Mi
-user-77cff48476-lk4rs           1m           3Mi
-user-db-99685d75b-mzhqv         8m           35Mi
-```
-
-[Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)
-* Limits and requests for memory are measured in bytes. 
-* You can express memory as a plain integer or as a fixed-point integer using one of these suffixes: E, P, T, G, M, K. 
-* You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, **Mi**, Ki. 
-
-[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)
-* Limits and requests for CPU resources are measured in cpu units. One cpu, in Kubernetes, is equivalent to:
- * 1 AWS vCPU
- * 1 GCP Core
- * 1 Azure vCore
- * 1 IBM vCPU
- * 1 Hyperthread on a bare-metal Intel processor with Hyperthreading
-
-As metrics server is running on your cluster you can also see metrics in the DigitalOcean Kubernetes Dashboard. 
-
-To see your cluster metrics 
-* go to https://cloud.digitalocean.com/kubernetes/clusters
-* click on your cluster 
-* click on “Insights” tab
-
-![do-cluster-insights](https://user-images.githubusercontent.com/18049790/65855878-b13ff580-e392-11e9-91dc-92ed31bbddad.png)
-
-For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
-
 ## Kube Monkey - Chaos
 
 Clone [Kube Monkey](https://github.com/asobti/kube-monkey/tree/master/helm/kubemonkey)
@@ -495,7 +396,113 @@ Observe in the Locust page that Failures are still 0%
 
 ![loc-no-fail](https://user-images.githubusercontent.com/18049790/65855903-bd2bb780-e392-11e9-835f-3613f52998c1.png)
 
-## Clean Up 
+### Prometheus Theory - Time Series Database
+![logo_prom](https://user-images.githubusercontent.com/18049790/64942965-faa02900-d859-11e9-8f2b-730b9851c763.png)
+
+Prometheus is an embedded and pre-configured compeonent so it only has a theory section.
+
+#### What is Prometheus?
+* Prometheus is an open-source *systems monitoring and alerting* toolkit originally built at SoundCloud. 
+* It is now a standalone open source project and maintained independently of any company. 
+* Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes.
+
+#### Prometheus's main features are:
+* a multi-dimensional data model with **time series data** identified by metric name and key/value pairs
+* PromQL, a flexible query language to leverage this dimensionality
+* no reliance on distributed storage; single server nodes are autonomous
+* time series collection happens via a **pull model over HTTP**
+* pushing time series is supported via an intermediary gateway
+* targets are discovered via service discovery or static configuration
+* multiple modes of graphing and dashboarding support
+
+#### Components
+* the main Prometheus server which scrapes and stores time series data
+* client libraries for instrumenting application code
+* a push gateway for supporting short-lived jobs
+* special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.
+* an alertmanager to handle alerts
+* various support tools
+
+Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
+
+#### Architecture
+
+This diagram illustrates the architecture of Prometheus and some of its ecosystem components:
+
+Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
+
+![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
+
+
+## metrics-server Theory - Kubernetes Metrics
+
+The metrics-server is an embedded and pre-configured compeonent so it only has a theory section.
+
+The metrics-server provides cluster metrics, such as container CPU and memory usage via the Kubernetes Metrics API.
+
+To view the metrics made available by metrics server, run the following command in a terminal shell:
+
+`k top nodes`
+
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top nodes
+NAME                      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+digital-ocean-pool-bdy6   269m         26%    1438Mi          91%
+digital-ocean-pool-bdyl   164m         16%    1296Mi          82%
+digital-ocean-pool-bdyt   186m         18%    1427Mi          90%
+```
+
+or for the Socks Shop Namespaces enter:
+
+`k top pods -n sock-shop`
+
+```
+[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top pods -n sock-shop
+NAME                            CPU(cores)   MEMORY(bytes)
+carts-56c6fb966b-nrwx4          3m           268Mi
+carts-db-5678cc578f-w99cf       5m           79Mi
+catalogue-644549d46f-mpwrz      1m           5Mi
+catalogue-db-6ddc796b66-rbp7h   1m           196Mi
+front-end-6f9db4fd44-6mcw7      30m          74Mi
+front-end-6f9db4fd44-7n228      20m          68Mi
+front-end-6f9db4fd44-bn6t6      28m          66Mi
+front-end-6f9db4fd44-lsm6z      25m          79Mi
+kube-monkey-6b7c69cdd5-tt24h    0m           7Mi
+orders-749cdc8c9-kqhsw          2m           258Mi
+orders-db-5cfc68c4cf-pf7sq      5m           67Mi
+payment-54f55b96b9-8x8z2        1m           1Mi
+queue-master-6fff667867-fkxj6   2m           148Mi
+rabbitmq-bdfd84d55-nx495        1m           67Mi
+shipping-78794fdb4f-9fvfv       2m           252Mi
+user-77cff48476-lk4rs           1m           3Mi
+user-db-99685d75b-mzhqv         8m           35Mi
+```
+
+[Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)
+* Limits and requests for memory are measured in bytes. 
+* You can express memory as a plain integer or as a fixed-point integer using one of these suffixes: E, P, T, G, M, K. 
+* You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, **Mi**, Ki. 
+
+[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)
+* Limits and requests for CPU resources are measured in cpu units. One cpu, in Kubernetes, is equivalent to:
+ * 1 AWS vCPU
+ * 1 GCP Core
+ * 1 Azure vCore
+ * 1 IBM vCPU
+ * 1 Hyperthread on a bare-metal Intel processor with Hyperthreading
+
+As metrics server is running on your cluster you can also see metrics in the DigitalOcean Kubernetes Dashboard. 
+
+To see your cluster metrics 
+* go to https://cloud.digitalocean.com/kubernetes/clusters
+* click on your cluster 
+* click on “Insights” tab
+
+![do-cluster-insights](https://user-images.githubusercontent.com/18049790/65855878-b13ff580-e392-11e9-91dc-92ed31bbddad.png)
+
+For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
+
+## Tutorial Clean Up 
 
 Login to Digital Ocean
 
