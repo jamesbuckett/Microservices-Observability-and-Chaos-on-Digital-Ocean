@@ -121,9 +121,9 @@ Credit to [What is Kubernetes](https://www.learnitguide.net/2018/08/what-is-kube
 
 In your terminal that you will use to interact with the Digital Ocean Kubernetes cluster install `kubectl`.
 
-#### kubectl
+#### kubectl installation
 
-* [kubectl](https://kubernetes.io/docs/reference/kubectl/overview), the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
+* [kubectl](https://kubernetes.io/docs/reference/kubectl/overview) is the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
 * The Kubernetes project provides [installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl) for kubectl on a variety of platforms. 
 
 Once kubectl is installed setup an alias to call kubectl with the Digital Ocean Kubeconfig file
@@ -145,8 +145,8 @@ Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCom
 ## Socks Shop
 
 [Example microservices application](https://microservices-demo.github.io) 
-* This project provides a real showcase to create the micro-services oriented e-commerce application. 
-* See the diagram below for the diverse languages and frameworks used in the example application.
+* This project provides a realistic micro-services oriented e-commerce application. 
+* See the diagram below for the diverse languages, frameworks and databases used in the microservices application.
 
 ![image](https://user-images.githubusercontent.com/18049790/65854068-1d6c2a80-e38e-11e9-9337-cc398eb9a1f0.png)
 Credit to [Learn Micro-service from Sock Shop](https://medium.com/@panan_songyu/learn-micro-service-from-sock-shop-1-d80e815f3394)
@@ -346,7 +346,7 @@ Clone [Kube Monkey](https://github.com/asobti/kube-monkey/tree/master/helm/kubem
 git clone https://github.com/asobti/kube-monkey
 cd kube-monkey/examples
 ```
-Update the Sock Shop Front End with Kube Monkey Labels: 
+Update the Sock Shop Front End with Kube Monkey labels: 
 
 `vi kube-monkey-front-end.yml`
 ```
