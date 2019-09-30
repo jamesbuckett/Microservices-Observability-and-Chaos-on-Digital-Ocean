@@ -88,7 +88,6 @@ Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
 
 ![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
 
-
 ## Digital Ocean
 
 ![image](https://user-images.githubusercontent.com/18049790/43352593-2dbb84de-9269-11e8-9ae9-374690064767.png)
