@@ -35,6 +35,7 @@
 * [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics/blob/master/README.md)
 * [metrics-server](https://github.com/kubernetes-incubator/metrics-server/blob/master/README.md)
 * [Kube Monkey](https://github.com/asobti/kube-monkey)
+* [Locust](https://locust.io/)
 
 ## Description
 
