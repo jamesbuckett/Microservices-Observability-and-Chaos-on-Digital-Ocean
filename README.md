@@ -109,12 +109,14 @@ Installation:
 
 Digital Ocean Kubernetes clusters are typically managed from a local machine or sometimes from a remote management server. 
 
-In your terminal that you will use to interact with the Digital Ocean cluster install kubectl.
+`kubectl` is a command line tool used to interact with Kubernetes clusters.
 
 In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
 
 ![image](https://user-images.githubusercontent.com/18049790/65854426-30332f00-e38f-11e9-89a9-b19cc005db91.png)
 Credit to [What is Kubernetes](https://www.learnitguide.net/2018/08/what-is-kubernetes-learn-kubernetes.html)
+
+In your terminal that you will use to interact with the Digital Ocean Kubernetes cluster install `kubectl`.
 
 #### kubectl
 
@@ -139,7 +141,9 @@ Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCom
 
 ## Socks Shop
 
-tl;dr - [Example microservices application](https://microservices-demo.github.io) 
+[Example microservices application](https://microservices-demo.github.io) 
+* This project provides a real showcase to create the micro-services oriented e-commerce application. 
+* See the diagram below for the diverse languages and frameworks used in the example application.
 
 ![image](https://user-images.githubusercontent.com/18049790/65854068-1d6c2a80-e38e-11e9-9337-cc398eb9a1f0.png)
 Credit to [Learn Micro-service from Sock Shop](https://medium.com/@panan_songyu/learn-micro-service-from-sock-shop-1-d80e815f3394)
@@ -248,7 +252,7 @@ Once you have logged in the default Grafana Home dashboard will be displayed.
 
 To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
 
-### Socks Shop
+### Observing Socks Shop
 
 Top left click on `Home`
 
