@@ -1,4 +1,4 @@
-# Microservices, Observability and Chaos on Digital Ocean Tutorial
+# A Tutorial on Microservices, Observability and Chaos on Digital Ocean 
 
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
