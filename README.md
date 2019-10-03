@@ -243,7 +243,6 @@ For more information on how to build your own dashboard check out: https://grafa
 
 ## Kube Monkey - Chaos
 
-Clone [Kube Monkey](https://github.com/asobti/kube-monkey/tree/master/helm/kubemonkey)
 Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
 
 ```
@@ -507,12 +506,15 @@ Login to Digital Ocean
 * Top right select `Actions` button
 * Select `Destroy`
 * On next page confirm by selecting `Destroy` again
+* Enter the name of this cluster to enable deletion
 
 ### Load Balancer
 * Left side bar select Networking
 * Select Load Balancers
+* Select the top Load Balancer
 * Select Settings
 * Scroll to bottom and select Destroy
+* Select the Confirm button 
 * Repeat for all Load Balancers
 
 *End of Section*
