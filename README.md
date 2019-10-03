@@ -68,14 +68,17 @@ Installation:
 * Under "Find a Solution" click the "Kubernetes" tab.
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
 * Select "Create Cluster"
-* Choose a datacentre region : Singapore
+* Choose a datacentre region: `Singapore`
+* Name your cluster: `digital-ocean-cluster`
 * Go to bottom of page and select "Create Cluster"
   * Cluster build usually takes four minutes
 * On Getting Started Panel go to "3. Download the config file"
-* Make the .kube directory : `mkdir ~/.kube`
+* Make the .kube directory: `mkdir ~/.kube`
 * Under "Quick connect with manual certificate management" select "download the cluster configuration file"
 * Download the `kubeconfig.yaml` to the `~/.kube` directory.
  * The authentication certificate in kubeconfig.yaml expires seven days after download
+
+Go back to confirm that the cluster and load balancer have been created before proceeding.
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
@@ -99,7 +102,7 @@ Once kubectl is installed setup an alias to call kubectl with the Digital Ocean 
 
 Linux
 ```
-alias k='cd ~/.kube && kubectl --kubeconfig="<YOUR CLUSTER NAME>-kubeconfig.yaml"'
+alias k='cd ~/.kube && kubectl --kubeconfig="digital-ocean-cluster-kubeconfig.yaml"'
 k version
 ```
 
@@ -513,7 +516,7 @@ Login to Digital Ocean
 * Top right select `Actions` button
 * Select `Destroy`
 * On next page confirm by selecting `Destroy` again
-* Enter the name of this cluster to enable deletion
+* Enter `digital-ocean-cluster` to enable deletion
 
 ### Load Balancer
 * Left side bar select Networking
