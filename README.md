@@ -64,6 +64,7 @@ Note: This stack requires a minimum configuration of
 Installation:
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
+* Create a new Project called : `digital-ocean-project`
 * Go to "Marketplace" on the left tab.
 * Under "Find a Solution" click the "Kubernetes" tab.
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
@@ -78,7 +79,7 @@ Installation:
 * Download the `kubeconfig.yaml` to the `~/.kube` directory.
  * The authentication certificate in kubeconfig.yaml expires seven days after download
 
-Go back to confirm that the cluster and load balancer have been created before proceeding.
+Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
@@ -100,7 +101,7 @@ In your terminal that you will use to interact with the Digital Ocean Kubernetes
 
 Once kubectl is installed setup an alias to call kubectl with the Digital Ocean Kubeconfig file
 
-Linux
+Linux and Mac
 ```
 alias k='cd ~/.kube && kubectl --kubeconfig="digital-ocean-cluster-kubeconfig.yaml"'
 k version
@@ -198,15 +199,15 @@ replicaset.apps/user-db-99685d75b         1         1         1       22h
 
 The Load Balancer takes about four minutes to provision.
 
-Run `k get all -n sock-shop` untill you see `service/front-end` has a valid external IP.
+Run `k get all -n sock-shop` until you see `service/front-end` has a valid EXTERNAL-IP.
 
 To Access Socks Shop 
 * Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
 * The IP address under EXTERNAL-IP is the external IP address of Socks Shop
-* Use that address to access Socks Shop
-* Put the EXTERNAL-IP into a browser of your choice
+* Paste the EXTERNAL-IP or IP address found in the Load Balancer dashboard into your web browser.
 * You should see a e-commerce website called Socks Shop
+* Feel free to browse around and order some socks
 
 ## Grafana - UI
 
