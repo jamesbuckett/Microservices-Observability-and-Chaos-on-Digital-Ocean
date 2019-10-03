@@ -49,8 +49,8 @@ This Tutorial will give you hands on deployment and operation of the following t
 ## Cost Warning
 
 Note: This stack requires a minimum configuration of
-* 2 Nodes at the $10/month plan (2GB memory / 1 vCPU) 
-* 2 $10/month DigitalOcean Load Balancer
+* 2 * Nodes at $10/month (2GB memory / 1 vCPU) 
+* 2 * Load Balancer at $10/month 
 * Total cost of $40 per month if kept running
 
 ```diff
@@ -149,7 +149,7 @@ service/carts          ClusterIP      10.245.9.190     <none>         80/TCP    
 service/carts-db       ClusterIP      10.245.183.3     <none>         27017/TCP      22h
 service/catalogue      ClusterIP      10.245.157.236   <none>         80/TCP         22h
 service/catalogue-db   ClusterIP      10.245.2.69      <none>         3306/TCP       22h
-service/front-end      LoadBalancer   10.245.255.112   167.99.28.13   80:30001/TCP   22h
+service/front-end      LoadBalancer   10.245.255.112   x.x.x.x        80:30001/TCP   22h
 service/orders         ClusterIP      10.245.71.35     <none>         80/TCP         22h
 service/orders-db      ClusterIP      10.245.227.95    <none>         27017/TCP      22h
 service/payment        ClusterIP      10.245.45.90     <none>         80/TCP         22h
@@ -192,6 +192,13 @@ replicaset.apps/shipping-78794fdb4f       1         1         1       22h
 replicaset.apps/user-77cff48476           1         1         1       22h
 replicaset.apps/user-db-99685d75b         1         1         1       22h
 ```
+To Access Socks Shop 
+* Obtain the external IP address of Socks Shop.
+* `k -n sock-shop get svc front-end`
+* The IP address under EXTERNAL-IP is the external IP address of Socks Shop
+* Use that address to access Socks Shop
+* Put the EXTERNAL-IP into a browser of your choice
+* You should see a e-commerce website called Socks Shop
 
 ## Grafana - UI
 
@@ -228,7 +235,7 @@ To see cluster specific graphs enabled in this stack go to the “Home” menu i
 
 Top left click on `Home`
 
-Under `General` select `Kubernetes Pods`
+Under `General` select `Kubernetes/Compute Resources/Namespace(Pods)`
 * datasource: Prometheus
 * Namespace: sock-shop
 * Pod : front-end-xxxxxxxxxx (random numbers)
@@ -243,7 +250,6 @@ For more information on how to build your own dashboard check out: https://grafa
 
 ## Kube Monkey - Chaos
 
-Clone [Kube Monkey](https://github.com/asobti/kube-monkey/tree/master/helm/kubemonkey)
 Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
 
 ```
@@ -507,12 +513,15 @@ Login to Digital Ocean
 * Top right select `Actions` button
 * Select `Destroy`
 * On next page confirm by selecting `Destroy` again
+* Enter the name of this cluster to enable deletion
 
 ### Load Balancer
 * Left side bar select Networking
 * Select Load Balancers
+* Select the top Load Balancer
 * Select Settings
 * Scroll to bottom and select Destroy
+* Select the Confirm button 
 * Repeat for all Load Balancers
 
 *End of Section*
