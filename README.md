@@ -195,10 +195,10 @@ replicaset.apps/user-db-99685d75b         1         1         1       22h
 To Access Socks Shop 
 * Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
-* The IP address under EXTERNAL-IPis the external IP address of Socks Shop.
+* The IP address under EXTERNAL-IP is the external IP address of Socks Shop
 * Use that address to access Socks Shop
-
-You should see a e-commerce website called Socks Shop.
+* Put the EXTERNAL-IP into a browser of your choice
+* You should see a e-commerce website called Socks Shop
 
 ## Grafana - UI
 
