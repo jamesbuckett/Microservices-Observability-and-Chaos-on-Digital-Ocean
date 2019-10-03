@@ -195,6 +195,11 @@ replicaset.apps/shipping-78794fdb4f       1         1         1       22h
 replicaset.apps/user-77cff48476           1         1         1       22h
 replicaset.apps/user-db-99685d75b         1         1         1       22h
 ```
+
+The Load Balancer takes about four minutes to provision.
+
+Run `k get all -n sock-shop` untill you see `service/front-end` has a valid external IP.
+
 To Access Socks Shop 
 * Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
