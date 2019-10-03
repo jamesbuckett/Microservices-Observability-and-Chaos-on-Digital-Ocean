@@ -235,7 +235,7 @@ To see cluster specific graphs enabled in this stack go to the “Home” menu i
 
 Top left click on `Home`
 
-Under `General` select `Kubernetes Pods`
+Under `General` select `Kubernetes/Compute Resources/Namespace(Pods)`
 * datasource: Prometheus
 * Namespace: sock-shop
 * Pod : front-end-xxxxxxxxxx (random numbers)
