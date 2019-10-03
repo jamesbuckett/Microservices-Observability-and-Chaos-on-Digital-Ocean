@@ -262,6 +262,7 @@ For more information on how to build your own dashboard check out: https://grafa
 Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
 
 ```
+cd
 git clone https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git
 cd Microservices-Observability-and-Chaos-on-Digital-Ocean
 ```
