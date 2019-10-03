@@ -205,7 +205,7 @@ metadata:
   name: front-end
   namespace: sock-shop
 spec:
-  replicas: 1
+  replicas: 4
   template:
     metadata:
       labels:
