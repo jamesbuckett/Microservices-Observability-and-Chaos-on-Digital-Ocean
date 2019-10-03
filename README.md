@@ -149,7 +149,7 @@ service/carts          ClusterIP      10.245.9.190     <none>         80/TCP    
 service/carts-db       ClusterIP      10.245.183.3     <none>         27017/TCP      22h
 service/catalogue      ClusterIP      10.245.157.236   <none>         80/TCP         22h
 service/catalogue-db   ClusterIP      10.245.2.69      <none>         3306/TCP       22h
-service/front-end      LoadBalancer   10.245.255.112   167.99.28.13   80:30001/TCP   22h
+service/front-end      LoadBalancer   10.245.255.112   x.x.x.x        80:30001/TCP   22h
 service/orders         ClusterIP      10.245.71.35     <none>         80/TCP         22h
 service/orders-db      ClusterIP      10.245.227.95    <none>         27017/TCP      22h
 service/payment        ClusterIP      10.245.45.90     <none>         80/TCP         22h
@@ -192,6 +192,13 @@ replicaset.apps/shipping-78794fdb4f       1         1         1       22h
 replicaset.apps/user-77cff48476           1         1         1       22h
 replicaset.apps/user-db-99685d75b         1         1         1       22h
 ```
+To Access Socks Shop 
+* Obtain the external IP address of Socks Shop.
+* `k -n sock-shop get svc front-end`
+* The IP address under EXTERNAL-IPis the external IP address of Socks Shop.
+* Use that address to access Socks Shop
+
+You should see a e-commerce website called Socks Shop.
 
 ## Grafana - UI
 
