@@ -270,13 +270,14 @@ cd Microservices-Observability-and-Chaos-on-Digital-Ocean
 ```
 
 Apply the mainifest files to install Kube Monkey.
-```
-k apply -f kube-monkey-rbac-socks-shop.yml
-k apply -f kube-monkey-front-end.yml
-k apply -f kube-monkey-cm-socks-shop.yml
-k apply -f kube-monkey-deploy-socks-shop.yml
-k get deployments -n sock-shop
-```
+
+* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-rbac-socks-shop.yml"`
+
+* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-front-end.yml"`
+
+* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-cm-socks-shop.yml"`
+
+* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-deploy-socks-shop.yml"`
 
 To verify that everything is working as expected use this command: `k get deployments -n sock-shop`
 
