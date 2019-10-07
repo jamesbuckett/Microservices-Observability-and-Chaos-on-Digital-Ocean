@@ -80,7 +80,8 @@ Installation:
  * The authentication certificate in kubeconfig.yaml expires seven days after download
 
 Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
-Scroll to the top of the page and check the 
+
+Scroll to the top of the page and check for green icon on the digital-ocean-cluster name.
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
