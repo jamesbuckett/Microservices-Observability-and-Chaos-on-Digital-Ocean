@@ -94,7 +94,7 @@ In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
 ![image](https://user-images.githubusercontent.com/18049790/65854426-30332f00-e38f-11e9-89a9-b19cc005db91.png)
 Credit to [What is Kubernetes](https://www.learnitguide.net/2018/08/what-is-kubernetes-learn-kubernetes.html)
 
-In your terminal that you will use to interact with the Digital Ocean Kubernetes cluster install `kubectl`.
+In your Linux terminal that you will use to interact with the Digital Ocean Kubernetes cluster install `kubectl`.
 
 #### kubectl installation
 
