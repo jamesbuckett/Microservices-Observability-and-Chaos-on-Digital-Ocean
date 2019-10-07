@@ -11,7 +11,7 @@
 
 ## Requirements
 * A Digital Ocean Account
-* A terminal to interact with the cluster
+* A Linux terminal to interact with the cluster
 * A sense of humour
 
 ## Buzz Words
