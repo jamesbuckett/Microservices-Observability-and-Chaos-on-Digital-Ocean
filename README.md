@@ -263,12 +263,6 @@ For more information on how to build your own dashboard check out: https://grafa
 
 Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
 
-```
-cd
-git clone https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git
-cd Microservices-Observability-and-Chaos-on-Digital-Ocean
-```
-
 Apply the mainifest files to install Kube Monkey.
 
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-rbac-socks-shop.yml"`
