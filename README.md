@@ -51,7 +51,7 @@ This Tutorial will give you hands on deployment and operation of the following t
 Note: This stack requires a minimum configuration of
 * 2 * Nodes at $10/month (2GB memory / 1 vCPU) 
 * 2 * Load Balancer at $10/month 
-* Total cost of $40 per month if kept running
+* **Total cost of $40 per month if kept running
 
 ```diff
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
