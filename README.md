@@ -70,7 +70,7 @@ Installation:
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
 * Select "Create Cluster"
 * Choose a datacentre region: `Singapore`
-* Name your cluster: `digital-ocean-cluster`
+* Choose a name: `digital-ocean-cluster`
 * Go to bottom of page and select "Create Cluster"
   * Cluster build usually takes four minutes
 * On Getting Started Panel go to "3. Download the config file"
