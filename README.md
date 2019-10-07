@@ -12,7 +12,8 @@
 ## Requirements
 * A Digital Ocean Account
 * A Linux terminal to interact with the cluster
-* A sense of humour
+ * [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+ * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
 
 ## Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
