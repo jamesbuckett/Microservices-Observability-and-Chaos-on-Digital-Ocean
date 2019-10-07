@@ -250,7 +250,6 @@ Top left click on `Home`
 Under `General` select `Kubernetes/Compute Resources/Namespace(Pods)`
 * datasource: Prometheus
 * Namespace: sock-shop
-* Pod : front-end-xxxxxxxxxx (random numbers)
 * Top Right click Clock Icon with text `Last 1 hour`
 * Select `Last 5 minutes`
 * Top Right click last icon that looks like Recycle Icon
