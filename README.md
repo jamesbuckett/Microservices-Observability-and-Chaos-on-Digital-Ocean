@@ -338,7 +338,6 @@ kubectl create secret generic gremlin-team-cert --from-file=./gremlin.cert --fro
 helm repo add gremlin https://helm.gremlin.com
 ```
 
-
 ### Install Gremlin
 * Replace ID=YOUR-TEAM-ID with the value from the Gremlin page 
 * Top Right Dropdown
@@ -388,9 +387,15 @@ daemonset.apps/understood-eel-gremlin   3         3         3       3           
 
 ### High CPU Attack
 * Check the Locust UI switch to the charts view if required.
+
+![locust-1](https://user-images.githubusercontent.com/18049790/66459128-f8229f00-eaa6-11e9-9fdb-f5cf07e591e4.png)
+
 * Switch to the Grafana UI 
   * Top Right Home
   * Select `Kubernetes / Nodes`
+  
+![grafana-1](https://user-images.githubusercontent.com/18049790/66459139-fd7fe980-eaa6-11e9-9ff4-6eac75f92742.png)  
+  
 * Switch to the Gremlin UI
   * Left side select `Attacks`
   * Select `Infrastructure`
@@ -403,8 +408,13 @@ daemonset.apps/understood-eel-gremlin   3         3         3       3           
   
 * Switch to the Grafana UI
   * Observe the Nodes reaching 100% utilization 
+  
+  ![grafana-2](https://user-images.githubusercontent.com/18049790/66459191-20aa9900-eaa7-11e9-875a-f64b9c9ff163.png)
+  
 * Switch to the Locust UI
   * Observe top right that `Failures` are 0%
+
+![locust-2](https://user-images.githubusercontent.com/18049790/66459196-2607e380-eaa7-11e9-8ec4-e7401441697b.png)
 
 You have successfully performed a CPU Resource Attack against the infrastrucure nodes.
 
