@@ -393,6 +393,10 @@ daemonset.apps/understood-eel-gremlin   3         3         3       3           
 * Switch to the Grafana UI 
   * Top Right Home
   * Select `Kubernetes / Nodes`
+  * Top Right click Clock Icon with text Last 1 hour
+  * Select Last 5 minutes
+  * Top Right click last icon that looks like Recycle Icon
+  * In drop down select 5s
   
 ![grafana-1](https://user-images.githubusercontent.com/18049790/66459139-fd7fe980-eaa6-11e9-9ff4-6eac75f92742.png)  
   
