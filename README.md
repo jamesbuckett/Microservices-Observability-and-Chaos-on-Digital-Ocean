@@ -24,7 +24,7 @@
 * Kube State Metrics - A simple service that listens to the Kubernetes API server and generates metrics about the state of the objects. 
 * Prometheus NodeExporter - UNIX/Linux hardware and Operating System metrics.
 * Kubernetes Metrics Server - Kubernetes resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
-* Kube Monkey - Kube-Monkey periodically kills pods in your Kubernetes cluster,that are opt-in based on their own rules.
+* Gremlin - A Software as a Service Chaos Engineering platform..
 * Locust - A performance testing tool 
 
 ## Documentation 
@@ -34,7 +34,7 @@
 * [Prometheus NodeExporter](https://github.com/prometheus/node_exporter/blob/master/README.md)
 * [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics/blob/master/README.md)
 * [metrics-server](https://github.com/kubernetes-incubator/metrics-server/blob/master/README.md)
-* [Kube Monkey](https://github.com/asobti/kube-monkey)
+* [Gremlin](https://www.gremlin.com/)
 * [Locust](https://locust.io/)
 
 ## Tutorial Description
