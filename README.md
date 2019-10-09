@@ -285,9 +285,8 @@ Browse to : `http://127.0.0.1:8089/`
 * Hatch Rate: 10
 
 On main panel select `Charts`
-Top Right note Failures are 0%
-
-Keep the browser window open.
+* Top Right note Failures are 0%
+* Keep the browser window open.
 
 ## Helm - Package Manager 
 
@@ -306,94 +305,115 @@ kubectl create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-adm
 kubectl --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 helm init
 ```
+
+## Gremlin 
+
+Create a gremlin directory
+```
+cd 
+mkdir gremlin
+cd gremlin
+```
+
+Signup for Gremlin service
+* Go to this link : https://app.gremlin.com/signup
+* Sign Up for an account
+* Login to the Gremlin App using your Company name and sign-on credentials. 
+* These were emailed to you when you signed up to start using Gremlin.
+* Navigate to Team Settings and click on your Team. 
+* Click the blue Download button to save your certificates to your local computer. 
+  * Save the file to `~/gremlin`
+* The downloaded certificate.zip contains both a public-key certificate and a matching private key.
+* Unzip the certificate.zip
+* Rename your certificate and key files to gremlin.cert and gremlin.key.
+```
+cd gremlin
+unzip certificate.zip
+mv *.priv_key.pem gremlin.key
+mv *.pub_cert.pem gremlin.key
+```
+Create a secret from the files
+```
+kubectl create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key
+helm repo add gremlin https://helm.gremlin.com
+```
+
+
 ### Install Gremlin
+* Replace ID=YOUR-TEAM-ID with the value from the Gremlin page 
+* Top Right Dropdown
+* Company Settings
+* Teams Tab
 ```
-helm install --set gremlin.teamID=348fae29-b0e1-5ea9-86c6-1a204bb4bf37 gremlin/gremlin
-```
-
-
-## Kube Monkey - Chaos
-
-Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
-
-Apply the mainifest files to install Kube Monkey.
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-rbac-socks-shop.yml"`
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-front-end.yml"`
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-cm-socks-shop.yml"`
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-deploy-socks-shop.yml"`
-
-To verify that everything is working as expected use this command: `k get deployments -n sock-shop`
-
-Check for `kube-monkey` and check `front-end` is 4/4.
-```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get deployments -n sock-shop
-NAME           READY   UP-TO-DATE   AVAILABLE   AGE
-carts          1/1     1            1           22h
-carts-db       1/1     1            1           22h
-catalogue      1/1     1            1           22h
-catalogue-db   1/1     1            1           22h
-front-end      4/4     4            4           22h
-kube-monkey    1/1     1            1           18h
-orders         1/1     1            1           22h
-orders-db      1/1     1            1           22h
-payment        1/1     1            1           22h
-queue-master   1/1     1            1           22h
-rabbitmq       1/1     1            1           22h
-shipping       1/1     1            1           22h
-user           1/1     1            1           22h
-user-db        1/1     1            1           22h
+helm install --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin
 ```
 
-To verify that Kube Monkey is working: `k get pods -n sock-shop`
+### Verify Gremlin is working
 
+`kubectl get all -n default`
+
+You should see similar output to the following.
 ```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get pods -n sock-shop
-NAME                            READY   STATUS    RESTARTS   AGE
-carts-56c6fb966b-nrwx4          1/1     Running   0          23h
-carts-db-5678cc578f-w99cf       1/1     Running   0          23h
-catalogue-644549d46f-mpwrz      1/1     Running   0          23h
-catalogue-db-6ddc796b66-rbp7h   1/1     Running   0          23h
-front-end-6f9db4fd44-6mcw7      1/1     Running   0          21h
-front-end-6f9db4fd44-7n228      1/1     Running   0          21h
-front-end-6f9db4fd44-bn6t6      1/1     Running   0          21h
-front-end-6f9db4fd44-lsm6z      1/1     Running   0          21h
-kube-monkey-6b7c69cdd5-tt24h    1/1     Running   0          19h
-orders-749cdc8c9-kqhsw          1/1     Running   0          23h
-orders-db-5cfc68c4cf-pf7sq      1/1     Running   0          23h
-payment-54f55b96b9-8x8z2        1/1     Running   0          23h
-queue-master-6fff667867-fkxj6   1/1     Running   0          23h
-rabbitmq-bdfd84d55-nx495        1/1     Running   0          23h
-shipping-78794fdb4f-9fvfv       1/1     Running   0          23h
-user-77cff48476-lk4rs           1/1     Running   0          23h
-user-db-99685d75b-mzhqv         1/1     Running   0          23h
+[jamesbuckett@surface ~ (do-sgp1-digital-ocean-cluster:default)]$ kubectl get all -n default
+NAME                               READY   STATUS    RESTARTS   AGE
+pod/understood-eel-gremlin-dtkmd   1/1     Running   0          157m
+pod/understood-eel-gremlin-fpv99   1/1     Running   0          157m
+pod/understood-eel-gremlin-vt2h5   1/1     Running   0          157m
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.245.0.1   <none>        443/TCP   2d1h
+
+NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/understood-eel-gremlin   3         3         3       3            3           <none>          157m
 ```
 
-Using the name of the Kube Monkey pod get its logs: `k logs kube-monkey-xxxxxxxxxx`
+## Practical 
 
-```
-I0925 03:09:18.205972       1 kubemonkey.go:62] Status Update: Waiting to run scheduled terminations.
-I0925 03:10:05.235847       1 victims.go:130] [DryRun Mode] Terminated pod front-end-6f9db4fd44-6mcw7 for sock-shop/front-end
-I0925 03:10:05.236113       1 victims.go:130] [DryRun Mode] Terminated pod front-end-6f9db4fd44-7n228 for sock-shop/front-end
-I0925 03:10:05.236215       1 kubemonkey.go:70] Termination successfully executed for v1.Deployment front-end
-I0925 03:10:05.236298       1 kubemonkey.go:73] Status Update: 0 scheduled terminations left.
-I0925 03:10:05.236352       1 kubemonkey.go:76] Status Update: All terminations done.
-I0925 03:10:05.236519       1 kubemonkey.go:19] Debug mode detected!
-I0925 03:10:05.236594       1 kubemonkey.go:20] Status Update: Generating next schedule in 30 sec
-I0925 03:10:35.236843       1 schedule.go:64] Status Update: Generating schedule for terminations
-I0925 03:10:35.257632       1 schedule.go:57] Status Update: 1 terminations scheduled today
-I0925 03:10:35.257848       1 schedule.go:59] v1.Deployment front-end scheduled for termination at 09/24/2019 23:11:32 -0400 EDT
-        ********** Today's schedule **********
-        k8 Api Kind     Kind Name               Termination Time
-        -----------     ---------               ----------------
-        v1.Deployment   front-end               09/24/2019 23:11:32 -0400 EDT
-        ********** End of schedule **********
-```
+### Start User Interfaces
 
-Look for these messages that indicate successful deployment: `[DryRun Mode] Terminated pod front-end-xxxxxx for sock-shop/front-end` 
+#### Locust
+* Locust should still be running from a previous step.
+* If not return to the Locust section and ensure the Locust UI is configured and running
+
+#### Grafana 
+* Grafana should still be running from a previous step.
+* If not return to the Grafana section and ensure the Grafana and running
+
+#### Socks Shop
+* Socks Shop should still be running from a previous step.
+* If not return to the Socks Shop section and ensure the Socks Shop application is running
+
+#### Gremlin
+* Login to Gremlin 
+
+### High CPU Attack
+* Check the Locust UI switch to the charts view if required.
+* Switch to the Grafana UI 
+  * Top Right Home
+  * Select `Kubernetes / Nodes`
+* Switch to the Gremlin UI
+  * Left side select `Attacks`
+  * Select `Infrastructure`
+  * Select `New Attack`
+  * Scroll down select `Choose a Gremlin`
+  * Under `Category` select `Resource`
+    * Next to `Length` enter `120`
+    * Next to `CPU Capacity` enter `100`
+  * Scroll to bottom of page select `Unleash Gremlin`
+  
+* Switch to the Grafana UI
+  * Observe the Nodes reaching 100% utilization 
+* Switch to the Locust UI
+  * Observe top right that `Failures` are 0%
+
+You have successfully performed a CPU Resource Attack against the infrastrucure nodes.
+
+## Wrap Up
+* You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured
+* You deployed a microservices application called Socks Shop to run on the Cluster
+* You observed the micro-services application with Prometheus and Grafana
+* You deployed 
+
 
 ## Theory 
 
