@@ -259,6 +259,59 @@ Explore other Prometheus datasource based Kubernetes dashboards at: https://graf
 
 For more information on how to build your own dashboard check out: https://grafana.com/docs/guides/getting_started/
 
+## Locust - Performance 
+
+Install [Locust](https://locust.io/)
+
+`python -m pip install locustio`
+
+Restart terminal for install to complete
+
+Configure Locust: 
+```
+mkdir locust
+cd locust
+wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
+```
+
+Obtain the external IP address of Socks Shop.
+* `k -n sock-shop get svc front-end`
+* The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
+* Use that address to stress the micro-services application.
+* Start locust : `locust -f locustfile-socks-shop.py --host=http://<EXTERNAL-IP>`
+
+Browse to : `http://127.0.0.1:8089/`
+* Number of Users to Simulate: 500
+* Hatch Rate: 10
+
+On main panel select `Charts`
+Top Right note Failures are 0%
+
+Keep the browser window open.
+
+## Helm - Package Manager 
+
+### Install Helm 
+```
+mkdir helm
+cd helm
+curl -LO https://git.io/get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
+```
+### Configure Helm
+```
+kubectl create serviceaccount -n kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+kubectl --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+helm init
+```
+### Install Gremlin
+```
+helm install --set gremlin.teamID=348fae29-b0e1-5ea9-86c6-1a204bb4bf37 gremlin/gremlin
+```
+
+
 ## Kube Monkey - Chaos
 
 Clone [Microservices Observability and Chaos on Digital Ocean](https://github.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean.git)
@@ -341,67 +394,6 @@ I0925 03:10:35.257848       1 schedule.go:59] v1.Deployment front-end scheduled 
 ```
 
 Look for these messages that indicate successful deployment: `[DryRun Mode] Terminated pod front-end-xxxxxx for sock-shop/front-end` 
-
-## Locust - Performance 
-
-Install [Locust](https://locust.io/)
-
-`python -m pip install locustio`
-
-Restart terminal for install to complete
-
-Configure Locust: 
-```
-mkdir locust
-cd locust
-wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
-```
-
-Obtain the external IP address of Socks Shop.
-* `k -n sock-shop get svc front-end`
-* The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
-* Use that address to stress the micro-services application.
-* Start locust : `locust --host=http://<EXTERNAL-IP>`
-
-Browse to : `http://127.0.0.1:8089/`
-* Number of Users to Simulate: 500
-* Hatch Rate: 10
-
-On main panel select `Charts`
-Top Right note Failures are 0%
-
-From the terminal kill front-end pods to simulate chaos.
-
-`k get pods -n sock-shop`
-
-```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get pods -n sock-shop
-NAME                            READY   STATUS    RESTARTS   AGE
-carts-56c6fb966b-nrwx4          1/1     Running   0          23h
-carts-db-5678cc578f-w99cf       1/1     Running   0          23h
-catalogue-644549d46f-mpwrz      1/1     Running   0          23h
-catalogue-db-6ddc796b66-rbp7h   1/1     Running   0          23h
-front-end-6f9db4fd44-6mcw7      1/1     Running   0          20h
-front-end-6f9db4fd44-7n228      1/1     Running   0          20h
-front-end-6f9db4fd44-bn6t6      1/1     Running   0          20h
-front-end-6f9db4fd44-lsm6z      1/1     Running   0          20h
-kube-monkey-6b7c69cdd5-tt24h    1/1     Running   0          18h
-orders-749cdc8c9-kqhsw          1/1     Running   0          23h
-orders-db-5cfc68c4cf-pf7sq      1/1     Running   0          23h
-payment-54f55b96b9-8x8z2        1/1     Running   0          23h
-queue-master-6fff667867-fkxj6   1/1     Running   0          23h
-rabbitmq-bdfd84d55-nx495        1/1     Running   0          23h
-shipping-78794fdb4f-9fvfv       1/1     Running   0          23h
-user-77cff48476-lk4rs           1/1     Running   0          23h
-user-db-99685d75b-mzhqv         1/1     Running   0          23h
-```
-
-```
-k delete front-end-6f9db4fd44-6mcw7 -n sock-shop
-k delete front-end-6f9db4fd44-7n228 -n sock-shop
-```
-
-Observe in the Locust page that Failures are still 0%
 
 ## Theory 
 
