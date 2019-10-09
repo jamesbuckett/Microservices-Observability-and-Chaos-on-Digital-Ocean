@@ -359,7 +359,7 @@ wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-
 
 Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
-* The IP address under EXTERNAL-IPis the external IP address of Socks Shop.
+* The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
 * Use that address to stress the micro-services application.
 * Start locust : `locust --host=http://<EXTERNAL-IP>`
 
