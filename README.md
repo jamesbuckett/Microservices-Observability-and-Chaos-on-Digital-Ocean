@@ -412,8 +412,29 @@ You have successfully performed a CPU Resource Attack against the infrastrucure 
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured
 * You deployed a microservices application called Socks Shop to run on the Cluster
 * You observed the micro-services application with Prometheus and Grafana
-* You deployed 
+* You deployed a performance tool called locust to stress test the micro-services application
+* You installed Gremlin to perform Chaos Experiments on the micro-services application.
 
+## Tutorial Clean Up 
+
+Login to Digital Ocean
+
+### Kubernetes 
+* Left side bar select Kubernetes
+* Select your cluster 
+* Top right select `Actions` button
+* Select `Destroy`
+* On next page confirm by selecting `Destroy` again
+* Enter `digital-ocean-cluster` to enable deletion
+
+### Load Balancer
+* Left side bar select Networking
+* Select Load Balancers
+* Select the top Load Balancer
+* Select Settings
+* Scroll to bottom and select Destroy
+* Select the Confirm button 
+* Repeat for all Load Balancers
 
 ## Theory 
 
@@ -521,26 +542,5 @@ To see your cluster metrics
 ![do-cluster-insights](https://user-images.githubusercontent.com/18049790/65855878-b13ff580-e392-11e9-91dc-92ed31bbddad.png)
 
 For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
-
-## Tutorial Clean Up 
-
-Login to Digital Ocean
-
-### Kubernetes 
-* Left side bar select Kubernetes
-* Select your cluster 
-* Top right select `Actions` button
-* Select `Destroy`
-* On next page confirm by selecting `Destroy` again
-* Enter `digital-ocean-cluster` to enable deletion
-
-### Load Balancer
-* Left side bar select Networking
-* Select Load Balancers
-* Select the top Load Balancer
-* Select Settings
-* Scroll to bottom and select Destroy
-* Select the Confirm button 
-* Repeat for all Load Balancers
 
 *End of Section*
