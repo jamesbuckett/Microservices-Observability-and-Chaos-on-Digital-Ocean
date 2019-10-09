@@ -263,6 +263,8 @@ For more information on how to build your own dashboard check out: https://grafa
 
 Install Python
 
+`sudo apt-get install python`
+
 Install [Locust](https://locust.io/)
 
 `python -m pip install locustio`
