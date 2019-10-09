@@ -44,7 +44,7 @@ This Tutorial will give you hands on deployment and operation of the following t
 * Kubernetes
 * Prometheus
 * Grafana
-* Kube Monkey
+* Gremlin
 * Locust
 
 ## Cost Warning
@@ -172,7 +172,6 @@ deployment.apps/carts-db       1/1     1            1           22h
 deployment.apps/catalogue      1/1     1            1           22h
 deployment.apps/catalogue-db   1/1     1            1           22h
 deployment.apps/front-end      4/4     4            4           22h
-deployment.apps/kube-monkey    1/1     1            1           18h
 deployment.apps/orders         1/1     1            1           22h
 deployment.apps/orders-db      1/1     1            1           22h
 deployment.apps/payment        1/1     1            1           22h
@@ -189,7 +188,6 @@ replicaset.apps/catalogue-644549d46f      1         1         1       22h
 replicaset.apps/catalogue-db-6ddc796b66   1         1         1       22h
 replicaset.apps/front-end-5594987df6      0         0         0       22h
 replicaset.apps/front-end-6f9db4fd44      4         4         4       19h
-replicaset.apps/kube-monkey-6b7c69cdd5    1         1         1       18h
 replicaset.apps/orders-749cdc8c9          1         1         1       22h
 replicaset.apps/orders-db-5cfc68c4cf      1         1         1       22h
 replicaset.apps/payment-54f55b96b9        1         1         1       22h
@@ -308,6 +306,11 @@ kubectl create serviceaccount -n kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 kubectl --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 helm init
+```
+
+### Scale Socks Shop
+```
+k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-front-end.yml"
 ```
 
 ## Gremlin 
