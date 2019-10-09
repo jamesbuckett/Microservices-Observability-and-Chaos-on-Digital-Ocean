@@ -261,6 +261,8 @@ For more information on how to build your own dashboard check out: https://grafa
 
 ## Locust - Performance 
 
+Install Python
+
 Install [Locust](https://locust.io/)
 
 `python -m pip install locustio`
@@ -320,7 +322,9 @@ Signup for Gremlin service
 * Sign Up for an account
 * Login to the Gremlin App using your Company name and sign-on credentials. 
 * These were emailed to you when you signed up to start using Gremlin.
-* Navigate to Team Settings and click on your Team. 
+* Top Right click on Company Settings
+* CLick teams tab
+* Click on Configuration
 * Click the blue Download button to save your certificates to your local computer. 
   * Save the file to `~/gremlin`
 * The downloaded certificate.zip contains both a public-key certificate and a matching private key.
@@ -330,7 +334,7 @@ Signup for Gremlin service
 cd gremlin
 unzip certificate.zip
 mv *.priv_key.pem gremlin.key
-mv *.pub_cert.pem gremlin.key
+mv *.pub_cert.pem gremlin.cert
 ```
 Create a secret from the files
 ```
