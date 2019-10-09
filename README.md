@@ -354,7 +354,7 @@ Configure Locust:
 ```
 mkdir locust
 cd locust
-https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
+wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
 ```
 
 Obtain the external IP address of Socks Shop.
