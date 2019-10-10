@@ -265,12 +265,6 @@ Scroll down the page and see metrics for Socks Shop
 * Memory Usage
 * Memory Quota
 
-#### Dahsboards Information
-
-Explore other Prometheus datasource based Kubernetes dashboards at: https://grafana.com/dashboards?dataSource=prometheus&search=kubernetes
-
-For more information on how to build your own dashboard check out: https://grafana.com/docs/guides/getting_started/
-
 ## Locust - Performance 
 
 Install Python
@@ -356,7 +350,8 @@ mv *.pub_cert.pem gremlin.cert
 ```
 Create a secret from the files
 ```
-kubectl create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key
+k create ns gremlin
+k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key - n gremlin
 helm repo add gremlin https://helm.gremlin.com
 ```
 
@@ -366,16 +361,16 @@ helm repo add gremlin https://helm.gremlin.com
 * Company Settings
 * Teams Tab
 ```
-helm install --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin
+helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin 
 ```
 
 ### Verify Gremlin is working
 
-`kubectl get all -n default`
+`kubectl get all -n gremlin`
 
 You should see similar output to the following.
 ```
-[jamesbuckett@surface ~ (do-sgp1-digital-ocean-cluster:default)]$ kubectl get all -n default
+[jamesbuckett@surface ~ (do-sgp1-digital-ocean-cluster:default)]$ kubectl get all -n gremlin
 NAME                               READY   STATUS    RESTARTS   AGE
 pod/understood-eel-gremlin-dtkmd   1/1     Running   0          157m
 pod/understood-eel-gremlin-fpv99   1/1     Running   0          157m
@@ -388,7 +383,7 @@ NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE  
 daemonset.apps/understood-eel-gremlin   3         3         3       3            3           <none>          157m
 ```
 
-## Practical 
+## Practical - The Fun Starts Here
 
 ### Start User Interfaces
 
