@@ -389,18 +389,21 @@ daemonset.apps/brazen-bear-gremlin   3         3         3       3            3 
 
 #### Locust
 * Locust should still be running from a previous step.
-* If not return to the Locust section and ensure the Locust UI is configured and running
+  * `http://127.0.0.1:8089/`
 
 #### Grafana 
 * Grafana should still be running from a previous step.
-* If not return to the Grafana section and ensure the Grafana and running
+  * `k -n prometheus-operator get svc prometheus-operator-grafana`
+  * Put EXTERNAL-IP into a browser.
 
 #### Socks Shop
 * Socks Shop should still be running from a previous step.
-* If not return to the Socks Shop section and ensure the Socks Shop application is running
+  * `k -n sock-shop get svc front-end`
+  * Put EXTERNAL-IP into a browser.
 
 #### Gremlin
-* Login to Gremlin 
+* Login to Gremlin
+  * https://app.gremlin.com/signup
 
 ### High CPU Attack
 * Check the Locust UI switch to the charts view if required.
