@@ -363,6 +363,7 @@ helm repo add gremlin https://helm.gremlin.com
   * Configuration Tab
   * TeamID
 ```
+k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin 
 ```
 
