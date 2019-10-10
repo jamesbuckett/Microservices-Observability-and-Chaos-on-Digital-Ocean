@@ -335,12 +335,12 @@ Signup for Gremlin service
 * CLick teams tab
 * Click on Configuration
 * Click the blue Download button to save your certificates to your local computer. 
-  * If on Windows using WSL download the certificate.zip file to c:\Users\<your-name>\Downloads
-    * cp /mnt/c/Users/<your-name>/Downloads/certificate.zip /home/<your-name>/gremlin/.
-  * If on Mac download the certificate.zip to the ~/gremlin directory.
+  * If on Windows using WSL download the `certificate.zip` file to c:\Users\<your-name>\Downloads
+    * `cp /mnt/c/Users/<your-name>/Downloads/certificate.zip /home/<your-name>/gremlin/.`
+  * If on Mac download the `certificate.zip` to the `~/gremlin` directory.
     * Save the file to `~/gremlin`
-* The downloaded certificate.zip contains both a public-key certificate and a matching private key.
-* Unzip the certificate.zip
+* The downloaded `certificate.zip` contains both a public-key certificate and a matching private key.
+* Unzip the `certificate.zip`
 * Rename your certificate and key files to gremlin.cert and gremlin.key.
 ```
 cd ~/gremlin
