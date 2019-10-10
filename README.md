@@ -89,6 +89,7 @@ Go back to the main page to confirm that the cluster and load balancer have been
 ### Accessing the Digital Ocean Kubernetes cluster 
 
 Digital Ocean Kubernetes clusters are typically managed from a local machine or sometimes from a remote management server. 
+
 Two binaries need to be installed to interact with the cluster:
 * doctl
 * kubectl
