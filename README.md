@@ -432,6 +432,7 @@ daemonset.apps/brazen-bear-gremlin   3         3         3       3            3 
   
 * Switch to the Grafana UI
   * Observe the Nodes reaching 100% utilization 
+  * Top use the `instance` dropdown to views other Nodes.
   
   ![grafana-2](https://user-images.githubusercontent.com/18049790/66459191-20aa9900-eaa7-11e9-875a-f64b9c9ff163.png)
   
@@ -442,14 +443,36 @@ daemonset.apps/brazen-bear-gremlin   3         3         3       3            3 
 
 You have successfully performed a CPU Resource Attack against the infrastrucure nodes.
 
+What you are observing is the following:
+* Gremlin is causing the Nodes to go to 100% CPU utilization
+* Kubernetes is ensuring the the Socks Shop micro-service is high resilenet and available 
+* Locust is hitting the Socks Shop front-end and reporting 0% failures.
+
 ## Wrap Up
-* You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured
-* You deployed a microservices application called Socks Shop to run on the Cluster
-* You observed the micro-services application with Prometheus and Grafana
-* You deployed a performance tool called locust to stress test the micro-services application
-* You installed Gremlin to perform Chaos Experiments on the micro-services application.
+* You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
+* You deployed a microservices application called Socks Shop to run on the Cluster.
+* You observed metrics from the micro-services application with Prometheus and Grafana.
+* You deployed a performance tool called Locust to stress test the micro-services application and observe any failures.
+* You installed Gremlin to perform a Chaos Experiment (CPU Resource Attack) on the micro-services application.
 
 ## Tutorial Clean Up 
+
+Two methods to clean up
+* GUI 
+* CLI
+
+### CLI Method
+
+Delete Kubernetes Cluster
+* `doctl kubernetes cluster delete digital-ocean-cluster`
+
+Delete Kubernetes Cluster
+* `doctl compute load-balancer list`
+  * Get ID for each Load Balancer
+* `doctl compute load-balancer delete <ID>`
+  * Confirm with `y`
+
+### GUI Method
 
 Login to Digital Ocean
 
