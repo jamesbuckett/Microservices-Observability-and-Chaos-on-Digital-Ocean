@@ -225,7 +225,7 @@ To see cluster specific graphs enabled in this stack go to the “Home” menu i
 
 Top left click on `Home`
 
-Under `General` select `Kubernetes/Compute Resources/Namespace(Pods)`
+Under `General` select `Kubernetes / Compute Resources / Namespace(Pods)`
 * datasource: Prometheus
 * Namespace: sock-shop
 * Top Right click Clock Icon with text `Last 1 hour`
