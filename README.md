@@ -332,7 +332,7 @@ Signup for Gremlin service
 * Login to the Gremlin App using your Company name and sign-on credentials. 
 * These were emailed to you when you signed up to start using Gremlin.
 * Top Right click on Company Settings
-* CLick teams tab
+* Click teams tab
 * Click on Configuration
 * Click the blue Download button to save your certificates to your local computer. 
   * If on Windows using WSL download the `certificate.zip` file to c:\Users\<your-name>\Downloads
@@ -360,6 +360,8 @@ helm repo add gremlin https://helm.gremlin.com
   * Top Right Dropdown
   * Company Settings
   * Teams Tab
+  * Configuration Tab
+  * TeamID
 ```
 helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin 
 ```
