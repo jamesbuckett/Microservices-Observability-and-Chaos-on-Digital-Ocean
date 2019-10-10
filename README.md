@@ -229,9 +229,18 @@ Under `General` select `Kubernetes / Compute Resources / Namespace(Pods)`
 * datasource: Prometheus
 * Namespace: sock-shop
 * Top Right click Clock Icon with text `Last 1 hour`
-* Select `Last 5 minutes`
+  * Under Quick Ranges
+    * Select `Last 5 minutes`
 * Top Right click last icon that looks like Recycle Icon
-* In drop down select `5s`
+  * In drop down select `5s`
+
+Scroll down the page and see metrics for Socks Shop
+* CPU Usage
+* CPU Quota
+* Memory Usage
+* Memory Quota
+
+#### Dahsboards Information
 
 Explore other Prometheus datasource based Kubernetes dashboards at: https://grafana.com/dashboards?dataSource=prometheus&search=kubernetes
 
