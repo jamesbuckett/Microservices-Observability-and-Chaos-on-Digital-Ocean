@@ -134,70 +134,56 @@ To install the Socks Shop Application
 * `k create namespace sock-shop`
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
 
-Use this command to verify a successful deployment: `k get all -n sock-shop`
+Run this command : `watch -n 1 kubectl --kubeconfig="digital-ocean-cluster-kubeconfig.yaml get all" -n sock-shop`
+
+Watch the output until this line changes 
+* from : `service/front-end      LoadBalancer   10.245.114.199   <pending>     80:30001/TCP   2m5s`
+* to   : `service/front-end      LoadBalancer   10.245.114.199   x.x.x.x       80:30001/TCP   3m15s`
+Where x.x.x.x is a valid EXTERNAL-IP which is the IP to access your Socks Shop micro-service.
 
 ```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k get all -n sock-shop
-NAME                                READY   STATUS    RESTARTS   AGE
-pod/carts-56c6fb966b-nrwx4          1/1     Running   0          22h
-pod/carts-db-5678cc578f-w99cf       1/1     Running   0          22h
-pod/catalogue-644549d46f-mpwrz      1/1     Running   0          22h
-pod/catalogue-db-6ddc796b66-rbp7h   1/1     Running   0          22h
-pod/front-end-6f9db4fd44-6mcw7      1/1     Running   0          19h
-pod/orders-749cdc8c9-kqhsw          1/1     Running   0          22h
-pod/orders-db-5cfc68c4cf-pf7sq      1/1     Running   0          22h
-pod/payment-54f55b96b9-8x8z2        1/1     Running   0          22h
-pod/queue-master-6fff667867-fkxj6   1/1     Running   0          22h
-pod/rabbitmq-bdfd84d55-nx495        1/1     Running   0          22h
-pod/shipping-78794fdb4f-9fvfv       1/1     Running   0          22h
-pod/user-77cff48476-lk4rs           1/1     Running   0          22h
-pod/user-db-99685d75b-mzhqv         1/1     Running   0          22h
+Every 1.0s: kubectl --kubeconfig=digital-ocean-cluster-kubeconfig.yaml get all -n sock-shop          surface: Thu Oct 10 11:25:58 2019
 
-NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
-service/carts          ClusterIP      10.245.9.190     <none>         80/TCP         22h
-service/carts-db       ClusterIP      10.245.183.3     <none>         27017/TCP      22h
-service/catalogue      ClusterIP      10.245.157.236   <none>         80/TCP         22h
-service/catalogue-db   ClusterIP      10.245.2.69      <none>         3306/TCP       22h
-service/front-end      LoadBalancer   10.245.255.112   x.x.x.x        80:30001/TCP   22h
-service/orders         ClusterIP      10.245.71.35     <none>         80/TCP         22h
-service/orders-db      ClusterIP      10.245.227.95    <none>         27017/TCP      22h
-service/payment        ClusterIP      10.245.45.90     <none>         80/TCP         22h
-service/queue-master   ClusterIP      10.245.21.101    <none>         80/TCP         22h
-service/rabbitmq       ClusterIP      10.245.195.66    <none>         5672/TCP       22h
-service/shipping       ClusterIP      10.245.2.73      <none>         80/TCP         22h
-service/user           ClusterIP      10.245.188.69    <none>         80/TCP         22h
-service/user-db        ClusterIP      10.245.194.49    <none>         27017/TCP      22h
+NAME                                READY   STATUS              RESTARTS   AGE
+pod/carts-56c6fb966b-8schz          1/1     Running             0          2m7s
+pod/carts-db-5678cc578f-zprvg       1/1     Running             0          2m8s
+pod/catalogue-644549d46f-6zqbr      1/1     Running             0          2m6s
+pod/catalogue-db-6ddc796b66-zj2cc   1/1     Running             0          2m7s
+pod/front-end-5594987df6-69wkf      1/1     Running             0          2m5s
+pod/front-end-5594987df6-8vs7k      1/1     Running             0          2m5s
+pod/front-end-5594987df6-nxzcw      1/1     Running             0          2m5s
+pod/front-end-5594987df6-pl8qm      1/1     Running             0          2m5s
+pod/orders-749cdc8c9-9dh85          1/1     Running             0          2m4s
+pod/orders-db-5cfc68c4cf-sslpx      1/1     Running             0          2m5s
+pod/payment-54f55b96b9-kw7dj        1/1     Running             0          2m4s
+pod/queue-master-6fff667867-bbv8f   1/1     Running             0          2m3s
+pod/rabbitmq-bdfd84d55-njmnj        1/1     Running             0          2m3s
+pod/shipping-78794fdb4f-b8s7w       1/1     Running             0          2m2s
+pod/user-77cff48476-2bnvh           1/1     Running             0          2m1s
+pod/user-db-99685d75b-gvbsp         0/1     ContainerCreating   0          2m2s
+
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/carts          ClusterIP      10.245.154.64    <none>        80/TCP         2m7s
+service/carts-db       ClusterIP      10.245.73.210    <none>        27017/TCP      2m7s
+service/catalogue      ClusterIP      10.245.249.82    <none>        80/TCP         2m6s
+service/catalogue-db   ClusterIP      10.245.195.109   <none>        3306/TCP       2m6s
+service/front-end      LoadBalancer   10.245.114.199   <pending>     80:30001/TCP   2m5s
+service/orders         ClusterIP      10.245.200.240   <none>        80/TCP         2m4s
+service/orders-db      ClusterIP      10.245.156.207   <none>        27017/TCP      2m5s
+service/payment        ClusterIP      10.245.89.114    <none>        80/TCP         2m3s
+service/queue-master   ClusterIP      10.245.206.155   <none>        80/TCP         2m3s
+service/rabbitmq       ClusterIP      10.245.252.5     <none>        5672/TCP       2m2s
+service/shipping       ClusterIP      10.245.200.49    <none>        80/TCP         2m2s
+service/user           ClusterIP      10.245.1.54      <none>        80/TCP         2m1s
+service/user-db        ClusterIP      10.245.223.84    <none>        27017/TCP      2m1s
 
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/carts          1/1     1            1           22h
-deployment.apps/carts-db       1/1     1            1           22h
-deployment.apps/catalogue      1/1     1            1           22h
-deployment.apps/catalogue-db   1/1     1            1           22h
-deployment.apps/front-end      4/4     4            4           22h
-deployment.apps/orders         1/1     1            1           22h
-deployment.apps/orders-db      1/1     1            1           22h
-deployment.apps/payment        1/1     1            1           22h
-deployment.apps/queue-master   1/1     1            1           22h
-deployment.apps/rabbitmq       1/1     1            1           22h
-deployment.apps/shipping       1/1     1            1           22h
-deployment.apps/user           1/1     1            1           22h
-deployment.apps/user-db        1/1     1            1           22h
-
-NAME                                      DESIRED   CURRENT   READY   AGE
-replicaset.apps/carts-56c6fb966b          1         1         1       22h
-replicaset.apps/carts-db-5678cc578f       1         1         1       22h
-replicaset.apps/catalogue-644549d46f      1         1         1       22h
-replicaset.apps/catalogue-db-6ddc796b66   1         1         1       22h
-replicaset.apps/front-end-5594987df6      0         0         0       22h
-replicaset.apps/front-end-6f9db4fd44      4         4         4       19h
-replicaset.apps/orders-749cdc8c9          1         1         1       22h
-replicaset.apps/orders-db-5cfc68c4cf      1         1         1       22h
-replicaset.apps/payment-54f55b96b9        1         1         1       22h
-replicaset.apps/queue-master-6fff667867   1         1         1       22h
-replicaset.apps/rabbitmq-bdfd84d55        1         1         1       22h
-replicaset.apps/shipping-78794fdb4f       1         1         1       22h
-replicaset.apps/user-77cff48476           1         1         1       22h
-replicaset.apps/user-db-99685d75b         1         1         1       22h
+deployment.apps/carts          1/1     1            1           2m7s
+deployment.apps/carts-db       1/1     1            1           2m8s
+deployment.apps/catalogue      1/1     1            1           2m6s
+deployment.apps/catalogue-db   1/1     1            1           2m7s
+deployment.apps/front-end      4/4     4            4           2m6s
+deployment.apps/orders         1/1     1            1           2m4s
 ```
 
 The Load Balancer takes about four minutes to provision.
