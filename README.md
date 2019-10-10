@@ -106,7 +106,7 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 
 Once kubectl is installed setup an alias to call kubectl with the Digital Ocean Kubeconfig file
 
-Linux and Mac
+Set the alias
 ```
 alias k='cd ~/.kube && kubectl --kubeconfig="digital-ocean-cluster-kubeconfig.yaml"'
 k version
@@ -292,9 +292,9 @@ chmod 700 get_helm.sh
 ```
 ### Configure Helm
 ```
-kubectl create serviceaccount -n kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+k create serviceaccount -n kube-system tiller
+k create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 helm init
 ```
 
