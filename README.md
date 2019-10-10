@@ -269,11 +269,12 @@ Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
 * The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
 * Use that address to stress the micro-services application.
-* Start locust : `locust -f locustfile-socks-shop.py --host=http://<EXTERNAL-IP>`
+* Start locust : `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP>`
 
 Browse to : `http://127.0.0.1:8089/`
-* Number of Users to Simulate: 500
-* Hatch Rate: 10
+* Enter these values 
+  * Number of Users to Simulate: 500
+  * Hatch Rate: 10
 
 On main panel select `Charts`
 * Top Right note Failures are 0%
