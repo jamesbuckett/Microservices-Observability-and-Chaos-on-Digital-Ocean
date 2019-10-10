@@ -89,6 +89,26 @@ Go back to the main page to confirm that the cluster and load balancer have been
 ### Accessing the Digital Ocean Kubernetes cluster 
 
 Digital Ocean Kubernetes clusters are typically managed from a local machine or sometimes from a remote management server. 
+Two binaries need to be installed to interact with the cluster:
+* doctl
+* kubectl
+
+#### doctl - Digital Ocean Command Line
+
+Installation Link : https://github.com/digitalocean/doctl#installing-doctl 
+
+* Mac brew install
+  * `brew install doctl`
+
+* Linux install
+```
+cd ~
+curl -sL https://github.com/digitalocean/doctl/releases/download/v<version>/doctl-<version>-linux-amd64.tar.gz | tar -xzv
+cd ~/.kube
+doctl kubernetes cluster kubeconfig save digital-ocean-cluster
+```
+
+#### kubectl
 
 `kubectl` is a command line tool used to interact with Kubernetes clusters.
 
@@ -108,7 +128,7 @@ Once kubectl is installed setup an alias to call kubectl with the Digital Ocean 
 
 Set the alias
 ```
-alias k='cd ~/.kube && kubectl --kubeconfig="digital-ocean-cluster-kubeconfig.yaml"'
+alias alias k='kubectl'
 k version
 ```
 
