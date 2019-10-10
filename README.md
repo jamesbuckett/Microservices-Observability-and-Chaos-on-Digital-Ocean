@@ -357,9 +357,9 @@ helm repo add gremlin https://helm.gremlin.com
 
 ### Install Gremlin
 * Replace ID=YOUR-TEAM-ID with the value from the Gremlin page 
-* Top Right Dropdown
-* Company Settings
-* Teams Tab
+  * Top Right Dropdown
+  * Company Settings
+  * Teams Tab
 ```
 helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin 
 ```
