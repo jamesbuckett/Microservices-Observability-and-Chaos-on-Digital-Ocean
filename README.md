@@ -351,7 +351,7 @@ mv *.pub_cert.pem gremlin.cert
 Create a secret from the files
 ```
 k create ns gremlin
-k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key - n gremlin
+k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key -n gremlin
 helm repo add gremlin https://helm.gremlin.com
 ```
 
