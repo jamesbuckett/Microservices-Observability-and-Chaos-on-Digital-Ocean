@@ -105,6 +105,10 @@ Installation Link : https://github.com/digitalocean/doctl#installing-doctl
 ```
 cd ~
 curl -sL https://github.com/digitalocean/doctl/releases/download/v<version>/doctl-<version>-linux-amd64.tar.gz | tar -xzv
+```
+
+Ass cluster credentials to kubeconfig
+```
 cd ~/.kube
 doctl kubernetes cluster kubeconfig save digital-ocean-cluster
 ```
@@ -315,8 +319,8 @@ chmod 700 get_helm.sh
 ```
 k create serviceaccount -n kube-system tiller
 k create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 helm init
+k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 
 ## Gremlin 
