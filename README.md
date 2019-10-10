@@ -193,7 +193,7 @@ To Access Socks Shop
 * Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
 * The IP address under EXTERNAL-IP is the external IP address of Socks Shop
-* Paste the EXTERNAL-IP or IP address found in the Load Balancer dashboard into your web browser.
+* Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Socks Shop
 * Feel free to browse around and order some socks
 
