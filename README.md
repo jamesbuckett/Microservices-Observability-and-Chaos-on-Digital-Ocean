@@ -107,7 +107,7 @@ cd ~
 curl -sL https://github.com/digitalocean/doctl/releases/download/v<version>/doctl-<version>-linux-amd64.tar.gz | tar -xzv
 ```
 
-Ass cluster credentials to kubeconfig
+Add the digital-ocean-cluster credentials to kubeconfig
 ```
 cd ~/.kube
 doctl kubernetes cluster kubeconfig save digital-ocean-cluster
