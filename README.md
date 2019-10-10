@@ -203,26 +203,19 @@ To Access Socks Shop
 
 Grafana is exposed via a DigitalOcean Load Balancer. 
 
-You can get the IP address to access your Grafana instance either by looking for the IP within the Load Balancer dashboard, or by running the following in a terminal shell and copying the EXTERNAL-IP.
+Get the IP address to access your Grafana instance by running the following in a terminal shell and copying the EXTERNAL-IP and pasting it into a browser.
 
 `k -n prometheus-operator get svc prometheus-operator-grafana`
 
 ```
 [jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k -n prometheus-operator get svc prometheus-operator-grafana
 NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-prometheus-operator-grafana   LoadBalancer   10.245.70.78   139.x.x.x       80:30600/TCP   23h
+prometheus-operator-grafana   LoadBalancer   10.245.70.78   x.x.x.x         80:30600/TCP   23h
 ```
 
-Paste the EXTERNAL-IP or IP address found in the Load Balancer dashboard into your web browser.
+Paste the EXTERNAL-IP into your web browser.
 
 The default username and password are `admin` and `changeme` respectively.
-
-To change the password:
-* Log into to Grafana with default username and password
-* Click on the admin avatar in the bottom left in Grafana. (above the question mark)
-* Click on preferences
-* Click on Change password on middle tab
-* Follow the instructions and click “Change password”
 
 Once you have logged in the default Grafana Home dashboard will be displayed. 
 
