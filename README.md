@@ -189,8 +189,6 @@ deployment.apps/orders         1/1     1            1           2m4s
 
 The Load Balancer takes about four minutes to provision.
 
-Run `k get all -n sock-shop` until you see `service/front-end` has a valid EXTERNAL-IP.
-
 To Access Socks Shop 
 * Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
