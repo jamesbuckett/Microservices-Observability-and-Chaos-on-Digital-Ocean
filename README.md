@@ -77,12 +77,14 @@ Installation:
 * On Getting Started Panel go to "3. Download the config file"
 * Make the .kube directory: `mkdir ~/.kube`
 * Under "Quick connect with manual certificate management" select "download the cluster configuration file"
-* Download the `kubeconfig.yaml` to the `~/.kube` directory.
- * The authentication certificate in kubeconfig.yaml expires seven days after download
+  * If on Windows using WSL download the `kubeconfig.yaml` file to `c:\Users\<your-name>\Downloads`
+    * `cp /mnt/c/Users/<your-name>/Downloads/digital-ocean-cluster-kubeconfig.yaml /home/<your-name>/.kube/.`
+  * If on Mac download the `kubeconfig.yaml` to the `~/.kube` directory.
+ * The authentication certificate in kubeconfig.yaml expires seven days after download.
 
 Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
-
-Scroll to the top of the page and check for green icon on the digital-ocean-cluster name.
+* At the top of the page the cluster name `digital-ocean-cluster` will have a green icon indicating it is ready for use.
+* Scroll to the top of the page and check for green icon on the digital-ocean-cluster name.
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
