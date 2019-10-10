@@ -298,11 +298,6 @@ k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"s
 helm init
 ```
 
-### Scale Socks Shop
-```
-k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-front-end.yml"
-```
-
 ## Gremlin 
 
 Create a gremlin directory
