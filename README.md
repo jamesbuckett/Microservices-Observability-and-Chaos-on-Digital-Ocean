@@ -159,7 +159,7 @@ To install the Socks Shop Application
 * `k create namespace sock-shop`
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
 
-Run this command : `watch -n 1 kubectl get all" -n sock-shop`
+Run this command : `watch -n 1 kubectl get all -n sock-shop`
 
 Watch the output until this line changes 
 * from : `service/front-end      LoadBalancer   10.245.114.199   <pending>     80:30001/TCP   2m5s`
