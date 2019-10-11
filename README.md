@@ -370,7 +370,7 @@ helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/grem
 
 ### Verify Gremlin is working
 
-`kubectl get all -n gremlin`
+`watch -n 1 kubectl get all -n gremlin`
 
 You should see similar output to the following.
 ```
