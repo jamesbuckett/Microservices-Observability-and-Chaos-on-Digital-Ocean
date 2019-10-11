@@ -427,7 +427,7 @@ daemonset.apps/brazen-bear-gremlin   3         3         3       3            3 
   * Select `New Attack`
   * Scroll down select `Choose a Gremlin`
   * Under `Category` select `Resource`
-    * Next to `Length` enter `120`
+    * Next to `Length` enter `180`
     * Next to `CPU Capacity` enter `100`
   * Scroll to bottom of page select `Unleash Gremlin`
   
