@@ -360,6 +360,7 @@ helm repo add gremlin https://helm.gremlin.com
   * Top Right Dropdown
   * Company Settings
   * Teams Tab
+  * CLick on User
   * Configuration Tab
   * TeamID
 ```
