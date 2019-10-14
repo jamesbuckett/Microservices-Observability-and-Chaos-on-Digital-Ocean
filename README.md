@@ -169,8 +169,8 @@ To install the Socks Shop Application
 Run this command : `watch -n 1 kubectl get all -n sock-shop`
 
 Watch the output until this line changes 
-* from : `service/front-end      LoadBalancer   10.245.114.199   <pending>     80:30001/TCP   2m5s`
-* to   : `service/front-end      LoadBalancer   10.245.114.199   x.x.x.x       80:30001/TCP   3m15s`
+* from : `service/front-end      LoadBalancer   x.x.x.x   <pending>     80:30001/TCP   2m5s`
+* to   : `service/front-end      LoadBalancer   x.x.x.x   x.x.x.x       80:30001/TCP   3m15s`
 
 Where x.x.x.x is a valid EXTERNAL-IP which is the IP to access your Socks Shop micro-service.
 
