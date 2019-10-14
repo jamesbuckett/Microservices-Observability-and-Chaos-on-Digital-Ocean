@@ -7,22 +7,25 @@
   * Agenda
   * Requirments
   * Cost Warning
-* Digital Ocean
+* Digital Ocean (Cloud Provider)
   * Accessing the Digital Ocean Kubernetes cluster
     * doctl - Digital Ocean Command Line
     * kubectl
-* Socks Shop - Micro-service
-* Grafana - UI
+* Socks Shop (Micro-service)
+* Grafana (Metrics UI)
   * Observing Socks Shop with Grafana
-* Locust - Performance
-* Helm - Package Manager
+* Locust (Performance Tool)
+* Helm (Package Manager)
   * Install Helm
   * Configure Helm
-* Gremlin
+* Gremlin (Chaos)
   * Install Gremlin
   * Verify Gremlin is working
 * Practical - The Fun Starts Here
   * Start User Interfaces
+    * Locust
+    * Grafana
+    * Gremlin
   * High CPU Attack
   * Wrap Up
 * Tutorial Clean Up
