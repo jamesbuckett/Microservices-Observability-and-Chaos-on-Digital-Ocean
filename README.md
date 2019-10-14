@@ -9,8 +9,8 @@
   * Cost Warning
 * Digital Ocean (Cloud Provider)
   * Accessing the Digital Ocean Kubernetes cluster
-    * doctl - Digital Ocean Command Line
-    * kubectl
+    * doctl (Digital Ocean Command Line Interface)
+    * kubectl (Kubernetes Command Line Interface)
 * Socks Shop (Micro-service)
 * Grafana (Metrics UI)
   * Observing Socks Shop with Grafana
