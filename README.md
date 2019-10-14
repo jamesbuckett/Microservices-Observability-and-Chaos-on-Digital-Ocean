@@ -110,8 +110,11 @@ Installation [Link](https://github.com/digitalocean/doctl#installing-doctl)
 
 * Linux install
 ```
-cd ~
-curl -sL https://github.com/digitalocean/doctl/releases/download/v<version>/doctl-<version>-linux-amd64.tar.gz | tar -xzv
+cd 
+mkdir doctl
+cd doctl 
+curl -sL https://github.com/digitalocean/doctl/releases/download/v1.17.0/doctl-1.17.0-linux-amd64.tar.gz | tar -xzv
+sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
 Add the digital-ocean-cluster credentials to kubeconfig
@@ -138,7 +141,7 @@ Once kubectl is installed setup an alias to call kubectl with the Digital Ocean 
 
 Set the alias
 ```
-alias alias k='kubectl'
+alias k='kubectl'
 k version
 ```
 
