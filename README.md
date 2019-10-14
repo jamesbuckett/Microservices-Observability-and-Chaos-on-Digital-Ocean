@@ -8,6 +8,7 @@
   * Requirments
   * Cost Warning
 * Digital Ocean (Cloud Provider)
+  * Deploy Digital Ocean Kubernetes cluster
   * Accessing the Digital Ocean Kubernetes cluster
     * doctl (Digital Ocean Command Line Interface)
     * kubectl (Kubernetes Command Line Interface)
@@ -66,7 +67,7 @@ Note: This stack requires a minimum configuration of
 
 ![image](https://user-images.githubusercontent.com/18049790/43352593-2dbb84de-9269-11e8-9ae9-374690064767.png)
 
-Installation:
+### Digital Ocean Kubernetes cluster
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
 * Create a new Project called : `digital-ocean-project`
