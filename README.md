@@ -2,53 +2,52 @@
 
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
-## Agenda
+### Table of Contents
+Introduction
+* Agenda
+* Requirments
+* Cost Warning
+Digital Ocean
+* Accessing the Digital Ocean Kubernetes cluster
+* doctl - Digital Ocean Command Line
+* kubectl
+Socks Shop - Micro-service
+Grafana - UI
+* Observing Socks Shop with Grafana
+Locust - Performance
+Helm - Package Manager
+* Install Helm
+* Configure Helm
+Gremlin
+* Install Gremlin
+* Verify Gremlin is working
+Practical - The Fun Starts Here
+* Start User Interfaces
+* High CPU Attack
+* Wrap Up
+Tutorial Clean Up
+* CLI Method
+* GUI Method
+Theory
+* Prometheus Theory - Time Series Database
+* metrics-server Theory - Kubernetes Metrics
+
+## Introduction
+
+### Agenda
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
 * Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
 * Verify operation of the Socks Shop micro-service
 * Observe the Socks Shop micro-service with the Observability software
 * Perform Chaos Engineering on the Socks Shop micro-service
 
-## Requirements
+### Requirements
 * A Digital Ocean Account
 * A Linux terminal to interact with the cluster
   * [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
   * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
 
-## Buzz Words
-* Digital Ocean - Developer focused Cloud Provider.
-* Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
-* Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
-* Prometheus - Prometheus is an open source toolkit to monitor and alert.
-* Grafana - Grafana offers data visualization & Monitoring with support for Graphite, InfluxDB, Prometheus.
-* Kube State Metrics - A simple service that listens to the Kubernetes API server and generates metrics about the state of the objects. 
-* Prometheus NodeExporter - UNIX/Linux hardware and Operating System metrics.
-* Kubernetes Metrics Server - Kubernetes resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
-* Gremlin - A Software as a Service Chaos Engineering platform..
-* Locust - A performance testing tool 
-
-## Documentation 
-* [Kubernetes](https://kubernetes.io)
-* [Prometheus](https://prometheus.io)
-* [Grafana](https://grafana.com)
-* [Prometheus NodeExporter](https://github.com/prometheus/node_exporter/blob/master/README.md)
-* [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics/blob/master/README.md)
-* [metrics-server](https://github.com/kubernetes-incubator/metrics-server/blob/master/README.md)
-* [Gremlin](https://www.gremlin.com/)
-* [Locust](https://locust.io/)
-
-## Tutorial Description
-
-This Tutorial will give you hands on deployment and operation of the following technologies:
-* Digital Ocean
-* Kubernetes
-* Prometheus
-* Grafana
-* Gremlin
-* Locust
-
-## Cost Warning
-
+### Cost Warning
 Note: This stack requires a minimum configuration of
 * 2 * Nodes at $10/month (2GB memory / 1 vCPU) 
 * 2 * Load Balancer at $10/month 
@@ -600,5 +599,27 @@ To see your cluster metrics
 ![do-cluster-insights](https://user-images.githubusercontent.com/18049790/65855878-b13ff580-e392-11e9-91dc-92ed31bbddad.png)
 
 For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
+
+### Documentation 
+* [Kubernetes](https://kubernetes.io)
+* [Prometheus](https://prometheus.io)
+* [Grafana](https://grafana.com)
+* [Prometheus NodeExporter](https://github.com/prometheus/node_exporter/blob/master/README.md)
+* [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics/blob/master/README.md)
+* [metrics-server](https://github.com/kubernetes-incubator/metrics-server/blob/master/README.md)
+* [Gremlin](https://www.gremlin.com/)
+* [Locust](https://locust.io/)
+
+### Buzz Words
+* Digital Ocean - Developer focused Cloud Provider.
+* Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
+* Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
+* Prometheus - Prometheus is an open source toolkit to monitor and alert.
+* Grafana - Grafana offers data visualization & Monitoring with support for Graphite, InfluxDB, Prometheus.
+* Kube State Metrics - A simple service that listens to the Kubernetes API server and generates metrics about the state of the objects. 
+* Prometheus NodeExporter - UNIX/Linux hardware and Operating System metrics.
+* Kubernetes Metrics Server - Kubernetes resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
+* Gremlin - A Software as a Service Chaos Engineering platform..
+* Locust - A performance testing tool 
 
 *End of Section*
