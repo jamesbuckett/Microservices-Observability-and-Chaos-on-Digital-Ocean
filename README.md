@@ -394,7 +394,7 @@ daemonset.apps/virtuous-molly-gremlin   3         3         3       3           
 
 ## Practical - The Fun Starts Here
 
-### Start User Interfaces
+### Start the User Interfaces
 
 #### Locust
 * Locust should still be running from a previous step.
@@ -405,17 +405,13 @@ daemonset.apps/virtuous-molly-gremlin   3         3         3       3           
   * `k -n prometheus-operator get svc prometheus-operator-grafana`
   * Put `EXTERNAL-IP` into a browser.
 
-#### Socks Shop
-* Socks Shop should still be running from a previous step.
-  * `k -n sock-shop get svc front-end`
-  * Put `EXTERNAL-IP` into a browser.
-
 #### Gremlin
 * Login to [Gremlin](https://app.gremlin.com/signup)
 
 ### High CPU Attack
-* Check the Locust UI switch to the charts view if required.
-* Reload the page 
+* Switch to the Locust UI 
+  * Check the Locust UI switch to the charts view if required.
+  * Reload the page if required
 
 ![locust-1](https://user-images.githubusercontent.com/18049790/66459128-f8229f00-eaa6-11e9-9fdb-f5cf07e591e4.png)
 
@@ -423,9 +419,9 @@ daemonset.apps/virtuous-molly-gremlin   3         3         3       3           
   * Top left click on `Home`
   * Select `Kubernetes / Nodes`
   * Top Right click Clock Icon with text Last 1 hour
-  * Select Last 5 minutes
+    * Select Last 5 minutes
   * Top Right click last icon that looks like Recycle Icon
-  * In drop down select 5s
+    * In drop down select 5s
   
 ![grafana-1](https://user-images.githubusercontent.com/18049790/66459139-fd7fe980-eaa6-11e9-9ff4-6eac75f92742.png)  
   
