@@ -338,8 +338,9 @@ Signup for Gremlin service
 * Sign Up for an account
 * Login to the Gremlin App using your Company name and sign-on credentials. 
 * These were emailed to you when you signed up to start using Gremlin.
-* Top Right click on Company Settings
-* Click teams tab
+* Top Right click on `Company Settings`
+* Click `Teams` tab
+* CLick on your User
 * Click on Configuration
 * Click the blue Download button to save your certificates to your local computer. 
   * If on Windows using WSL download the `certificate.zip` file to c:\Users\<your-name>\Downloads
@@ -365,10 +366,10 @@ helm repo add gremlin https://helm.gremlin.com
 ### Install Gremlin
 * Replace ID=YOUR-TEAM-ID with the value from the Gremlin page 
   * Top Right Dropdown
-  * Company Settings
-  * Teams Tab
+  * `Company Settings`
+  * `Teams` Tab
   * CLick on User
-  * Configuration Tab
+  * `Configuration` Tab
   * TeamID
 ```
 k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
