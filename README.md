@@ -453,6 +453,21 @@ What you are observing is the following:
 * Kubernetes is ensuring the the Socks Shop micro-service is high resilient and available 
 * Locust is hitting the Socks Shop front-end and reporting 0% failures.
 
+Optional Rerun
+* On the Gremlin UI click the attack
+* Top right click `Rerun`
+* Scroll to bottom of page and select `Unleash Gremlin`
+* Switch to the Grafana UI 
+  * Top left click on `Home`
+  * Select `Kubernetes / Compute Resources / Cluster`
+  * Top Right click Clock Icon with text Last 1 hour
+    * Select Last 5 minutes
+  * Top Right click last icon that looks like Recycle Icon
+    * In drop down select 5s
+* This is the aggregate view of the Kubernetes cluster resources.
+  * In the `CPU Usage` view note how the `gremlin` namespace is consuming CPU cycles.
+
+ 
 ## Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
 * You deployed a microservices application called Socks Shop to run on the Cluster.
