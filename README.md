@@ -3,34 +3,36 @@
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
 ### Table of Contents
-Introduction
-* Agenda
-* Requirments
-* Cost Warning
-Digital Ocean
-* Accessing the Digital Ocean Kubernetes cluster
-* doctl - Digital Ocean Command Line
-* kubectl
-Socks Shop - Micro-service
-Grafana - UI
-* Observing Socks Shop with Grafana
-Locust - Performance
-Helm - Package Manager
-* Install Helm
-* Configure Helm
-Gremlin
-* Install Gremlin
-* Verify Gremlin is working
-Practical - The Fun Starts Here
-* Start User Interfaces
-* High CPU Attack
-* Wrap Up
-Tutorial Clean Up
-* CLI Method
-* GUI Method
-Theory
-* Prometheus Theory - Time Series Database
-* metrics-server Theory - Kubernetes Metrics
+* Introduction
+  * Agenda
+  * Requirments
+  * Cost Warning
+* Digital Ocean
+  * Accessing the Digital Ocean Kubernetes cluster
+    * doctl - Digital Ocean Command Line
+    * kubectl
+* Socks Shop - Micro-service
+* Grafana - UI
+  * Observing Socks Shop with Grafana
+* Locust - Performance
+* Helm - Package Manager
+  * Install Helm
+  * Configure Helm
+* Gremlin
+  * Install Gremlin
+  * Verify Gremlin is working
+* Practical - The Fun Starts Here
+  * Start User Interfaces
+  * High CPU Attack
+  * Wrap Up
+* Tutorial Clean Up
+  * CLI Method
+  * GUI Method
+* Theory
+  * Prometheus Theory - Time Series Database 
+  * metrics-server Theory - Kubernetes Metrics
+  * Documentation
+  * Buzz Words
 
 ## Introduction
 
@@ -93,7 +95,7 @@ Two binaries need to be installed to interact with the cluster:
 * doctl
 * kubectl
 
-#### doctl - Digital Ocean Command Line
+#### doctl - Digital Ocean Command Line Interface
 
 Installation Link : https://github.com/digitalocean/doctl#installing-doctl 
 
@@ -112,7 +114,7 @@ cd ~/.kube
 doctl kubernetes cluster kubeconfig save digital-ocean-cluster
 ```
 
-#### kubectl
+#### kubectl - Kubernetes Command Line Interface
 
 `kubectl` is a command line tool used to interact with Kubernetes clusters.
 
@@ -122,8 +124,6 @@ In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
 Credit to [What is Kubernetes](https://www.learnitguide.net/2018/08/what-is-kubernetes-learn-kubernetes.html)
 
 In your Linux terminal that you will use to interact with the Digital Ocean Kubernetes cluster install `kubectl`.
-
-#### kubectl installation
 
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview) is the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
 * The Kubernetes project provides [installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl) for kubectl on a variety of platforms. 
@@ -514,7 +514,7 @@ Prometheus is an embedded and pre-configured compeonent so it only has a theory 
 * targets are discovered via service discovery or static configuration
 * multiple modes of graphing and dashboarding support
 
-#### Components
+#### Prometheus Components
 * the main Prometheus server which scrapes and stores time series data
 * client libraries for instrumenting application code
 * a push gateway for supporting short-lived jobs
@@ -524,7 +524,7 @@ Prometheus is an embedded and pre-configured compeonent so it only has a theory 
 
 Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
 
-#### Architecture
+#### Prometheus Architecture
 
 This diagram illustrates the architecture of Prometheus and some of its ecosystem components:
 
