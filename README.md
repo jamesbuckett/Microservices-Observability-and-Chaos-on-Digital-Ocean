@@ -334,7 +334,7 @@ cd gremlin
 ```
 
 Signup for Gremlin service
-* Go to this link : https://app.gremlin.com/signup
+* Go to this [link](https://app.gremlin.com/signup)
 * Sign Up for an account
 * Login to the Gremlin App using your Company name and sign-on credentials. 
 * These were emailed to you when you signed up to start using Gremlin.
