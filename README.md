@@ -277,7 +277,10 @@ Scroll down the page and see metrics for Socks Shop
 
 Install Python
 
-`sudo apt-get install python`
+```
+sudo apt-get install python3-pip
+sudo apt-get install python
+```
 
 Install [Locust](https://locust.io/)
 
