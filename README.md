@@ -360,6 +360,7 @@ Signup for Gremlin service
 * Rename your certificate and key files to gremlin.cert and gremlin.key.
 ```
 cd ~/gremlin
+sudo apt-get install unzip
 unzip certificate.zip
 mv *.priv_key.pem gremlin.key
 mv *.pub_cert.pem gremlin.cert
@@ -474,7 +475,6 @@ Optional Rerun
     * In drop down select 5s
 * This is the aggregate view of the Kubernetes cluster resources.
   * In the `CPU Usage` view note how the `gremlin` namespace is consuming CPU cycles.
-
  
 ## Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
