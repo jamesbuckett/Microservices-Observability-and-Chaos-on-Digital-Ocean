@@ -72,7 +72,7 @@ Note: This stack requires a minimum configuration of
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
 * Create a new Project called : `digital-ocean-project`
 * Go to "Marketplace" on the left tab.
-* Under "Find a Solution" click the "Kubernetes" tab.
+* Under "Find a Solution" click the "Kubernetes - New" tab.
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
 * Select "Create Cluster"
 * Choose a datacentre region: `Singapore`
