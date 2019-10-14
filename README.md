@@ -381,14 +381,15 @@ helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/grem
 
 You should see similar output to the following.
 ```
-[jamesbuckett@surface gremlin (do-sgp1-digital-ocean-cluster:default)]$ kubectl get all -n gremlin
-NAME                            READY   STATUS    RESTARTS   AGE
-pod/brazen-bear-gremlin-f94jx   1/1     Running   0          101s
-pod/brazen-bear-gremlin-jmh9p   1/1     Running   0          101s
-pod/brazen-bear-gremlin-r9kcj   1/1     Running   0          101s
+Every 1.0s: kubectl get all -n gremlin                                                               surface: Mon Oct 14 11:06:31 2019
 
-NAME                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-daemonset.apps/brazen-bear-gremlin   3         3         3       3            3           <none>          101s
+NAME                               READY   STATUS    RESTARTS   AGE
+pod/virtuous-molly-gremlin-cb9gn   1/1     Running   0          86s
+pod/virtuous-molly-gremlin-m8bbg   1/1     Running   0          86s
+pod/virtuous-molly-gremlin-pmwzs   1/1     Running   0          86s
+
+NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/virtuous-molly-gremlin   3         3         3       3            3           <none>          87s
 ```
 
 ## Practical - The Fun Starts Here
