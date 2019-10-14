@@ -65,8 +65,6 @@ Note: This stack requires a minimum configuration of
 
 ## Digital Ocean - Cloud Provider
 
-![image](https://user-images.githubusercontent.com/18049790/43352593-2dbb84de-9269-11e8-9ae9-374690064767.png)
-
 ### Digital Ocean Kubernetes cluster
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
