@@ -403,24 +403,24 @@ daemonset.apps/virtuous-molly-gremlin   3         3         3       3           
 #### Grafana 
 * Grafana should still be running from a previous step.
   * `k -n prometheus-operator get svc prometheus-operator-grafana`
-  * Put EXTERNAL-IP into a browser.
+  * Put `EXTERNAL-IP` into a browser.
 
 #### Socks Shop
 * Socks Shop should still be running from a previous step.
   * `k -n sock-shop get svc front-end`
-  * Put EXTERNAL-IP into a browser.
+  * Put `EXTERNAL-IP` into a browser.
 
 #### Gremlin
-* Login to Gremlin
-  * https://app.gremlin.com/signup
+* Login to [Gremlin](https://app.gremlin.com/signup)
 
 ### High CPU Attack
 * Check the Locust UI switch to the charts view if required.
+* Reload the page 
 
 ![locust-1](https://user-images.githubusercontent.com/18049790/66459128-f8229f00-eaa6-11e9-9fdb-f5cf07e591e4.png)
 
 * Switch to the Grafana UI 
-  * Top Right Home
+  * Top left click on `Home`
   * Select `Kubernetes / Nodes`
   * Top Right click Clock Icon with text Last 1 hour
   * Select Last 5 minutes
