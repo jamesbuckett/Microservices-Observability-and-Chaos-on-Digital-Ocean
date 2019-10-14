@@ -91,6 +91,10 @@ Go back to the main page to confirm that the cluster and load balancer have been
 * At the top of the page the cluster name `digital-ocean-cluster` will have a green icon indicating it is ready for use.
 * Scroll to the top of the page and check for green icon on the digital-ocean-cluster name.
 
+```diff
+- Wait for the cluster to be ready before continuing, check for green icon on cluster name -
+```
+
 ### Accessing the Digital Ocean Kubernetes cluster 
 
 Digital Ocean Kubernetes clusters are typically managed from a local machine or sometimes from a remote management server. 
