@@ -117,6 +117,16 @@ curl -sL https://github.com/digitalocean/doctl/releases/download/v1.17.0/doctl-1
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
+Configure doctl
+* Login to Digital Ocean
+* Left Side API 
+* Generate New Token
+  * Name: digital-ocean-access-token
+
+```
+doctl auth init
+```
+
 Add the digital-ocean-cluster credentials to kubeconfig
 ```
 cd ~/.kube
