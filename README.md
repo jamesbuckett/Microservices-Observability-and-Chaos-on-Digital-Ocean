@@ -101,7 +101,7 @@ Two binaries need to be installed to interact with the cluster:
 
 #### doctl - Digital Ocean Command Line Interface
 
-Installation Link : https://github.com/digitalocean/doctl#installing-doctl 
+Installation [Link](https://github.com/digitalocean/doctl#installing-doctl)
 
 * Mac brew install
   * `brew install doctl`
