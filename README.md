@@ -454,7 +454,7 @@ You have successfully performed a CPU Resource Attack against the infrastrucure 
 
 What you are observing is the following:
 * Gremlin is causing the Nodes to go to 100% CPU utilization
-* Kubernetes is ensuring the the Socks Shop micro-service is high resilenet and available 
+* Kubernetes is ensuring the the Socks Shop micro-service is high resilient and available 
 * Locust is hitting the Socks Shop front-end and reporting 0% failures.
 
 ## Wrap Up
