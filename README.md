@@ -78,8 +78,6 @@ Note: This stack requires a minimum configuration of
 * Go to bottom of page and select "Create Cluster"
   * Cluster build usually takes four minutes
 
-
-
 Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
 * At the top of the page the cluster name `digital-ocean-cluster` will have a green icon indicating it is ready for use.
 * Scroll to the top of the page and check for green icon on the digital-ocean-cluster name.
@@ -102,7 +100,6 @@ Installation [Link](https://github.com/digitalocean/doctl#installing-doctl)
 
 * Mac brew install
   * `brew install doctl`
-
 * Linux install
 ```
 cd 
@@ -119,13 +116,10 @@ Configure doctl
 * On right side select `Generate New Token`
 * Token name: `digital-ocean-access-token`
 * Copy the generated token value for the next step
-
-Run this command and input the `digital-ocean-access-token` value when prompted.
-* `doctl auth init`
-
-
-Add the digital-ocean-cluster credentials to kubeconfig
-* `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
+* Run this command and input the `digital-ocean-access-token` value when prompted.
+  * `doctl auth init`
+* Add the digital-ocean-cluster credentials to kubeconfig
+  * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
 
 #### kubectl - Kubernetes Command Line Interface
 
