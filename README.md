@@ -371,7 +371,7 @@ helm repo add gremlin https://helm.gremlin.com
   * Obtain YOUR-TEAM-ID here: 
     * Top Right click on `Company Settings`
     * Click `Teams` tab
-    * CLick on your User
+    * Click on your User
     * Click on Configuration
     * Your `Team ID` should be on the top row
 ```
