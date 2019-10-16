@@ -3,15 +3,15 @@
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
 ### Table of Contents
-1. Introduction
-  1.1 Agenda
-  1.2 Requirments
-  1.3 Cost Warning
-2. Digital Ocean (Cloud Provider)
-  2.1 Deploy Digital Ocean Kubernetes cluster
-  2.2 Accessing the Digital Ocean Kubernetes cluster
-    2.2.1 doctl (Digital Ocean Command Line Interface)
-    2.2.2 kubectl (Kubernetes Command Line Interface)
+* Introduction
+  * Agenda
+  * Requirments
+  * Cost Warning
+* Digital Ocean (Cloud Provider)
+  * Deploy Digital Ocean Kubernetes cluster
+  * Accessing the Digital Ocean Kubernetes cluster
+    * doctl (Digital Ocean Command Line Interface)
+    * kubectl (Kubernetes Command Line Interface)
 * Socks Shop (Micro-service)
 * Grafana (Metrics UI)
   * Observing Socks Shop with Grafana
