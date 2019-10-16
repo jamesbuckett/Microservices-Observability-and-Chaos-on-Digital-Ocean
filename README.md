@@ -139,6 +139,7 @@ Once kubectl is installed setup an alias to call kubectl with the Digital Ocean 
 
 Set the alias
 ```
+kubectl config use-context do-sgp1-digital-ocean-cluster
 alias k='kubectl'
 k version
 ```
