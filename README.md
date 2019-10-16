@@ -114,7 +114,7 @@ Configure doctl
 * Login to Digital Ocean
 * Go to "API" on the left tab.
 * Applications & API..Tokens/Keys..Personal access tokens
-* On right side select `Generate New Token`
+* Select `Generate New Token`
 * Token name: `digital-ocean-access-token`
 * Copy the generated token value for the next step
 * Run this command and input the `digital-ocean-access-token` value when prompted.
