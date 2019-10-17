@@ -204,8 +204,6 @@ To install the Socks Shop Application
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
 
 Run this command : `watch -n 1 kubectl get all -n sock-shop`
-* You may not have the `watch` command on Mac
-* Install with `brew install watch`
 
 Watch the output until this line changes 
 * from : `service/front-end      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
