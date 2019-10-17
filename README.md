@@ -135,9 +135,6 @@ Installation [Link](https://github.com/digitalocean/doctl#installing-doctl)
 
 * doctl Installation
 ```
-cd 
-mkdir doctl
-cd doctl 
 curl -sL https://github.com/digitalocean/doctl/releases/download/v1.17.0/doctl-1.17.0-linux-amd64.tar.gz | tar -xzv
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
