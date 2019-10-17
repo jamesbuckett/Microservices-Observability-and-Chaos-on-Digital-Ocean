@@ -135,6 +135,7 @@ Installation [Link](https://github.com/digitalocean/doctl#installing-doctl)
 
 * doctl Installation
 ```
+cd ~/ && mkdir doctl && cd doctl
 curl -sL https://github.com/digitalocean/doctl/releases/download/v1.17.0/doctl-1.17.0-linux-amd64.tar.gz | tar -xzv
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
@@ -169,6 +170,7 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 
 Install kubectl
 ```
+cd ~/ && mkdir kubectl && cd kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
@@ -330,9 +332,7 @@ Restart terminal for install to complete
 
 Configure Locust: 
 ```
-cd ~/
-mkdir locust
-cd locust
+cd ~/ && mkdir locust && cd locust
 wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
 ```
 
