@@ -68,7 +68,7 @@ Note: This stack requires a minimum configuration of
 
 ### Setup Digital Ocean Project
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
-  * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
+  * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $50 in credit 
 * Create a new Project called : `digital-ocean-project`
 * Make sure you select the Project called `digital-ocean-project` and proceed to next step
 
@@ -89,6 +89,7 @@ Note: This stack requires a minimum configuration of
 
 ### Accessing Digital Ocean Droplet (prototype)
 * Using your Terminal Emulator SSH to your droplet
+* Get the public IP of your droplet and enter it into PuTTY
 
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
