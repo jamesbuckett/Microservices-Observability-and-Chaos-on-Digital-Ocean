@@ -264,10 +264,10 @@ To Access Socks Shop
 * The IP address under EXTERNAL-IP is the external IP address of Socks Shop
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Socks Shop
-* Feel free to browse around and order some socks
-* If you want to login 
+* Login to the site with:
   * user: user
   * password: password
+* Feel free to browse around and order some socks
 
 ## Grafana - UI
 
