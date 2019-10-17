@@ -72,15 +72,15 @@ Note: This stack requires a minimum configuration of
 
 ## Digital Ocean - Cloud Provider
 
-### Setup Digital Ocean Project
+### Setup a Digital Ocean Project
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $50 in credit 
 * Create a new Project called : `digital-ocean-project`
 * Make sure you select the Project called `digital-ocean-project` and proceed to next step
 
-### SSH Setup
+### Setup SSH
 * Follow this guide to create and upload SSH keys required to access Digital Ocean
-* [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
+  * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
 * Just enter `pass` for the pass phrase.
 * Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
