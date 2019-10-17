@@ -184,9 +184,9 @@ k version
 * Use 'k version' to make sure that your installation is working and within one minor version of your cluster.
 
 ```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k version
-Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.0", GitCommit:"2bd9643cee5b3b3a5ecbd3af49d09018f0773c77", GitTreeState:"clean", BuildDate:"2019-09-18T14:36:53Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
-Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.3", GitCommit:"2d3c76f9091b6bec110a5e63777c332469e0cba2", GitTreeState:"clean", BuildDate:"2019-08-19T11:05:50Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
+root@digital-ocean-droplet:~# k version
+Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.2", GitCommit:"c97fe5036ef3df2967d086711e6c0c405941e14b", GitTreeState:"clean", BuildDate:"2019-10-15T19:18:23Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.4", GitCommit:"67d2fcf276fcd9cf743ad4be9a9ef5828adc082f", GitTreeState:"clean", BuildDate:"2019-09-18T14:41:55Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 ## Socks Shop - Micro-service
@@ -212,7 +212,7 @@ Watch the output until this line changes
 Where x.x.x.x is a valid EXTERNAL-IP which is the IP to access your Socks Shop micro-service.
 
 ```
-Every 1.0s: kubectl --kubeconfig=digital-ocean-cluster-kubeconfig.yaml get all -n sock-shop          surface: Thu Oct 10 11:25:58 2019
+Every 1.0s: kubectl get all -n sock-shop                                               digital-ocean-droplet: Thu Oct 17 07:34:50 2019
 
 NAME                                READY   STATUS              RESTARTS   AGE
 pod/carts-56c6fb966b-8schz          1/1     Running             0          2m7s
@@ -280,9 +280,9 @@ Get the IP address to access your Grafana instance by running the following in a
 `k -n prometheus-operator get svc prometheus-operator-grafana`
 
 ```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k -n prometheus-operator get svc prometheus-operator-grafana
-NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-prometheus-operator-grafana   LoadBalancer   10.245.70.78   x.x.x.x         80:30600/TCP   23h
+root@digital-ocean-droplet:~# k -n prometheus-operator get svc prometheus-operator-grafana
+NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)        AGE
+prometheus-operator-grafana   LoadBalancer   10.245.220.96   139.59.223.226   80:30459/TCP   9m4s
 ```
 
 Paste the EXTERNAL-IP into your web browser.
@@ -317,8 +317,8 @@ Scroll down the page and see metrics for Socks Shop
 Install Python
 
 ```
-sudo apt-get install python3-pip
-sudo apt-get install python
+sudo apt-get update
+sudo apt-get install python -y
 ```
 
 Install [Locust](https://locust.io/)
