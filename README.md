@@ -339,11 +339,15 @@ wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-
 Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
 * The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
-* Use that address to stress the micro-services application.
+* Use that address to stress test the micro-services application.
+
+Obtain the external IP address of `digital-ocean-droplet`
+* `doctl compute droplet list`
+* Get the `Public IPv4` for `digital-ocean-droplet`
 
 Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
 
-Browse to : `http://127.0.0.1:8089/`
+Browse to : `http://<Public IPv4>:8089/`
 * Enter these values 
   * Number of Users to Simulate: 500
   * Hatch Rate: 10
