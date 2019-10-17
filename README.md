@@ -57,7 +57,8 @@
 Note: This stack requires a minimum configuration of
 * 2 * Nodes at $10/month (2GB memory / 1 vCPU) 
 * 2 * Load Balancer at $10/month 
-* **Total cost of $40 per month if kept running**
+* 1 * Droplet at $40/month
+* **Total cost of $80 per month if kept running**
 
 ```diff
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
@@ -80,7 +81,9 @@ Note: This stack requires a minimum configuration of
 * Choose an image..Distributions..`Ubuntu`
 * Choose a plan..`Standard`
 * Choose a datacentre region: `Singapore`
-* Authentication..SSH Key
+* Authentication..`SSH Key` should already be selected
+* Choose a hostname: `digital-ocean-droplet`
+* Select Project is set to `Digital Ocean Project`
 * Go to bottom of page and select "Create Droplet"
   * Droplet build usually takes four minutes
 
