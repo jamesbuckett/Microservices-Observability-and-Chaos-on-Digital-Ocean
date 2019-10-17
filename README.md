@@ -403,14 +403,14 @@ Signup for Gremlin service
   * If on Mac download the `certificate.zip` to the `~/download` directory.
 * The downloaded `certificate.zip` contains both a public-key certificate and a matching private key.
 * For Windows use WinSCP to upload `certificate.zip` to `digital-ocean-droplet`
-* For Mac use scp to upload `certificate.zip` to `digital-ocean-droplet`
+* For Mac use `scp` to upload `certificate.zip` to `digital-ocean-droplet`
   * Obtain the external IP address of `digital-ocean-droplet`
     * `doctl compute droplet list`
     * Get the `Public IPv4` for `digital-ocean-droplet`
   * `scp certificate.zip root@<Public IPv4>:/gremlin`
 
 * Unzip the `certificate.zip`
-* Rename your certificate and key files to gremlin.cert and gremlin.key.
+* Rename your certificate and key files to `gremlin.cert` and `gremlin.key`
 ```
 cd ~/gremlin
 sudo apt-get install unzip
@@ -443,15 +443,15 @@ helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/grem
 
 You should see similar output to the following.
 ```
-Every 1.0s: kubectl get all -n gremlin                                                               surface: Mon Oct 14 11:06:31 2019
+Every 1.0s: kubectl get all -n gremlin                                                 digital-ocean-droplet: Thu Oct 17 08:58:29 2019
 
 NAME                               READY   STATUS    RESTARTS   AGE
-pod/virtuous-molly-gremlin-cb9gn   1/1     Running   0          86s
-pod/virtuous-molly-gremlin-m8bbg   1/1     Running   0          86s
-pod/virtuous-molly-gremlin-pmwzs   1/1     Running   0          86s
+pod/fantastic-pika-gremlin-5sl76   1/1     Running   0          94s
+pod/fantastic-pika-gremlin-dfttw   1/1     Running   0          94s
+pod/fantastic-pika-gremlin-tv64w   1/1     Running   0          94s
 
 NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-daemonset.apps/virtuous-molly-gremlin   3         3         3       3            3           <none>          87s
+daemonset.apps/fantastic-pika-gremlin   3         3         3       3            3           <none>          94s
 ```
 
 ## Practical - The Fun Starts Here
@@ -460,7 +460,9 @@ daemonset.apps/virtuous-molly-gremlin   3         3         3       3           
 
 #### Locust
 * Locust should still be running from a previous step.
-  * `http://127.0.0.1:8089/`
+  * `doctl compute droplet list`
+  * Get the `Public IPv4` for `digital-ocean-droplet`
+  * Browse to : `http://<Public IPv4>:8089/`
 
 #### Grafana 
 * Grafana should still be running from a previous step.
