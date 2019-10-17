@@ -321,7 +321,7 @@ Install Python
 ```
 sudo apt-get update
 sudo apt-get install python -y
-sudo apt-get install python3-pip -y
+sudo apt-get install python-pip -y 
 ```
 
 Install [Locust](https://locust.io/)
