@@ -67,7 +67,7 @@ Note: This stack requires a minimum configuration of
 * **Total cost of $80 per month if kept running**
 
 ```diff
-- **** Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month **** -
+- Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
 ```
 
 ## Digital Ocean - Cloud Provider
