@@ -8,6 +8,9 @@
   * Requirments
   * Cost Warning
 * Digital Ocean (Cloud Provider)
+  * Setup Digital Ocean Project
+  * SSH Setup
+  * Digital Ocean Droplet
   * Deploy Digital Ocean Kubernetes cluster
   * Accessing the Digital Ocean Kubernetes cluster
     * doctl (Digital Ocean Command Line Interface)
