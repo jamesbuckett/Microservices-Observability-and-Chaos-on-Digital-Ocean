@@ -56,6 +56,7 @@
   * Windows 10
     * [PuTTY](https://www.putty.org/)
     * [PuTTYgen](https://www.puttygen.com/)
+    * [WinSCP](https://winscp.net/eng/download.php)
   * Mac  
     * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
 
@@ -401,10 +402,13 @@ Signup for Gremlin service
   * If on Windows download the `certificate.zip` file to c:\Users\<your-name>\Downloads
   * If on Mac download the `certificate.zip` to the `~/download` directory.
 * The downloaded `certificate.zip` contains both a public-key certificate and a matching private key.
-* Use PSFTP to upload `certificate.zip` to `digital-ocean-droplet`
-  * `doctl compute droplet list`
-  * Get the `Public IPv4` for `digital-ocean-droplet`
-  * NBNBNBNBNBNBNB
+* For Windows use WinSCP to upload `certificate.zip` to `digital-ocean-droplet`
+* For Mac use scp to upload `certificate.zip` to `digital-ocean-droplet`
+  * Obtain the external IP address of `digital-ocean-droplet`
+    * `doctl compute droplet list`
+    * Get the `Public IPv4` for `digital-ocean-droplet`
+  * `scp certificate.zip root@<Public IPv4>:/gremlin`
+
 * Unzip the `certificate.zip`
 * Rename your certificate and key files to gremlin.cert and gremlin.key.
 ```
