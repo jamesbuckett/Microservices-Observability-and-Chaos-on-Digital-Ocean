@@ -10,7 +10,7 @@
 * Digital Ocean (Cloud Provider)
   * Setup Digital Ocean Project
   * SSH Setup
-  * Digital Ocean Droplet
+  * Setup Digital Ocean Droplet
   * Deploy Digital Ocean Kubernetes cluster
   * Accessing the Digital Ocean Kubernetes cluster
     * doctl (Digital Ocean Command Line Interface)
@@ -84,7 +84,7 @@ Note: This stack requires a minimum configuration of
 * Just enter `pass` for the pass phrase.
 * Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
-### Digital Ocean Droplet
+### Setup Digital Ocean Droplet
 * Go to "Manage".."Droplets" on the left tab.
 * Choose an image..Distributions..`Ubuntu`
 * Choose a plan..`Standard`
