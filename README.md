@@ -49,8 +49,8 @@
 
 ### Requirements
 * A Digital Ocean Account
-* A Linux terminal to interact with the cluster
-  * [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+* A Terminal Emulator to interact with the cluster
+  * [PuTTY](https://www.putty.org/)
   * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
 
 ### Cost Warning
@@ -70,6 +70,22 @@ Note: This stack requires a minimum configuration of
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
 * Create a new Project called : `digital-ocean-project`
 * Make sure you select the Project called `digital-ocean-project` and proceed to next step
+
+### SSH Setup
+* Follow this guide to create and upload SSH keys required to access Digital Ocean
+* [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
+
+### Digital Ocean Droplet
+* Go to "Manage".."Droplets" on the left tab.
+* Choose an image..Distributions..`Ubuntu`
+* Choose a plan..`Standard`
+* Choose a datacentre region: `Singapore`
+* Authentication..SSH Key
+* Go to bottom of page and select "Create Droplet"
+  * Droplet build usually takes four minutes
+
+### Accessing Digital Ocean Droplet (prototype)
+* Using your Terminal Emulator SSH to your droplet
 
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
@@ -102,9 +118,7 @@ Two binaries need to be installed to interact with the cluster:
 
 Installation [Link](https://github.com/digitalocean/doctl#installing-doctl)
 
-* Mac brew install
-  * `brew install doctl`
-* Linux install
+* doctl Installation
 ```
 cd 
 mkdir doctl
@@ -296,9 +310,6 @@ Install [Locust](https://locust.io/)
 Restart terminal for install to complete
 
 Configure Locust: 
-* You may not have the `wget` command on Mac
-* Install with `brew install wget`
-
 ```
 cd ~/
 mkdir locust
@@ -507,6 +518,11 @@ Delete Kubernetes Cluster
   * Get ID for each Load Balancer
 * `doctl compute load-balancer delete <ID>`
   * Confirm with `y`
+  
+Delete Droplet  
+* `doctl compute droplet list`
+  * Get ID for `digital-ocean-droplet`
+* `doctl compute droplet delete digital-ocean-droplet`  
 
 ### GUI Method
 
@@ -528,6 +544,12 @@ Login to Digital Ocean
 * Scroll to bottom and select Destroy
 * Select the Confirm button 
 * Repeat for all Load Balancers
+
+### Droplet
+* Left side bar select "Manage".."Droplets"
+* On right side of `digital-ocean-droplet` select `More` button
+* Select `Destroy`
+* Select `Destroy` again
 
 ## Theory 
 
