@@ -70,12 +70,13 @@ Note: This stack requires a minimum configuration of
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
 * Create a new Project called : `digital-ocean-project`
 * Make sure you select the Project called `digital-ocean-project` and proceed to next step
-* Go to "Marketplace" on the left tab.
+* Go to "Discover".."Marketplace" on the left tab.
 * Under "Find a Solution" click the "Kubernetes - New" tab.
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
 * Select "Create Cluster"
 * Choose a datacentre region: `Singapore`
-* Choose a name: `digital-ocean-cluster`
+* Choose a name: 
+  * Enter Cluster name: `digital-ocean-cluster`
 * Go to bottom of page and select "Create Cluster"
   * Cluster build usually takes four minutes
 
@@ -168,6 +169,8 @@ To install the Socks Shop Application
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
 
 Run this command : `watch -n 1 kubectl get all -n sock-shop`
+* You may not have the `watch` command on Mac
+* Install with `brew install watch`
 
 Watch the output until this line changes 
 * from : `service/front-end      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
@@ -289,7 +292,11 @@ Install [Locust](https://locust.io/)
 Restart terminal for install to complete
 
 Configure Locust: 
+* You may not have the `wget` command on Mac
+* Install with `brew install wget`
+
 ```
+cd ~/
 mkdir locust
 cd locust
 wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
@@ -299,7 +306,8 @@ Obtain the external IP address of Socks Shop.
 * `k -n sock-shop get svc front-end`
 * The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
 * Use that address to stress the micro-services application.
-* Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
+
+Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
 
 Browse to : `http://127.0.0.1:8089/`
 * Enter these values 
