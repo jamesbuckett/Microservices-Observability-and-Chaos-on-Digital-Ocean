@@ -265,6 +265,9 @@ To Access Socks Shop
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Socks Shop
 * Feel free to browse around and order some socks
+* If you want to login 
+  * user: user
+  * password: password
 
 ## Grafana - UI
 
