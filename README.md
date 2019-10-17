@@ -407,7 +407,7 @@ Signup for Gremlin service
   * Obtain the external IP address of `digital-ocean-droplet`
     * `doctl compute droplet list`
     * Get the `Public IPv4` for `digital-ocean-droplet`
-  * `scp certificate.zip root@<Public IPv4>:/gremlin`
+  * `scp -i ~/.ssh/id_rsa.pub certificate.zip root@<Public IPv4>:/gremlin`
 
 * Unzip the `certificate.zip`
 * Rename your certificate and key files to `gremlin.cert` and `gremlin.key`
