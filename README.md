@@ -65,30 +65,11 @@ Note: This stack requires a minimum configuration of
 
 ## Digital Ocean - Cloud Provider
 
-### Digital Ocean Droplet(prototype)
+### Setup Digital Ocean Project
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
 * Create a new Project called : `digital-ocean-project`
 * Make sure you select the Project called `digital-ocean-project` and proceed to next step
-* Go to "Manage".."Droplets" on the left tab.
-* Choose an image..Distributions..`Ubuntu`
-* Choose a plan..`Standard`
-* Choose a datacentre region: `Singapore`
-* Authentication..One-time password
-* Go to bottom of page and select "Create Droplet"
-  * Droplet build usually takes four minutes
-* Login to your email to obtain the password to login credentials.
-
-### Accessing Digital Ocean Droplet (prototype)
-* Go to "Manage".."Droplets" on the left tab.
-* On the `ubuntu-s-4vcpu-8gb-sgp1-01` go to the end and select the `More` dropdown
-* Select `Access Console`
- * This will open a web based Linux terminal 
-* Login to your email to obtain the password to login credentials.
-* Use your credential to login
-  * Change your password to something you will remember
-* Install doctl: `snap install doctl`
-* Install doctl: `snap install kubectl --classic`
 
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
