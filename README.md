@@ -81,7 +81,6 @@ Note: This stack requires a minimum configuration of
 ### Setup SSH
 * Follow this guide to create and upload SSH keys required to access Digital Ocean
   * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
-* Just enter `pass` for the pass phrase.
 * Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
 ### Setup Digital Ocean Droplet
