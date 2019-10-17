@@ -84,7 +84,8 @@ Note: This stack requires a minimum configuration of
 * Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
 ### Setup Digital Ocean Droplet
-* Go to "Manage".."Droplets" on the left tab.
+* Go to "Manage".."Droplets" on the left tab
+* Select create `Droplet`
 * Choose an image..Distributions..`Ubuntu`
 * Choose a plan..`Standard`
 * Choose a datacentre region: `Singapore`
