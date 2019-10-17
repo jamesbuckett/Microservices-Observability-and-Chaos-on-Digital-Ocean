@@ -5,7 +5,7 @@
 ### Table of Contents
 * Introduction
   * Agenda
-  * Requirments
+  * Requirements
   * Cost Warning
 * Digital Ocean (Cloud Provider)
   * Setup Digital Ocean Project
