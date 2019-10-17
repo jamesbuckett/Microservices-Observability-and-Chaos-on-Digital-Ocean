@@ -97,7 +97,7 @@ Note: This stack requires a minimum configuration of
 
 ### Accessing Digital Ocean Droplet
 * In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
-* Copy the IP address by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop up will appear
+* Copy the IP address by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
 * Paste the IP address into Putty Host Box
 * Add your Private Key Category..SSH..Auth
   * Private Key for Authentication
