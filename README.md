@@ -67,7 +67,7 @@ Note: This stack requires a minimum configuration of
 * **Total cost of $80 per month if kept running**
 
 ```diff
-- Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
+   - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
 ```
 
 ## Digital Ocean - Cloud Provider
@@ -118,7 +118,7 @@ Go back to the main page to confirm that the cluster and load balancer have been
 * Scroll to the top of the page and check for green icon on the digital-ocean-cluster name.
 
 ```diff
-- Wait for the cluster to be ready before continuing, check for green icon on cluster name -
+            - Wait for the cluster to be ready before continuing, check for green icon on cluster name -
 ```
 
 ### Accessing the Digital Ocean Kubernetes cluster 
@@ -368,7 +368,7 @@ On main panel select `Charts`
 
 ### Install Helm 
 ```
-mkdir helm && cd helm
+cd && mkdir helm && cd helm
 curl -LO https://git.io/get_helm.sh
 chmod 700 get_helm.sh
 ./get_helm.sh
