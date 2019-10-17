@@ -81,6 +81,7 @@ Note: This stack requires a minimum configuration of
 ### SSH Setup
 * Follow this guide to create and upload SSH keys required to access Digital Ocean
 * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
+* Just enter `pass` for the pass phrase.
 * Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
 ### Digital Ocean Droplet
@@ -95,8 +96,11 @@ Note: This stack requires a minimum configuration of
   * Droplet build usually takes four minutes
 
 ### Accessing Digital Ocean Droplet
-* Using your Terminal Emulator SSH to your droplet
-  * Get the public IP of your droplet and enter it into PuTTY
+* In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
+* Copy the IP address by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop up will appear
+* Paste the IP address into Putty Host Box
+* Add your Private Key Category..SSH..Auth
+  * Private Key for Authentication
   
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
