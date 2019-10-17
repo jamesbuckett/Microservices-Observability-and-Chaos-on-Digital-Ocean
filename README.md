@@ -65,7 +65,7 @@ Note: This stack requires a minimum configuration of
 
 ## Digital Ocean - Cloud Provider
 
-### Digital Ocean Droplet
+### Digital Ocean Droplet(prototype)
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $10 in credit 
 * Create a new Project called : `digital-ocean-project`
@@ -77,6 +77,18 @@ Note: This stack requires a minimum configuration of
 * Authentication..One-time password
 * Go to bottom of page and select "Create Droplet"
   * Droplet build usually takes four minutes
+* Login to your email to obtain the password to login credentials.
+
+### Accessing Digital Ocean Droplet (prototype)
+* Go to "Manage".."Droplets" on the left tab.
+* On the `ubuntu-s-4vcpu-8gb-sgp1-01` go to the end and select the `More` dropdown
+* Select `Access Console`
+ * This will open a web based Linux terminal 
+* Login to your email to obtain the password to login credentials.
+* Use your credential to login
+  * Change your password to something you will remember
+* Install doctl: `snap install doctl`
+* Install doctl: `snap install kubectl --classic`
 
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
@@ -122,12 +134,14 @@ sudo mv ~/doctl/doctl /usr/local/bin
 
 Configure doctl
 * Login to Digital Ocean
-* Go to "API" on the left tab.
+* Go to "Manage".."API" on the left tab.
 * Applications & API..Tokens/Keys..Personal access tokens
 * Select `Generate New Token`
 * Token name: `digital-ocean-access-token`
-* Copy the generated token value for the next step
-* Run this command and input the `digital-ocean-access-token` value when prompted.
+  * Generate Token
+* Copy the generated token value for the next step.
+  * Go to the right of the token, a `copy` prompt will pop up 
+* Run this command and input the `digital-ocean-access-token` value when prompted
   * `doctl auth init`
 * Add the digital-ocean-cluster credentials to kubeconfig
   * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
