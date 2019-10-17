@@ -398,11 +398,13 @@ Signup for Gremlin service
 * CLick on your User
 * Click on Configuration
 * Click the blue Download button to save your certificates to your local computer. 
-  * If on Windows using WSL download the `certificate.zip` file to c:\Users\<your-name>\Downloads
-    * `cp /mnt/c/Users/<your-name>/Downloads/certificate.zip /home/<your-name>/gremlin/.`
-  * If on Mac download the `certificate.zip` to the `~/gremlin` directory.
-    * Save the file to `~/gremlin`
+  * If on Windows download the `certificate.zip` file to c:\Users\<your-name>\Downloads
+  * If on Mac download the `certificate.zip` to the `~/download` directory.
 * The downloaded `certificate.zip` contains both a public-key certificate and a matching private key.
+* Use PSFTP to upload `certificate.zip` to `digital-ocean-droplet`
+  * `doctl compute droplet list`
+  * Get the `Public IPv4` for `digital-ocean-droplet`
+  * NBNBNBNBNBNBNB
 * Unzip the `certificate.zip`
 * Rename your certificate and key files to gremlin.cert and gremlin.key.
 ```
@@ -420,7 +422,7 @@ helm repo add gremlin https://helm.gremlin.com
 ```
 
 ### Install Gremlin
-* Replace `ID=YOUR-TEAM-ID` with the value from the Gremlin page 
+* Replace `ID=YOUR-TEAM-ID` with the value from the [Gremlin page](https://app.gremlin.com/signup) 
   * Obtain YOUR-TEAM-ID here: 
     * Top Right click on `Company Settings`
     * Click `Teams` tab
