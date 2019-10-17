@@ -50,8 +50,11 @@
 ### Requirements
 * A Digital Ocean Account
 * A Terminal Emulator to interact with the cluster
-  * [PuTTY](https://www.putty.org/)
-  * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
+  * Windows 10
+    * [PuTTY](https://www.putty.org/)
+    * [PuTTYgen](https://www.puttygen.com/)
+  * Mac  
+    * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
 
 ### Cost Warning
 Note: This stack requires a minimum configuration of
