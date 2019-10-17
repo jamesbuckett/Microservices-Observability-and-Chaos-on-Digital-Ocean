@@ -87,9 +87,10 @@ Note: This stack requires a minimum configuration of
 * Go to bottom of page and select "Create Droplet"
   * Droplet build usually takes four minutes
 
-### Accessing Digital Ocean Droplet (prototype)
+### Accessing Digital Ocean Droplet
 * Using your Terminal Emulator SSH to your droplet
-* Get the public IP of your droplet and enter it into PuTTY
+  * Get the public IP of your droplet and enter it into PuTTY
+
 
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
@@ -112,11 +113,11 @@ Go back to the main page to confirm that the cluster and load balancer have been
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
-Digital Ocean Kubernetes clusters are typically managed from a local machine or sometimes from a remote management server. 
+The Digital Ocean Kubernetes cluster will be managed from `digital-ocean-droplet`. 
 
-Two binaries need to be installed to interact with the cluster:
-* doctl
-* kubectl
+Two binaries need to be installed on `digital-ocean-droplet` to interact with the cluster:
+* `doctl`
+* `kubectl`
 
 #### doctl - Digital Ocean Command Line Interface
 
@@ -131,23 +132,23 @@ curl -sL https://github.com/digitalocean/doctl/releases/download/v1.17.0/doctl-1
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
-Configure doctl
-* Login to Digital Ocean
-* Go to "Manage".."API" on the left tab.
-* Applications & API..Tokens/Keys..Personal access tokens
-* Select `Generate New Token`
-* Token name: `digital-ocean-access-token`
-  * Generate Token
-* Copy the generated token value for the next step.
+* doctl Configuration
+  * Login to Digital Ocean
+  * Go to "Manage".."API" on the left tab.
+  * Applications & API..Tokens/Keys..Personal access tokens
+  * Select `Generate New Token`
+  * Token name: `digital-ocean-access-token`
+    * Generate Token
+  * Copy the generated token value for the next step.
   * Go to the right of the token, a `copy` prompt will pop up 
-* Run this command and input the `digital-ocean-access-token` value when prompted
-  * `doctl auth init`
-* Add the digital-ocean-cluster credentials to kubeconfig
-  * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
+  * Run this command and input the `digital-ocean-access-token` value when prompted
+    * `doctl auth init`
+  * Add the digital-ocean-cluster credentials to kubeconfig
+    * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
 
 #### kubectl - Kubernetes Command Line Interface
 
-`kubectl` is a command line tool used to interact with Kubernetes clusters.
+`kubectl` is a command line tool used to interact with the `digital-ocean-cluster` Kubernetes clusters.
 
 In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
 
