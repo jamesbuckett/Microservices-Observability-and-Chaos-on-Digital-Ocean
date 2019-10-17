@@ -183,12 +183,20 @@ alias k='kubectl'
 k version
 ```
 
-* Use 'k version' to make sure that your installation is working and within one minor version of your cluster.
-
+Use 'k version' to make sure that your installation is working and within one minor version of your cluster.
 ```
 root@digital-ocean-droplet:~# k version
 Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.2", GitCommit:"c97fe5036ef3df2967d086711e6c0c405941e14b", GitTreeState:"clean", BuildDate:"2019-10-15T19:18:23Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"linux/amd64"}
 Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.4", GitCommit:"67d2fcf276fcd9cf743ad4be9a9ef5828adc082f", GitTreeState:"clean", BuildDate:"2019-09-18T14:41:55Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
+```
+
+Use 'k cluster-info to get cluster related information
+```
+root@digital-ocean-droplet:~/locust# k cluster-info
+Kubernetes master is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.ondigitalocean.com
+CoreDNS is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+Metrics-server is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+
 ```
 
 ## Socks Shop - Micro-service
@@ -377,9 +385,7 @@ k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"s
 
 Create a gremlin directory
 ```
-cd 
-mkdir gremlin
-cd gremlin
+cd && mkdir gremlin && cd gremlin
 ```
 
 Signup for Gremlin service
