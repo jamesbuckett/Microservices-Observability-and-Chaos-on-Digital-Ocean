@@ -104,7 +104,7 @@ Note: This stack requires a minimum configuration of
   * Add your Private Key Category..SSH..Auth
     * Private Key for Authentication
 * On Mac open a terminal 
-  * ssh root@<IP Address> 
+  * `ssh root@IP Address` 
   
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
