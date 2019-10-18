@@ -135,8 +135,6 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 
 #### doctl - Digital Ocean Command Line Interface
 
-Installation [Link](https://github.com/digitalocean/doctl#installing-doctl)
-
 * doctl Installation
 ```
 cd ~/ && mkdir doctl && cd doctl
