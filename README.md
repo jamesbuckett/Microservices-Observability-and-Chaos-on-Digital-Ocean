@@ -99,9 +99,12 @@ Note: This stack requires a minimum configuration of
 ### Accessing Digital Ocean Droplet
 * In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
 * Copy the IP address by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
-* Paste the IP address into Putty Host Box
-* Add your Private Key Category..SSH..Auth
-  * Private Key for Authentication
+* On Windows
+  * Paste the IP address into Putty Host Box
+  * Add your Private Key Category..SSH..Auth
+    * Private Key for Authentication
+* On Mac open a terminal 
+  * ssh root@<IP Address> 
   
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
@@ -193,7 +196,7 @@ Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.4", GitCom
 
 Use 'k cluster-info to get cluster related information
 ```
-root@digital-ocean-droplet:~/locust# k cluster-info
+root@digital-ocean-droplet:~/# k cluster-info
 Kubernetes master is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.ondigitalocean.com
 CoreDNS is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 Metrics-server is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
