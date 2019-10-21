@@ -8,21 +8,30 @@
   * Requirements
   * Cost Warning
 * Digital Ocean (Cloud Provider)
-  * Setup Digital Ocean Project
+  * Setup Digital Ocean Project 
   * SSH Setup
-  * Setup Digital Ocean Droplet
+  * Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
   * Deploy Digital Ocean Kubernetes cluster
   * Accessing the Digital Ocean Kubernetes cluster
     * doctl (Digital Ocean Command Line Interface)
     * kubectl (Kubernetes Command Line Interface)
 * Socks Shop (Micro-service)
+  * What is Socks Shop?
+  * Install Socks Shop
 * Grafana (Metrics UI)
+  * What is Grafana?
   * Observing Socks Shop with Grafana
 * Locust (Performance Tool)
+  * What is Locust?
+  * Install Python
+  * Install Locust
+  * Configure Locust
 * Helm (Package Manager)
+  * What is Helm?
   * Install Helm
   * Configure Helm
 * Gremlin (Chaos)
+  * What is Gremlin?
   * Install Gremlin
   * Verify Gremlin is working
 * Practical - The Fun Starts Here
@@ -44,6 +53,7 @@
 ## Introduction
 
 ### Agenda
+* Deploy a Ubuntu jump host on Digital Ocean with SSH access
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
 * Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
 * Verify operation of the Socks Shop micro-service
@@ -52,9 +62,11 @@
 
 ### Requirements
 * A Digital Ocean Account
+  * A credit card or debit card is required to sign up to Digital Ocean
+  * The Referal Link provided gives $50 credit for 30 days to offset the cost of this tutorial 
 * A Terminal Emulator to interact with the cluster
-  * Windows 10
-    * [PuTTY](https://www.putty.org/)
+  * If using Windows 10 please install the following software:
+    * [PuTTY](https://www.putty.org/) 
     * [PuTTYgen](https://www.puttygen.com/)
     * [WinSCP](https://winscp.net/eng/download.php)
   * Mac  
@@ -62,10 +74,10 @@
 
 ### Cost Warning
 Note: This stack requires a minimum configuration of
-* 2 * Nodes at $10/month (2GB memory / 1 vCPU) 
-* 2 * Load Balancer at $10/month 
-* 1 * Droplet at $40/month
-* **Total cost of $80 per month if kept running**
+* 3 * Kubernetes Nodes at $10/month (2GB memory / 1 vCPU) 
+* 2 * Network Load Balancer at $10/month 
+* 1 * Ubuntu Droplet at $5/month
+* **Total cost of $55 per month if kept running**
 
 ```diff
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
@@ -80,7 +92,7 @@ Note: This stack requires a minimum configuration of
 * Make sure you select the Project called `digital-ocean-project` and proceed to next step
 
 ### Setup SSH
-* Follow this guide to create and upload SSH keys required to access Digital Ocean
+* Follow this guide to create and upload SSH keys required to access the Digital Ocean droplet
   * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
 * Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
@@ -88,7 +100,9 @@ Note: This stack requires a minimum configuration of
 * Go to "Manage".."Droplets" on the left tab
 * Select create `Droplet`
 * Choose an image..Distributions..`Ubuntu`
-* Choose a plan..`Standard`
+* Choose a plan
+  * Scroll to the top and seelct
+    * `Standard`..`Shared CPU`..`1vCPU`..`1GB`..25GB`..`1TB`..`$5/mo`
 * Choose a datacentre region: `Singapore`
 * Authentication..`SSH Key` should already be selected
 * Choose a hostname: `digital-ocean-droplet`
@@ -98,13 +112,13 @@ Note: This stack requires a minimum configuration of
 
 ### Accessing Digital Ocean Droplet
 * In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
-* Copy the IP address by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
+* Copy the IP address of the `digital-ocean-droplet` by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
 * On Windows
   * Paste the IP address into Putty Host Box
-  * Add your Private Key Category..SSH..Auth
-    * Private Key for Authentication
+  * Add your Private Key Category..Connection..SSH..Auth
+    * `Private Key for Authentication`
 * On Mac open a terminal 
-  * `ssh root@IP Address` 
+  * `ssh root@<IP Address>` 
   
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
@@ -127,7 +141,7 @@ Go back to the main page to confirm that the cluster and load balancer have been
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
-The Digital Ocean Kubernetes cluster will be managed from `digital-ocean-droplet`. 
+The Digital Ocean Kubernetes cluster will be managed from `digital-ocean-droplet` Ubuntu jump host. 
 
 Two binaries need to be installed on `digital-ocean-droplet` to interact with the cluster:
 * `doctl`
@@ -153,7 +167,7 @@ sudo mv ~/doctl/doctl /usr/local/bin
   * Go to the right of the token, a `copy` prompt will pop up 
   * Run this command and input the `digital-ocean-access-token` value when prompted
     * `doctl auth init`
-  * Add the digital-ocean-cluster credentials to kubeconfig
+  * Run this command to the digital-ocean-cluster credentials to kubeconfig
     * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
 
 #### kubectl - Kubernetes Command Line Interface
@@ -178,7 +192,7 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-Set the alias
+Set context and alias
 ```
 kubectl config use-context do-sgp1-digital-ocean-cluster
 alias k='kubectl'
@@ -203,14 +217,14 @@ Metrics-server is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.on
 
 ## Socks Shop - Micro-service
 
-[Socks Shop](https://microservices-demo.github.io) 
+### What is [Socks Shop?](https://microservices-demo.github.io) 
 * This project provides a realistic micro-services oriented e-commerce application. 
-* See the diagram below for the diverse languages, frameworks and databases used in the microservices application.
+* See the diagram below for the diverse languages, frameworks and databases used in the micro-services application.
 
 ![image](https://user-images.githubusercontent.com/18049790/65854068-1d6c2a80-e38e-11e9-9337-cc398eb9a1f0.png)
 Credit to [Learn Micro-service from Sock Shop](https://medium.com/@panan_songyu/learn-micro-service-from-sock-shop-1-d80e815f3394)
 
-To install the Socks Shop Application 
+### Install the Socks Shop Application 
 * Create a namespace for sock shop.
 * `k create namespace sock-shop`
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
@@ -221,7 +235,7 @@ Watch the output until this line changes
 * from : `service/front-end      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
 * to   : `service/front-end      LoadBalancer   x.x.x.x      x.x.x.x       80:30001/TCP   3m15s`
 
-Where x.x.x.x is a valid EXTERNAL-IP which is the IP to access your Socks Shop micro-service.
+Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Socks Shop micro-service.
 
 ```
 Every 1.0s: kubectl get all -n sock-shop                                               digital-ocean-droplet: Thu Oct 17 07:34:50 2019
@@ -285,9 +299,14 @@ To Access Socks Shop
 
 ![image](https://user-images.githubusercontent.com/18049790/65003256-3c2ae580-d8e7-11e9-992d-30358d52e731.png)
 
-Grafana is exposed via a DigitalOcean Load Balancer. 
+### What is Grafana?
+* Grafana is an open source metric analytics & visualization suite
+* It is most commonly used for visualizing time series data for infrastructure and application analytics
+* We will use it to observe the Socks Shop micro-service
 
-Get the IP address to access your Grafana instance by running the following in a terminal shell and copying the EXTERNAL-IP and pasting it into a browser.
+### Access the Grafana UI
+* Grafana is exposed via a DigitalOcean Load Balancer. 
+* Get the IP address to access your Grafana instance by running the following in a terminal shell and copying the EXTERNAL-IP and pasting it into a browser.
 
 `k -n prometheus-operator get svc prometheus-operator-grafana`
 
@@ -297,13 +316,10 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP      PO
 prometheus-operator-grafana   LoadBalancer   10.245.220.96   139.59.223.226   80:30459/TCP   9m4s
 ```
 
-Paste the EXTERNAL-IP into your web browser.
-
-The default username and password are `admin` and `changeme` respectively.
-
-Once you have logged in the default Grafana Home dashboard will be displayed. 
-
-To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
+* Paste the EXTERNAL-IP into your web browser.
+* The default username and password are `admin` and `changeme` respectively.
+* Once you have logged in the default Grafana Home dashboard will be displayed. 
+* To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
 
 ### Observing Socks Shop with Grafana
 
@@ -318,15 +334,15 @@ Under `General` select `Kubernetes / Compute Resources / Namespace(Pods)`
 * Top Right click last icon that looks like Recycle Icon
   * In drop down select `5s`
 
-Scroll down the page and see metrics for Socks Shop
+Scroll down the page and observe the metrics for the Socks Shop micro-service
 * CPU Usage
 * CPU Quota
 * Memory Usage
 * Memory Quota
 
-## Locust - Performance 
+## Locust - Load Testing
 
-Install Python
+### Install Python
 
 ```
 sudo apt-get update
@@ -334,13 +350,17 @@ sudo apt-get install python -y
 sudo apt-get install python-pip -y 
 ```
 
-Install [Locust](https://locust.io/)
+### What is [Locust?](https://locust.io/)
+* Locust is an easy-to-use, distributed, user load testing tool. 
+* It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. 
+
+### Install Locust
 
 `python -m pip install locustio`
 
 Restart terminal for install to complete
 
-Configure Locust: 
+### Configure Locust
 ```
 cd ~/ && mkdir locust && cd locust
 wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
@@ -368,6 +388,10 @@ On main panel select `Charts`
 
 ## Helm - Package Manager 
 
+### What is Helm?
+* Helm is an application package manager running atop Kubernetes. 
+* It allows describing the application structure through helm-charts and managing those charts it with simple commands
+
 ### Install Helm 
 ```
 cd && mkdir helm && cd helm
@@ -384,6 +408,12 @@ k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"s
 ```
 
 ## Gremlin 
+
+### What is Gremlin?
+* Software as a Service Choas Engineering Platform 
+* Chaos Engineering is the discipline of experimenting on a distributed system in order to build confidence in the system’s capability to withstand turbulent conditions in production.
+
+### Install and Configure Gremlin
 
 Create a gremlin directory
 ```
@@ -403,11 +433,13 @@ Signup for Gremlin service
   * If on Windows download the `certificate.zip` file to c:\Users\<your-name>\Downloads
   * If on Mac download the `certificate.zip` to the `~/download` directory.
 * The downloaded `certificate.zip` contains both a public-key certificate and a matching private key.
-* For Windows use WinSCP to upload `certificate.zip` to `digital-ocean-droplet`
+* Obtain the external IP address of `digital-ocean-droplet`
+  * `doctl compute droplet list`
+  * Get the `Public IPv4` for `digital-ocean-droplet`
+* For Windows use WinSCP to upload `certificate.zip` to `digital-ocean-droplet` to `home/root/gremlin`
+  * Add your private key to WinSCP 
+    * Advanced..SSH..Authentication..Private key file
 * For Mac use `scp` to upload `certificate.zip` to `digital-ocean-droplet`
-  * Obtain the external IP address of `digital-ocean-droplet`
-    * `doctl compute droplet list`
-    * Get the `Public IPv4` for `digital-ocean-droplet`
   * `scp certificate.zip root@<Public IPv4>:/root/gremlin/`
 
 * Unzip the `certificate.zip`
@@ -419,7 +451,7 @@ unzip certificate.zip
 mv *.priv_key.pem gremlin.key
 mv *.pub_cert.pem gremlin.cert
 ```
-Create a secret from the files
+Create a namespace and secret for Gremlin
 ```
 k create ns gremlin
 k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key -n gremlin
@@ -455,7 +487,7 @@ NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE  
 daemonset.apps/fantastic-pika-gremlin   3         3         3       3            3           <none>          94s
 ```
 
-## Practical - The Fun Starts Here
+## Practical - High CPU Resource Attack
 
 ### Start the User Interfaces
 
@@ -514,9 +546,9 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
 You have successfully performed a CPU Resource Attack against the infrastrucure nodes.
 
 What you are observing is the following:
-* Gremlin is causing the Nodes to go to 100% CPU utilization
+* Gremlin is causing the Kubernetes Worker Nodes to go to 100% CPU utilization
 * Kubernetes is ensuring the the Socks Shop micro-service is high resilient and available 
-* Locust is hitting the Socks Shop front-end and reporting 0% failures.
+* Locust is hitting the Socks Shop front-end and reporting `0%` failures.
 
 Optional Rerun
 * On the Gremlin UI click the attack
@@ -534,7 +566,7 @@ Optional Rerun
  
 ## Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
-* You deployed a microservices application called Socks Shop to run on the Cluster.
+* You deployed a micro-services application called Socks Shop to run on the Cluster.
 * You observed metrics from the micro-services application with Prometheus and Grafana.
 * You deployed a performance tool called Locust to stress test the micro-services application and observe any failures.
 * You installed Gremlin to perform a Chaos Experiment (CPU Resource Attack) on the micro-services application.
