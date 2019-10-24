@@ -41,7 +41,7 @@
     * Gremlin
   * High CPU Attack
   * Wrap Up
-* Kube Monkey - Optional
+* Kube Monkey (Chaos) - Optional
 * Tutorial Clean Up
   * CLI Method
   * GUI Method
