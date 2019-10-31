@@ -553,7 +553,7 @@ You have successfully performed a CPU Resource Attack against the infrastrucure 
 What you are observing is the following:
 * Gremlin is causing the Kubernetes Worker Nodes to go to 100% CPU utilization
 * Kubernetes is ensuring the the Socks Shop micro-service is high resilient and available 
-* Locust is hitting the Socks Shop front-end and reporting `0%` failures.
+* Locust is hitting the Socks Shop front-end container and reporting `0%` failures.
 
 Optional Rerun
 * On the Gremlin UI click the attack
@@ -576,9 +576,13 @@ Optional Rerun
 * You deployed a performance tool called Locust to stress test the micro-services application and observe any failures.
 * You installed Gremlin to perform a Chaos Experiment (CPU Resource Attack) on the micro-services application.
 
-## Kube Monkey - Chaos
+## Kube Monkey - Chaos - Optional
 
-### What is Kube Monkey 
+```diff
+- This part is under development and may potentially not work -
+```
+
+### What is Kube Monkey? 
 * Kube Monkey is an implementation of Netflix's chaos monkey for kubernetes clusters. 
 * It schedules randomly killing of pods in order to test fault tolerance of a highly available system.
 
@@ -797,7 +801,8 @@ user-db-99685d75b-mzhqv         8m           35Mi
 * You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, **Mi**, Ki. 
 
 [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)
-* Limits and requests for CPU resources are measured in cpu units. One cpu, in Kubernetes, is equivalent to:
+* Limits and requests for CPU resources are measured in cpu units. 
+* One cpu, in Kubernetes, is equivalent to:
  * 1 AWS vCPU
  * 1 GCP Core
  * 1 Azure vCore
