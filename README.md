@@ -103,12 +103,13 @@ Note: This stack requires a minimum configuration of
 
 ### Setup Digital Ocean Droplet
 * Go to "Manage".."Droplets" on the left tab
-* Select create `Droplet`
+* Select `Create Droplet`
 * Choose an image..Distributions..`Ubuntu`
 * Choose a plan
   * Scroll to the top and seelct
     * `Standard`..`Shared CPU`..`1vCPU`..`1GB`..25GB`..`1TB`..`$5/mo`
 * Choose a datacentre region: `Singapore`
+  * Or the closest datacentre region to your physical location
 * Authentication..`SSH Key` should already be selected
 * Choose a hostname: `digital-ocean-droplet`
 * Select Project is set to `Digital Ocean Project`
@@ -131,6 +132,7 @@ Note: This stack requires a minimum configuration of
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
 * Select "Create Cluster"
 * Choose a datacentre region: `Singapore`
+  * Or the closest datacentre region to your physical location
 * Choose a name: 
   * Enter Cluster name: `digital-ocean-cluster`
 * Go to bottom of page and select "Create Cluster"
