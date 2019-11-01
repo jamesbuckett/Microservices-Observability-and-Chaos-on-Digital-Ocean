@@ -844,4 +844,24 @@ For additional information on metrics-server see https://github.com/kubernetes-i
 * Gremlin - A Software as a Service Chaos Engineering platform..
 * Locust - A performance testing tool 
 
+## Tools 
+
+### Octent (under development)
+
+#### What is Octant
+* [Octant](https://github.com/vmware-tanzu/octant) is a web-based, platform for developers to better understand the complexity of Kubernetes clusters.
+
+#### Install Octent
+```
+cd ~/ && mkdir octant && cd octant
+curl -sL https://github.com/vmware-tanzu/octant/releases/download/v0.9.0/octant_0.9.0_Linux-64bit.tar.gz | tar -xzv
+sudo mv ~/octant/octant_0.9.0_Linux-64bit /usr/local/octant
+```
+
+#### Start and forward Octant
+```
+./octant &
+
+```
+
 *End of Section*
