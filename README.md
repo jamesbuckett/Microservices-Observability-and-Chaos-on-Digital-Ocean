@@ -683,8 +683,6 @@ Delete Kubernetes Cluster
   * Confirm with `y`
   
 Delete Droplet  
-* `doctl compute droplet list`
-  * Get ID for `digital-ocean-droplet`
 * `doctl compute droplet delete digital-ocean-droplet`  
 
 ### GUI Method
