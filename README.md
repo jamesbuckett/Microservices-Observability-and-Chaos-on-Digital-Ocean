@@ -106,8 +106,9 @@ Note: This stack requires a minimum configuration of
 * Select `Create Droplet`
 * Choose an image..Distributions..`Ubuntu`
 * Choose a plan
-  * Scroll to the top and seelct
-    * `Standard`..`Shared CPU`..`1vCPU`..`1GB`..25GB`..`1TB`..`$5/mo`
+  * Scroll to the top and select
+  * Or scroll to left 
+    * `Standard`..`Shared CPU`..`1vCPU`..`1GB`..`25GB`..`1TB`..`$5/mo`
 * Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
 * Authentication..`SSH Key` should already be selected
