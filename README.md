@@ -844,4 +844,31 @@ For additional information on metrics-server see https://github.com/kubernetes-i
 * Gremlin - A Software as a Service Chaos Engineering platform..
 * Locust - A performance testing tool 
 
+## Tools 
+
+### Octent
+
+#### What is Octant 
+[Octant](https://github.com/vmware-tanzu/octant) is a web-based highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
+
+#### Install Octant
+```
+cd ~/ && mkdir octant && cd octant
+curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.9.1/octant_0.9.1_Linux-64bit.tar.gz
+tar -xvf octant_0.9.1_Linux-64bit.tar.gz
+sudo mv ./octant_0.9.1_Linux-64bit/octant /usr/local/bin/octant
+```
+
+#### Start Octant
+
+Obtain the external IP address of `digital-ocean-droplet`
+* `doctl compute droplet list`
+* Get the `Public IPv4` for `digital-ocean-droplet`
+
+`OCTANT_LISTENER_ADDR=<Public IPv4>:8900 octant &`
+
+
+
+
+
 *End of Section*
