@@ -868,10 +868,9 @@ Obtain the external IP address of `digital-ocean-droplet`
 ```
 export OCTANT_ACCEPTED_HOSTS=<Public IPv4>
 export OCTANT_DISABLE_OPEN_BROWSER=1
-OCTANT_LISTENER_ADDR=<Public IPv4>:8900 octant &
+OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
 ```
 
-
-
+Open this URL link : http://<Public IPv4>:8900
 
 *End of Section*
