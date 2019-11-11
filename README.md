@@ -871,6 +871,6 @@ export OCTANT_DISABLE_OPEN_BROWSER=1
 OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
 ```
 
-Open this URL link : http://<Public IPv4>:8900
+Open this URL link : `http://<Public IPv4>:8900`
 
 *End of Section*
