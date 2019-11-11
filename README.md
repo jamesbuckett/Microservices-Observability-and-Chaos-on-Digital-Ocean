@@ -598,25 +598,27 @@ Optional Rerun
 
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-deploy-socks-shop.yml"`
 
-To verify that everything is working as expected use this command: `watch -n1 k get deployments -n sock-shop`
+To verify that everything is working as expected use this command: `watch -n1 kubectl get deployments -n sock-shop`
 
 Check that `kube-monkey` is present and `front-end` shows READY as 4/4.
 ```
+Every 1.0s: kubectl get deployments -n sock-shop                                       digital-ocean-droplet: Mon Nov 11 06:04:08 2019
+
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
-carts          1/1     1            1           22h
-carts-db       1/1     1            1           22h
-catalogue      1/1     1            1           22h
-catalogue-db   1/1     1            1           22h
-front-end      4/4     4            4           22h
-kube-monkey    1/1     1            1           18h
-orders         1/1     1            1           22h
-orders-db      1/1     1            1           22h
-payment        1/1     1            1           22h
-queue-master   1/1     1            1           22h
-rabbitmq       1/1     1            1           22h
-shipping       1/1     1            1           22h
-user           1/1     1            1           22h
-user-db        1/1     1            1           22h
+carts          1/1     1            1           41m
+carts-db       1/1     1            1           41m
+catalogue      1/1     1            1           41m
+catalogue-db   1/1     1            1           41m
+front-end      4/4     4            4           41m
+kube-monkey    1/1     1            0           6m41s
+orders         1/1     1            1           41m
+orders-db      1/1     1            1           41m
+payment        1/1     1            1           41m
+queue-master   1/1     1            1           41m
+rabbitmq       1/1     1            1           41m
+shipping       1/1     1            1           41m
+user           1/1     1            1           41m
+user-db        1/1     1            1           41m
 ```
 
 To verify that Kube Monkey is working: `k get pods -n sock-shop`
