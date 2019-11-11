@@ -598,9 +598,9 @@ Optional Rerun
 
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-deploy-socks-shop.yml"`
 
-To verify that everything is working as expected use this command: `k get deployments -n sock-shop`
+To verify that everything is working as expected use this command: `watch -n1 k get deployments -n sock-shop`
 
-Check for `kube-monkey` and `front-end` values are 4/4.
+Check that `kube-monkey` is present and `front-end` shows READY as 4/4.
 ```
 NAME           READY   UP-TO-DATE   AVAILABLE   AGE
 carts          1/1     1            1           22h
