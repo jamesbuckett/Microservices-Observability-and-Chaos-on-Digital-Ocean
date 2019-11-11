@@ -366,8 +366,6 @@ sudo apt-get install python-pip -y
 
 `python -m pip install locustio`
 
-Restart terminal for install to complete
-
 ### Configure Locust
 ```
 cd ~/ && mkdir locust && cd locust
