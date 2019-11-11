@@ -379,11 +379,11 @@ Obtain the external IP address of Socks Shop.
 * The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
 * Use that address to stress test the micro-services application.
 
+Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
+
 Obtain the external IP address of `digital-ocean-droplet`
 * `doctl compute droplet list`
 * Get the `Public IPv4` for `digital-ocean-droplet`
-
-Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
 
 Browse to : `http://<Public IPv4>:8089/`
 * Enter these values 
