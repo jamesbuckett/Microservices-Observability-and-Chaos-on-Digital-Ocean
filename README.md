@@ -531,6 +531,8 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
   * Left side select `Attacks`
   * Select `Infrastructure`
   * Select `New Attack`
+  * Choose Hosts to target
+    * Target all hosts
   * Scroll down select `Choose a Gremlin`
   * Under `Category` select `Resource`
     * Next to `Length` enter `180`
