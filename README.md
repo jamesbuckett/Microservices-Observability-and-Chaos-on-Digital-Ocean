@@ -865,8 +865,11 @@ Obtain the external IP address of `digital-ocean-droplet`
 * `doctl compute droplet list`
 * Get the `Public IPv4` for `digital-ocean-droplet`
 
-`OCTANT_LISTENER_ADDR=<Public IPv4>:8900 octant &`
-
+```
+export OCTANT_ACCEPTED_HOSTS=<Public IPv4>
+export OCTANT_DISABLE_OPEN_BROWSER=1
+OCTANT_LISTENER_ADDR=<Public IPv4>:8900 octant &
+```
 
 
 
