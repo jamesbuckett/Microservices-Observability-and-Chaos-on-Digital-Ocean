@@ -448,8 +448,7 @@ Signup for Gremlin service
 * For Mac use `scp` to upload `certificate.zip` to `digital-ocean-droplet`
   * `scp certificate.zip root@<Public IPv4>:/root/gremlin/`
 
-* Unzip the `certificate.zip`
-* Rename your certificate and key files to `gremlin.cert` and `gremlin.key`
+* Unzip the `certificate.zip` and rename your certificate and key files to `gremlin.cert` and `gremlin.key`
 ```
 cd ~/gremlin
 sudo apt-get install unzip
