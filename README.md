@@ -214,7 +214,7 @@ Client Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.2", GitCom
 Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.4", GitCommit:"67d2fcf276fcd9cf743ad4be9a9ef5828adc082f", GitTreeState:"clean", BuildDate:"2019-09-18T14:41:55Z", GoVersion:"go1.12.9", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
-Use 'k cluster-info' to get cluster related information
+Use `k cluster-info` to get cluster related information
 ```
 root@digital-ocean-droplet:~/# k cluster-info
 Kubernetes master is running at https://9cd3d4eb-dc1e-462b-9bca-470bc8948dad.k8s.ondigitalocean.com
