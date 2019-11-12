@@ -54,6 +54,8 @@
   * metrics-server Theory - Kubernetes Metrics
   * Documentation
   * Buzz Words
+* Tools
+  * Octant
 
 ## Introduction
 
@@ -89,6 +91,9 @@ Note: This stack requires a minimum configuration of
 ```
 
 ## Digital Ocean - Cloud Provider
+
+### What is Digital Ocean
+* Digital Ocean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers.  
 
 ### Setup a Digital Ocean Project
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
@@ -152,8 +157,8 @@ Go back to the main page to confirm that the cluster and load balancer have been
 The Digital Ocean Kubernetes cluster will be managed from `digital-ocean-droplet` Ubuntu jump host. 
 
 Two binaries need to be installed on `digital-ocean-droplet` to interact with the cluster:
-* `doctl`
-* `kubectl`
+* `doctl` - CLI to interact with Digital Ocean
+* `kubectl` - CLI to interact with KUbernetes 
 
 #### doctl - Digital Ocean Command Line Interface
 
