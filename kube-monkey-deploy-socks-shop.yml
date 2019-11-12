@@ -15,7 +15,7 @@
              command:
                - "/kube-monkey"
              args: ["-v=5", "-log_dir=/var/log/kube-monkey"]
-             image: ayushsobti/kube-monkey:v0.3.0
+             image: msvbhat/kube-monkey:12.1
              volumeMounts:
                - name: config-volume
                  mountPath: "/etc/kube-monkey"
