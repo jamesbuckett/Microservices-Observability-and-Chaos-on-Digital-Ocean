@@ -540,7 +540,7 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
   * Choose Hosts to target
     * Target all hosts
   * Scroll down select `Choose a Gremlin`
-  * Under `Category` select `Resource`
+  * Under `Category` select `Resource` and `CPU`
     * Next to `Length` enter `180`
     * Next to `CPU Capacity` enter `100`
   * Scroll to bottom of page select `Unleash Gremlin`
