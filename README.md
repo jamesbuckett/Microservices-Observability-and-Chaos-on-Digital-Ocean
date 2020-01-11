@@ -158,7 +158,7 @@ The Digital Ocean Kubernetes cluster will be managed from `digital-ocean-droplet
 
 Two binaries need to be installed on `digital-ocean-droplet` to interact with the cluster:
 * `doctl` - CLI to interact with Digital Ocean
-* `kubectl` - CLI to interact with KUbernetes 
+* `kubectl` - CLI to interact with Kubernetes 
 
 #### doctl - Digital Ocean Command Line Interface
 
