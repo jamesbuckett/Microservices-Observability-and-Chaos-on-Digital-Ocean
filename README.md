@@ -137,6 +137,7 @@ Note: This stack requires a minimum configuration of
 * Under "Find a Solution" click the "Kubernetes - New" tab.
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
 * Select "Create Kubernetes Monitoring Cluster"
+* Select a Kubernetes version : `1.15.5-do.2`
 * Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
 * Choose a name: 
