@@ -370,6 +370,7 @@ sudo apt-get install python-pip -y
 ### Install Locust
 
 `python -m pip install locustio`
+`pip install gevent`
 
 ### Configure Locust
 ```
