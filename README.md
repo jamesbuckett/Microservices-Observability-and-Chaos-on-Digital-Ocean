@@ -165,7 +165,7 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 * doctl Installation
 ```
 cd ~/ && mkdir doctl && cd doctl
-curl -LO https://github.com/digitalocean/doctl/releases/download/v1.17.0/doctl-1.17.0-linux-amd64.tar.gz | tar -xzv
+curl -LO https://github.com/digitalocean/doctl/releases/download/v1.36.0/doctl-1.36.0-linux-amd64.tar.gz | tar -xvf
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
