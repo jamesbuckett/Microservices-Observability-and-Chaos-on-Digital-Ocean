@@ -230,17 +230,33 @@ Metrics-server is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.on
 
 ### Optional Kubernetes Cluster Command Line Tools 
 
-#### kubectx & kubens 
+#### [kubectx & kubens](https://github.com/ahmetb/kubectx) 
 
 kubectx - switch between clusters back and forth
+
 kubens - switch between Kubernetes namespaces smoothly
+
 ```
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ```
 
-#### [kubectx & kubens](https://github.com/ahmetb/kubectx) 
+#### [kube-ps1](https://github.com/jonmosco/kube-ps1)
+
+kube-ps1 - Kubernetes prompt info for bash
+
+Clone the repository
+```
+cd ~/ && mkdir kube-ps1 && cd kube-ps1
+https://github.com/jonmosco/kube-ps1.git
+```
+
+Source the kube-ps1.sh in your ~/.bashrc
+```
+source ~/kube-ps1/kube-ps1.sh
+PS1='[\u@\h \W $(kube_ps1)]\$ '
+```
 
 ## Socks Shop - Micro-service
 
