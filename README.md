@@ -398,13 +398,11 @@ Scroll down the page and observe the metrics for the Socks Shop micro-service
 
 ### Install Python
 
-```
-sudo apt-get update
-sudo apt-get install python -y
-sudo apt-get install python-pip -y 
-```
+`sudo apt-get update`
 
-If you have an error like this `Command 'pip' not found`, execute the commands above line by line.
+`sudo apt-get install python -y`
+
+`sudo apt-get install python-pip -y`
 
 ### What is [Locust?](https://locust.io/)
 * Locust is an easy-to-use, distributed, user load testing tool. 
