@@ -256,9 +256,14 @@ vi .bashrc
 ```
 
 ```
+KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
 ```
+
+I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes prompt did not display correctly using my font.
+
+You can check if your terminal font supports the Kubernetes symbol with this command `echo $'\u2388'`
 
 ```
 . .bashrc
