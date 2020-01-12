@@ -230,13 +230,17 @@ Metrics-server is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.on
 
 ### Optional Kubernetes Cluster Command Line Tools 
 
-#### kubectx - switch between clusters back and forth
-#### kubens - switch between Kubernetes namespaces smoothly
+#### kubectx & kubens 
+
+kubectx - switch between clusters back and forth
+kubens - switch between Kubernetes namespaces smoothly
 ```
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ```
+
+#### [kubectx & kubens](https://github.com/ahmetb/kubectx) 
 
 ## Socks Shop - Micro-service
 
