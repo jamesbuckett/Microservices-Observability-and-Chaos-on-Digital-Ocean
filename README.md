@@ -567,7 +567,10 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
 
 * Switch to the Grafana UI 
   * Top left click on `Home`
-  * Select `Kubernetes / Nodes`
+  * Under General
+    * `USE Method / Cluster`
+      * USE is an acronym for Utilization, Saturation, and Errors
+      * RED is an acronym for Rate, Errors, and Duration 
   * Top Right click Clock Icon with text Last 1 hour
     * Select Last 5 minutes
   * Top Right click last icon that looks like Recycle Icon
