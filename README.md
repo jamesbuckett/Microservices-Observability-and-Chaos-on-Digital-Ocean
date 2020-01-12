@@ -404,6 +404,8 @@ sudo apt-get install python -y
 sudo apt-get install python-pip -y 
 ```
 
+If you have an error like this `Command 'pip' not found`, execute the commands above line by line.
+
 ### What is [Locust?](https://locust.io/)
 * Locust is an easy-to-use, distributed, user load testing tool. 
 * It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. 
@@ -411,7 +413,8 @@ sudo apt-get install python-pip -y
 ### Install Locust
 
 `python -m pip install locustio`
-`pip install gevent`
+
+`python -m pip install gevent`
 
 ### Configure Locust
 ```
