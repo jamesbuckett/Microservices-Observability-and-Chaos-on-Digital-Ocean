@@ -513,18 +513,21 @@ k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file
 ### Install Gremlin
 
 Let Gremlin know your Gremlin team ID and your Kubernetes cluster name
-* GREMLIN_TEAM_ID="changeit"
-* GREMLIN_CLUSTER_ID=digital-ocean-cluster
+```
+export GREMLIN_TEAM_ID="changeit"
+export GREMLIN_CLUSTER_ID=digital-ocean-cluster
+```
 
-* Replace `changeit` with the value from the [Gremlin page](https://app.gremlin.com/signup) 
-  * Obtain GREMLIN_TEAM_ID here: 
+* Replace `"changeit"` with the value from the [Gremlin page](https://app.gremlin.com/signup) 
+  * Obtain `GREMLIN_TEAM_ID` here: 
     * Top Right click on `Company Settings`
     * Click `Teams` tab
     * Click on your User
     * Click on Configuration
     * Your `Team ID` should be on the top row
+    * Your `Team ID` is your `GREMLIN_TEAM_ID`
 
-Add the Gremlin beta helm chart
+Add the Gremlin helm chart
 ```
 helm repo remove gremlin
 helm repo add gremlin https://helm.gremlin.com
@@ -539,13 +542,6 @@ helm install \
 	--set gremlin.teamID=$GREMLIN_TEAM_ID \
 	--set gremlin.clusterID=$GREMLIN_CLUSTER_ID
 ```
-
-Old install - Remove once new install verified
-```
-helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin 
-```
-
-
 
 ### Verify Gremlin is working
 
