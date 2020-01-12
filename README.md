@@ -568,9 +568,9 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
 * Switch to the Grafana UI 
   * Top left click on `Home`
   * Under General
-    * `USE Method / Cluster`
-      * USE is an acronym for Utilization, Saturation, and Errors
-      * RED is an acronym for Rate, Errors, and Duration 
+    * `USE Method / Node`
+      * USE is an acronym for Utilization, Saturation, and Errors (resource-scoped)
+      * RED is an acronym for Rate, Errors, and Duration (request-scoped)
   * Top Right click Clock Icon with text Last 1 hour
     * Select Last 5 minutes
   * Top Right click last icon that looks like Recycle Icon
@@ -584,6 +584,8 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
   * Select `New Attack`
   * Choose Hosts to target
     * Target all hosts
+      * Select check boxes next to all hosts that start with `pool`
+      * Interface will indicated `3 of 3 HOSTS TARGETED`
   * Scroll down select `Choose a Gremlin`
   * Under `Category` select `Resource` and `CPU`
     * Next to `Length` enter `180`
@@ -591,9 +593,8 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
   * Scroll to bottom of page select `Unleash Gremlin`
   
 * Switch to the Grafana UI
-  * Observe the Nodes reaching 100% utilization 
-  * Top use the `instance` dropdown to views other Nodes.
-  
+  * Observe the CPU Utilization reaching 100% utilization 
+   
   ![grafana-2](https://user-images.githubusercontent.com/18049790/66459191-20aa9900-eaa7-11e9-875a-f64b9c9ff163.png)
   
 * Switch to the Locust UI
@@ -613,14 +614,15 @@ Optional Rerun
 * Top right click `Rerun`
 * Scroll to bottom of page and select `Unleash Gremlin`
 * Switch to the Grafana UI 
-  * Top left click on `Home`
-  * Select `Kubernetes / Compute Resources / Cluster`
+  * Under General
+    * `USE Method / Cluster`
+      * USE is an acronym for Utilization, Saturation, and Errors (resource-scoped)
+      * RED is an acronym for Rate, Errors, and Duration (request-scoped)
   * Top Right click Clock Icon with text Last 1 hour
     * Select Last 5 minutes
   * Top Right click last icon that looks like Recycle Icon
     * In drop down select 5s
 * This is the aggregate view of the Kubernetes cluster resources.
-  * In the `CPU Usage` view note how the `gremlin` namespace is consuming CPU cycles.
  
 ## Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
