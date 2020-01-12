@@ -228,6 +228,16 @@ CoreDNS is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigital
 Metrics-server is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 ```
 
+### Optional Kubernetes Cluster Command Line Tools 
+
+#### kubectx - switch between clusters back and forth
+#### kubens - switch between Kubernetes namespaces smoothly
+```
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+```
+
 ## Socks Shop - Micro-service
 
 ### What is [Socks Shop?](https://microservices-demo.github.io) 
