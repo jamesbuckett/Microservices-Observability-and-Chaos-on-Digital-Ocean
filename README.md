@@ -245,13 +245,18 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 Clone the repository
 ```
-cd ~/ && mkdir kube-ps1 && cd kube-ps1
-git clone https://github.com/jonmosco/kube-ps1.git
+sudo git clone https://github.com/jonmosco/kube-ps1.git /opt/kube-ps1
 ```
 
 Source the kube-ps1.sh in your ~/.bashrc
+
 ```
-source ~/kube-ps1/kube-ps1.sh
+cd 
+vi .bashrc
+```
+
+```
+source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \W $(kube_ps1)]\$ '
 ```
 
