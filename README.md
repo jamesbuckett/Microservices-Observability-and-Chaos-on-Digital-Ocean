@@ -508,20 +508,44 @@ Create a namespace and secret for Gremlin
 ```
 k create ns gremlin
 k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key -n gremlin
-helm repo add gremlin https://helm.gremlin.com
 ```
 
 ### Install Gremlin
-* Replace `ID=YOUR-TEAM-ID` with the value from the [Gremlin page](https://app.gremlin.com/signup) 
-  * Obtain YOUR-TEAM-ID here: 
+
+Let Gremlin know your Gremlin team ID and your Kubernetes cluster name
+* GREMLIN_TEAM_ID="changeit"
+* GREMLIN_CLUSTER_ID=digital-ocean-cluster
+
+* Replace `changeit` with the value from the [Gremlin page](https://app.gremlin.com/signup) 
+  * Obtain GREMLIN_TEAM_ID here: 
     * Top Right click on `Company Settings`
     * Click `Teams` tab
     * Click on your User
     * Click on Configuration
     * Your `Team ID` should be on the top row
+
+Add the Gremlin beta helm chart
+```
+helm repo remove gremlin
+helm repo add gremlin https://helm.gremlin.com
+```
+
+Install the Gremlin Kubernetes client
+```
+helm install \
+	--namespace gremlin \
+	--name gremlin \
+	gremlin/gremlin \
+	--set gremlin.teamID=$GREMLIN_TEAM_ID \
+	--set gremlin.clusterID=$GREMLIN_CLUSTER_ID
+```
+
+Old install - Remove once new install verified
 ```
 helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/gremlin 
 ```
+
+
 
 ### Verify Gremlin is working
 
@@ -529,7 +553,9 @@ helm install --namespace gremlin  --set gremlin.teamID=YOUR-TEAM-ID gremlin/grem
 
 You should see similar output to the following.
 ```
-Every 1.0s: kubectl get all -n gremlin                                                 digital-ocean-droplet: Thu Oct 17 08:58:29 2019
+```Every 1.0s: kubectl get all -n gremlin                                                 digital-ocean-droplet: Thu Oct 17 08:58:29 201
+
+9
 
 NAME                               READY   STATUS    RESTARTS   AGE
 pod/fantastic-pika-gremlin-5sl76   1/1     Running   0          94s
