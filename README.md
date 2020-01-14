@@ -228,47 +228,6 @@ CoreDNS is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigital
 Metrics-server is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 ```
 
-### Optional Kubernetes Cluster Command Line Tools 
-
-#### [kubectx & kubens](https://github.com/ahmetb/kubectx) 
-* kubectx - switch between clusters back and forth
-* kubens - switch between Kubernetes namespaces smoothly
-
-```
-sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
-sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
-```
-
-#### [kube-ps1](https://github.com/jonmosco/kube-ps1)
-* kube-ps1 - Kubernetes prompt info for bash
-
-Clone the repository
-```
-sudo git clone https://github.com/jonmosco/kube-ps1.git /opt/kube-ps1
-```
-
-Source the kube-ps1.sh in your ~/.bashrc
-
-```
-cd 
-vi .bashrc
-```
-
-```
-KUBE_PS1_SYMBOL_ENABLE=false
-source /opt/kube-ps1/kube-ps1.sh
-PS1='[\u@\h \w $(kube_ps1)]\$ '
-```
-
-```
-. .bashrc
-```
-
-I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes symbol did not display correctly using my font.
-
-You can check if your terminal font supports the Kubernetes symbol with this command `echo $'\u2388'`
-
 ## Socks Shop - Micro-service
 
 ### What is [Socks Shop?](https://microservices-demo.github.io) 
@@ -918,34 +877,5 @@ For additional information on metrics-server see https://github.com/kubernetes-i
 * Kubernetes Metrics Server - Kubernetes resource usage metrics, such as container CPU and memory usage, are available in Kubernetes through the Metrics API.
 * Gremlin - A Software as a Service Chaos Engineering platform..
 * Locust - A performance testing tool 
-
-## Tools 
-
-### Octent
-
-#### What is Octant 
-[Octant](https://github.com/vmware-tanzu/octant) is a web-based highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
-
-#### Install Octant
-```
-cd ~/ && mkdir octant && cd octant
-curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.9.1/octant_0.9.1_Linux-64bit.tar.gz
-tar -xvf octant_0.9.1_Linux-64bit.tar.gz
-sudo mv ./octant_0.9.1_Linux-64bit/octant /usr/local/bin/octant
-```
-
-#### Start Octant
-
-Obtain the external IP address of `digital-ocean-droplet`
-* `doctl compute droplet list`
-* Get the `Public IPv4` for `digital-ocean-droplet`
-
-```
-export OCTANT_ACCEPTED_HOSTS=<Public IPv4>
-export OCTANT_DISABLE_OPEN_BROWSER=1
-OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
-```
-
-Open this URL link : `http://<Public IPv4>:8900`
 
 *End of Section*
