@@ -363,6 +363,8 @@ Scroll down the page and observe the metrics for the Socks Shop micro-service
 
 `sudo apt-get install python-pip -y`
 
+`sudo apt-get install python-pip -y`
+
 ### What is [Locust?](https://locust.io/)
 * Locust is an easy-to-use, distributed, user load testing tool. 
 * It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. 
