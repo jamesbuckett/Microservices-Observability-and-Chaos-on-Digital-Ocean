@@ -371,7 +371,7 @@ Scroll down the page and observe the metrics for the Socks Shop micro-service
 
 ### Install Locust
 
-`python -m pip install locustio`
+`python -m pip install locustio==0.13.5`
 
 `python -m pip install gevent`
 
