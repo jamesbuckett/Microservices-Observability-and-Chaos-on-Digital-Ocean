@@ -161,6 +161,14 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 * `doctl` - CLI to interact with Digital Ocean
 * `kubectl` - CLI to interact with Kubernetes 
 
+#### New Optional - To be verified 
+
+```
+snap install doctl
+snap install kubectl --classic
+snap install helm --classic
+```
+
 #### doctl - Digital Ocean Command Line Interface
 
 * doctl Installation
