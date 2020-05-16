@@ -137,7 +137,7 @@ Note: This stack requires a minimum configuration of
 * Under "Find a Solution" click the "Kubernetes - New" tab.
 * Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
 * Select "Create Kubernetes Monitoring Cluster"
-* Select a Kubernetes version : `1.15.5-do.2`
+* Select a Kubernetes version : `1.15.x-do.x`
 * Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
 * VPC Network: `default-sgp1`  
@@ -145,6 +145,12 @@ Note: This stack requires a minimum configuration of
   * Enter Cluster name: `digital-ocean-cluster`
 * Go to bottom of page and select "Create Cluster"
   * Cluster build usually takes four minutes
+* On the `Getting Started` page 
+  1. Create a Kubernetes cluster...
+  2. Install management tools...`Continue, I'll do this later`
+  3. Download the config file...`Continue, I'll do this later`
+  4. Install 1-Click Apps...`Grafana Loki`...`Install`
+  5. Next Steps...`Great, I'm Done`	
 
 Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
 * At the top of the page the cluster name `digital-ocean-cluster` will have a green icon indicating it is ready for use.
