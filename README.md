@@ -145,12 +145,6 @@ Note: This stack requires a minimum configuration of
   * Enter Cluster name: `digital-ocean-cluster`
 * Go to bottom of page and select "Create Cluster"
   * Cluster build usually takes four minutes
-* On the `Getting Started` page 
-  1. Create a Kubernetes cluster...
-  2. Install management tools...`Continue, I'll do this later`
-  3. Download the config file...`Continue, I'll do this later`
-  4. Install 1-Click Apps...`Grafana Loki`...`Install`
-  5. Next Steps...`Great, I'm Done`	
 
 Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
 * At the top of the page the cluster name `digital-ocean-cluster` will have a green icon indicating it is ready for use.
@@ -159,6 +153,14 @@ Go back to the main page to confirm that the cluster and load balancer have been
 ```diff
 - **** Wait for the cluster to be ready before continuing, check for green icon on cluster name **** -
 ```
+
+### Loki - Distributed Logging
+* Go to "Discover".."Marketplace" on the left tab.
+* Under "Find a Solution" click the "Kubernetes - New" tab.
+* Click the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)"
+* `Install App`...`Install On Existing Cluster`...`Select a existing Kubernetes cluster`...`digital-ocean-cluster`
+* Select `Install` button below.
+
 
 ### Accessing the Digital Ocean Kubernetes cluster 
 
