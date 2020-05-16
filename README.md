@@ -340,7 +340,9 @@ prometheus-operator-grafana   LoadBalancer   10.245.220.96   139.59.223.226   80
 ```
 
 * Paste the EXTERNAL-IP into your web browser.
-* The default username and password are `admin` and `changeme` respectively.
+* The default username and password are `admin` and `prom-operator` respectively.
+  * If you have trouble with the password use this command: 
+    `kubectl get secret --namespace <name-space> <secret> -o jsonpath="{.data.admin-user}" | base64 --decode
 * Once you have logged in the default Grafana Home dashboard will be displayed. 
 * To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
 
