@@ -113,7 +113,7 @@ Note: This stack requires a minimum configuration of
 * Choose a plan
   * Scroll to the top and select
   * Or scroll to left 
-    * `Standard`..`Shared CPU`..`1vCPU`..`1GB`..`25GB`..`1TB`..`$5/mo`
+    * `Standard`..`$5/mo`..`1GB / 1CPU`..`25GB SSD`..`1000GB transfer`..
 * Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
 * Authentication..`SSH Key` should already be selected
