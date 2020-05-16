@@ -113,9 +113,10 @@ Note: This stack requires a minimum configuration of
 * Choose a plan
   * Scroll to the top and select
   * Or scroll to left 
-    * `Standard`..`$5/mo`..`1GB / 1CPU`..`25GB SSD`..`1000GB transfer`..
+    * `Standard`..`$5/mo`..`1GB / 1CPU`..`25GB SSD`..`1000GB transfer`
 * Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
+* VPC Network: `default-sgp1`  
 * Authentication..`SSH Key` should already be selected
 * Choose a hostname: `digital-ocean-droplet`
 * Select Project is set to `Digital Ocean Project`
