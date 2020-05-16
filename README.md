@@ -140,6 +140,7 @@ Note: This stack requires a minimum configuration of
 * Select a Kubernetes version : `1.15.5-do.2`
 * Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
+* VPC Network: `default-sgp1`  
 * Choose a name: 
   * Enter Cluster name: `digital-ocean-cluster`
 * Go to bottom of page and select "Create Cluster"
