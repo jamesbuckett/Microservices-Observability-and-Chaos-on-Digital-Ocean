@@ -136,7 +136,7 @@ Note: This stack requires a minimum configuration of
 ### Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
 * Under "Find a Solution" click the "Kubernetes - New" tab.
-* Click the "[Kubernetes Monitoring Stack](https://cloud.digitalocean.com/marketplace/5d163fdd29a6ab0d4c7d5274?i=9ca3ac)"
+* Click the "[Prometheus Kubernetes](https://cloud.digitalocean.com/marketplace/5dd48071316b030ef2788c9b?i=9ca3ac)"
 * Select "Create Kubernetes Monitoring Cluster"
 * Select a Kubernetes version : `1.15.x-do.x`
 * Choose a datacentre region: `Singapore`
@@ -340,7 +340,7 @@ prometheus-operator-grafana   LoadBalancer   10.245.220.96   139.59.223.226   80
 ```
 
 * Paste the EXTERNAL-IP into your web browser.
-* The default username and password are `admin` and `prom-operator` respectively.
+* The default username and password are `admin` and `changeme` or `prom-operator` respectively.
   * If you have trouble with the password use this command: 
     `kubectl get secret --namespace <name-space> <secret> -o jsonpath="{.data.admin-user}" | base64 --decode
 * Once you have logged in the default Grafana Home dashboard will be displayed. 
