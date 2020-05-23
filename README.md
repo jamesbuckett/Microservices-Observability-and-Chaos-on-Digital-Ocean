@@ -7,55 +7,55 @@
 * Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only. 
 
 ## Table of Contents
-* Introduction
-  * Agenda
-  * Requirements
-  * Cost Warning
-* Digital Ocean (Cloud Provider)
-  * Setup Digital Ocean Project 
-  * SSH Setup
-  * Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
-  * Deploy Digital Ocean Kubernetes cluster
-  * Accessing the Digital Ocean Kubernetes cluster
-    * doctl (Digital Ocean Command Line Interface)
-    * kubectl (Kubernetes Command Line Interface)
-* Socks Shop (Micro-service)
-  * What is Socks Shop?
-  * Install Socks Shop
-* Grafana (Metrics UI)
-  * What is Grafana?
-  * Observing Socks Shop with Grafana
-* Locust (Performance Tool)
-  * What is Locust?
-  * Install Python
-  * Install Locust
-  * Configure Locust
-* Helm (Package Manager)
-  * What is Helm?
-  * Install Helm
-  * Configure Helm
-* Gremlin (Chaos)
-  * What is Gremlin?
-  * Install Gremlin
-  * Verify Gremlin is working
-* Practical - The Fun Starts Here
-  * Start User Interfaces
-    * Locust
-    * Grafana
-    * Gremlin
-  * High CPU Attack
-  * Wrap Up
-* Kube Monkey (Chaos) - Optional
-* Tutorial Clean Up
-  * CLI Method
-  * GUI Method
-* Theory
-  * Prometheus Theory - Time Series Database 
-  * metrics-server Theory - Kubernetes Metrics
-  * Documentation
-  * Buzz Words
-* Tools
-  * Octant
+1. Introduction
+  1.1 Agenda
+  1.2 Requirements
+  1.3 Cost Warning
+2. Digital Ocean (Cloud Provider)
+  2.1 Setup Digital Ocean Project 
+  2.2 SSH Setup
+  2.3 Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
+  2.4 Deploy Digital Ocean Kubernetes cluster
+  2.5 Accessing the Digital Ocean Kubernetes cluster
+    2.5.1 doctl (Digital Ocean Command Line Interface)
+    2.5.2 kubectl (Kubernetes Command Line Interface)
+3. Socks Shop (Micro-service)
+  3.1 What is Socks Shop?
+  3.2 Install Socks Shop
+4. Grafana (Metrics UI)
+  4.1 What is Grafana?
+  4.2 Observing Socks Shop with Grafana
+5. Locust (Performance Tool)
+  5.1 What is Locust?
+  5.2 Install Python
+  5.3 Install Locust
+  5.4 Configure Locust
+6. Helm (Package Manager)
+  6.1 What is Helm?
+  6.2 Install Helm
+  6.3 Configure Helm
+7. Gremlin (Chaos)
+  7.1 What is Gremlin?
+  7.2 Install Gremlin
+  7.3 Verify Gremlin is working
+8. Practical - The Fun Starts Here
+  8.1 Start User Interfaces
+    8.1.1 Locust
+    8.1.2 Grafana
+    8.1.3 Gremlin
+  8.2 High CPU Attack
+  8.3 Wrap Up
+9. Kube Monkey (Chaos) - Optional
+10. Tutorial Clean Up
+  10.1 CLI Method
+  10.2 GUI Method
+11. Theory
+  11.1 Prometheus Theory - Time Series Database 
+  11.2 metrics-server Theory - Kubernetes Metrics
+  11.3 Documentation
+  11.4 Buzz Words
+12. Tools
+  12.1 Octant
 
 ## Introduction
 
