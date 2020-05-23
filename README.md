@@ -23,6 +23,7 @@
 * 2.8 Accessing the Digital Ocean Kubernetes cluster
     * 2.8.1 doctl (Digital Ocean Command Line Interface)
     * 2.8.2 kubectl (Kubernetes Command Line Interface)
+    * 2.8.3 Kubernetes Tools (Optional)
 3. Socks Shop (Micro-service)
 * 3.1 What is Socks Shop?
 * 3.2 Install Socks Shop
@@ -70,6 +71,7 @@
 ### 1.1 Agenda
 * Deploy a Ubuntu jump host on Digital Ocean with SSH access
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
+* Deploy Loki for distributed logging on the cluster
 * Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
 * Verify operation of the Socks Shop micro-service
 * Observe the Socks Shop micro-service with the Observability software
@@ -90,7 +92,7 @@
 ### 1.3 Cost Warning
 Note: This stack requires a minimum configuration of
 * 3 * Kubernetes Nodes at $10/month (2GB memory / 1 vCPU) 
-* 2 * Network Load Balancer at $10/month 
+* 2 * Network Load Balancers at $10/month 
 * 1 * Ubuntu Droplet at $5/month
 * **Total cost of $55 per month if kept running**
 
@@ -101,7 +103,7 @@ Note: This stack requires a minimum configuration of
 ## 2. Digital Ocean - Cloud Provider
 
 ### 2.1 What is Digital Ocean
-* Digital Ocean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers.  
+* Digital Ocean is a cloud computing vendor that offers Infrastructure as a Service (IaaS) and Container as a Service (CaaS) platforms for software developers.  
 
 ### 2.2 Setup a Digital Ocean Project
 * 2.2.1 Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
@@ -115,61 +117,62 @@ Note: This stack requires a minimum configuration of
 * 2.3.2 Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
 ### 2.4 Setup Digital Ocean Droplet
-* 2.4.1 Go to "Manage".."Droplets" on the left tab
+* 2.4.1 Go to "Manage"..."Droplets" on the left tab
 * 2.4.2 Select `Create Droplet`
-* 2.4.3 Choose an image..Distributions..`Ubuntu`
+* 2.4.3 Choose an image...Distributions...`Ubuntu`
 * 2.4.4 Choose a plan
-  * Scroll to the top and select
-  * Or scroll to left 
-    * `Standard`..`$5/mo`..`1GB / 1CPU`..`25GB SSD`..`1000GB transfer`
+  * Scroll to the left and select
+    * `Standard`...`$5/mo`...`1GB / 1CPU`...`25GB SSD disk`...`1000GB transfer`
 * 2.4.5 Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
-* 2.4.6 VPC Network: `default-sgp1`  
-* 2.4.7 Authentication..`SSH Key` should already be selected
+* 2.4.6 VPC Network
+  * Dropdown and select `default-sgp1`  
+* 2.4.7 Authentication...`SSH Key` should already be selected
 * 2.4.8 Choose a hostname: `digital-ocean-droplet`
 * 2.4.9 Select Project is set to `Digital Ocean Project`
 * 2.4.10 Go to bottom of page and select "Create Droplet"
   * Droplet build usually takes four minutes
 
 ### 2.5 Accessing Digital Ocean Droplet
-* 2.5.1 In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
+* 2.5.1 In the `digital-ocean-project` page under "Manage".."Droplets" locate the Droplet called `digital-ocean-droplet`
 * 2.5.2 Copy the IP address of the `digital-ocean-droplet` by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
 * 2.5.3 On Windows
   * Paste the IP address into Putty Host Box
-  * Add your Private Key Category..Connection..SSH..Auth
+  * Add your Private Key Category...Connection...SSH...Auth
     * `Private Key for Authentication`
 * 2.5.4 On Mac open a terminal 
   * `ssh root@<IP Address>` 
   
 ### 2.6 Digital Ocean Kubernetes cluster
-* 2.6.1 Go to "Discover".."Marketplace" on the left tab.
+* 2.6.1 Go to "Discover"..."Marketplace" on the left tab.
 * 2.6.2 Under "Find a Solution" click the "Kubernetes - New" tab.
 * 2.6.3 Click the "[Prometheus Kubernetes](https://cloud.digitalocean.com/marketplace/5dd48071316b030ef2788c9b?i=9ca3ac)"
-* 2.6.4 Select "Create Kubernetes Monitoring Cluster"
-* 2.6.5 Select a Kubernetes version : `1.15.x-do.x`
+* 2.6.4 Select `Install App` by moving mouse over the tile.
+* 2.6.5 Leave the Kubernetes version at the latest.
 * 2.6.6 Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
-* 2.6.7 VPC Network: `default-sgp1`  
+* 2.6.7 VPC Network should already be: `default-sgp1`  
 * 2.6.8 Choose a name: 
   * Enter Cluster name: `digital-ocean-cluster`
-* 2.6.9 Go to bottom of page and select "Create Cluster"
+* 2.6.9 Select "Create Cluster"
   * Cluster build usually takes four minutes
-
-Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
-* At the top of the page the cluster name `digital-ocean-cluster` will have a green icon indicating it is ready for use.
-* Scroll to the top of the page and check for green icon on the digital-ocean-cluster name.
+  * Ignore the "Getting Started Page"
+  * Watch the blue completion line and spinning cluster icon
+  * When the the blue line runs to the end of the page move on to the next step
+  * Click on "Manage".."Kubernetes"
+  * At the top of the page the cluster name `digital-ocean-cluster` will have a green icon indicating it is ready for use.
 
 ```diff
 - **** Wait for the cluster to be ready before continuing, check for green icon on cluster name **** -
 ```
 
-### 2.7 Loki - Distributed Logging
-* 2.7.1 Go to "Discover".."Marketplace" on the left tab.
+### 2.7 Install Distributed Logging (Loki_)
+* 2.7.1 Go to "Discover"..."Marketplace" on the left tab.
 * 2.7.2 Under "Find a Solution" click the "Kubernetes - New" tab.
-* 2.7.3 Click the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)"
-* 2.7.4 `Install App`...`Install On Existing Cluster`...`Select a existing Kubernetes cluster`...`digital-ocean-cluster`
-* 2.7.4 Select `Install` button below.
-
+* 2.7.3 Hover your mouse over the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)" tile
+* 2.7.4 `Install App`...`Select a cluster option`...`digital-ocean-cluster`
+* 2.7.5 Select `Install` button below.
+* 2.7.6 Select `Install 1-Click Apps`...Wait until Loki shows as installed
 
 ### 2.8 Accessing the Digital Ocean Kubernetes cluster 
 
@@ -246,7 +249,8 @@ CoreDNS is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigital
 Metrics-server is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 ```
 
-Optional : [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools)
+#### 2.8.3 Kubernetes Tools (Optional)
+* [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools)
 
 ## 3. Socks Shop - Micro-service
 
@@ -431,9 +435,11 @@ On main panel select `Charts`
 
 ### 6.2 Install Helm 3
 ```
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
+cd ~/ && mkdir helm-3 && cd helm-3
+wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
+tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
 ## 7. Gremlin - Chaos
