@@ -9,23 +9,27 @@
 ## Table of Contents
 
 1. Introduction
-* 1.1. Agenda
+* 1.1 Agenda
 * 1.2 Requirements
 * 1.3 Cost Warning
 2. Digital Ocean (Cloud Provider)
-* 2.1 Setup Digital Ocean Project 
-* 2.2.SSH Setup
-* 2.3 Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
-* 2.4 Deploy Digital Ocean Kubernetes cluster
-* 2.5 Accessing the Digital Ocean Kubernetes cluster
-    * 2.5.1 doctl (Digital Ocean Command Line Interface)
-    * 2.5.2 kubectl (Kubernetes Command Line Interface)
+* 2.1 What is Digital Ocean?
+* 2.2 Setup Digital Ocean Project 
+* 2.3 SSH Setup
+* 2.4 Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
+* 2.5 Accessing Digital Ocean Droplet
+* 2.6 Deploy Digital Ocean Kubernetes cluster
+* 2.7 Loki - Distributed Logging
+* 2.8 Accessing the Digital Ocean Kubernetes cluster
+    * 2.8.1 doctl (Digital Ocean Command Line Interface)
+    * 2.8.2 kubectl (Kubernetes Command Line Interface)
 3. Socks Shop (Micro-service)
 * 3.1 What is Socks Shop?
 * 3.2 Install Socks Shop
 4. Grafana (Metrics UI)
 * 4.1 What is Grafana?
-* 4.2 Observing Socks Shop with Grafana
+* 4.2 Access the Grafana UI
+* 4.3 Observing Socks Shop with Grafana
 5. Locust (Performance Tool)
 * 5.1 What is Locust?
 * 5.2 Install Python
@@ -37,7 +41,8 @@
 * 6.3 Configure Helm
 7. Gremlin (Chaos)
 * 7.1 What is Gremlin?
-* 7.2 Install Gremlin
+* 7.2 Install Gremlin 
+* 7.3 Configure Gremlin
 * 7.3 Verify Gremlin is working
 8. Practical - The Fun Starts Here
 * 8.1 Start User Interfaces
@@ -47,9 +52,14 @@
 * 8.2 High CPU Attack
 * 8.3 Wrap Up
 9. Kube Monkey (Chaos) - Optional
+* 9.1 What is Kube Monkey?
+* 9.2 Install Kube Monkey
 10. Tutorial Clean Up
 * 10.1 CLI Method
 * 10.2 GUI Method
+*   10.2.1 Kubernetes Cluster
+*   10.2.2 Load Balancer
+*   10.2.3 Droplet
 11. Theory
 * 11.1 Prometheus Theory - Time Series Database 
 * 11.2 metrics-server Theory - Kubernetes Metrics
