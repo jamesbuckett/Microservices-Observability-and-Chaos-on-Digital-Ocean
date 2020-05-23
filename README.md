@@ -37,13 +37,12 @@
 * 5.4 Configure Locust
 6. Helm (Package Manager)
 * 6.1 What is Helm?
-* 6.2 Install Helm
-* 6.3 Configure Helm
+* 6.2 Install Helm 3
 7. Gremlin (Chaos)
 * 7.1 What is Gremlin?
 * 7.2 Install Gremlin 
 * 7.3 Configure Gremlin
-* 7.3 Verify Gremlin is working
+* 7.3 Verify Gremlin Operation
 8. Practical - The Fun Starts Here
 * 8.1 Start User Interfaces
 *   8.1.1 Locust
@@ -65,9 +64,6 @@
 * 11.2 metrics-server Theory - Kubernetes Metrics
 * 11.3 Documentation
 * 11.4 Buzz Words
-12. Tools
-* 12.1 Octant
-
 
 ## 1. Introduction
 
@@ -250,6 +246,8 @@ CoreDNS is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigital
 Metrics-server is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 ```
 
+Optional : [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools)
+
 ## 3. Socks Shop - Micro-service
 
 ### 3.1 What is [Socks Shop?](https://microservices-demo.github.io) 
@@ -379,7 +377,11 @@ Scroll down the page and observe the metrics for the Socks Shop micro-service
 
 ## 5. Locust - Load Testing
 
-### 5.1 Install Python
+### 5.1 What is [Locust?](https://locust.io/)
+* Locust is an easy-to-use, distributed, user load testing tool. 
+* It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. 
+
+### 5.2 Install Python
 
 `sudo apt-get update`
 
@@ -389,11 +391,7 @@ Scroll down the page and observe the metrics for the Socks Shop micro-service
 
 `sudo apt-get install python-pip -y`
 
-### 5.2 What is [Locust?](https://locust.io/)
-* Locust is an easy-to-use, distributed, user load testing tool. 
-* It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. 
-
-### 5.2 Install Locust
+### 5.3 Install Locust
 
 `python -m pip install locustio==0.13.5`
 
@@ -431,19 +429,11 @@ On main panel select `Charts`
 * Helm is an application package manager running atop Kubernetes. 
 * It allows describing the application structure through helm-charts and managing those charts it with simple commands
 
-### 6.2 Install Helm 
+### 6.2 Install Helm 3
 ```
-cd && mkdir helm && cd helm
-curl -LO https://git.io/get_helm.sh
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
-```
-### 6.3 Configure Helm
-```
-k create serviceaccount -n kube-system tiller
-k create clusterrolebinding tiller-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-helm init
-k --namespace kube-system patch deploy tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
 ```
 
 ## 7. Gremlin - Chaos
@@ -528,15 +518,13 @@ helm install \
 	--set gremlin.clusterID=$GREMLIN_CLUSTER_ID
 ```
 
-### 7.4 Verify Gremlin is working
+### 7.4 Verify Gremlin Operation
 
 `watch -n 1 kubectl get all -n gremlin`
 
 You should see similar output to the following.
 ```
 ```Every 1.0s: kubectl get all -n gremlin                                                 digital-ocean-droplet: Thu Oct 17 08:58:29 201
-
-9
 
 NAME                               READY   STATUS    RESTARTS   AGE
 pod/fantastic-pika-gremlin-5sl76   1/1     Running   0          94s
@@ -551,7 +539,7 @@ daemonset.apps/fantastic-pika-gremlin   3         3         3       3           
 
 ### 8.1 Start the User Interfaces
 
-#### 8.1.1 Locust
+#### 8.1.1 Locust 
 * Locust should still be running from a previous step.
   * `doctl compute droplet list`
   * Get the `Public IPv4` for `digital-ocean-droplet`
@@ -631,24 +619,24 @@ Optional Rerun
     * In drop down select 5s
 * This is the aggregate view of the Kubernetes cluster resources.
  
-## 9. Wrap Up
+## 8.3 Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
 * You deployed a micro-services application called Socks Shop to run on the Cluster.
 * You observed metrics from the micro-services application with Prometheus and Grafana.
 * You deployed a performance tool called Locust to stress test the micro-services application and observe any failures.
 * You installed Gremlin to perform a Chaos Experiment (CPU Resource Attack) on the micro-services application.
 
-## 10. Kube Monkey - Chaos - Optional
+## 9. Kube Monkey - Chaos - Optional
 
 ```diff
 - This part is under development and may potentially not work -
 ```
 
-### 10.1 What is Kube Monkey? 
+### 9.1 What is Kube Monkey? 
 * Kube Monkey is an implementation of Netflix's chaos monkey for kubernetes clusters. 
 * It schedules randomly killing of pods in order to test fault tolerance of a highly available system.
 
-### 10.2 Install Kube Monkey
+### 9.2 Install Kube Monkey
 
 * `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-rbac-socks-shop.yml"`
 
@@ -727,13 +715,13 @@ I0925 03:10:35.257848       1 schedule.go:59] v1.Deployment front-end scheduled 
 
 Look for these messages that indicate successful deployment: `[DryRun Mode] Terminated pod front-end-xxxxxx for sock-shop/front-end`
 
-## 11. Tutorial Clean Up 
+## 10. Tutorial Clean Up 
 
 Two methods to clean up
 * GUI 
 * CLI
 
-### 11.1 CLI Method
+### 10.1 CLI Method
 
 Delete Kubernetes Cluster
 * `doctl kubernetes cluster delete digital-ocean-cluster`
@@ -747,11 +735,11 @@ Delete Kubernetes Cluster
 Delete Droplet  
 * `doctl compute droplet delete digital-ocean-droplet`  
 
-### 11.2 GUI Method
+### 10.2 GUI Method
 
 Login to Digital Ocean
 
-### 11.2.1 Kubernetes 
+### 10.2.1 Kubernetes 
 * Left side bar select Kubernetes
 * Select your cluster 
 * Top right select `Actions` button
@@ -759,7 +747,7 @@ Login to Digital Ocean
 * On next page confirm by selecting `Destroy` again
 * Enter `digital-ocean-cluster` to enable deletion
 
-### 11.2.2 Load Balancer
+### 10.2.2 Load Balancer
 * Left side bar select Networking
 * Select Load Balancers
 * Select the top Load Balancer
@@ -768,25 +756,25 @@ Login to Digital Ocean
 * Select the Confirm button 
 * Repeat for all Load Balancers
 
-### 11.2.3 Droplet
+### 10.2.3 Droplet
 * Left side bar select "Manage".."Droplets"
 * On right side of `digital-ocean-droplet` select `More` button
 * Select `Destroy`
 * Select `Destroy` again
 
-## 12. Theory 
+## 11. Theory 
 
-### 12.1 Prometheus Theory - Time Series Database
+### 11.1 Prometheus Theory - Time Series Database
 ![logo_prom](https://user-images.githubusercontent.com/18049790/64942965-faa02900-d859-11e9-8f2b-730b9851c763.png)
 
 Prometheus is an embedded and pre-configured compeonent so it only has a theory section.
 
-#### 12.1.1 What is Prometheus?
+#### 11.1.1 What is Prometheus?
 * Prometheus is an open-source *systems monitoring and alerting* toolkit originally built at SoundCloud. 
 * It is now a standalone open source project and maintained independently of any company. 
 * Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes.
 
-#### 12.1.2 Prometheus's main features are:
+#### 11.1.2 Prometheus's main features are:
 * a multi-dimensional data model with **time series data** identified by metric name and key/value pairs
 * PromQL, a flexible query language to leverage this dimensionality
 * no reliance on distributed storage; single server nodes are autonomous
@@ -795,7 +783,7 @@ Prometheus is an embedded and pre-configured compeonent so it only has a theory 
 * targets are discovered via service discovery or static configuration
 * multiple modes of graphing and dashboarding support
 
-#### 12.1.3 Prometheus Components
+#### 11.1.3 Prometheus Components
 * the main Prometheus server which scrapes and stores time series data
 * client libraries for instrumenting application code
 * a push gateway for supporting short-lived jobs
@@ -805,7 +793,7 @@ Prometheus is an embedded and pre-configured compeonent so it only has a theory 
 
 Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
 
-#### 12.1.4 Prometheus Architecture
+#### 11.1.4 Prometheus Architecture
 
 This diagram illustrates the architecture of Prometheus and some of its ecosystem components:
 
@@ -813,7 +801,7 @@ Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
 
 ![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
 
-## 13. metrics-server Theory - Kubernetes Metrics
+## 11.2 metrics-server Theory - Kubernetes Metrics
 
 The metrics-server is an embedded and pre-configured compeonent so it only has a theory section.
 
@@ -882,7 +870,7 @@ To see your cluster metrics
 
 For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
 
-### 14. Documentation 
+### 11.3 Documentation 
 * [Kubernetes](https://kubernetes.io)
 * [Prometheus](https://prometheus.io)
 * [Grafana](https://grafana.com)
@@ -892,7 +880,7 @@ For additional information on metrics-server see https://github.com/kubernetes-i
 * [Gremlin](https://www.gremlin.com/)
 * [Locust](https://locust.io/)
 
-### 15. Buzz Words
+### 11.4 Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
 * Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
 * Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
