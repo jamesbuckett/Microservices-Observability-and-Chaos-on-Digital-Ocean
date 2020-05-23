@@ -235,18 +235,19 @@ alias k='kubectl'
 k version
 ```
 
-Use 'k version' to make sure that your installation is working and within one minor version of your cluster.
+Use 'k version' to make sure that your installation is working and 'kubectl' cli is within one minor version of your cluster.
 ```
-root@digital-ocean-droplet:~/kubectl# kubectl version
-Client Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.0", GitCommit:"e8462b5b5dc2584fdcd18e6bcfe9f1e4d970a529", GitTreeState:"clean", BuildDate:"2019-06-19T16:40:16Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
-Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.5", GitCommit:"20c265fef0741dd71a66480e35bd69f18351daea", GitTreeState:"clean", BuildDate:"2019-10-15T19:07:57Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"linux/amd64"}
+[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:default)]# k version
+Client Version: version.Info{Major:"1", Minor:"18", GitVersion:"v1.18.3", GitCommit:"2e7996e3e2712684bc73f0dec0200d64eec7fe40", GitTreeState:"clean", BuildDate:"2020-05-20T12:52:00Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.5", GitCommit:"e0fccafd69541e3750d460ba0f9743b90336f24f", GitTreeState:"clean", BuildDate:"2020-04-16T11:35:47Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 Use `k cluster-info` to get cluster related information
 ```
-Kubernetes master is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigitalocean.com
-CoreDNS is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-Metrics-server is running at https://b3d48d0d-582a-437f-91cb-75dc6584331f.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:default)]# k cluster-info
+Kubernetes master is running at https://714145e4-20b6-4180-800e-acf05d5b48ad.k8s.ondigitalocean.com
+CoreDNS is running at https://714145e4-20b6-4180-800e-acf05d5b48ad.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
 #### 2.8.3 Kubernetes Tools (Optional)
@@ -342,7 +343,13 @@ To Access Socks Shop
 * We will use it to observe the Socks Shop micro-service
 
 ### 4.2 Access the Grafana UI
-* Grafana is exposed via a DigitalOcean Load Balancer. 
+```diff
+- **** This part is broken the installer does not create the external Load Balancer **** -
+- **** Create the external Load Balancer by `kubectl edit svc prometheus-operator-grafana` **** -
+- **** And changing `ClusterIP` to `LoadBalancer` **** -
+```
+
+* Grafana is exposed via a DigitalOcean Load Balancer.
 * Get the IP address to access your Grafana instance by running the following in a terminal shell and copying the EXTERNAL-IP and pasting it into a browser.
 
 `k -n prometheus-operator get svc prometheus-operator-grafana`
@@ -354,7 +361,7 @@ prometheus-operator-grafana   LoadBalancer   10.245.220.96   139.59.223.226   80
 ```
 
 * Paste the EXTERNAL-IP into your web browser.
-* The default username and password are `admin` and `changeme` or `prom-operator` respectively.
+* The default username and password are `admin` and `prom-operator` 
   * If you have trouble with the password use this command: 
     `kubectl get secret --namespace <name-space> <secret> -o jsonpath="{.data.admin-user}" | base64 --decode
 * Once you have logged in the default Grafana Home dashboard will be displayed. 
