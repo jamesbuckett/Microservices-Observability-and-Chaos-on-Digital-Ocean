@@ -176,8 +176,8 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 * doctl Installation
 ```
 cd ~/ && mkdir doctl && cd doctl
-curl -LO https://github.com/digitalocean/doctl/releases/download/v1.36.0/doctl-1.36.0-linux-amd64.tar.gz 
-tar -xvf doctl-1.36.0-linux-amd64.tar.gz
+curl -LO https://github.com/digitalocean/doctl/releases/download/v1.43.0/doctl-1.43.0-linux-amd64.tar.gz 
+tar -xvf doctl-1.43.0-linux-amd64.tar.gz
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
@@ -212,7 +212,7 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 Install kubectl
 ```
 cd ~/ && mkdir kubectl && cd kubectl
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.0/bin/linux/amd64/kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
