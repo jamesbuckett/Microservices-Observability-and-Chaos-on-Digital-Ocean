@@ -7,11 +7,11 @@
 * Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only. 
 
 ## Table of Contents
-/*:
-1. Introduction
-  1.1 Agenda
-  1.2 Requirements
-  1.3 Cost Warning
+
+# Introduction
+## Agenda
+## Requirements
+## Cost Warning
 2. Digital Ocean (Cloud Provider)
   2.1 Setup Digital Ocean Project 
   2.2 SSH Setup
