@@ -18,62 +18,62 @@
 * 2.3 Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
 * 2.4 Deploy Digital Ocean Kubernetes cluster
 * 2.5 Accessing the Digital Ocean Kubernetes cluster
-    ** 2.5.1 doctl (Digital Ocean Command Line Interface)
-    ** 2.5.2 kubectl (Kubernetes Command Line Interface)
+    * 2.5.1 doctl (Digital Ocean Command Line Interface)
+    * 2.5.2 kubectl (Kubernetes Command Line Interface)
 3. Socks Shop (Micro-service)
-  3.1 What is Socks Shop?
-  3.2 Install Socks Shop
+* 3.1 What is Socks Shop?
+* 3.2 Install Socks Shop
 4. Grafana (Metrics UI)
-  4.1 What is Grafana?
-  4.2 Observing Socks Shop with Grafana
+* 4.1 What is Grafana?
+* 4.2 Observing Socks Shop with Grafana
 5. Locust (Performance Tool)
-  5.1 What is Locust?
-  5.2 Install Python
-  5.3 Install Locust
-  5.4 Configure Locust
+* 5.1 What is Locust?
+* 5.2 Install Python
+* 5.3 Install Locust
+* 5.4 Configure Locust
 6. Helm (Package Manager)
-  6.1 What is Helm?
-  6.2 Install Helm
-  6.3 Configure Helm
+* 6.1 What is Helm?
+* 6.2 Install Helm
+* 6.3 Configure Helm
 7. Gremlin (Chaos)
-  7.1 What is Gremlin?
-  7.2 Install Gremlin
-  7.3 Verify Gremlin is working
+* 7.1 What is Gremlin?
+* 7.2 Install Gremlin
+* 7.3 Verify Gremlin is working
 8. Practical - The Fun Starts Here
-  8.1 Start User Interfaces
-    8.1.1 Locust
-    8.1.2 Grafana
-    8.1.3 Gremlin
-  8.2 High CPU Attack
-  8.3 Wrap Up
+* 8.1 Start User Interfaces
+*   8.1.1 Locust
+*   8.1.2 Grafana
+*   8.1.3 Gremlin
+* 8.2 High CPU Attack
+* 8.3 Wrap Up
 9. Kube Monkey (Chaos) - Optional
 10. Tutorial Clean Up
-  10.1 CLI Method
-  10.2 GUI Method
+* 10.1 CLI Method
+* 10.2 GUI Method
 11. Theory
-  11.1 Prometheus Theory - Time Series Database 
-  11.2 metrics-server Theory - Kubernetes Metrics
-  11.3 Documentation
-  11.4 Buzz Words
+* 11.1 Prometheus Theory - Time Series Database 
+* 11.2 metrics-server Theory - Kubernetes Metrics
+* 11.3 Documentation
+* 11.4 Buzz Words
 12. Tools
-  12.1 Octant
+* 12.1 Octant
 
 
-## Introduction
+## 1. Introduction
 
-### Agenda
-* Deploy a Ubuntu jump host on Digital Ocean with SSH access
-* Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
-* Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
-* Verify operation of the Socks Shop micro-service
-* Observe the Socks Shop micro-service with the Observability software
-* Perform Chaos Engineering on the Socks Shop micro-service
+### 1.1 Agenda
+* 1. Deploy a Ubuntu jump host on Digital Ocean with SSH access
+* 2. Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
+* 3. Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
+* 4. Verify operation of the Socks Shop micro-service
+* 5. Observe the Socks Shop micro-service with the Observability software
+* 6. Perform Chaos Engineering on the Socks Shop micro-service
 
-### Requirements
-* A Digital Ocean Account
+### 1.2 Requirements
+* 1.2.1 A Digital Ocean Account
   * A credit card or debit card is required to sign up to Digital Ocean
   * The Referal Link provided gives $50 credit for 30 days to offset the cost of this tutorial 
-* A Terminal Emulator to interact with the cluster
+* 1.2.2 A Terminal Emulator to interact with the cluster
   * If using Windows 10 please install the following software:
     * [PuTTY](https://www.putty.org/) 
     * [PuTTYgen](https://www.puttygen.com/)
@@ -81,7 +81,7 @@
   * Mac  
     * [Terminal on Mac](https://support.apple.com/en-sg/guide/terminal/welcome/mac)
 
-### Cost Warning
+### 1.3 Cost Warning
 Note: This stack requires a minimum configuration of
 * 3 * Kubernetes Nodes at $10/month (2GB memory / 1 vCPU) 
 * 2 * Network Load Balancer at $10/month 
@@ -92,23 +92,23 @@ Note: This stack requires a minimum configuration of
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
 ```
 
-## Digital Ocean - Cloud Provider
+## 2. Digital Ocean - Cloud Provider
 
-### What is Digital Ocean
+### 2.1 What is Digital Ocean
 * Digital Ocean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers.  
 
-### Setup a Digital Ocean Project
+### 2.2 Setup a Digital Ocean Project
 * Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
   * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $50 in credit 
 * Create a new Project called : `digital-ocean-project`
 * Make sure you select the Project called `digital-ocean-project` and proceed to next step
 
-### Setup SSH
+### 2.3 Setup SSH
 * Follow this guide to create and upload SSH keys required to access the Digital Ocean droplet
   * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
 * Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
-### Setup Digital Ocean Droplet
+### 2.4 Setup Digital Ocean Droplet
 * Go to "Manage".."Droplets" on the left tab
 * Select `Create Droplet`
 * Choose an image..Distributions..`Ubuntu`
@@ -125,7 +125,7 @@ Note: This stack requires a minimum configuration of
 * Go to bottom of page and select "Create Droplet"
   * Droplet build usually takes four minutes
 
-### Accessing Digital Ocean Droplet
+### 2.5 Accessing Digital Ocean Droplet
 * In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
 * Copy the IP address of the `digital-ocean-droplet` by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
 * On Windows
@@ -135,7 +135,7 @@ Note: This stack requires a minimum configuration of
 * On Mac open a terminal 
   * `ssh root@<IP Address>` 
   
-### Digital Ocean Kubernetes cluster
+### 2.6 Digital Ocean Kubernetes cluster
 * Go to "Discover".."Marketplace" on the left tab.
 * Under "Find a Solution" click the "Kubernetes - New" tab.
 * Click the "[Prometheus Kubernetes](https://cloud.digitalocean.com/marketplace/5dd48071316b030ef2788c9b?i=9ca3ac)"
@@ -157,7 +157,7 @@ Go back to the main page to confirm that the cluster and load balancer have been
 - **** Wait for the cluster to be ready before continuing, check for green icon on cluster name **** -
 ```
 
-### Loki - Distributed Logging
+### 2.7 Loki - Distributed Logging
 * Go to "Discover".."Marketplace" on the left tab.
 * Under "Find a Solution" click the "Kubernetes - New" tab.
 * Click the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)"
