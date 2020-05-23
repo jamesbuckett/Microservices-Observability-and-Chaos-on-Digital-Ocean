@@ -357,7 +357,7 @@ To Access Socks Shop
 ```
 root@digital-ocean-droplet:~# k -n prometheus-operator get svc prometheus-operator-grafana
 NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)        AGE
-prometheus-operator-grafana   LoadBalancer   10.245.220.96   139.59.223.226   80:30459/TCP   9m4s
+prometheus-operator-grafana   LoadBalancer   10.245.220.96   x.x.x.x          80:30459/TCP   9m4s
 ```
 
 * Paste the EXTERNAL-IP into your web browser.
@@ -366,6 +366,10 @@ prometheus-operator-grafana   LoadBalancer   10.245.220.96   139.59.223.226   80
     `kubectl get secret --namespace <name-space> <secret> -o jsonpath="{.data.admin-user}" | base64 --decode
 * Once you have logged in the default Grafana Home dashboard will be displayed. 
 * To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
+
+Add Loki as a DataSource
+* Go to left panel...`Configuration`...`Data Sources`...`Add data Source`...`Loki`...`Select`
+* URL : `http://loki.loki:3100`...`Save and Test`
 
 ### 4.3 Observing Socks Shop with Grafana
 
