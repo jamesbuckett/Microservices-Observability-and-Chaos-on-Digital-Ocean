@@ -8,13 +8,13 @@
 
 ## Table of Contents
 
-# Introduction
-## Agenda
-## Requirements
-## Cost Warning
+1. Introduction
+* Agenda
+* Requirements
+* Cost Warning
 2. Digital Ocean (Cloud Provider)
-  2.1 Setup Digital Ocean Project 
-  2.2 SSH Setup
+* Setup Digital Ocean Project 
+  *2.2* SSH Setup
   2.3 Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
   2.4 Deploy Digital Ocean Kubernetes cluster
   2.5 Accessing the Digital Ocean Kubernetes cluster
