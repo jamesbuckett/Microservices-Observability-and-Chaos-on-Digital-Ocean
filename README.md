@@ -72,12 +72,12 @@
 ## 1. Introduction
 
 ### 1.1 Agenda
-* 1. Deploy a Ubuntu jump host on Digital Ocean with SSH access
-* 2. Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
-* 3. Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
-* 4. Verify operation of the Socks Shop micro-service
-* 5. Observe the Socks Shop micro-service with the Observability software
-* 6. Perform Chaos Engineering on the Socks Shop micro-service
+* Deploy a Ubuntu jump host on Digital Ocean with SSH access
+* Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
+* Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
+* Verify operation of the Socks Shop micro-service
+* Observe the Socks Shop micro-service with the Observability software
+* Perform Chaos Engineering on the Socks Shop micro-service
 
 ### 1.2 Requirements
 * 1.2.1 A Digital Ocean Account
@@ -108,55 +108,55 @@ Note: This stack requires a minimum configuration of
 * Digital Ocean is a cloud computing vendor that offers an Infrastructure as a Service (IaaS) platform for software developers.  
 
 ### 2.2 Setup a Digital Ocean Project
-* Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
-  * Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $50 in credit 
-* Create a new Project called : `digital-ocean-project`
-* Make sure you select the Project called `digital-ocean-project` and proceed to next step
+* 2.2.1 Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
+  * 2.2.1.1 Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $50 in credit 
+* 2.2.2 Create a new Project called : `digital-ocean-project`
+* 2.2.3 Make sure you select the Project called `digital-ocean-project` and proceed to next step
 
 ### 2.3 Setup SSH
-* Follow this guide to create and upload SSH keys required to access the Digital Ocean droplet
+* 2.3.1 Follow this guide to create and upload SSH keys required to access the Digital Ocean droplet
   * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
-* Upload the public key to Digital Ocean as `digital-ocean-public-key`
+* 2.3.2 Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
 ### 2.4 Setup Digital Ocean Droplet
-* Go to "Manage".."Droplets" on the left tab
-* Select `Create Droplet`
-* Choose an image..Distributions..`Ubuntu`
-* Choose a plan
+* 2.4.1 Go to "Manage".."Droplets" on the left tab
+* 2.4.2 Select `Create Droplet`
+* 2.4.3 Choose an image..Distributions..`Ubuntu`
+* 2.4.4 Choose a plan
   * Scroll to the top and select
   * Or scroll to left 
     * `Standard`..`$5/mo`..`1GB / 1CPU`..`25GB SSD`..`1000GB transfer`
-* Choose a datacentre region: `Singapore`
+* 2.4.5 Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
-* VPC Network: `default-sgp1`  
-* Authentication..`SSH Key` should already be selected
-* Choose a hostname: `digital-ocean-droplet`
-* Select Project is set to `Digital Ocean Project`
-* Go to bottom of page and select "Create Droplet"
+* 2.4.6 VPC Network: `default-sgp1`  
+* 2.4.7 Authentication..`SSH Key` should already be selected
+* 2.4.8 Choose a hostname: `digital-ocean-droplet`
+* 2.4.9 Select Project is set to `Digital Ocean Project`
+* 2.4.10 Go to bottom of page and select "Create Droplet"
   * Droplet build usually takes four minutes
 
 ### 2.5 Accessing Digital Ocean Droplet
-* In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
-* Copy the IP address of the `digital-ocean-droplet` by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
-* On Windows
+* 2.5.1 In the `digital-ocean-project` page locate the Droplet called `digital-ocean-droplet`
+* 2.5.2 Copy the IP address of the `digital-ocean-droplet` by hovering on the IP Address of `digital-ocean-droplet` a `copy` pop-up will appear
+* 2.5.3 On Windows
   * Paste the IP address into Putty Host Box
   * Add your Private Key Category..Connection..SSH..Auth
     * `Private Key for Authentication`
-* On Mac open a terminal 
+* 2.5.4 On Mac open a terminal 
   * `ssh root@<IP Address>` 
   
 ### 2.6 Digital Ocean Kubernetes cluster
-* Go to "Discover".."Marketplace" on the left tab.
-* Under "Find a Solution" click the "Kubernetes - New" tab.
-* Click the "[Prometheus Kubernetes](https://cloud.digitalocean.com/marketplace/5dd48071316b030ef2788c9b?i=9ca3ac)"
-* Select "Create Kubernetes Monitoring Cluster"
-* Select a Kubernetes version : `1.15.x-do.x`
-* Choose a datacentre region: `Singapore`
+* 2.6.1 Go to "Discover".."Marketplace" on the left tab.
+* 2.6.2 Under "Find a Solution" click the "Kubernetes - New" tab.
+* 2.6.3 Click the "[Prometheus Kubernetes](https://cloud.digitalocean.com/marketplace/5dd48071316b030ef2788c9b?i=9ca3ac)"
+* 2.6.4 Select "Create Kubernetes Monitoring Cluster"
+* 2.6.5 Select a Kubernetes version : `1.15.x-do.x`
+* 2.6.6 Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
-* VPC Network: `default-sgp1`  
-* Choose a name: 
+* 2.6.7 VPC Network: `default-sgp1`  
+* 2.6.8 Choose a name: 
   * Enter Cluster name: `digital-ocean-cluster`
-* Go to bottom of page and select "Create Cluster"
+* 2.6.9 Go to bottom of page and select "Create Cluster"
   * Cluster build usually takes four minutes
 
 Go back to the main page to confirm that the cluster and load balancer have been created before proceeding.
@@ -168,11 +168,11 @@ Go back to the main page to confirm that the cluster and load balancer have been
 ```
 
 ### 2.7 Loki - Distributed Logging
-* Go to "Discover".."Marketplace" on the left tab.
-* Under "Find a Solution" click the "Kubernetes - New" tab.
-* Click the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)"
-* `Install App`...`Install On Existing Cluster`...`Select a existing Kubernetes cluster`...`digital-ocean-cluster`
-* Select `Install` button below.
+* 2.7.1 Go to "Discover".."Marketplace" on the left tab.
+* 2.7.2 Under "Find a Solution" click the "Kubernetes - New" tab.
+* 2.7.3 Click the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)"
+* 2.7.4 `Install App`...`Install On Existing Cluster`...`Select a existing Kubernetes cluster`...`digital-ocean-cluster`
+* 2.7.4 Select `Install` button below.
 
 
 ### Accessing the Digital Ocean Kubernetes cluster 
