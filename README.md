@@ -13,13 +13,13 @@
 * Requirements
 * Cost Warning
 2. Digital Ocean (Cloud Provider)
-* Setup Digital Ocean Project 
+  *2.1* Setup Digital Ocean Project 
   *2.2* SSH Setup
-  2.3 Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
-  2.4 Deploy Digital Ocean Kubernetes cluster
-  2.5 Accessing the Digital Ocean Kubernetes cluster
-    2.5.1 doctl (Digital Ocean Command Line Interface)
-    2.5.2 kubectl (Kubernetes Command Line Interface)
+  *2.3* Deploy Digital Ocean Droplet (Ubuntu Virtual Machine)
+  *2.4* Deploy Digital Ocean Kubernetes cluster
+  *2.5* Accessing the Digital Ocean Kubernetes cluster
+    *2.5.1* doctl (Digital Ocean Command Line Interface)
+    *2.5.2* kubectl (Kubernetes Command Line Interface)
 3. Socks Shop (Micro-service)
   3.1 What is Socks Shop?
   3.2 Install Socks Shop
