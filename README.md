@@ -9,9 +9,18 @@
 ## Table of Contents
 
 # Introduction
-## Agenda
-## Requirements
-## Cost Warning
+
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
+
+
+1. Agenda
+..1.1 Requirements
+..1.2 Cost Warning
 2. Digital Ocean (Cloud Provider)
   2.1 Setup Digital Ocean Project 
   2.2 SSH Setup
