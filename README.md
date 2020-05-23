@@ -6,8 +6,8 @@
 * Opinions expressed here are solely my own and do not express the views or opinions of JPMorgan Chase.
 * Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only. 
 
-/*:
 ## Table of Contents
+/*:
 1. Introduction
   1.1 Agenda
   1.2 Requirements
