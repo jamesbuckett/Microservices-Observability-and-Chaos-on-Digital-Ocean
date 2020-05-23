@@ -9,9 +9,9 @@
 ## Table of Contents
 
 1. Introduction
-## Agenda
-## Requirements
-## Cost Warning
+* Agenda
+* Requirements
+* Cost Warning
 2. Digital Ocean (Cloud Provider)
   2.1 Setup Digital Ocean Project 
   2.2 SSH Setup
