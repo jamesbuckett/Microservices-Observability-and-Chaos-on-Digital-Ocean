@@ -166,7 +166,7 @@ Note: This stack requires a minimum configuration of
 - **** Wait for the cluster to be ready before continuing, check for green icon on cluster name **** -
 ```
 
-### 2.7 Install Distributed Logging (Loki_)
+### 2.7 Install Distributed Logging (Loki)
 * 2.7.1 Go to "Discover"..."Marketplace" on the left tab.
 * 2.7.2 Under "Find a Solution" click the "Kubernetes - New" tab.
 * 2.7.3 Hover your mouse over the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)" tile
@@ -375,7 +375,7 @@ Install Loki Dashboard
 * On left side select `Create` icon...`Import`...`Grafana.com Dashboard`
 * `12019`...`Import`
 * On left side select `Dashboard` icon...`Manage`...`Find`...`loki`
-* Open `Loki Dashboard quick search`
+* Open the `Loki Dashboard quick search` dashbaord and look around
 
 ### 4.3 Observing Socks Shop with Grafana
 
