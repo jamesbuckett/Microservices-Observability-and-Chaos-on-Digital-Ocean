@@ -371,6 +371,12 @@ Add Loki as a DataSource
 * Go to left panel...`Configuration`...`Data Sources`...`Add data Source`...`Loki`...`Select`
 * URL : `http://loki.loki:3100`...`Save and Test`
 
+Install Loki Dashboard
+* On left side select `Create` icon...`Import`...`Grafana.com Dashboard`
+* `12019`...`Import`
+* On left side select `Dashboard` icon...`Manage`...`Find`...`loki`
+* Open `Loki Dashboard quick search`
+
 ### 4.3 Observing Socks Shop with Grafana
 
 Top left click on `Home`
