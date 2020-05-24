@@ -375,7 +375,7 @@ Install Loki Dashboard
 * On left side select `Create` icon...`Import`...`Grafana.com Dashboard`
 * `12019`...`Import`
 * On left side select `Dashboard` icon...`Manage`...`Find`...`loki`
-* Open the `Loki Dashboard quick search` dashbaord and look around
+* Open the `Loki Dashboard quick search` dashboard and look around
 
 ### 4.3 Observing Socks Shop with Grafana
 
