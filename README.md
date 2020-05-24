@@ -433,6 +433,7 @@ Browse to : `http://<Public IPv4>:8089/`
 * Enter these values 
   * Number of Users to Simulate: 500
   * Hatch Rate: 10
+  * Click `Start Swarming`
 
 On main panel select `Charts`
 * Top Right note Failures are 0%
@@ -513,7 +514,7 @@ export GREMLIN_CLUSTER_ID=digital-ocean-cluster
 * Replace `"changeit"` with the value from the [Gremlin page](https://app.gremlin.com/signup) 
   * Obtain `GREMLIN_TEAM_ID` here: 
     * Top Right click on `Company Settings`
-    * Click `Teams` tab
+    * Click `Manage Teams` tab
     * Click on your User
     * Click on Configuration
     * Your `Team ID` should be on the top row
@@ -529,7 +530,7 @@ Install the Gremlin Kubernetes client
 ```
 helm install \
 	--namespace gremlin \
-	--name gremlin \
+	gremlin \
 	gremlin/gremlin \
 	--set gremlin.teamID=$GREMLIN_TEAM_ID \
 	--set gremlin.clusterID=$GREMLIN_CLUSTER_ID
@@ -541,15 +542,22 @@ helm install \
 
 You should see similar output to the following.
 ```
-```Every 1.0s: kubectl get all -n gremlin                                                 digital-ocean-droplet: Thu Oct 17 08:58:29 201
+Every 1.0s: kubectl get all -n gremlin                                           digital-ocean-droplet: Sun May 24 03:58:58 2020
 
-NAME                               READY   STATUS    RESTARTS   AGE
-pod/fantastic-pika-gremlin-5sl76   1/1     Running   0          94s
-pod/fantastic-pika-gremlin-dfttw   1/1     Running   0          94s
-pod/fantastic-pika-gremlin-tv64w   1/1     Running   0          94s
+NAME                        READY   STATUS    RESTARTS   AGE
+pod/chao-69b5cbc94c-qdqfq   1/1     Running   0          50s
+pod/gremlin-jw7kb           1/1     Running   0          50s
+pod/gremlin-kgnmk           1/1     Running   0          50s
+pod/gremlin-zmh5v           1/1     Running   0          50s
 
-NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-daemonset.apps/fantastic-pika-gremlin   3         3         3       3            3           <none>          94s
+NAME                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/gremlin   3         3         3       3            3           <none>          50s
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/chao   1/1     1            1           50s
+
+NAME                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/chao-69b5cbc94c   1         1         1       50s
 ```
 
 ## 8. Practical - High CPU Resource Attack
