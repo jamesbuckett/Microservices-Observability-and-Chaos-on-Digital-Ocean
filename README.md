@@ -345,8 +345,13 @@ To Access Socks Shop
 ### 4.2 Access the Grafana UI
 ```diff
 - **** This part is broken the installer does not create the external Load Balancer **** -
-- **** Create the external Load Balancer by `kubectl edit svc prometheus-operator-grafana` **** -
-- **** And changing `ClusterIP` to `LoadBalancer` **** -
+- **** Follow the steps below **** -
+```
+
+```
+kubectl get service prometheus-operator-grafana -o yaml --export -n prometheus-operator > prometheus-operator-grafana.yml
+sed -i 's/ClusterIP/LoadBalancer/g' prometheus-operator-grafana.yml
+kubectl apply -f prometheus-operator-grafana.yml -n prometheus-operator
 ```
 
 * Grafana is exposed via a DigitalOcean Load Balancer.
