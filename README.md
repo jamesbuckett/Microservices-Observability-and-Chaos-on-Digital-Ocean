@@ -763,7 +763,7 @@ Delete Kubernetes Cluster
 * `doctl kubernetes cluster delete digital-ocean-cluster`
 
 Delete Kubernetes Cluster
-* `doctl compute load-balancer list`
+* `doctl compute load-balancer list > awk 'FNR == 2 {print $1}'`
   * Get ID for each Load Balancer
 * `doctl compute load-balancer delete <ID>`
   * Confirm with `y`
