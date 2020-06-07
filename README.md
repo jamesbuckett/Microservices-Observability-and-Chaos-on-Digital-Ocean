@@ -256,7 +256,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 * The application is a web-based e-commerce app where users can browse items, add them to the cart, and purchase them.
 * Online Boutique is composed of many microservices written in different languages that talk to each other over gRPC.
 
-
+![image](https://user-images.githubusercontent.com/18049790/83969793-85ebae00-a904-11ea-9802-64155b8ea5c7.png)
 
 ### 3.2 Install the Online Boutique Application 
 * Create a namespace for Online Boutique.
