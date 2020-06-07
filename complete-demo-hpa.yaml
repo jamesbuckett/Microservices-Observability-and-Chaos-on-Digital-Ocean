@@ -2,6 +2,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: online-boutique-hpa
+  namespace: microservices-demo
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
