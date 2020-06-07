@@ -24,13 +24,13 @@
     * 2.8.1 doctl (Digital Ocean Command Line Interface)
     * 2.8.2 kubectl (Kubernetes Command Line Interface)
     * 2.8.3 Kubernetes Tools (Optional)
-3. Socks Shop (Micro-service)
-* 3.1 What is Socks Shop?
-* 3.2 Install Socks Shop
+3. Online Boutique (Micro-service)
+* 3.1 What is Online Boutique?
+* 3.2 Install Online Boutique
 4. Grafana (Metrics UI)
 * 4.1 What is Grafana?
 * 4.2 Access the Grafana UI
-* 4.3 Observing Socks Shop with Grafana
+* 4.3 Observing Online Boutique with Grafana
 5. Locust (Performance Tool)
 * 5.1 What is Locust?
 * 5.2 Install Python
@@ -51,20 +51,15 @@
 *   8.1.3 Gremlin
 * 8.2 High CPU Attack
 * 8.3 Wrap Up
-9. Kube Monkey (Chaos) - Optional
-* 9.1 What is Kube Monkey?
-* 9.2 Install Kube Monkey
-10. Tutorial Clean Up
-* 10.1 CLI Method
-* 10.2 GUI Method
-*   10.2.1 Kubernetes Cluster
-*   10.2.2 Load Balancer
-*   10.2.3 Droplet
-11. Theory
-* 11.1 Prometheus Theory - Time Series Database 
-* 11.2 metrics-server Theory - Kubernetes Metrics
-* 11.3 Documentation
-* 11.4 Buzz Words
+9. Tutorial Clean Up
+* 9.1 CLI Method
+* 9.2 GUI Method
+*   9.2.1 Kubernetes Cluster
+*   9.2.2 Load Balancer
+*   9.2.3 Droplet
+10. Theory
+* 11.1 Documentation
+* 11.2 Buzz Words
 
 ## 1. Introduction
 
@@ -72,10 +67,10 @@
 * Deploy a Ubuntu jump host on Digital Ocean with SSH access
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
 * Deploy Loki for distributed logging on the cluster
-* Deploy the Socks Shop micro-services application onto the Kubernetes cluster on Digital Ocean
-* Verify operation of the Socks Shop micro-service
-* Observe the Socks Shop micro-service with the Observability software
-* Perform Chaos Engineering on the Socks Shop micro-service
+* Deploy the Online Boutique micro-services application onto the Kubernetes cluster on Digital Ocean
+* Verify operation of the Online Boutique micro-service
+* Observe the Online Boutique micro-service with the Observability software
+* Perform Chaos Engineering on the Online Boutique micro-service
 
 ### 1.2 Requirements
 * 1.2.1 A Digital Ocean Account
@@ -264,7 +259,7 @@ TBD
 ### 3.2 Install the Online Boutique Application 
 * Create a namespace for Online Boutique.
 * `k create namespace microservices-demo`
-* `k apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
+* `k apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/complete-demo.yaml"`
 
 Run this command : `watch -n 1 kubectl get all -n microservices-demo`
 
@@ -272,7 +267,7 @@ Watch the output until this line changes
 * from : `service/frontend-external      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
 * to   : `service/frontend-external      LoadBalancer   x.x.x.x      x.x.x.x       80:30001/TCP   3m15s`
 
-Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Socks Shop micro-service.
+Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Online Boutique micro-service.
 
 ```
 Every 1.0s: kubectl get all -n microservices-demo                         digital-ocean-droplet: Sun Jun  7 04:48:32 2020
@@ -319,12 +314,12 @@ deployment.apps/productcatalogservice   1/1     1            1           74m
 
 The Load Balancer takes about four minutes to provision.
 
-To Access Socks Shop 
-* Obtain the external IP address of Socks Shop.
-* `k -n sock-shop get svc front-end`
-* The IP address under EXTERNAL-IP is the external IP address of Socks Shop
+To Access Online Boutique 
+* Obtain the external IP address of Online Boutique.
+* `k -n microservices-demo get svc frontend-external`
+* The IP address under EXTERNAL-IP is the external IP address of Online Boutique
 * Paste the EXTERNAL-IP into your web browser.
-* You should see a e-commerce website called Socks Shop
+* You should see a e-commerce website called Online Boutique
 * Login to the site with:
   * user: user
   * password: password
@@ -337,7 +332,7 @@ To Access Socks Shop
 ### 4.1 What is Grafana?
 * Grafana is an open source metric analytics & visualization suite
 * It is most commonly used for visualizing time series data for infrastructure and application analytics
-* We will use it to observe the Socks Shop micro-service
+* We will use it to observe the Online Boutique micro-service
 
 ### 4.2 Access the Grafana UI
 ```diff
@@ -379,7 +374,7 @@ Install Loki Dashboard
 * On left side select `Dashboard` icon...`Manage`...`Find`...`loki`
 * Open the `Loki Dashboard quick search` dashboard and look around
 
-### 4.3 Observing Socks Shop with Grafana
+### 4.3 Observing Online Boutique with Grafana
 
 Top left click on `Home`
 
@@ -392,7 +387,7 @@ Under `General` select `Kubernetes / Compute Resources / Namespace(Pods)`
 * Top Right click last icon that looks like Recycle Icon
   * In drop down select `5s`
 
-Scroll down the page and observe the metrics for the Socks Shop micro-service
+Scroll down the page and observe the metrics for the Online Boutique micro-service
 * CPU Usage
 * CPU Quota
 * Memory Usage
@@ -419,12 +414,12 @@ pip3 install locust
 ### 5.3 Configure Locust
 ```
 cd ~/ && mkdir locust && cd locust
-wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/locustfile-socks-shop.py
+wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/locustfile-socks-shop.py
 ```
 
-Obtain the external IP address of Socks Shop.
+Obtain the external IP address of Online Boutique.
 * `k -n sock-shop get svc front-end`
-* The IP address under EXTERNAL-IP is the external IP address of Socks Shop.
+* The IP address under EXTERNAL-IP is the external IP address of Online Boutique.
 * Use that address to stress test the micro-services application.
 
 Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
@@ -630,8 +625,8 @@ You have successfully performed a CPU Resource Attack against the infrastrucure 
 
 What you are observing is the following:
 * Gremlin is causing the Kubernetes Worker Nodes to go to 100% CPU utilization
-* Kubernetes is ensuring the the Socks Shop micro-service is high resilient and available 
-* Locust is hitting the Socks Shop front-end container and reporting `0%` failures.
+* Kubernetes is ensuring the the Online Boutique micro-service is high resilient and available 
+* Locust is hitting the Online Boutique front-end container and reporting `0%` failures.
 
 Optional Rerun
 * On the Gremlin UI click the attack
@@ -650,107 +645,18 @@ Optional Rerun
  
 ## 8.3 Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
-* You deployed a micro-services application called Socks Shop to run on the Cluster.
+* You deployed a micro-services application called Online Boutique to run on the Cluster.
 * You observed metrics from the micro-services application with Prometheus and Grafana.
 * You deployed a performance tool called Locust to stress test the micro-services application and observe any failures.
 * You installed Gremlin to perform a Chaos Experiment (CPU Resource Attack) on the micro-services application.
 
-## 9. Kube Monkey - Chaos - Optional
-
-```diff
-- This part is under development and may potentially not work -
-```
-
-### 9.1 What is Kube Monkey? 
-* Kube Monkey is an implementation of Netflix's chaos monkey for kubernetes clusters. 
-* It schedules randomly killing of pods in order to test fault tolerance of a highly available system.
-
-### 9.2 Install Kube Monkey
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-rbac-socks-shop.yml"`
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-front-end.yml"`
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-cm-socks-shop.yml"`
-
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/kube-monkey-deploy-socks-shop.yml"`
-
-To verify that everything is working as expected use this command: `watch -n1 kubectl get deployments -n sock-shop`
-
-Check that `kube-monkey` is present and `front-end` shows READY as 4/4.
-```
-Every 1.0s: kubectl get deployments -n sock-shop                                       digital-ocean-droplet: Mon Nov 11 06:04:08 2019
-
-NAME           READY   UP-TO-DATE   AVAILABLE   AGE
-carts          1/1     1            1           41m
-carts-db       1/1     1            1           41m
-catalogue      1/1     1            1           41m
-catalogue-db   1/1     1            1           41m
-front-end      4/4     4            4           41m
-kube-monkey    1/1     1            0           6m41s
-orders         1/1     1            1           41m
-orders-db      1/1     1            1           41m
-payment        1/1     1            1           41m
-queue-master   1/1     1            1           41m
-rabbitmq       1/1     1            1           41m
-shipping       1/1     1            1           41m
-user           1/1     1            1           41m
-user-db        1/1     1            1           41m
-```
-
-To verify that Kube Monkey is working: `k get pods -n sock-shop`
-
-```
-NAME                            READY   STATUS    RESTARTS   AGE
-carts-56c6fb966b-nrwx4          1/1     Running   0          23h
-carts-db-5678cc578f-w99cf       1/1     Running   0          23h
-catalogue-644549d46f-mpwrz      1/1     Running   0          23h
-catalogue-db-6ddc796b66-rbp7h   1/1     Running   0          23h
-front-end-6f9db4fd44-6mcw7      1/1     Running   0          21h
-front-end-6f9db4fd44-7n228      1/1     Running   0          21h
-front-end-6f9db4fd44-bn6t6      1/1     Running   0          21h
-front-end-6f9db4fd44-lsm6z      1/1     Running   0          21h
-kube-monkey-6b7c69cdd5-tt24h    1/1     Running   0          19h
-orders-749cdc8c9-kqhsw          1/1     Running   0          23h
-orders-db-5cfc68c4cf-pf7sq      1/1     Running   0          23h
-payment-54f55b96b9-8x8z2        1/1     Running   0          23h
-queue-master-6fff667867-fkxj6   1/1     Running   0          23h
-rabbitmq-bdfd84d55-nx495        1/1     Running   0          23h
-shipping-78794fdb4f-9fvfv       1/1     Running   0          23h
-user-77cff48476-lk4rs           1/1     Running   0          23h
-user-db-99685d75b-mzhqv         1/1     Running   0          23h
-```
-
-Using the name of the Kube Monkey pod get its logs: `k logs kube-monkey-xxxxxxxxxx`
-
-```
-I0925 03:09:18.205972       1 kubemonkey.go:62] Status Update: Waiting to run scheduled terminations.
-I0925 03:10:05.235847       1 victims.go:130] [DryRun Mode] Terminated pod front-end-6f9db4fd44-6mcw7 for sock-shop/front-end
-I0925 03:10:05.236113       1 victims.go:130] [DryRun Mode] Terminated pod front-end-6f9db4fd44-7n228 for sock-shop/front-end
-I0925 03:10:05.236215       1 kubemonkey.go:70] Termination successfully executed for v1.Deployment front-end
-I0925 03:10:05.236298       1 kubemonkey.go:73] Status Update: 0 scheduled terminations left.
-I0925 03:10:05.236352       1 kubemonkey.go:76] Status Update: All terminations done.
-I0925 03:10:05.236519       1 kubemonkey.go:19] Debug mode detected!
-I0925 03:10:05.236594       1 kubemonkey.go:20] Status Update: Generating next schedule in 30 sec
-I0925 03:10:35.236843       1 schedule.go:64] Status Update: Generating schedule for terminations
-I0925 03:10:35.257632       1 schedule.go:57] Status Update: 1 terminations scheduled today
-I0925 03:10:35.257848       1 schedule.go:59] v1.Deployment front-end scheduled for termination at 09/24/2019 23:11:32 -0400 EDT
-        ********** Today's schedule **********
-        k8 Api Kind     Kind Name               Termination Time
-        -----------     ---------               ----------------
-        v1.Deployment   front-end               09/24/2019 23:11:32 -0400 EDT
-        ********** End of schedule **********
-```
-
-Look for these messages that indicate successful deployment: `[DryRun Mode] Terminated pod front-end-xxxxxx for sock-shop/front-end`
-
-## 10. Tutorial Clean Up 
+## 9. Tutorial Clean Up 
 
 Two methods to clean up
 * GUI 
 * CLI
 
-### 10.1 CLI Method
+### 9.1 CLI Method
 
 Delete Kubernetes Cluster
 * `doctl kubernetes cluster delete digital-ocean-cluster`
@@ -764,11 +670,11 @@ Delete Kubernetes Cluster
 Delete Droplet  
 * `doctl compute droplet delete digital-ocean-droplet`  
 
-### 10.2 GUI Method
+### 9.2 GUI Method
 
 Login to Digital Ocean
 
-### 10.2.1 Kubernetes 
+### 9.2.1 Kubernetes 
 * Left side bar select Kubernetes
 * Select your cluster 
 * Top right select `Actions` button
@@ -776,7 +682,7 @@ Login to Digital Ocean
 * On next page confirm by selecting `Destroy` again
 * Enter `digital-ocean-cluster` to enable deletion
 
-### 10.2.2 Load Balancer
+### 9.2.2 Load Balancer
 * Left side bar select Networking
 * Select Load Balancers
 * Select the top Load Balancer
@@ -785,121 +691,15 @@ Login to Digital Ocean
 * Select the Confirm button 
 * Repeat for all Load Balancers
 
-### 10.2.3 Droplet
+### 9.2.3 Droplet
 * Left side bar select "Manage".."Droplets"
 * On right side of `digital-ocean-droplet` select `More` button
 * Select `Destroy`
 * Select `Destroy` again
 
-## 11. Theory 
+## 10. Theory 
 
-### 11.1 Prometheus Theory - Time Series Database
-![logo_prom](https://user-images.githubusercontent.com/18049790/64942965-faa02900-d859-11e9-8f2b-730b9851c763.png)
-
-Prometheus is an embedded and pre-configured compeonent so it only has a theory section.
-
-#### 11.1.1 What is Prometheus?
-* Prometheus is an open-source *systems monitoring and alerting* toolkit originally built at SoundCloud. 
-* It is now a standalone open source project and maintained independently of any company. 
-* Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes.
-
-#### 11.1.2 Prometheus's main features are:
-* a multi-dimensional data model with **time series data** identified by metric name and key/value pairs
-* PromQL, a flexible query language to leverage this dimensionality
-* no reliance on distributed storage; single server nodes are autonomous
-* time series collection happens via a **pull model over HTTP**
-* pushing time series is supported via an intermediary gateway
-* targets are discovered via service discovery or static configuration
-* multiple modes of graphing and dashboarding support
-
-#### 11.1.3 Prometheus Components
-* the main Prometheus server which scrapes and stores time series data
-* client libraries for instrumenting application code
-* a push gateway for supporting short-lived jobs
-* special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.
-* an alertmanager to handle alerts
-* various support tools
-
-Most Prometheus components are written in Go, making them easy to build and deploy as static binaries.
-
-#### 11.1.4 Prometheus Architecture
-
-This diagram illustrates the architecture of Prometheus and some of its ecosystem components:
-
-Credit to [Prometheus](https://prometheus.io/docs/introduction/overview/)
-
-![prom-architecture](https://user-images.githubusercontent.com/18049790/64942969-fd028300-d859-11e9-9b13-20b7d6f14069.png)
-
-## 11.2 metrics-server Theory - Kubernetes Metrics
-
-The metrics-server is an embedded and pre-configured compeonent so it only has a theory section.
-
-The metrics-server provides cluster metrics, such as container CPU and memory usage via the Kubernetes Metrics API.
-
-To view the metrics made available by metrics server, run the following command in a terminal shell:
-
-`k top nodes`
-
-```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top nodes
-NAME                      CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
-digital-ocean-pool-bdy6   269m         26%    1438Mi          91%
-digital-ocean-pool-bdyl   164m         16%    1296Mi          82%
-digital-ocean-pool-bdyt   186m         18%    1427Mi          90%
-```
-
-or for the Socks Shop Namespaces enter:
-
-`k top pods -n sock-shop`
-
-```
-[jamesbuckett@surface ~ (digital-ocean-cluster:sock-shop)]$ k top pods -n sock-shop
-NAME                            CPU(cores)   MEMORY(bytes)
-carts-56c6fb966b-nrwx4          3m           268Mi
-carts-db-5678cc578f-w99cf       5m           79Mi
-catalogue-644549d46f-mpwrz      1m           5Mi
-catalogue-db-6ddc796b66-rbp7h   1m           196Mi
-front-end-6f9db4fd44-6mcw7      30m          74Mi
-front-end-6f9db4fd44-7n228      20m          68Mi
-front-end-6f9db4fd44-bn6t6      28m          66Mi
-front-end-6f9db4fd44-lsm6z      25m          79Mi
-kube-monkey-6b7c69cdd5-tt24h    0m           7Mi
-orders-749cdc8c9-kqhsw          2m           258Mi
-orders-db-5cfc68c4cf-pf7sq      5m           67Mi
-payment-54f55b96b9-8x8z2        1m           1Mi
-queue-master-6fff667867-fkxj6   2m           148Mi
-rabbitmq-bdfd84d55-nx495        1m           67Mi
-shipping-78794fdb4f-9fvfv       2m           252Mi
-user-77cff48476-lk4rs           1m           3Mi
-user-db-99685d75b-mzhqv         8m           35Mi
-```
-
-[Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)
-* Limits and requests for memory are measured in bytes. 
-* You can express memory as a plain integer or as a fixed-point integer using one of these suffixes: E, P, T, G, M, K. 
-* You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, **Mi**, Ki. 
-
-[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)
-* Limits and requests for CPU resources are measured in cpu units. 
-* One cpu, in Kubernetes, is equivalent to:
- * 1 AWS vCPU
- * 1 GCP Core
- * 1 Azure vCore
- * 1 IBM vCPU
- * 1 Hyperthread on a bare-metal Intel processor with Hyperthreading
-
-As metrics server is running on your cluster you can also see metrics in the DigitalOcean Kubernetes Dashboard. 
-
-To see your cluster metrics 
-* go to https://cloud.digitalocean.com/kubernetes/clusters
-* click on your cluster 
-* click on “Insights” tab
-
-![do-cluster-insights](https://user-images.githubusercontent.com/18049790/65855878-b13ff580-e392-11e9-91dc-92ed31bbddad.png)
-
-For additional information on metrics-server see https://github.com/kubernetes-incubator/metrics-server.
-
-### 11.3 Documentation 
+## 10.1 Documentation 
 * [Kubernetes](https://kubernetes.io)
 * [Prometheus](https://prometheus.io)
 * [Grafana](https://grafana.com)
@@ -909,7 +709,7 @@ For additional information on metrics-server see https://github.com/kubernetes-i
 * [Gremlin](https://www.gremlin.com/)
 * [Locust](https://locust.io/)
 
-### 11.4 Buzz Words
+## 10.2 Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
 * Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
 * Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
