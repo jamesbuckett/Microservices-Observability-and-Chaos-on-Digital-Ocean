@@ -182,8 +182,8 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 * doctl Installation
 ```
 cd ~/ && mkdir doctl && cd doctl
-curl -LO https://github.com/digitalocean/doctl/releases/download/v1.43.0/doctl-1.43.0-linux-amd64.tar.gz 
-tar -xvf doctl-1.43.0-linux-amd64.tar.gz
+curl -LO https://github.com/digitalocean/doctl/releases/download/v1.45.0/doctl-1.45.0-linux-amd64.tar.gz 
+tar -xvf doctl-1.45.0-linux-amd64.tar.gz
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
@@ -232,16 +232,15 @@ k version
 
 Use 'k version' to make sure that your installation is working and 'kubectl' cli is within one minor version of your cluster.
 ```
-[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:default)]# k version
 Client Version: version.Info{Major:"1", Minor:"18", GitVersion:"v1.18.3", GitCommit:"2e7996e3e2712684bc73f0dec0200d64eec7fe40", GitTreeState:"clean", BuildDate:"2020-05-20T12:52:00Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
 Server Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.5", GitCommit:"e0fccafd69541e3750d460ba0f9743b90336f24f", GitTreeState:"clean", BuildDate:"2020-04-16T11:35:47Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 Use `k cluster-info` to get cluster related information
 ```
-[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:default)]# k cluster-info
-Kubernetes master is running at https://714145e4-20b6-4180-800e-acf05d5b48ad.k8s.ondigitalocean.com
-CoreDNS is running at https://714145e4-20b6-4180-800e-acf05d5b48ad.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+[root@digital-ocean-droplet ~/kubectl (do-sgp1-digital-ocean-cluster:default)]# k cluster-info
+Kubernetes master is running at https://e8d7b634-effb-4d9e-8995-4607e38ff95d.k8s.ondigitalocean.com
+CoreDNS is running at https://e8d7b634-effb-4d9e-8995-4607e38ff95d.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
@@ -250,11 +249,14 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 ## 3. Online Boutique - Micro-service Sample Application
 
-### 3.1 What is [Online Boutique?]https://github.com/GoogleCloudPlatform/microservices-demo/) 
+### 3.1 What is [Online Boutique?](https://github.com/GoogleCloudPlatform/microservices-demo/) 
 * This project provides a realistic micro-services oriented e-commerce application. 
-* See the diagram below for the diverse languages, frameworks and databases used in the micro-services application.
+* Online Boutique is a cloud-native microservices demo application. 
+* Online Boutique consists of a 10-tier microservices application. 
+* The application is a web-based e-commerce app where users can browse items, add them to the cart, and purchase them.
+* Online Boutique is composed of many microservices written in different languages that talk to each other over gRPC.
 
-TBD
+
 
 ### 3.2 Install the Online Boutique Application 
 * Create a namespace for Online Boutique.
@@ -270,46 +272,46 @@ Watch the output until this line changes
 Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Online Boutique micro-service.
 
 ```
-Every 1.0s: kubectl get all -n microservices-demo                         digital-ocean-droplet: Sun Jun  7 04:48:32 2020
+Every 1.0s: kubectl get all -n microservices-demo                                digital-ocean-droplet: Sun Jun  7 07:08:05 2020
 
-NAME                                         READY   STATUS    RESTARTS   AGE
-pod/adservice-687b58699c-ms8xc               0/1     Pending   0          74m
-pod/cartservice-778cffc8f6-gdvp2             1/1     Running   0          74m
-pod/checkoutservice-98cf4f4c-hpnvm           1/1     Running   0          74m
-pod/currencyservice-c69c86b7c-7px6b          1/1     Running   0          74m
-pod/emailservice-5db6c8b59f-jnzgs            1/1     Running   0          74m
-pod/frontend-8d8958c77-2k86s                 1/1     Running   0          74m
-pod/loadgenerator-6bf9fd5bc9-dq29d           0/1     Pending   0          74m
-pod/paymentservice-698f684cf9-4gbm5          1/1     Running   0          74m
-pod/productcatalogservice-789c77b8dc-79vx9   1/1     Running   0          74m
-pod/recommendationservice-75d7cd8d5c-tg7hj   1/1     Running   0          74m
-pod/redis-cart-5f59546cdd-lv8jr              1/1     Running   0          74m
-pod/shippingservice-7d87945947-hwzxj         1/1     Running   0          74m
+NAME                                         READY   STATUS              RESTARTS   AGE
+pod/adservice-687b58699c-gvdkp               0/1     Pending             0          37s
+pod/cartservice-778cffc8f6-7hbzs             0/1     ContainerCreating   0          38s
+pod/checkoutservice-98cf4f4c-fpht9           1/1     Running             0          39s
+pod/currencyservice-c69c86b7c-llkn8          0/1     Running             0          38s
+pod/emailservice-5db6c8b59f-r4jtq            1/1     Running             0          39s
+pod/frontend-8d8958c77-gqzs8                 1/1     Running             0          39s
+pod/loadgenerator-6bf9fd5bc9-mc5td           0/1     Pending             0          38s
+pod/paymentservice-698f684cf9-78hj9          1/1     Running             0          38s
+pod/productcatalogservice-789c77b8dc-pq5r9   1/1     Running             0          38s
+pod/recommendationservice-75d7cd8d5c-h9nzb   1/1     Running             0          39s
+pod/redis-cart-5f59546cdd-gt42p              0/1     ContainerCreating   0          37s
+pod/shippingservice-7d87945947-nbhlp         1/1     Running             0          38s
 
-NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE
-service/adservice               ClusterIP      10.245.101.240   <none>           9555/TCP       74m
-service/cartservice             ClusterIP      10.245.97.137    <none>           7070/TCP       74m
-service/checkoutservice         ClusterIP      10.245.214.107   <none>           5050/TCP       74m
-service/currencyservice         ClusterIP      10.245.6.127     <none>           7000/TCP       74m
-service/emailservice            ClusterIP      10.245.130.104   <none>           5000/TCP       74m
-service/frontend                ClusterIP      10.245.191.86    <none>           80/TCP         74m
-service/frontend-external       LoadBalancer   10.245.150.108   188.166.205.97   80:32354/TCP   74m
-service/paymentservice          ClusterIP      10.245.52.41     <none>           50051/TCP      74m
-service/productcatalogservice   ClusterIP      10.245.20.102    <none>           3550/TCP       74m
-service/recommendationservice   ClusterIP      10.245.205.151   <none>           8080/TCP       74m
-service/redis-cart              ClusterIP      10.245.96.29     <none>           6379/TCP       74m
-service/shippingservice         ClusterIP      10.245.55.138    <none>           50051/TCP      74m
+NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+service/adservice               ClusterIP      10.245.93.98     <none>        9555/TCP       37s
+service/cartservice             ClusterIP      10.245.120.182   <none>        7070/TCP       38s
+service/checkoutservice         ClusterIP      10.245.126.99    <none>        5050/TCP       39s
+service/currencyservice         ClusterIP      10.245.131.169   <none>        7000/TCP       38s
+service/emailservice            ClusterIP      10.245.78.86     <none>        5000/TCP       39s
+service/frontend                ClusterIP      10.245.66.127    <none>        80/TCP         39s
+service/frontend-external       LoadBalancer   10.245.68.226    <pending>     80:30922/TCP   38s
+service/paymentservice          ClusterIP      10.245.148.181   <none>        50051/TCP      38s
+service/productcatalogservice   ClusterIP      10.245.213.203   <none>        3550/TCP       38s
+service/recommendationservice   ClusterIP      10.245.179.187   <none>        8080/TCP       39s
+service/redis-cart              ClusterIP      10.245.52.37     <none>        6379/TCP       37s
+service/shippingservice         ClusterIP      10.245.243.193   <none>        50051/TCP      38s
 
 NAME                                    READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/adservice               0/1     1            0           74m
-deployment.apps/cartservice             1/1     1            1           74m
-deployment.apps/checkoutservice         1/1     1            1           74m
-deployment.apps/currencyservice         1/1     1            1           74m
-deployment.apps/emailservice            1/1     1            1           74m
-deployment.apps/frontend                1/1     1            1           74m
-deployment.apps/loadgenerator           0/1     1            0           74m
-deployment.apps/paymentservice          1/1     1            1           74m
-deployment.apps/productcatalogservice   1/1     1            1           74m
+deployment.apps/adservice               0/1     1            0           37s
+deployment.apps/cartservice             0/1     1            0           38s
+deployment.apps/checkoutservice         1/1     1            1           39s
+deployment.apps/currencyservice         0/1     1            0           38s
+deployment.apps/emailservice            1/1     1            1           39s
+deployment.apps/frontend                1/1     1            1           39s
+deployment.apps/loadgenerator           0/1     1            0           38s
+deployment.apps/paymentservice          1/1     1            1           38s
+deployment.apps/productcatalogservice   1/1     1            1           38s
 ```
 
 The Load Balancer takes about four minutes to provision.
@@ -320,10 +322,7 @@ To Access Online Boutique
 * The IP address under EXTERNAL-IP is the external IP address of Online Boutique
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Online Boutique
-* Login to the site with:
-  * user: user
-  * password: password
-* Feel free to browse around and order some socks
+* Feel free to browse around and order some hipster products
 
 ## 4. Grafana - UI
 
@@ -662,7 +661,7 @@ Delete Kubernetes Cluster
 * `doctl kubernetes cluster delete digital-ocean-cluster`
 
 Delete Kubernetes Cluster
-* `doctl compute load-balancer list > awk 'FNR == 2 {print $1}'`
+* `doctl compute load-balancer list | awk 'FNR == 2 {print $1}'`
   * Get ID for each Load Balancer
 * `doctl compute load-balancer delete <ID>`
   * Confirm with `y`
