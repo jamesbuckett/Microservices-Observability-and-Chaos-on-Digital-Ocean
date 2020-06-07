@@ -359,8 +359,6 @@ prometheus-operator-grafana   LoadBalancer   10.245.220.96   x.x.x.x          80
 
 * Paste the EXTERNAL-IP into your web browser.
 * The default username and password are `admin` and `prom-operator` 
-  * If you have trouble with the password use this command: 
-    `kubectl get secret --namespace <name-space> <secret> -o jsonpath="{.data.admin-user}" | base64 --decode
 * Once you have logged in the default Grafana Home dashboard will be displayed. 
 * To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
 
@@ -480,8 +478,8 @@ Signup for Gremlin service
   * If on Mac download the `certificate.zip` to the `~/download` directory.
 * The downloaded `certificate.zip` contains both a public-key certificate and a matching private key.
 * Obtain the external IP address of `digital-ocean-droplet`
-  * `doctl compute droplet list`
-  * Get the `Public IPv4` for `digital-ocean-droplet`
+  * `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
+  * This is the `Public IPv4` for `digital-ocean-droplet`
 * For Windows use WinSCP to upload `certificate.zip` to `digital-ocean-droplet` to `home/root/gremlin`
   * Add your private key to WinSCP 
     * Advanced..SSH..Authentication..Private key file
@@ -541,22 +539,22 @@ helm install \
 
 You should see similar output to the following.
 ```
-Every 1.0s: kubectl get all -n gremlin                                           digital-ocean-droplet: Sun May 24 03:58:58 2020
+Every 1.0s: kubectl get all -n gremlin                                           digital-ocean-droplet: Sun Jun  7 12:08:54 2020
 
-NAME                        READY   STATUS    RESTARTS   AGE
-pod/chao-69b5cbc94c-qdqfq   1/1     Running   0          50s
-pod/gremlin-jw7kb           1/1     Running   0          50s
-pod/gremlin-kgnmk           1/1     Running   0          50s
-pod/gremlin-zmh5v           1/1     Running   0          50s
+NAME                        READY   STATUS              RESTARTS   AGE
+pod/chao-69b5cbc94c-5cqgc   0/1     ContainerCreating   0          37s
+pod/gremlin-jjh5c           0/1     ContainerCreating   0          37s
+pod/gremlin-l6tbl           0/1     ContainerCreating   0          37s
+pod/gremlin-w7nqh           0/1     ContainerCreating   0          37s
 
 NAME                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-daemonset.apps/gremlin   3         3         3       3            3           <none>          50s
+daemonset.apps/gremlin   3         3         0       3            0           <none>          37s
 
 NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/chao   1/1     1            1           50s
+deployment.apps/chao   0/1     1            0           37s
 
 NAME                              DESIRED   CURRENT   READY   AGE
-replicaset.apps/chao-69b5cbc94c   1         1         1       50s
+replicaset.apps/chao-69b5cbc94c   1         1         0       37s
 ```
 
 ## 8. Practical - High CPU Resource Attack
@@ -565,8 +563,8 @@ replicaset.apps/chao-69b5cbc94c   1         1         1       50s
 
 #### 8.1.1 Locust 
 * Locust should still be running from a previous step.
-  * `doctl compute droplet list`
-  * Get the `Public IPv4` for `digital-ocean-droplet`
+  * `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
+  * This is the `Public IPv4` for `digital-ocean-droplet`
   * Browse to : `http://<Public IPv4>:8089/`
 
 #### 8.1.2 Grafana 
@@ -587,7 +585,7 @@ replicaset.apps/chao-69b5cbc94c   1         1         1       50s
 * Switch to the Grafana UI 
   * Top left click on `Home`
   * Under General
-    * `USE Method / Node`
+    * `Nodes`
       * USE is an acronym for Utilization, Saturation, and Errors (resource-scoped)
       * RED is an acronym for Rate, Errors, and Duration (request-scoped)
   * Top Right click Clock Icon with text Last 1 hour
