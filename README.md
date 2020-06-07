@@ -145,8 +145,8 @@ Note: This stack requires a minimum configuration of
   
 ### 2.6 Digital Ocean Kubernetes cluster
 * 2.6.1 Go to "Discover"..."Marketplace" on the left tab.
-* 2.6.2 Under "Find a Solution" click the "Kubernetes - New" tab.
-* 2.6.3 Click the "[Prometheus Kubernetes](https://cloud.digitalocean.com/marketplace/5dd48071316b030ef2788c9b?i=9ca3ac)"
+* 2.6.2 To the right of "Marketplace Applications" use dropdown to search for "Monitoring".
+* 2.6.3 Click the "[Prometheus Kubernetes Version 0.34.0](https://cloud.digitalocean.com/marketplace/5dd48071316b030ef2788c9b?i=9ca3ac)"
 * 2.6.4 Select `Install App` by moving mouse over the tile.
 * 2.6.5 Leave the Kubernetes version at the latest.
 * 2.6.6 Choose a datacentre region: `Singapore`
@@ -168,7 +168,7 @@ Note: This stack requires a minimum configuration of
 
 ### 2.7 Install Distributed Logging (Loki)
 * 2.7.1 Go to "Discover"..."Marketplace" on the left tab.
-* 2.7.2 Under "Find a Solution" click the "Kubernetes - New" tab.
+* 2.7.2 To the right of "Marketplace Applications" use dropdown to search for "Monitoring".
 * 2.7.3 Hover your mouse over the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)" tile
 * 2.7.4 `Install App`...`Select a cluster option`...`digital-ocean-cluster`
 * 2.7.5 Select `Install` button below.
@@ -253,71 +253,68 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 #### 2.8.3 Kubernetes Tools (Optional)
 * [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools)
 
-## 3. Socks Shop - Micro-service
+## 3. Online Boutique - Micro-service Sample Application
 
-### 3.1 What is [Socks Shop?](https://microservices-demo.github.io) 
+### 3.1 What is [Online Boutique?]https://github.com/GoogleCloudPlatform/microservices-demo/) 
 * This project provides a realistic micro-services oriented e-commerce application. 
 * See the diagram below for the diverse languages, frameworks and databases used in the micro-services application.
 
-![image](https://user-images.githubusercontent.com/18049790/65854068-1d6c2a80-e38e-11e9-9337-cc398eb9a1f0.png)
-Credit to [Learn Micro-service from Sock Shop](https://medium.com/@panan_songyu/learn-micro-service-from-sock-shop-1-d80e815f3394)
+TBD
 
-### 3.2 Install the Socks Shop Application 
-* Create a namespace for sock shop.
-* `k create namespace sock-shop`
-* `k apply -n sock-shop -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
+### 3.2 Install the Online Boutique Application 
+* Create a namespace for Online Boutique.
+* `k create namespace microservices-demo`
+* `k apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml"`
 
-Run this command : `watch -n 1 kubectl get all -n sock-shop`
+Run this command : `watch -n 1 kubectl get all -n microservices-demo`
 
 Watch the output until this line changes 
-* from : `service/front-end      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
-* to   : `service/front-end      LoadBalancer   x.x.x.x      x.x.x.x       80:30001/TCP   3m15s`
+* from : `service/frontend-external      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
+* to   : `service/frontend-external      LoadBalancer   x.x.x.x      x.x.x.x       80:30001/TCP   3m15s`
 
 Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Socks Shop micro-service.
 
 ```
-Every 1.0s: kubectl get all -n sock-shop                                               digital-ocean-droplet: Thu Oct 17 07:34:50 2019
+Every 1.0s: kubectl get all -n microservices-demo                         digital-ocean-droplet: Sun Jun  7 04:48:32 2020
 
-NAME                                READY   STATUS              RESTARTS   AGE
-pod/carts-56c6fb966b-8schz          1/1     Running             0          2m7s
-pod/carts-db-5678cc578f-zprvg       1/1     Running             0          2m8s
-pod/catalogue-644549d46f-6zqbr      1/1     Running             0          2m6s
-pod/catalogue-db-6ddc796b66-zj2cc   1/1     Running             0          2m7s
-pod/front-end-5594987df6-69wkf      1/1     Running             0          2m5s
-pod/front-end-5594987df6-8vs7k      1/1     Running             0          2m5s
-pod/front-end-5594987df6-nxzcw      1/1     Running             0          2m5s
-pod/front-end-5594987df6-pl8qm      1/1     Running             0          2m5s
-pod/orders-749cdc8c9-9dh85          1/1     Running             0          2m4s
-pod/orders-db-5cfc68c4cf-sslpx      1/1     Running             0          2m5s
-pod/payment-54f55b96b9-kw7dj        1/1     Running             0          2m4s
-pod/queue-master-6fff667867-bbv8f   1/1     Running             0          2m3s
-pod/rabbitmq-bdfd84d55-njmnj        1/1     Running             0          2m3s
-pod/shipping-78794fdb4f-b8s7w       1/1     Running             0          2m2s
-pod/user-77cff48476-2bnvh           1/1     Running             0          2m1s
-pod/user-db-99685d75b-gvbsp         0/1     ContainerCreating   0          2m2s
+NAME                                         READY   STATUS    RESTARTS   AGE
+pod/adservice-687b58699c-ms8xc               0/1     Pending   0          74m
+pod/cartservice-778cffc8f6-gdvp2             1/1     Running   0          74m
+pod/checkoutservice-98cf4f4c-hpnvm           1/1     Running   0          74m
+pod/currencyservice-c69c86b7c-7px6b          1/1     Running   0          74m
+pod/emailservice-5db6c8b59f-jnzgs            1/1     Running   0          74m
+pod/frontend-8d8958c77-2k86s                 1/1     Running   0          74m
+pod/loadgenerator-6bf9fd5bc9-dq29d           0/1     Pending   0          74m
+pod/paymentservice-698f684cf9-4gbm5          1/1     Running   0          74m
+pod/productcatalogservice-789c77b8dc-79vx9   1/1     Running   0          74m
+pod/recommendationservice-75d7cd8d5c-tg7hj   1/1     Running   0          74m
+pod/redis-cart-5f59546cdd-lv8jr              1/1     Running   0          74m
+pod/shippingservice-7d87945947-hwzxj         1/1     Running   0          74m
 
-NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-service/carts          ClusterIP      10.245.154.64    <none>        80/TCP         2m7s
-service/carts-db       ClusterIP      10.245.73.210    <none>        27017/TCP      2m7s
-service/catalogue      ClusterIP      10.245.249.82    <none>        80/TCP         2m6s
-service/catalogue-db   ClusterIP      10.245.195.109   <none>        3306/TCP       2m6s
-service/front-end      LoadBalancer   10.245.114.199   <pending>     80:30001/TCP   2m5s
-service/orders         ClusterIP      10.245.200.240   <none>        80/TCP         2m4s
-service/orders-db      ClusterIP      10.245.156.207   <none>        27017/TCP      2m5s
-service/payment        ClusterIP      10.245.89.114    <none>        80/TCP         2m3s
-service/queue-master   ClusterIP      10.245.206.155   <none>        80/TCP         2m3s
-service/rabbitmq       ClusterIP      10.245.252.5     <none>        5672/TCP       2m2s
-service/shipping       ClusterIP      10.245.200.49    <none>        80/TCP         2m2s
-service/user           ClusterIP      10.245.1.54      <none>        80/TCP         2m1s
-service/user-db        ClusterIP      10.245.223.84    <none>        27017/TCP      2m1s
+NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)        AGE
+service/adservice               ClusterIP      10.245.101.240   <none>           9555/TCP       74m
+service/cartservice             ClusterIP      10.245.97.137    <none>           7070/TCP       74m
+service/checkoutservice         ClusterIP      10.245.214.107   <none>           5050/TCP       74m
+service/currencyservice         ClusterIP      10.245.6.127     <none>           7000/TCP       74m
+service/emailservice            ClusterIP      10.245.130.104   <none>           5000/TCP       74m
+service/frontend                ClusterIP      10.245.191.86    <none>           80/TCP         74m
+service/frontend-external       LoadBalancer   10.245.150.108   188.166.205.97   80:32354/TCP   74m
+service/paymentservice          ClusterIP      10.245.52.41     <none>           50051/TCP      74m
+service/productcatalogservice   ClusterIP      10.245.20.102    <none>           3550/TCP       74m
+service/recommendationservice   ClusterIP      10.245.205.151   <none>           8080/TCP       74m
+service/redis-cart              ClusterIP      10.245.96.29     <none>           6379/TCP       74m
+service/shippingservice         ClusterIP      10.245.55.138    <none>           50051/TCP      74m
 
-NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/carts          1/1     1            1           2m7s
-deployment.apps/carts-db       1/1     1            1           2m8s
-deployment.apps/catalogue      1/1     1            1           2m6s
-deployment.apps/catalogue-db   1/1     1            1           2m7s
-deployment.apps/front-end      4/4     4            4           2m6s
-deployment.apps/orders         1/1     1            1           2m4s
+NAME                                    READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/adservice               0/1     1            0           74m
+deployment.apps/cartservice             1/1     1            1           74m
+deployment.apps/checkoutservice         1/1     1            1           74m
+deployment.apps/currencyservice         1/1     1            1           74m
+deployment.apps/emailservice            1/1     1            1           74m
+deployment.apps/frontend                1/1     1            1           74m
+deployment.apps/loadgenerator           0/1     1            0           74m
+deployment.apps/paymentservice          1/1     1            1           74m
+deployment.apps/productcatalogservice   1/1     1            1           74m
 ```
 
 The Load Balancer takes about four minutes to provision.
@@ -407,21 +404,17 @@ Scroll down the page and observe the metrics for the Socks Shop micro-service
 * Locust is an easy-to-use, distributed, user load testing tool. 
 * It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. 
 
-### 5.2 Install Python
+### 5.2 Install Locust
 
-`sudo apt-get update`
+```
+sudo apt-get update
 
-`sudo apt-get install python -y`
+sudo apt-get upgrade
 
-`sudo apt-get install python-pip -y`
+sudo apt install -y python3-pip
 
-`sudo apt-get install python-pip -y`
-
-### 5.3 Install Locust
-
-`python -m pip install locustio==0.13.5`
-
-`python -m pip install gevent`
+pip3 install locust
+```
 
 ### 5.3 Configure Locust
 ```
