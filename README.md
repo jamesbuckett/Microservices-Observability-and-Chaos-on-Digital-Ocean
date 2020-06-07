@@ -318,8 +318,8 @@ The Load Balancer takes about four minutes to provision.
 
 To Access Online Boutique 
 * Obtain the external IP address of Online Boutique.
-* `k -n microservices-demo get svc frontend-external`
-* The IP address under EXTERNAL-IP is the external IP address of Online Boutique
+* `kubectl -n microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
+* This is the EXTERNAL-IP of the Online Boutique
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Online Boutique
 * Feel free to browse around and order some hipster products
@@ -339,6 +339,7 @@ To Access Online Boutique
 - **** Follow the steps below **** -
 ```
 
+Use kubectl to change the Service Type from ClusterIP to LoadBalancer
 ```
 kubectl get service prometheus-operator-grafana -o yaml --export -n prometheus-operator > prometheus-operator-grafana.yml
 sed -i 's/ClusterIP/LoadBalancer/g' prometheus-operator-grafana.yml
@@ -348,7 +349,7 @@ kubectl apply -f prometheus-operator-grafana.yml -n prometheus-operator
 * Grafana is exposed via a DigitalOcean Load Balancer.
 * Get the IP address to access your Grafana instance by running the following in a terminal shell and copying the EXTERNAL-IP and pasting it into a browser.
 
-`k -n prometheus-operator get svc prometheus-operator-grafana`
+`kubectl -n prometheus-operator get svc prometheus-operator-grafana | awk 'FNR == 2 {print $4}'`
 
 ```
 root@digital-ocean-droplet:~# k -n prometheus-operator get svc prometheus-operator-grafana
@@ -379,7 +380,7 @@ Top left click on `Home`
 
 Under `General` select `Kubernetes / Compute Resources / Namespace(Pods)`
 * datasource: Prometheus
-* Namespace: sock-shop
+* Namespace: microservices-demo
 * Top Right click Clock Icon with text `Last 1 hour`
   * Under Quick Ranges
     * Select `Last 5 minutes`
@@ -417,15 +418,15 @@ wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/
 ```
 
 Obtain the external IP address of Online Boutique.
-* `k -n sock-shop get svc front-end`
-* The IP address under EXTERNAL-IP is the external IP address of Online Boutique.
+* `kubectl -n microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
+* This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
 Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
 
 Obtain the external IP address of `digital-ocean-droplet`
-* `doctl compute droplet list`
-* Get the `Public IPv4` for `digital-ocean-droplet`
+* `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
+* This is the `Public IPv4` for `digital-ocean-droplet`
 
 Browse to : `http://<Public IPv4>:8089/`
 * Enter these values 
