@@ -75,7 +75,7 @@
 ### 1.2 Requirements
 * 1.2.1 A Digital Ocean Account
   * A credit card or debit card is required to sign up to Digital Ocean
-  * The Referal Link provided gives $50 credit for 30 days to offset the cost of this tutorial 
+  * The Referral Link provided gives $50 credit for 30 days to offset the cost of this tutorial 
 * 1.2.2 A Terminal Emulator to interact with the cluster
   * If using Windows 10 please install the following software:
     * [PuTTY](https://www.putty.org/) 
