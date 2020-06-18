@@ -93,6 +93,7 @@ Note: This stack requires a minimum configuration of
 
 ```diff
 - Please tear all infrastructure at the end of this tutorial or you will incur a cost at the end of the month -
+- I accept no liability for any costs incurred - 
 ```
 
 ## 2. Digital Ocean - Cloud Provider
@@ -102,7 +103,7 @@ Note: This stack requires a minimum configuration of
 
 ### 2.2 Setup a Digital Ocean Project
 * 2.2.1 Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
-  * 2.2.1.1 Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $50 in credit 
+  * 2.2.1.1 Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $100 in credit 
 * 2.2.2 Create a new Project called : `digital-ocean-project`
 * 2.2.3 Make sure you select the Project called `digital-ocean-project` and proceed to next step
 
