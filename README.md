@@ -228,8 +228,13 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 
 Set context and alias
 ```
-kubectl config use-context do-sgp1-digital-ocean-cluster
-alias k='kubectl'
+cd ~
+echo "alias cls='clear'" >> .bashrc 
+echo "alias k='kubectl'" >> .bashrc
+```
+
+```
+k config use-context do-sgp1-digital-ocean-cluster
 k version
 ```
 
