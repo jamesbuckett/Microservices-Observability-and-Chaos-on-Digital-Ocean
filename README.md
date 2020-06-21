@@ -140,7 +140,13 @@ Note: This stack requires a minimum configuration of
     * `Private Key for Authentication`
 * 2.5.4 On Mac open a terminal 
   * `ssh root@<IP Address>` 
-  
+
+* Update and Upgrade Ubuntu
+```  
+sudo apt-get update 
+sudo apt-get upgrade -y
+```
+
 ### 2.6 Digital Ocean Kubernetes cluster
 * 2.6.1 Go to "Discover"..."Marketplace" on the left tab.
 * 2.6.2 To the right of "Marketplace Applications" use dropdown to search for "Monitoring".
@@ -350,8 +356,17 @@ To Access Online Boutique
 Use kubectl to change the Service Type from ClusterIP to LoadBalancer
 ```
 cd ~/ && mkdir fix-grafana && cd fix-grafana
+```
+Export the prometheus-operator-grafana service definition
+```
 kubectl get service prometheus-operator-grafana -o yaml --export -n prometheus-operator > prometheus-operator-grafana.yml
+```
+Update the prometheus-operator-grafana service definition with LoadBalancer
+```
 sed -i 's/ClusterIP/LoadBalancer/g' prometheus-operator-grafana.yml
+```
+Apply the file
+```
 kubectl apply -f prometheus-operator-grafana.yml -n prometheus-operator
 ```
 
@@ -378,6 +393,8 @@ Add Loki as a DataSource
 Install Loki Dashboard
 * On left side select `Create` icon...`Import`...`Grafana.com Dashboard`
 * `12019`...`Import`
+* Select `Loki` as Loki Data Source
+* Select `Prometheus` as Prometheus Data Source
 * On left side select `Dashboard` icon...`Manage`...`Find`...`loki`
 * Open the `Loki Dashboard quick search` dashboard and look around
 
@@ -409,10 +426,6 @@ Scroll down the page and observe the metrics for the Online Boutique micro-servi
 ### 5.2 Install Locust
 
 ```
-sudo apt-get update
-
-sudo apt-get upgrade
-
 sudo apt install -y python3-pip
 
 pip3 install locust
@@ -611,7 +624,7 @@ replicaset.apps/chao-69b5cbc94c   1         1         0       37s
   * Choose Hosts to target
     * Target all hosts
       * Select check boxes next to all hosts that start with `pool`
-      * Interface will indicated `3 of 3 HOSTS TARGETED`
+      * Interface will indicated `4 of 4 HOSTS TARGETED`
   * Scroll down select `Choose a Gremlin`
   * Under `Category` select `Resource` and `CPU`
     * Next to `Length` enter `180`
