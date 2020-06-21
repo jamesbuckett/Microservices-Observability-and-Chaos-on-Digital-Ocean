@@ -349,6 +349,7 @@ To Access Online Boutique
 
 Use kubectl to change the Service Type from ClusterIP to LoadBalancer
 ```
+cd ~/ && mkdir fix-grafana && cd fix-grafana
 kubectl get service prometheus-operator-grafana -o yaml --export -n prometheus-operator > prometheus-operator-grafana.yml
 sed -i 's/ClusterIP/LoadBalancer/g' prometheus-operator-grafana.yml
 kubectl apply -f prometheus-operator-grafana.yml -n prometheus-operator
