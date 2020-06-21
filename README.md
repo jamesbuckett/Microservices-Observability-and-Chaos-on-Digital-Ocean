@@ -68,9 +68,10 @@
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
 * Deploy Loki for distributed logging on the cluster
 * Deploy the Online Boutique micro-services application onto the Kubernetes cluster on Digital Ocean
-* Verify operation of the Online Boutique micro-service
+* Verify operation of the Online Boutique micro-service application
 * Observe the Online Boutique micro-service with the Observability software
-* Perform Chaos Engineering on the Online Boutique micro-service
+* Install Load Testing with Locust against the Online Boutique micro-service application
+* Perform Chaos Engineering on the Online Boutique micro-service application
 
 ### 1.2 Requirements
 * 1.2.1 A Digital Ocean Account
