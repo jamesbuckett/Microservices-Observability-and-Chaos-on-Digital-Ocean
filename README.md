@@ -165,8 +165,8 @@ Note: This stack requires a minimum configuration of
 ```
 
 ### 2.7 Install Distributed Logging (Loki)
-* 2.7.1 Go to "Discover"..."Marketplace" on the left tab.
-* 2.7.2 To the right of "Marketplace Applications" use dropdown to search for "Monitoring".
+* 2.7.1 Go to "Discover"..."Marketplace" on the left tab
+* 2.7.2 To the right of "Marketplace Applications" use dropdown to search for "Logging"
 * 2.7.3 Hover your mouse over the "[Grafana Loki](https://cloud.digitalocean.com/marketplace/5db68268316b031f2a877a63?i=9ca3ac)" tile
 * 2.7.4 `Install App`...`Select a cluster option`...`digital-ocean-cluster`
 * 2.7.5 Select `Install` button below.
@@ -192,7 +192,7 @@ sudo mv ~/doctl/doctl /usr/local/bin
 
 * doctl Configuration
   * Login to Digital Ocean
-  * Go to "Manage".."API" on the left tab.
+  * Go to "Account".."API" on the left tab.
   * Applications & API..Tokens/Keys..Personal access tokens
   * Select `Generate New Token`
   * Token name: `digital-ocean-access-token`
