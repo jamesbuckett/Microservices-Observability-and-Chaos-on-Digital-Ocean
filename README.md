@@ -66,6 +66,7 @@
 ### 1.1 Agenda
 * Deploy a Ubuntu jump host on Digital Ocean with SSH access
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
+* Install command line tools and utilities
 * Deploy Loki for distributed logging on the cluster
 * Deploy the Online Boutique micro-services application onto the Kubernetes cluster on Digital Ocean
 * Verify operation of the Online Boutique micro-service application
@@ -76,7 +77,7 @@
 ### 1.2 Requirements
 * 1.2.1 A Digital Ocean Account
   * A credit card or debit card is required to sign up to Digital Ocean
-  * The Referral Link provided gives $100 credit for 60 days to offset the cost of this tutorial 
+  * The [referral link](https://m.do.co/c/ac62c560d54a) provided gives $100 credit for 60 days to offset the cost of this tutorial 
 * 1.2.2 A Terminal Emulator to interact with the cluster
   * If using Windows 10 please install the following software:
     * [PuTTY](https://www.putty.org/) 
@@ -103,8 +104,8 @@ Note: This stack requires a minimum configuration of
 * Digital Ocean is a cloud computing vendor that offers Infrastructure as a Service (IaaS) and Container as a Service (CaaS) platforms for software developers.  
 
 ### 2.2 Setup a Digital Ocean Project
-* 2.2.1 Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login.
-  * 2.2.1.1 Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $100 in credit 
+* 2.2.1 Go to [Digital Ocean](https://www.digitalocean.com) and sign up or login
+  * 2.2.1.1 Use this [referral link](https://m.do.co/c/ac62c560d54a) to get $100 for 60 days in credit 
 * 2.2.2 Create a new Project called : `digital-ocean-project`
 * 2.2.3 Make sure you select the Project called `digital-ocean-project` and proceed to next step
 
