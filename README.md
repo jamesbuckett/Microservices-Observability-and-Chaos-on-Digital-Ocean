@@ -679,16 +679,16 @@ Two methods to clean up
 ### 9.1 CLI Method
 
 Delete Kubernetes Cluster
-* `doctl kubernetes cluster delete digital-ocean-cluster`
+* `doctl kubernetes cluster delete digital-ocean-cluster -f`
 
 Delete Kubernetes Cluster
 * `doctl compute load-balancer list | awk 'FNR == 2 {print $1}'`
   * Get ID for each Load Balancer
-* `doctl compute load-balancer delete <ID>`
+* `doctl compute load-balancer delete <ID> -f`
   * Confirm with `y`
   
 Delete Droplet  
-* `doctl compute droplet delete digital-ocean-droplet`  
+* `doctl compute droplet delete digital-ocean-droplet -f`  
 
 ### 9.2 GUI Method
 
