@@ -546,12 +546,10 @@ helm repo add gremlin https://helm.gremlin.com
 
 Install the Gremlin Kubernetes client
 ```
-helm install \
-	--namespace gremlin \
-	gremlin \
-	gremlin/gremlin \
-	--set gremlin.teamID=$GREMLIN_TEAM_ID \
-	--set gremlin.clusterID=$GREMLIN_CLUSTER_ID
+helm install gremlin gremlin/gremlin \
+  --namespace gremlin \
+  --set gremlin.teamID=$GREMLIN_TEAM_ID \
+  --set gremlin.clusterID=$GREMLIN_CLUSTER_ID
 ```
 
 ### 7.4 Verify Gremlin Operation
