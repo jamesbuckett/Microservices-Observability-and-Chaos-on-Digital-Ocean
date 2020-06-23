@@ -264,6 +264,8 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 ## 3. Online Boutique - Micro-service Sample Application
 
+### 3.0 Acknowledgement and credit to all the [contributors](https://github.com/GoogleCloudPlatform/microservices-demo/graphs/contributors) on the [microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) project.
+
 ### 3.1 What is [Online Boutique?](https://github.com/GoogleCloudPlatform/microservices-demo/) 
 * This project provides a realistic micro-services oriented e-commerce application. 
 * Online Boutique is a cloud-native microservices demo application. 
@@ -441,7 +443,10 @@ Obtain the external IP address of Online Boutique.
 * This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
-Start locust with this command: `locust -f ~/locust/locustfile-socks-shop.py --host=http://<EXTERNAL-IP> &`
+Export the front end of Online Boutique
+`export FRONTEND_ADDR=<EXTERNAL-IP>`
+
+Start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
 
 Obtain the external IP address of `digital-ocean-droplet`
 * `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
