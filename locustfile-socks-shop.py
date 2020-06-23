@@ -1,5 +1,7 @@
 #!/usr/bin/python
 #
+# Copyright 2018 Google LLC
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -26,24 +28,19 @@ products = [
     'LS4PSXUNUM',
     'OLJCESPC7Z']
 
-
 def index(l):
     l.client.get("/")
-
 
 def setCurrency(l):
     currencies = ['EUR', 'USD', 'JPY', 'CAD']
     l.client.post("/setCurrency",
         {'currency_code': random.choice(currencies)})
 
-
 def browseProduct(l):
     l.client.get("/product/" + random.choice(products))
 
-
 def viewCart(l):
     l.client.get("/cart")
-
 
 def addToCart(l):
     product = random.choice(products)
@@ -51,7 +48,6 @@ def addToCart(l):
     l.client.post("/cart", {
         'product_id': product,
         'quantity': random.choice([1,2,3,4,5,10])})
-
 
 def checkout(l):
     addToCart(l)
@@ -68,7 +64,6 @@ def checkout(l):
         'credit_card_cvv': '672',
     })
 
-
 class UserBehavior(TaskSet):
 
     def on_start(self):
@@ -80,7 +75,6 @@ class UserBehavior(TaskSet):
         addToCart: 2,
         viewCart: 3,
         checkout: 1}
-
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
