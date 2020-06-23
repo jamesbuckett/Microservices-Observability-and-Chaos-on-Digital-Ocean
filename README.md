@@ -538,6 +538,8 @@ export GREMLIN_CLUSTER_ID=digital-ocean-cluster
     * Your `Team ID` should be on the top row
     * Your `Team ID` is your `GREMLIN_TEAM_ID`
 
+If you have trouble with this section please go [here](https://www.gremlin.com/community/tutorials/how-to-install-and-use-gremlin-with-kubernetes/)
+
 Add the Gremlin helm chart
 ```
 helm repo remove gremlin
