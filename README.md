@@ -237,6 +237,7 @@ Set context and alias
 cd ~
 echo "alias cls='clear'" >> .bashrc 
 echo "alias k='kubectl'" >> .bashrc
+echo "alias kga='kubectl get all'" >> .bashrc
 ```
 
 ```
