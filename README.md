@@ -436,7 +436,7 @@ sudo apt install -y python3-pip && pip3 install locust
 
 ```
 cd ~/ && mkdir locust && cd locust
-wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/locustfile-socks-shop.py
+wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/locustfile.py
 ```
 
 Obtain the external IP address of Online Boutique.
