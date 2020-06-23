@@ -433,6 +433,7 @@ sudo apt install -y python3-pip && pip3 install locust
 ```
 
 ### 5.3 Configure Locust
+
 ```
 cd ~/ && mkdir locust && cd locust
 wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/locustfile-socks-shop.py
