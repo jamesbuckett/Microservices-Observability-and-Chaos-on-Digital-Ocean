@@ -427,9 +427,7 @@ Scroll down the page and observe the metrics for the Online Boutique micro-servi
 ### 5.2 Install Locust
 
 ```
-sudo apt install -y python3-pip
-
-pip3 install locust
+sudo apt install -y python3-pip && pip3 install locust
 ```
 
 ### 5.3 Configure Locust
