@@ -58,8 +58,8 @@
 *   9.2.2 Load Balancer
 *   9.2.3 Droplet
 10. Theory
-* 11.1 Documentation
-* 11.2 Buzz Words
+* 10.1 Documentation
+* 10.2 Buzz Words
 
 ## 1. Introduction
 
