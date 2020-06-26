@@ -52,6 +52,7 @@ def addToCart(l):
         'product_id': product,
         'quantity': random.choice([1,2,3,4,5,10])})
 
+
 def checkout(l):
     addToCart(l)
     l.client.post("/cart/checkout", {
@@ -66,6 +67,7 @@ def checkout(l):
         'credit_card_expiration_year': '2039',
         'credit_card_cvv': '672',
     })
+
 
 class UserBehavior(TaskSet):
 

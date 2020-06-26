@@ -264,7 +264,8 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 ## 3. Online Boutique - Micro-service Sample Application
 
-### 3.0 Acknowledgement and credit to all the [contributors](https://github.com/GoogleCloudPlatform/microservices-demo/graphs/contributors) on the [microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) project.
+### 3.0 Acknowledgement of Source
+* Acknowledgement and credit to all the [contributors](https://github.com/GoogleCloudPlatform/microservices-demo/graphs/contributors) on the [microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) project.
 
 ### 3.1 What is [Online Boutique?](https://github.com/GoogleCloudPlatform/microservices-demo/) 
 * This project provides a realistic micro-services oriented e-commerce application. 
