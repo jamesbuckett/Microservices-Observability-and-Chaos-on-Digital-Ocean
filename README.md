@@ -141,10 +141,11 @@ Note: This stack requires a minimum configuration of
 * 2.5.4 On Mac open a terminal 
   * `ssh root@<IP Address>` 
 
-* Update and Upgrade Ubuntu
+* Update and Upgrade Ubuntu and install Python PIP
 ```  
 sudo apt-get update 
 sudo apt-get upgrade -y
+sudo apt install -y python3-pip -y
 ```
 
 ### 2.6 Digital Ocean Kubernetes cluster
@@ -430,7 +431,7 @@ Scroll down the page and observe the metrics for the Online Boutique micro-servi
 ### 5.2 Install Locust
 
 ```
-sudo apt install -y python3-pip && pip3 install locust
+pip3 install locust
 ```
 
 ### 5.3 Configure Locust
