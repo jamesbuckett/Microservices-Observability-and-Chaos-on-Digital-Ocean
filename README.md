@@ -143,7 +143,7 @@ Note: This stack requires a minimum configuration of
 
 * Update and Upgrade Ubuntu and install Python PIP
 ```  
-sudo apt-get update 
+sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt install -y python3-pip -y
 ```
@@ -240,6 +240,8 @@ echo "alias cls='clear'" >> .bashrc
 echo "alias k='kubectl'" >> .bashrc
 echo "alias kga='kubectl get all'" >> .bashrc
 ```
+
+`. .bashrc`
 
 ```
 k config use-context do-sgp1-digital-ocean-cluster
