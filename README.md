@@ -236,12 +236,13 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 Set context and alias
 ```
 cd ~
-echo "alias cls='clear'" >> .bashrc 
-echo "alias k='kubectl'" >> .bashrc
-echo "alias kga='kubectl get all'" >> .bashrc
+echo 'source <(kubectl completion bash)' >>~/.bashrc
+echo "alias cls='clear'" >> ~/.bashrc
+echo "alias k='kubectl'" >> ~/.bashrc
+echo "alias kga='kubectl get all'" >> ~/.bashrc
 ```
 
-`. .bashrc`
+`. ~/.bashrc`
 
 ```
 k config use-context do-sgp1-digital-ocean-cluster
