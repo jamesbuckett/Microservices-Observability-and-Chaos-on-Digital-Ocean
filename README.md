@@ -282,10 +282,10 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 ### 3.2 Install the Online Boutique Application 
 * Create a namespace for Online Boutique.
-* `k create namespace microservices-demo`
-* `k apply -n microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/complete-demo.yaml"`
+* `k create namespace ns-microservices-demo`
+* `k apply -n ns-microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/complete-demo.yaml"`
 
-Run this command : `watch -n 1 kubectl get all -n microservices-demo`
+Run this command : `watch -n 1 kubectl get all -n ns-microservices-demo`
 
 Watch the output until this line changes 
 * from : `service/frontend-external      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
@@ -340,7 +340,7 @@ The Load Balancer takes about four minutes to provision.
 
 To Access Online Boutique 
 * Obtain the external IP address of Online Boutique.
-* `kubectl -n microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
+* `kubectl -n ns-microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
 * This is the EXTERNAL-IP of the Online Boutique
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Online Boutique
@@ -445,7 +445,7 @@ wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/
 ```
 
 Obtain the external IP address of Online Boutique.
-* `kubectl -n microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
+* `kubectl -n ns-microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
 * This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
@@ -528,8 +528,8 @@ mv *.pub_cert.pem gremlin.cert
 ```
 Create a namespace and secret for Gremlin
 ```
-k create ns gremlin
-k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key -n gremlin
+k create ns ns-gremlin
+k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key -n ns-gremlin
 ```
 
 ### 7.3 Configure Gremlin
@@ -560,14 +560,14 @@ helm repo add gremlin https://helm.gremlin.com
 Install the Gremlin Kubernetes client
 ```
 helm install gremlin gremlin/gremlin \
-  --namespace gremlin \
+  --namespace ns-gremlin \
   --set gremlin.teamID=$GREMLIN_TEAM_ID \
   --set gremlin.clusterID=$GREMLIN_CLUSTER_ID
 ```
 
 ### 7.4 Verify Gremlin Operation
 
-`watch -n 1 kubectl get all -n gremlin`
+`watch -n 1 kubectl get all -n ns-gremlin`
 
 You should see similar output to the following.
 ```
