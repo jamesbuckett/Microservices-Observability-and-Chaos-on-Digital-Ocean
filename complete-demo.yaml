@@ -282,9 +282,18 @@ metadata:
   labels:
     name: frontend
 spec:
-  backend:
-    serviceName: frontend
-    servicePort: 80
+  routes:
+    - match: /online-boutique
+      services:
+        - name: frontend
+          port: 80
+    - match: /grafana
+      services:
+        - name: prometheus-operator-grafana
+          port: 80          
+  # backend:
+  #   serviceName: frontend
+  #   servicePort: 80
 ---
 # apiVersion: v1
 # kind: Service
