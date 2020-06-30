@@ -265,6 +265,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 #### 2.8.3 Kubernetes Tools (Optional)
 * [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools)
+* Please install Helm 3 at a minimum.
 
 ## 3. Online Boutique - Micro-service Sample Application
 
@@ -294,46 +295,46 @@ Watch the output until this line changes
 Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Online Boutique micro-service.
 
 ```
-Every 1.0s: kubectl get all -n microservices-demo                                digital-ocean-droplet: Sun Jun  7 07:08:05 2020
+Every 1.0s: kubectl get all -n ns-microservices-demo                             digital-ocean-droplet: Mon Jun 29 04:20:40 2020
 
 NAME                                         READY   STATUS              RESTARTS   AGE
-pod/adservice-687b58699c-gvdkp               0/1     Pending             0          37s
-pod/cartservice-778cffc8f6-7hbzs             0/1     ContainerCreating   0          38s
-pod/checkoutservice-98cf4f4c-fpht9           1/1     Running             0          39s
-pod/currencyservice-c69c86b7c-llkn8          0/1     Running             0          38s
-pod/emailservice-5db6c8b59f-r4jtq            1/1     Running             0          39s
-pod/frontend-8d8958c77-gqzs8                 1/1     Running             0          39s
-pod/loadgenerator-6bf9fd5bc9-mc5td           0/1     Pending             0          38s
-pod/paymentservice-698f684cf9-78hj9          1/1     Running             0          38s
-pod/productcatalogservice-789c77b8dc-pq5r9   1/1     Running             0          38s
-pod/recommendationservice-75d7cd8d5c-h9nzb   1/1     Running             0          39s
-pod/redis-cart-5f59546cdd-gt42p              0/1     ContainerCreating   0          37s
-pod/shippingservice-7d87945947-nbhlp         1/1     Running             0          38s
+pod/adservice-5c9c7c997f-czcrh               0/1     Pending             0          14s
+pod/cartservice-6d99678dd6-vcn7c             0/1     Running             0          16s
+pod/checkoutservice-779cb9bfdf-mw6rl         0/1     Running             0          18s
+pod/currencyservice-5db6c7d559-99mxk         0/1     ContainerCreating   0          15s
+pod/emailservice-5c47dc87bf-xrqpk            0/1     ContainerCreating   0          18s
+pod/frontend-5fcb8cdcdc-dlhqk                0/1     Running             0          17s
+pod/paymentservice-6564cb7fb9-qxsrn          0/1     ContainerCreating   0          16s
+pod/productcatalogservice-5db9444549-hgsmj   0/1     Running             0          16s
+pod/recommendationservice-ff6878cf5-c9xtm    0/1     ContainerCreating   0          17s
+pod/redis-cart-57bd646894-tbnrg              0/1     Running             0          15s
+pod/shippingservice-f47755f97-677m6          1/1     Running             0          15s
 
 NAME                            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-service/adservice               ClusterIP      10.245.93.98     <none>        9555/TCP       37s
-service/cartservice             ClusterIP      10.245.120.182   <none>        7070/TCP       38s
-service/checkoutservice         ClusterIP      10.245.126.99    <none>        5050/TCP       39s
-service/currencyservice         ClusterIP      10.245.131.169   <none>        7000/TCP       38s
-service/emailservice            ClusterIP      10.245.78.86     <none>        5000/TCP       39s
-service/frontend                ClusterIP      10.245.66.127    <none>        80/TCP         39s
-service/frontend-external       LoadBalancer   10.245.68.226    <pending>     80:30922/TCP   38s
-service/paymentservice          ClusterIP      10.245.148.181   <none>        50051/TCP      38s
-service/productcatalogservice   ClusterIP      10.245.213.203   <none>        3550/TCP       38s
-service/recommendationservice   ClusterIP      10.245.179.187   <none>        8080/TCP       39s
-service/redis-cart              ClusterIP      10.245.52.37     <none>        6379/TCP       37s
-service/shippingservice         ClusterIP      10.245.243.193   <none>        50051/TCP      38s
+service/adservice               ClusterIP      10.245.77.165    <none>        9555/TCP       14s
+service/cartservice             ClusterIP      10.245.172.236   <none>        7070/TCP       16s
+service/checkoutservice         ClusterIP      10.245.91.142    <none>        5050/TCP       17s
+service/currencyservice         ClusterIP      10.245.178.247   <none>        7000/TCP       15s
+service/emailservice            ClusterIP      10.245.94.149    <none>        5000/TCP       18s
+service/frontend                ClusterIP      10.245.9.152     <none>        80/TCP         17s
+service/frontend-external       LoadBalancer   10.245.146.48    <pending>     80:30272/TCP   17s
+service/paymentservice          ClusterIP      10.245.241.49    <none>        50051/TCP      16s
+service/productcatalogservice   ClusterIP      10.245.61.176    <none>        3550/TCP       16s
+service/recommendationservice   ClusterIP      10.245.71.224    <none>        8080/TCP       17s
+service/redis-cart              ClusterIP      10.245.7.209     <none>        6379/TCP       15s
+service/shippingservice         ClusterIP      10.245.96.86     <none>        50051/TCP      15s
 
 NAME                                    READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/adservice               0/1     1            0           37s
-deployment.apps/cartservice             0/1     1            0           38s
-deployment.apps/checkoutservice         1/1     1            1           39s
-deployment.apps/currencyservice         0/1     1            0           38s
-deployment.apps/emailservice            1/1     1            1           39s
-deployment.apps/frontend                1/1     1            1           39s
-deployment.apps/loadgenerator           0/1     1            0           38s
-deployment.apps/paymentservice          1/1     1            1           38s
-deployment.apps/productcatalogservice   1/1     1            1           38s
+deployment.apps/adservice               0/1     1            0           14s
+deployment.apps/cartservice             0/1     1            0           16s
+deployment.apps/checkoutservice         0/1     1            0           18s
+deployment.apps/currencyservice         0/1     1            0           15s
+deployment.apps/emailservice            0/1     1            0           18s
+deployment.apps/frontend                0/1     1            0           17s
+deployment.apps/paymentservice          0/1     1            0           17s
+deployment.apps/productcatalogservice   0/1     1            0           16s
+deployment.apps/recommendationservice   0/1     1            0           17s
+deployment.apps/redis-cart              0/1     1            0           15s
 ```
 
 The Load Balancer takes about four minutes to provision.
