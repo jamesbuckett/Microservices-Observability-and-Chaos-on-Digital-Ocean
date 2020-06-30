@@ -283,9 +283,10 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
+  #- host: foo.bar.com
   - http:
       paths:
-       - path: /online-boutique
+      - path: /online-boutique
         backend:
           serviceName: frontend
           servicePort: 80
