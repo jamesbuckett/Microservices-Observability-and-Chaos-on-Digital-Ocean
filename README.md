@@ -279,14 +279,13 @@ Create a namespace for Contour: `kubectl create namespace ns-contour`
 helm upgrade --install contour-release stable/contour --namespace ns-contour --set service.loadBalancerType=LoadBalancer
 ```
 
-Run this command : `watch -n 1 kubectl get all -n ns- ns-contour`
+Run this command : `watch -n 1 kubectl get all -n ns-contour`
 
 Watch the output until this line changes 
-* from : `service/frontend-external      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
-* to   : `service/frontend-external      LoadBalancer   x.x.x.x      x.x.x.x       80:30001/TCP   3m15s`
+* from : `service/contour-release   LoadBalancer   x.x.x.x   <pending>     80:31362/TCP,443:30878/TCP   40s`
+* to   : `service/contour-release   LoadBalancer   x.x.x.x   x.x.x.x     80:31362/TCP,443:30878/TCP   40s`
 
 Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Contour Ingress.
-
 
 ## 3. Online Boutique - Micro-service Sample Application
 
