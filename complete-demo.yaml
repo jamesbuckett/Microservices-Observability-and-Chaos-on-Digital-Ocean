@@ -278,7 +278,7 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: digital-ocean-ingress
+  name: online-boutique-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -287,11 +287,7 @@ spec:
       paths:
       - path: /online-boutique
         backend:
-          serviceName: frontend.ns-microservices-demo
-          servicePort: 80
-      - path: /grafana
-        backend:
-          serviceName: prometheus-operator-grafana.prometheus-operator
+          serviceName: frontend
           servicePort: 80
 ---
 # apiVersion: v1
