@@ -287,6 +287,8 @@ Watch the output until this line changes
 
 Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Contour Ingress.
 
+The Load Balancer takes about four minutes to provision.
+
 ## 3. Online Boutique - Micro-service Sample Application
 
 ### 3.0 Acknowledgement of Source
@@ -307,12 +309,6 @@ Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Co
 * `k apply -n ns-microservices-demo -f "https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/complete-demo.yaml"`
 
 Run this command : `watch -n 1 kubectl get all -n ns-microservices-demo`
-
-Watch the output until this line changes 
-* from : `service/frontend-external      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
-* to   : `service/frontend-external      LoadBalancer   x.x.x.x      x.x.x.x       80:30001/TCP   3m15s`
-
-Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Online Boutique micro-service.
 
 ```
 Every 1.0s: kubectl get all -n ns-microservices-demo                             digital-ocean-droplet: Mon Jun 29 04:20:40 2020
@@ -337,7 +333,6 @@ service/checkoutservice         ClusterIP      10.245.91.142    <none>        50
 service/currencyservice         ClusterIP      10.245.178.247   <none>        7000/TCP       15s
 service/emailservice            ClusterIP      10.245.94.149    <none>        5000/TCP       18s
 service/frontend                ClusterIP      10.245.9.152     <none>        80/TCP         17s
-service/frontend-external       LoadBalancer   10.245.146.48    <pending>     80:30272/TCP   17s
 service/paymentservice          ClusterIP      10.245.241.49    <none>        50051/TCP      16s
 service/productcatalogservice   ClusterIP      10.245.61.176    <none>        3550/TCP       16s
 service/recommendationservice   ClusterIP      10.245.71.224    <none>        8080/TCP       17s
@@ -357,11 +352,9 @@ deployment.apps/recommendationservice   0/1     1            0           17s
 deployment.apps/redis-cart              0/1     1            0           15s
 ```
 
-The Load Balancer takes about four minutes to provision.
-
 To Access Online Boutique 
 * Obtain the external IP address of Online Boutique.
-* `kubectl -n ns-microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
+* `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}`
 * This is the EXTERNAL-IP of the Online Boutique
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Online Boutique
