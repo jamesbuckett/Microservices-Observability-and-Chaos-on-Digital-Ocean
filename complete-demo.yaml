@@ -283,10 +283,9 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: online-boutique.157.230.193.6.xip.io 
-    http:
+  - http:
       paths:
-      - path: /online-boutique
+       - path: /online-boutique
         backend:
           serviceName: frontend
           servicePort: 80
