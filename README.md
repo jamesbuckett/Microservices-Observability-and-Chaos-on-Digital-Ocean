@@ -264,8 +264,12 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
 #### 2.8.3 Kubernetes Tools (Optional)
-* [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools)
-* Please install Helm required to install Contour Ingress..
+
+Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following:
+* Octant
+* Helm
+
+Other tools are optional but useful.
 
 #### 2.8.4 Install Contour Ingress
 
@@ -487,6 +491,8 @@ On main panel select `Charts`
 * Keep the browser window open.
 
 ## 6. Helm - Package Manager 
+
+Skip this step if you install Helm earlier.
 
 ### 6.1 What is Helm?
 * Helm is an application package manager running atop Kubernetes. 
