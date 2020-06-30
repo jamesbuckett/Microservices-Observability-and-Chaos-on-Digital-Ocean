@@ -265,7 +265,24 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 #### 2.8.3 Kubernetes Tools (Optional)
 * [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools)
-* Please install Helm 3 at a minimum.
+* Please install Helm required to install Contour Ingress..
+
+#### 2.8.4 Install Contour Ingress
+
+Create a namespace for Contour: `kubectl create namespace ns-contour`
+
+```
+helm upgrade --install contour-release stable/contour --namespace ns-contour --set service.loadBalancerType=LoadBalancer
+```
+
+Run this command : `watch -n 1 kubectl get all -n ns- ns-contour`
+
+Watch the output until this line changes 
+* from : `service/frontend-external      LoadBalancer   x.x.x.x      <pending>     80:30001/TCP   2m5s`
+* to   : `service/frontend-external      LoadBalancer   x.x.x.x      x.x.x.x       80:30001/TCP   3m15s`
+
+Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Contour Ingress.
+
 
 ## 3. Online Boutique - Micro-service Sample Application
 
