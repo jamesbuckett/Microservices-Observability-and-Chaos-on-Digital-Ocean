@@ -273,6 +273,10 @@ Other tools are optional but useful.
 
 #### 2.8.4 Install Contour Ingress
 
+What is [Countour](https://github.com/projectcontour/contour)?
+* Contour is an Ingress controller for Kubernetes that works by deploying the Envoy proxy as a reverse proxy and load balancer. 
+* Contour supports dynamic configuration updates out of the box while maintaining a lightweight profile.
+
 Create a namespace for Contour: `kubectl create namespace ns-contour`
 
 ```
