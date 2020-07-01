@@ -268,12 +268,22 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following:
 * Octant - Kubernetes User Interface
 * Helm - Kubernetes Package Manager
+* Other tools are optional but useful
 
-Other tools are optional but useful.
+Helm is required to install Contour:
+```
+cd ~/ && mkdir helm-3 && cd helm-3
+wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
+tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
 
 #### 2.8.4 Install Contour Ingress
 
 What is [Countour](https://github.com/projectcontour/contour)?
+* An Ingress is an API object that manages external access to the services in a cluster, typically HTTP.
+* Ingress may provide load balancing, SSL termination and name-based virtual hosting
 * Contour is an Ingress controller for Kubernetes that works by deploying the Envoy proxy as a reverse proxy and load balancer. 
 * Contour supports dynamic configuration updates out of the box while maintaining a lightweight profile.
 
