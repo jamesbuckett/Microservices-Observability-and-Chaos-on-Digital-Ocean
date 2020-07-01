@@ -192,8 +192,8 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 * doctl Installation
 ```
 cd ~/ && mkdir doctl && cd doctl
-curl -LO https://github.com/digitalocean/doctl/releases/download/v1.45.0/doctl-1.45.0-linux-amd64.tar.gz 
-tar -xvf doctl-1.45.0-linux-amd64.tar.gz
+curl -LO https://github.com/digitalocean/doctl/releases/download/v1.45.0/doctl-1.45.1-linux-amd64.tar.gz 
+tar -xvf doctl-1.45.1-linux-amd64.tar.gz
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
@@ -266,8 +266,8 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 #### 2.8.3 Kubernetes Tools (Optional)
 
 Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following:
-* Octant
-* Helm
+* Octant - Kubernetes User Interface
+* Helm - Kubernetes Package Manager
 
 Other tools are optional but useful.
 
