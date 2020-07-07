@@ -227,6 +227,7 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 
 Install kubectl
 ```
+cd ~/ && rm -R ~/kubectl 
 cd ~/ && mkdir kubectl && cd kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x ./kubectl
@@ -272,6 +273,7 @@ Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/
 
 Helm is required to install Contour:
 ```
+cd ~/ && rm -R ~/helm-3
 cd ~/ && mkdir helm-3 && cd helm-3
 wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
 tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
@@ -468,6 +470,7 @@ pip3 install locust
 ### 5.3 Configure Locust
 
 ```
+cd ~/ && rm -R ~/locust
 cd ~/ && mkdir locust && cd locust
 wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/locustfile.py
 ```
@@ -523,6 +526,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 Create a gremlin directory
 ```
+cd ~/ && rm -R ~/gremlin
 cd && mkdir gremlin && cd gremlin
 ```
 
