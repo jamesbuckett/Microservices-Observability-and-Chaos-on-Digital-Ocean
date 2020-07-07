@@ -142,11 +142,10 @@ Note: This stack requires a minimum configuration of
   * `ssh root@<IP Address>` 
 
 * Update and Upgrade Ubuntu and install Python PIP
-```  
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt install -y python3-pip -y
-```
+* `sudo apt-get update`
+* `sudo apt-get upgrade -y`
+* `sudo apt install -y python3-pip -y`
+* `reboot`
 
 ### 2.6 Digital Ocean Kubernetes cluster
 * 2.6.1 Go to "Discover"..."Marketplace" on the left tab.
@@ -191,8 +190,9 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 
 * doctl Installation
 ```
+rm -R ~./doctl
 cd ~/ && mkdir doctl && cd doctl
-curl -LO https://github.com/digitalocean/doctl/releases/download/v1.45.0/doctl-1.45.1-linux-amd64.tar.gz 
+curl -LO https://github.com/digitalocean/doctl/releases/download/v1.45.1/doctl-1.45.1-linux-amd64.tar.gz 
 tar -xvf doctl-1.45.1-linux-amd64.tar.gz
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
