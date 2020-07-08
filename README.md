@@ -24,6 +24,7 @@
     * 2.8.1 doctl (Digital Ocean Command Line Interface)
     * 2.8.2 kubectl (Kubernetes Command Line Interface)
     * 2.8.3 Kubernetes Tools (Optional)
+    * 2.8.4 Install Contour Ingress
 3. Online Boutique (Micro-service)
 * 3.1 What is Online Boutique?
 * 3.2 Install Online Boutique
@@ -763,7 +764,7 @@ Login to Digital Ocean
 
 ## 10. Theory 
 
-## 10.1 Documentation 
+### 10.1 Documentation 
 * [Kubernetes](https://kubernetes.io)
 * [Prometheus](https://prometheus.io)
 * [Grafana](https://grafana.com)
@@ -773,7 +774,7 @@ Login to Digital Ocean
 * [Gremlin](https://www.gremlin.com/)
 * [Locust](https://locust.io/)
 
-## 10.2 Buzz Words
+### 10.2 Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
 * Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
 * Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
