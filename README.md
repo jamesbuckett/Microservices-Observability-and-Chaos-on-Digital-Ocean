@@ -361,6 +361,18 @@ To Access Online Boutique
 * You should see a e-commerce website called Online Boutique
 * Feel free to browse around and order some hipster products
 
+Use Octant to explore Kubernetes
+* Select the `ns-microservices-demo` namespace top right 
+* Select Applications on right side 
+* The `adservice` is in an orange state
+* Select Workloads...Pods...`adservice-xxxxxxxx`
+* Scroll down to Events...Message
+
+`adservice` cannot be scheduled due to insufficient cpu
+
+If you want to solve this add another worker node to the `digital-ocean-cluster`
+* As this will incur a cost it is an optional exercise
+
 ## 4. Grafana - UI
 
 ![image](https://user-images.githubusercontent.com/18049790/65003256-3c2ae580-d8e7-11e9-992d-30358d52e731.png)
