@@ -212,6 +212,16 @@ sudo mv ~/doctl/doctl /usr/local/bin
   * Run this command to the digital-ocean-cluster credentials to kubeconfig
     * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
 
+#### Required Kubernetes Tools
+
+Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following:
+* kubectl - Interact with Kubernetes cluster
+* kubectx - Change clusters
+* kubens - Change namespaces like you would directories
+* kube-ps1 - Changes Prompt to reflect current cluster and namespace
+* helm 3 - Kubernetes package installer  
+* Octant - Kubernetes Web User Interface
+
 #### 2.8.2 kubectl - Kubernetes Command Line Interface
 
 `kubectl` is a command line tool used to interact with the `digital-ocean-cluster` Kubernetes clusters.
@@ -226,16 +236,7 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview) is the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
 * The Kubernetes project provides [installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl) for kubectl on a variety of platforms. 
 
-Install kubectl
-```
-cd ~/ && rm -R ~/kubectl 
-cd ~/ && mkdir kubectl && cd kubectl
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
-```
-
-Set context and alias
+Set cluster context and alias
 ```
 cd ~
 echo 'source <(kubectl completion bash)' >>~/.bashrc
@@ -244,7 +245,7 @@ echo "alias k='kubectl'" >> ~/.bashrc
 echo "alias kga='kubectl get all'" >> ~/.bashrc
 ```
 
-`. ~/.bashrc`
+And reinitialize your shell with `. ~/.bashrc`
 
 ```
 k config use-context do-sgp1-digital-ocean-cluster
@@ -263,23 +264,6 @@ Use `k cluster-info` to get cluster related information
 Kubernetes master is running at https://e8d7b634-effb-4d9e-8995-4607e38ff95d.k8s.ondigitalocean.com
 CoreDNS is running at https://e8d7b634-effb-4d9e-8995-4607e38ff95d.k8s.ondigitalocean.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-```
-
-#### 2.8.3 Kubernetes Tools (Optional)
-
-Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following:
-* Octant - Kubernetes User Interface
-* Helm - Kubernetes Package Manager
-* Other tools are optional but useful
-
-Helm is required to install Contour:
-```
-cd ~/ && rm -R ~/helm-3
-cd ~/ && mkdir helm-3 && cd helm-3
-wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
-tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
-mv linux-amd64/helm /usr/local/bin/helm
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
 #### 2.8.4 Install Contour Ingress
@@ -443,7 +427,7 @@ Top left click on `Home`
 
 Under `General` select `Kubernetes / Compute Resources / Namespace(Pods)`
 * datasource: Prometheus
-* Namespace: microservices-demo
+* Namespace: `ns-microservices-demo`
 * Top Right click Clock Icon with text `Last 1 hour`
   * Under Quick Ranges
     * Select `Last 5 minutes`
@@ -455,6 +439,7 @@ Scroll down the page and observe the metrics for the Online Boutique micro-servi
 * CPU Quota
 * Memory Usage
 * Memory Quota
+* Network
 
 ## 5. Locust - Load Testing
 
@@ -477,7 +462,7 @@ wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/
 ```
 
 Obtain the external IP address of Online Boutique.
-* `kubectl -n ns-microservices-demo get svc frontend-external | awk 'FNR == 2 {print $4}'`
+* `kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}`
 * This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
