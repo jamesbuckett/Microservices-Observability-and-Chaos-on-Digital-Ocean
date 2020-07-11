@@ -489,24 +489,7 @@ On main panel select `Charts`
 * Top Right note Failures are 0%
 * Keep the browser window open.
 
-## 6. Helm - Package Manager 
-
-Skip this step if you install Helm earlier.
-
-### 6.1 What is Helm?
-* Helm is an application package manager running atop Kubernetes. 
-* It allows describing the application structure through helm-charts and managing those charts it with simple commands
-
-### 6.2 Install Helm 3
-```
-cd ~/ && mkdir helm-3 && cd helm-3
-wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
-tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
-mv linux-amd64/helm /usr/local/bin/helm
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-```
-
-## 7. Gremlin - Chaos
+## 6. Gremlin - Chaos
 
 ### 7.1 What is Gremlin?
 * Software as a Service Choas Engineering Platform 
@@ -613,7 +596,7 @@ NAME                              DESIRED   CURRENT   READY   AGE
 replicaset.apps/chao-69b5cbc94c   1         1         0       37s
 ```
 
-## 8. Practical - High CPU Resource Attack
+## 7. Practical - High CPU Resource Attack
 
 ### 8.1 Start the User Interfaces
 
@@ -697,7 +680,7 @@ Optional Rerun
     * In drop down select 5s
 * This is the aggregate view of the Kubernetes cluster resources.
  
-## 8.3 Wrap Up
+## 8. Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
 * You deployed a micro-services application called Online Boutique to run on the Cluster.
 * You observed metrics from the micro-services application with Prometheus and Grafana.
