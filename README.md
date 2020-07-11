@@ -500,11 +500,11 @@ On main panel select `Charts`
 
 ## 6. Gremlin - Chaos
 
-### 7.1 What is Gremlin?
+### 6.1 What is Gremlin?
 * Software as a Service Choas Engineering Platform 
 * Chaos Engineering is the discipline of experimenting on a distributed system in order to build confidence in the system’s capability to withstand turbulent conditions in production.
 
-### 7.2 Install Gremlin
+### 6.2 Install Gremlin
 
 Create a gremlin directory
 ```
@@ -548,7 +548,7 @@ k create ns ns-gremlin
 k create secret generic gremlin-team-cert --from-file=./gremlin.cert --from-file=./gremlin.key -n ns-gremlin
 ```
 
-### 7.3 Configure Gremlin
+### 6.3 Configure Gremlin
 
 Let Gremlin know your Gremlin team ID and your Kubernetes cluster name
 ```
@@ -581,7 +581,7 @@ helm install gremlin gremlin/gremlin \
   --set gremlin.clusterID=$GREMLIN_CLUSTER_ID
 ```
 
-### 7.4 Verify Gremlin Operation
+### 6.4 Verify Gremlin Operation
 
 `watch -n 1 kubectl get all -n ns-gremlin`
 
@@ -607,23 +607,23 @@ replicaset.apps/chao-69b5cbc94c   1         1         0       37s
 
 ## 7. Practical - High CPU Resource Attack
 
-### 8.1 Start the User Interfaces
+### 7.1 Start the User Interfaces
 
-#### 8.1.1 Locust 
+#### 7.1.1 Locust 
 * Locust should still be running from a previous step.
   * `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
   * This is the `Public IPv4` for `digital-ocean-droplet`
   * Browse to : `http://<Public IPv4>:8089/`
 
-#### 8.1.2 Grafana 
+#### 7.1.2 Grafana 
 * Grafana should still be running from a previous step.
   * `k -n prometheus-operator get svc prometheus-operator-grafana`
   * Put `EXTERNAL-IP` into a browser.
 
-#### 8.1.3 Gremlin
+#### 7.1.3 Gremlin
 * Login to [Gremlin](https://app.gremlin.com/signup)
 
-### 8.2 High CPU Attack
+### 7.2 High CPU Attack
 * Switch to the Locust UI 
   * Check the Locust UI switch to the charts view if required.
   * Reload the page if required
@@ -689,7 +689,7 @@ Optional Rerun
     * In drop down select 5s
 * This is the aggregate view of the Kubernetes cluster resources.
  
-### 8.3 Wrap Up
+### 7.3 Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
 * You deployed a micro-services application called Online Boutique to run on the Cluster.
 * You observed metrics from the micro-services application with Prometheus and Grafana.
