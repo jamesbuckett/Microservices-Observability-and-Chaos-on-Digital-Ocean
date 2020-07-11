@@ -115,7 +115,7 @@ Note: This stack requires a minimum configuration of
   * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
 * 2.3.2 Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
-### 2.4 Setup Digital Ocean Droplet
+### 2.4 Setup `digital-ocean-droplet`
 * 2.4.1 Go to "Manage"..."Droplets" on the left tab
 * 2.4.2 Select `Create Droplet`
 * 2.4.3 Choose an image...Distributions...`Ubuntu`
@@ -142,7 +142,7 @@ Note: This stack requires a minimum configuration of
 * 2.5.4 On Mac open a terminal 
   * `ssh root@<IP Address>` 
 
-* Update and Upgrade Ubuntu and install Python PIP
+* Update and Upgrade Ubuntu and install Python PIP on `digital-ocean-droplet`
 * `sudo apt-get update`
 * `sudo apt-get upgrade -y`
 * `sudo apt install -y python3-pip -y`
@@ -189,7 +189,7 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 
 #### 2.8.1 doctl - Digital Ocean Command Line Interface
 
-* doctl Installation
+* doctl Installation on `digital-ocean-droplet`
 ```
 cd ~/ && rm -R ~/doctl
 cd ~/ && mkdir doctl && cd doctl
@@ -198,7 +198,7 @@ tar -xvf doctl-1.45.1-linux-amd64.tar.gz
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
-* doctl Configuration
+* doctl Configuration on `digital-ocean-droplet`
   * Login to Digital Ocean
   * Go to "Account".."API" on the left tab.
   * Applications & API..Tokens/Keys..Personal access tokens
@@ -214,7 +214,7 @@ sudo mv ~/doctl/doctl /usr/local/bin
 
 #### Required Kubernetes Tools
 
-Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following:
+Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following on `digital-ocean-droplet`
 * kubectl - Interact with Kubernetes cluster
 * kubectx - Change clusters
 * kubens - Change namespaces like you would directories
