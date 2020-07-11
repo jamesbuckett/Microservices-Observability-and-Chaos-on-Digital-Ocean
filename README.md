@@ -462,7 +462,7 @@ wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/
 ```
 
 Obtain the external IP address of Online Boutique.
-* `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}`
+* `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}'`
 * This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
