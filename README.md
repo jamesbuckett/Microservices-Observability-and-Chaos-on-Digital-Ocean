@@ -37,30 +37,27 @@
 * 5.2 Install Python
 * 5.3 Install Locust
 * 5.4 Configure Locust
-6. Helm (Package Manager)
-* 6.1 What is Helm?
-* 6.2 Install Helm 3
-7. Gremlin (Chaos)
-* 7.1 What is Gremlin?
-* 7.2 Install Gremlin 
-* 7.3 Configure Gremlin
-* 7.3 Verify Gremlin Operation
-8. Practical - The Fun Starts Here
-* 8.1 Start User Interfaces
-*   8.1.1 Locust
-*   8.1.2 Grafana
-*   8.1.3 Gremlin
-* 8.2 High CPU Attack
-* 8.3 Wrap Up
-9. Tutorial Clean Up
-* 9.1 CLI Method
-* 9.2 GUI Method
-*   9.2.1 Kubernetes Cluster
-*   9.2.2 Load Balancer
-*   9.2.3 Droplet
-10. Theory
-* 10.1 Documentation
-* 10.2 Buzz Words
+6. Gremlin (Chaos)
+* 6.1 What is Gremlin?
+* 6.2 Install Gremlin 
+* 6.3 Configure Gremlin
+* 6.3 Verify Gremlin Operation
+7. Practical - The Fun Starts Here
+* 7.1 Start User Interfaces
+*   7.1.1 Locust
+*   7.1.2 Grafana
+*   7.1.3 Gremlin
+* 7.2 High CPU Attack
+* 7.3 Wrap Up
+8. Tutorial Clean Up
+* 8.1 CLI Method
+* 8.2 GUI Method
+*   8.2.1 Kubernetes Cluster
+*   8.2.2 Load Balancer
+*   8.2.3 Droplet
+9. Theory
+* 9.1 Documentation
+* 9.2 Buzz Words
 
 ## 1. Introduction
 
@@ -692,20 +689,20 @@ Optional Rerun
     * In drop down select 5s
 * This is the aggregate view of the Kubernetes cluster resources.
  
-## 8. Wrap Up
+### 8.3 Wrap Up
 * You deployed a Kubernetes Cluster on Digital Ocean with Prometheus and Grafana pre-installed and configured.
 * You deployed a micro-services application called Online Boutique to run on the Cluster.
 * You observed metrics from the micro-services application with Prometheus and Grafana.
 * You deployed a performance tool called Locust to stress test the micro-services application and observe any failures.
 * You installed Gremlin to perform a Chaos Experiment (CPU Resource Attack) on the micro-services application.
 
-## 9. Tutorial Clean Up 
+## 8. Tutorial Clean Up 
 
 Two methods to clean up
 * GUI 
 * CLI
 
-### 9.1 CLI Method
+### 8.1 CLI Method
 
 Delete Kubernetes Cluster
 * `doctl kubernetes cluster delete digital-ocean-cluster -f`
@@ -719,11 +716,11 @@ Delete Kubernetes Cluster
 Delete Droplet  
 * `doctl compute droplet delete digital-ocean-droplet -f`  
 
-### 9.2 GUI Method
+### 8.2 GUI Method
 
 Login to Digital Ocean
 
-### 9.2.1 Kubernetes 
+### 8.2.1 Kubernetes 
 * Left side bar select Kubernetes
 * Select your cluster 
 * Top right select `Actions` button
@@ -731,7 +728,7 @@ Login to Digital Ocean
 * On next page confirm by selecting `Destroy` again
 * Enter `digital-ocean-cluster` to enable deletion
 
-### 9.2.2 Load Balancer
+### 8.2.2 Load Balancer
 * Left side bar select Networking
 * Select Load Balancers
 * Select the top Load Balancer
@@ -740,15 +737,15 @@ Login to Digital Ocean
 * Select the Confirm button 
 * Repeat for all Load Balancers
 
-### 9.2.3 Droplet
+### 8.2.3 Droplet
 * Left side bar select "Manage".."Droplets"
 * On right side of `digital-ocean-droplet` select `More` button
 * Select `Destroy`
 * Select `Destroy` again
 
-## 10. Theory 
+## 9. Theory 
 
-### 10.1 Documentation 
+### 9.1 Documentation 
 * [Kubernetes](https://kubernetes.io)
 * [Prometheus](https://prometheus.io)
 * [Grafana](https://grafana.com)
@@ -758,7 +755,7 @@ Login to Digital Ocean
 * [Gremlin](https://www.gremlin.com/)
 * [Locust](https://locust.io/)
 
-### 10.2 Buzz Words
+### 9.2 Buzz Words
 * Digital Ocean - Developer focused Cloud Provider.
 * Micro-service - Collection of **loosely coupled services** that are **independently deployable and scalable**.
 * Kubernetes - Open-source self-healing platform to deploy, scale and operate containers.
