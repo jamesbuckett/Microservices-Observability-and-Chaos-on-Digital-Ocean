@@ -461,6 +461,10 @@ cd ~/ && mkdir locust && cd locust
 wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/locustfile.py
 ```
 
+Start a new shell
+
+Change to locust directory: `cd locust`
+
 Obtain the external IP address of Online Boutique.
 * `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}'`
 * This is the EXTERNAL-IP of the Online Boutique.
