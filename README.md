@@ -217,6 +217,7 @@ Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/
 * kubens - Change namespaces like you would directories
 * kube-ps1 - Changes Prompt to reflect current cluster and namespace
 * helm 3 - Kubernetes package installer  
+* kubectl top - Kubernetes top command
 * Octant - Kubernetes Web User Interface
 
 #### 2.8.2 kubectl - Kubernetes Command Line Interface
