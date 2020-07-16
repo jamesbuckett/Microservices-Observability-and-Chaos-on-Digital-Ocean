@@ -476,14 +476,14 @@ Start a new shell
 Change to locust directory: `cd locust`
 
 Obtain the external IP address of Online Boutique.
-* `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}'`
+```
+FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
+export $FRONTEND_ADDR
+```
 * This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
-Export the front end of Online Boutique
-`export FRONTEND_ADDR=<EXTERNAL-IP>`
-
-Start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
+In a separate terminal start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
 
 Obtain the external IP address of `digital-ocean-droplet`
 * `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
