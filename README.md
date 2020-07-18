@@ -481,17 +481,20 @@ Obtain the external IP address of Online Boutique.
 ```
 FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
 export $FRONTEND_ADDR
+echo $FRONTEND_ADDR
+echo "export FRONTEND_ADDR=$FRONTEND_ADDR" >> ~/.bashrc
+. ~/.bashrc
 ```
 * This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
-In a separate terminal start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
+Start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
 
 Obtain the external IP address of `digital-ocean-droplet`
 * `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
 * This is the `Public IPv4` for `digital-ocean-droplet`
 
-Browse to : `http://<Public IPv4>:8089/`
+Browse to : `http://DROPLET_ADDR:8089/`
 * Enter these values 
   * Number of Users to Simulate: 500
   * Hatch Rate: 10
