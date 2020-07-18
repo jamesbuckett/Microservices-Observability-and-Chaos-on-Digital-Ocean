@@ -243,10 +243,10 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 echo "alias cls='clear'" >> ~/.bashrc
 echo "alias k='kubectl'" >> ~/.bashrc
 echo "alias kga='kubectl get all'" >> ~/.bashrc
+. ~/.bashrc
 ```
 
-And reinitialize your shell with `. ~/.bashrc`
-
+Verify the alias
 ```
 k config use-context do-sgp1-digital-ocean-cluster
 k version
@@ -274,8 +274,10 @@ What is [Countour](https://github.com/projectcontour/contour)?
 * Contour is an Ingress controller for Kubernetes that works by deploying the Envoy proxy as a reverse proxy and load balancer. 
 * Contour supports dynamic configuration updates out of the box while maintaining a lightweight profile.
 
-Create a namespace for Contour: `kubectl create namespace ns-contour`
+Create a namespace for Contour: 
+* `kubectl create namespace ns-contour`
 
+Install Contour via Helm:
 ```
 helm upgrade --install contour-release stable/contour --namespace ns-contour --set service.loadBalancerType=LoadBalancer
 ```
@@ -481,18 +483,18 @@ Obtain the external IP address of Online Boutique.
 ```
 FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
 export $FRONTEND_ADDR
-echo $FRONTEND_ADDR
 echo "export FRONTEND_ADDR=$FRONTEND_ADDR" >> ~/.bashrc
 . ~/.bashrc
+echo $FRONTEND_ADDR
 ```
 * This is the EXTERNAL-IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
 Start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
 
-Obtain the external IP address of `digital-ocean-droplet`
-* `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
-* This is the `Public IPv4` for `digital-ocean-droplet`
+```
+echo "The URL for Locust is: http://$DROPLET_ADDR:8089"
+```
 
 Browse to : `http://DROPLET_ADDR:8089/`
 * Enter these values 
@@ -617,9 +619,10 @@ replicaset.apps/chao-69b5cbc94c   1         1         0       37s
 
 #### 7.1.1 Locust 
 * Locust should still be running from a previous step.
-  * `doctl compute droplet list | awk 'FNR == 2 {print $3}'`
-  * This is the `Public IPv4` for `digital-ocean-droplet`
-  * Browse to : `http://<Public IPv4>:8089/`
+* If not 
+```
+echo "The URL for Locust is: http://$DROPLET_ADDR:8089"
+```
 
 #### 7.1.2 Grafana 
 * Grafana should still be running from a previous step.
@@ -656,7 +659,7 @@ replicaset.apps/chao-69b5cbc94c   1         1         0       37s
   * Choose Hosts to target
     * Target all hosts
       * Select check boxes next to all hosts that start with `pool`
-      * Interface will indicated `4 of 4 HOSTS TARGETED`
+      * Interface will indicated `3 of 3 HOSTS TARGETED`
   * Scroll down select `Choose a Gremlin`
   * Under `Category` select `Resource` and `CPU`
     * Next to `Length` enter `180`
@@ -673,7 +676,7 @@ replicaset.apps/chao-69b5cbc94c   1         1         0       37s
 
 ![locust-2](https://user-images.githubusercontent.com/18049790/66459196-2607e380-eaa7-11e9-8ec4-e7401441697b.png)
 
-You have successfully performed a CPU Resource Attack against the infrastrucure nodes.
+You have successfully performed a CPU Resource Attack against the infrastructure nodes.
 
 What you are observing is the following:
 * Gremlin is causing the Kubernetes Worker Nodes to go to 100% CPU utilization
