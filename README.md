@@ -355,7 +355,7 @@ deployment.apps/redis-cart              0/1     1            0           15s
 
 To Access Online Boutique 
 * Obtain the external IP address of Online Boutique.
-* `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}`
+* `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}'`
 * This is the EXTERNAL-IP of the Online Boutique
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Online Boutique
