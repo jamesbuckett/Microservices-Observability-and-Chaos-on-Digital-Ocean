@@ -112,7 +112,7 @@ Note: This stack requires a minimum configuration of
   * [How-to Add SSH Keys to New or Existing Droplets](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/)
 * 2.3.2 Upload the public key to Digital Ocean as `digital-ocean-public-key`
 
-### 2.4 Setup `digital-ocean-droplet`
+### 2.4 Setup digital-ocean-droplet
 * 2.4.1 Go to "Manage"..."Droplets" on the left tab
 * 2.4.2 Select `Create Droplet`
 * 2.4.3 Choose an image...Distributions...`Ubuntu`
