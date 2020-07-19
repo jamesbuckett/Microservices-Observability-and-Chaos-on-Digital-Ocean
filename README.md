@@ -140,12 +140,11 @@ Note: This stack requires a minimum configuration of
   * `ssh root@<IP Address>` 
 
 * Update and Upgrade Ubuntu and install Python PIP on `digital-ocean-droplet`
-```
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt install -y python3-pip -y
-reboot
-```
+
+`sudo apt-get update`
+`sudo apt-get upgrade -y`
+`sudo apt install -y python3-pip -y`
+`reboot`
 
 ### 2.6 Digital Ocean Kubernetes cluster
 * 2.6.1 Go to "Discover"..."Marketplace" on the left tab.
