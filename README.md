@@ -490,7 +490,7 @@ Change to locust directory: `cd locust`
 Obtain the external IP address of Online Boutique.
 ```
 FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
-export $FRONTEND_ADDR
+export FRONTEND_ADDR
 echo "export FRONTEND_ADDR=$FRONTEND_ADDR" >> ~/.bashrc
 . ~/.bashrc
 echo $FRONTEND_ADDR
