@@ -357,7 +357,12 @@ deployment.apps/redis-cart              0/1     1            0           15s
 
 To Access Online Boutique 
 * Obtain the external IP address of Online Boutique.
-* `kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}'`
+```
+clear
+printf "%s\n" "Online Boutique can be found at the IP address listed below:"
+kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}'
+```
+
 * This is the EXTERNAL-IP of the Online Boutique
 * Paste the EXTERNAL-IP into your web browser.
 * You should see a e-commerce website called Online Boutique
@@ -410,7 +415,11 @@ kubectl apply -f prometheus-operator-grafana.yml -n prometheus-operator
 * Grafana is exposed via a DigitalOcean Load Balancer.
 * Get the IP address to access your Grafana instance by running the following in a terminal shell and copying the EXTERNAL-IP and pasting it into a browser.
 
-`kubectl -n prometheus-operator get svc prometheus-operator-grafana | awk 'FNR == 2 {print $4}'`
+```
+clear
+printf "%s\n" "Grafana can be found at the IP address listed below:"
+kubectl -n prometheus-operator get svc prometheus-operator-grafana | awk 'FNR == 2 {print $4}'
+```
 
 ```
 root@digital-ocean-droplet:~# k -n prometheus-operator get svc prometheus-operator-grafana
@@ -493,7 +502,9 @@ echo $FRONTEND_ADDR
 Start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
 
 ```
-echo "The URL for Locust is: http://$DROPLET_ADDR:8089"
+clear
+printf "%s\n" "Locust can be found at the IP address listed below:"
+printf "%s\n" "http://$DROPLET_ADDR:8089"
 ```
 
 Browse to : `http://DROPLET_ADDR:8089/`
