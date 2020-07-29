@@ -392,6 +392,10 @@ If you want to solve this add another worker node to the `digital-ocean-cluster`
 - **** This part is broken the installer does not create the external Load Balancer **** -
 - **** Follow the steps below **** -
 ```
+This is an untested imperative command to be verified: 
+* `kubectl patch service/prometheus-operator-grafana --type=LoadBalancer --name=prometheus-operator`
+
+If that command does not work do these declarative steps manually:
 
 Use kubectl to change the Service Type from ClusterIP to LoadBalancer
 ```
