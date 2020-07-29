@@ -727,9 +727,10 @@ Delete Kubernetes Cluster
 
 Delete Kubernetes Cluster
 * `doctl compute load-balancer list | awk 'FNR == 2 {print $1}'`
-  * Get ID for each Load Balancer
-* `doctl compute load-balancer delete <ID> -f`
-  * Confirm with `y`
+ 
+ Delete Network Load Balancer
+* `doctl compute load-balancer list | awk 'FNR == 2 {print $1}' | xargs doctl compute load-balancer delete -f`
+  * Run this command twice
   
 Delete Droplet  
 * `doctl compute droplet delete digital-ocean-droplet -f`  
