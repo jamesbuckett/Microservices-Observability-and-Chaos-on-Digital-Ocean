@@ -726,7 +726,7 @@ Run this to download a clean-up.sh script
 ```
 cd ~/ && rm -R ~/clean-up
 cd ~/ && mkdir clean-up && cd clean-up
-wget https://raw.githubusercontent.com//jamesbuckett/microservices-metrics-chaos/master/clean-up.sh
+wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/clean-up.sh
 chmod +x clean-up.sh
 sh clean-up.sh
 ```
