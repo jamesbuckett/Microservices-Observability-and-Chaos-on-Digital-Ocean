@@ -722,18 +722,16 @@ Two methods to clean up
 
 ### 8.1 CLI Method
 
-Delete Kubernetes Cluster
-* `doctl kubernetes cluster delete digital-ocean-cluster -f`
+Run this to download a clean-up.sh script
+```
+cd ~/ && rm -R ~/clean-up
+cd ~/ && mkdir clean-up && cd clean-up
+wget https://raw.githubusercontent.com//jamesbuckett/microservices-metrics-chaos/master/clean-up.sh
+chmod +x clean-up.sh
+sh clean-up.sh
+```
 
-Delete Kubernetes Cluster
-* `doctl compute load-balancer list | awk 'FNR == 2 {print $1}'`
- 
- Delete Network Load Balancer
-* `doctl compute load-balancer list | awk 'FNR == 2 {print $1}' | xargs doctl compute load-balancer delete -f`
-  * Run this command twice
-  
-Delete Droplet  
-* `doctl compute droplet delete digital-ocean-droplet -f`  
+Or you can perform the same steps from the GUI below.
 
 ### 8.2 GUI Method
 
