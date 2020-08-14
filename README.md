@@ -190,8 +190,8 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 ```
 cd ~/ && rm -R ~/doctl
 cd ~/ && mkdir doctl && cd doctl
-curl -LO https://github.com/digitalocean/doctl/releases/download/v1.45.1/doctl-1.45.1-linux-amd64.tar.gz 
-tar -xvf doctl-1.45.1-linux-amd64.tar.gz
+curl -LO https://github.com/digitalocean/doctl/releases/download/v1.46.0/doctl-1.46.0-linux-amd64.tar.gz 
+tar -xvf doctl-1.46.0-linux-amd64.tar.gz
 sudo mv ~/doctl/doctl /usr/local/bin
 ```
 
