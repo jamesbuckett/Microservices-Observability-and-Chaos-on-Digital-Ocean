@@ -140,7 +140,7 @@ Note: This stack requires a minimum configuration of
   * `ssh root@<IP Address>` 
 
 * Update and Upgrade Ubuntu and install Python PIP on `digital-ocean-droplet`
-* `sudo apt-get update`
+* `sudo apt-get update -y`
 * `sudo apt-get upgrade -y`
 * `sudo apt install -y python3-pip -y`
 * `reboot`
