@@ -191,14 +191,7 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 
 #### 2.8.1 doctl - Digital Ocean Command Line Interface
 
-* doctl Installation on `digital-ocean-droplet`
-```
-cd ~/ && rm -R ~/doctl
-cd ~/ && mkdir doctl && cd doctl
-curl -LO https://github.com/digitalocean/doctl/releases/download/v1.46.0/doctl-1.46.0-linux-amd64.tar.gz 
-tar -xvf doctl-1.46.0-linux-amd64.tar.gz
-sudo mv ~/doctl/doctl /usr/local/bin
-```
+* doctl installed as part of `jump-host-prep.sh`
 
 * doctl Configuration on `digital-ocean-droplet`
   * Login to Digital Ocean
@@ -213,17 +206,6 @@ sudo mv ~/doctl/doctl /usr/local/bin
     * `doctl auth init`
   * Run this command to the digital-ocean-cluster credentials to kubeconfig
     * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
-
-#### Required Kubernetes Tools
-
-Please use this repo [Install Kubernetes Tools](https://github.com/jamesbuckett/kubernetes-tools) to install the following on `digital-ocean-droplet`
-* kubectl - Interact with Kubernetes cluster
-* kubectx - Change clusters
-* kubens - Change namespaces like you would directories
-* kube-ps1 - Changes Prompt to reflect current cluster and namespace
-* helm 3 - Kubernetes package installer  
-* kubectl top - Kubernetes top command
-* Octant - Kubernetes Web User Interface
 
 #### 2.8.2 kubectl - Kubernetes Command Line Interface
 
