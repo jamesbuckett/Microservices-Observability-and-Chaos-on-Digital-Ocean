@@ -118,7 +118,7 @@ Note: This stack requires a minimum configuration of
 * 2.4.3 Choose an image...Distributions...`Ubuntu`
 * 2.4.4 Choose a plan
   * Scroll to the left and select
-    * `Standard`...`$5/mo`...`1GB / 1CPU`...`25GB SSD disk`...`1000GB transfer`
+    * `Basic`...`$5/mo`...`1GB / 1CPU`...`25GB SSD disk`...`1000GB transfer`
 * 2.4.5 Choose a datacentre region: `Singapore`
   * Or the closest datacentre region to your physical location
 * 2.4.6 VPC Network
@@ -139,11 +139,16 @@ Note: This stack requires a minimum configuration of
 * 2.5.4 On Mac open a terminal 
   * `ssh root@<IP Address>` 
 
-* Update and Upgrade Ubuntu and install Python PIP on `digital-ocean-droplet`
-* `sudo apt-get update -y`
-* `sudo apt-get upgrade -y`
-* `sudo apt install -y python3-pip -y`
-* `reboot`
+* Prepare `digital-ocean-droplet` as Jumpbox:
+
+```
+cd ~/ && rm -R ~/prep
+clear
+cd ~/ && mkdir prep && cd prep
+wget https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/jump-host-prep.sh
+chmod +x jump-host-prep.sh
+sh jump-host-prep.sh
+```
 
 ### 2.6 Digital Ocean Kubernetes cluster
 * 2.6.1 Go to "Discover"..."Marketplace" on the left tab.
