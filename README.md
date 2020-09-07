@@ -230,19 +230,36 @@ alias kga='kubectl get all'
 KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
-DROPLET_ADDR=$(doctl compute droplet list | awk 'FNR == 2 {print $3}')
-export $DROPLET_ADDR
 FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
 export $FRONTEND_ADDR
 ```
 
 `. ~/.bashrc`
 
-`vi /etc/motd.tail`
+Setup Octant
 
 ```
-Online Boutique is here: $FRONTEND_ADDR
-Octant is here: $DROPLET_ADDR:8900
+cd ~
+DROPLET_ADDR=$(doctl compute droplet list | awk 'FNR == 2 {print $3}')
+export DROPLET_ADDR
+echo "export DROPLET_ADDR=$DROPLET_ADDR" >> ~/.bashrc
+echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
+echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
+echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
+. ~/.bashrc
+clear
+printf "%s\n"  "The URL for Octant is: http://$DROPLET_ADDR:8900"
+```
+
+Start Octant in a separate shell: `octant &`
+
+`vi /etc/motd`
+
+```
+****************************************************
+* Online Boutique is here: echo $FRONTEND_ADDR     *
+* Octant is here: echo $DROPLET_ADDR:8900          *
+****************************************************
 ```
 
 Verify the alias
