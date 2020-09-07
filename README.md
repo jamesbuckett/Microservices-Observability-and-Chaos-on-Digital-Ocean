@@ -21,10 +21,6 @@
 * 2.6 Deploy Digital Ocean Kubernetes cluster
 * 2.7 Loki - Distributed Logging
 * 2.8 Accessing the Digital Ocean Kubernetes cluster
-    * 2.8.1 doctl (Digital Ocean Command Line Interface)
-    * 2.8.2 kubectl (Kubernetes Command Line Interface)
-    * 2.8.3 Kubernetes Tools (Optional)
-    * 2.8.4 Install Contour Ingress
 3. Online Boutique (Micro-service)
 * 3.1 What is Online Boutique?
 * 3.2 Install Online Boutique
@@ -228,6 +224,9 @@ echo 'source <(kubectl completion bash)' >>~/.bashrc
 echo "alias cls='clear'" >> ~/.bashrc
 echo "alias k='kubectl'" >> ~/.bashrc
 echo "alias kga='kubectl get all'" >> ~/.bashrc
+echo "KUBE_PS1_SYMBOL_ENABLE=false" >> ~/.bashrc
+echo "source /opt/kube-ps1/kube-ps1.sh" >> ~/.bashrc
+echo "PS1='[\u@\h \w $(kube_ps1)]\$ '" >> ~/.bashrc
 . ~/.bashrc
 ```
 
