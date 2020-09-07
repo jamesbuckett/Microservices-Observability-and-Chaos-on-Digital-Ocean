@@ -230,9 +230,20 @@ alias kga='kubectl get all'
 KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
+DROPLET_ADDR=$(doctl compute droplet list | awk 'FNR == 2 {print $3}')
+export $DROPLET_ADDR
+FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
+export $FRONTEND_ADDR
 ```
 
 `. ~/.bashrc`
+
+`vi /etc/motd.tail`
+
+```
+Online Boutique is here: $FRONTEND_ADDR
+Octant is here: $DROPLET_ADDR:8900
+```
 
 Verify the alias
 ```
