@@ -217,17 +217,16 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview) is the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
 * The Kubernetes project provides [installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl) for kubectl on a variety of platforms. 
 
-Set cluster context and alias
+Utilities have been installed on `digital-ocean-droplet` by the `jump-host-prep.sh` script.
+
+Configure kube-ps1.sh
+
+`vi ~/.bashrc`
+
 ```
-cd ~
-echo 'source <(kubectl completion bash)' >>~/.bashrc
-echo "alias cls='clear'" >> ~/.bashrc
-echo "alias k='kubectl'" >> ~/.bashrc
-echo "alias kga='kubectl get all'" >> ~/.bashrc
-echo "KUBE_PS1_SYMBOL_ENABLE=false" >> ~/.bashrc
-echo "source /opt/kube-ps1/kube-ps1.sh" >> ~/.bashrc
-echo "PS1='[\u@\h \w $(kube_ps1)]\$ '" >> ~/.bashrc
-. ~/.bashrc
+KUBE_PS1_SYMBOL_ENABLE=false
+source /opt/kube-ps1/kube-ps1.sh
+PS1='[\u@\h \w $(kube_ps1)]\$ '
 ```
 
 Verify the alias
