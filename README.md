@@ -219,15 +219,20 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 
 Utilities have been installed on `digital-ocean-droplet` by the `jump-host-prep.sh` script.
 
-Configure kube-ps1.sh
+Configure .bashrc`
 
 `vi ~/.bashrc`
 
 ```
+alias cls='clear'
+alias k='kubectl'
+alias kga='kubectl get all'
 KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
 ```
+
+`. ~/.bashrc`
 
 Verify the alias
 ```
