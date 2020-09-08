@@ -141,7 +141,7 @@ Note: This stack requires a minimum configuration of
 cd ~/ && rm -R ~/prep
 clear
 cd ~/ && mkdir prep && cd prep
-wget https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/jump-host-prep.sh
+wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/jump-host-prep.sh
 chmod +x jump-host-prep.sh
 sh jump-host-prep.sh
 ```
@@ -205,6 +205,8 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
 
 #### 2.8.2 kubectl - Kubernetes Command Line Interface
 
+Please go to this repo [Kubernetes Tool](https://github.com/jamesbuckett/kubernetes-tools) and install the utilities before continuing. 
+
 `kubectl` is a command line tool used to interact with the `digital-ocean-cluster` Kubernetes clusters.
 
 In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
@@ -216,42 +218,6 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview) is the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
 * The Kubernetes project provides [installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl) for kubectl on a variety of platforms. 
-
-Utilities have been installed on `digital-ocean-droplet` by the `jump-host-prep.sh` script.
-
-Configure .bashrc`
-
-`vi ~/.bashrc`
-
-```
-alias cls='clear'
-alias k='kubectl'
-alias kga='kubectl get all'
-KUBE_PS1_SYMBOL_ENABLE=false
-source /opt/kube-ps1/kube-ps1.sh
-PS1='[\u@\h \w $(kube_ps1)]\$ '
-FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
-export $FRONTEND_ADDR
-```
-
-`. ~/.bashrc`
-
-Setup Octant
-
-```
-cd ~
-DROPLET_ADDR=$(doctl compute droplet list | awk 'FNR == 2 {print $3}')
-export DROPLET_ADDR
-echo "export DROPLET_ADDR=$DROPLET_ADDR" >> ~/.bashrc
-echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
-echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
-echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
-. ~/.bashrc
-clear
-printf "%s\n"  "The URL for Octant is: http://$DROPLET_ADDR:8900"
-```
-
-Start Octant in a separate shell: `octant &`
 
 `vi /etc/motd`
 
