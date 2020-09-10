@@ -381,6 +381,7 @@ Use Octant to explore Kubernetes
 Use this command to expose the Grafana service via a Load Balancer : 
 * `kubectl patch service/prometheus-operator-grafana -p '{"spec":{"type":"LoadBalancer"}}' --namespace=prometheus-operator`
 
+<!-- +
 If that command does not work do these declarative steps manually:
 
 Use kubectl to change the Service Type from ClusterIP to LoadBalancer
@@ -399,6 +400,7 @@ Apply the file
 ```
 kubectl apply -f prometheus-operator-grafana.yml -n prometheus-operator
 ```
++ -->
 
 To Access Grafana 
 * Obtain the URL of Grafana.
