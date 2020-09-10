@@ -222,9 +222,11 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 `vi /etc/motd`
 
 ```
+Reference commands to the various URL's in this tutorial
 ****************************************************
 * Online Boutique is here: echo $CONTOUR_LB        *
 * Octant is here: echo $DROPLET_ADDR:8900          *
+* Grafana is here: echo $GRAFANA_LB                *
 ****************************************************
 ```
 
@@ -342,6 +344,7 @@ To Access Online Boutique
 ```
 CONTOUR_LB=$(doctl compute load-balancer list | awk 'FNR == 2 {print $2}')
 export CONTOUR_LB
+echo "export CONTOUR_LB=$CONTOUR_LB" >> ~/.bashrc
 clear
 printf "%s\n"  "The URL for Online Boutique is: http://$CONTOUR_LB"
 ```
@@ -399,6 +402,7 @@ To Access Grafana
 ```
 GRAFANA_LB=$(doctl compute load-balancer list | awk 'FNR == 3 {print $2}')
 export GRAFANA_LB
+echo "export GRAFANA_LB=$GRAFANA_LB" >> ~/.bashrc
 clear
 printf "%s\n"  "The URL for Online Boutique is: http://$GRAFANA_LB"
 ```
