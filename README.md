@@ -222,7 +222,7 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 `vi /etc/motd`
 
 ```
-Reference commands to the various URL's in this tutorial
+Reference commands to the various URLs in this tutorial
 ****************************************************
 * Online Boutique is here: echo $CONTOUR_LB        *
 * Octant is here: echo $DROPLET_ADDR:8900          *
@@ -601,20 +601,19 @@ replicaset.apps/chao-69b5cbc94c   1         1         0       37s
 
 ### 7.1 Start the User Interfaces
 
-#### 7.1.1 Locust 
-* Locust should still be running from a previous step.
-* If not 
+If you closed any of the User Interfaces please open them again using the commands below to determine the URLs.
 ```
-echo "The URL for Locust is: http://$DROPLET_ADDR:8089"
+Reference commands to the various URLs in this tutorial
+****************************************************
+* Online Boutique is here: echo $CONTOUR_LB        *
+* Octant is here: echo $DROPLET_ADDR:8900          *
+* Grafana is here: echo $GRAFANA_LB                *
+* Locust is here: echo $DROPLET_ADDR:8089          *
+****************************************************
 ```
-
-#### 7.1.2 Grafana 
-* Grafana should still be running from a previous step.
-  * `k -n prometheus-operator get svc prometheus-operator-grafana`
-  * Put `EXTERNAL-IP` into a browser.
 
 #### 7.1.3 Gremlin
-* Login to [Gremlin](https://app.gremlin.com/signup)
+* Login to [Gremlin](https://app.gremlin.com)
 
 ### 7.2 High CPU Attack
 * Switch to the Locust UI 
