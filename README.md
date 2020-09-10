@@ -477,7 +477,7 @@ Start a new shell
 Change to locust directory: `cd locust`
 
 Start locust with this command: `locust --host="http://${BOUTIQUE_LB}" -u "${USERS:-10}" &`
-* $CONTOUR_LB is the  external IP of the Online Boutique.
+* $BOUTIQUE_LB is the  external IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
 To Access Locust 
