@@ -346,8 +346,8 @@ clear
 printf "%s\n"  "The URL for Online Boutique is: http://$CONTOUR_LB"
 ```
 
-* This is the EXTERNAL-IP of the Online Boutique
-* Paste the EXTERNAL-IP into your web browser.
+* This is the URL of the Online Boutique
+* Paste the URL into your web browser.
 * You should see a e-commerce website called Online Boutique
 * Feel free to browse around and order some hipster products
 
@@ -357,11 +357,6 @@ Use Octant to explore Kubernetes
 * The `adservice` is in an orange state
 * Select Workloads...Pods...`adservice-xxxxxxxx`
 * Scroll down to Events...Message
-
-`adservice` cannot be scheduled due to insufficient cpu
-
-If you want to solve this add another worker node to the `digital-ocean-cluster`
-* As this will incur a cost it is an optional exercise
 
 ## 4. Grafana - UI
 
@@ -378,7 +373,7 @@ If you want to solve this add another worker node to the `digital-ocean-cluster`
 - **** Follow the steps below **** -
 ```
 This is an untested imperative command to be verified: 
-* `kubectl patch service/prometheus-operator-grafana --type=LoadBalancer --name=prometheus-operator`
+* `kubectl patch service/prometheus-operator-grafana --type=LoadBalancer --namespace=prometheus-operator`
 
 If that command does not work do these declarative steps manually:
 
