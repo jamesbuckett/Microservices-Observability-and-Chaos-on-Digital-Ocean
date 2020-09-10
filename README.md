@@ -338,7 +338,7 @@ deployment.apps/redis-cart              0/1     1            0           15s
 ```
 
 To Access Online Boutique 
-* Obtain the external IP address of Online Boutique.
+* Obtain the URL of Online Boutique.
 ```
 CONTOUR_LB=$(doctl compute load-balancer list | awk 'FNR == 2 {print $2}')
 export CONTOUR_LB
@@ -370,9 +370,9 @@ Use Octant to explore Kubernetes
 ### 4.2 Access the Grafana UI
 ```diff
 - **** This part is broken the installer does not create the external Load Balancer **** -
-- **** Follow the steps below **** -
+- **** Execute the command below **** -
 ```
-This is an untested imperative command to be verified: 
+Use this command to expose the Grafana service via a Load Balancer : 
 * `kubectl patch service/prometheus-operator-grafana -p '{"spec":{"type":"LoadBalancer"}}' --namespace=prometheus-operator`
 
 If that command does not work do these declarative steps manually:
@@ -394,13 +394,13 @@ Apply the file
 kubectl apply -f prometheus-operator-grafana.yml -n prometheus-operator
 ```
 
-* Grafana is exposed via a DigitalOcean Load Balancer.
-* Get the IP address to access your Grafana instance by running the following in a terminal shell and copying the EXTERNAL-IP and pasting it into a browser.
-
+To Access Grafana 
+* Obtain the URL of Grafana.
 ```
+GRAFANA_LB=$(doctl compute load-balancer list | awk 'FNR == 3 {print $2}')
+export GRAFANA_LB
 clear
-printf "%s\n" "Grafana can be found at the IP address listed below:"
-kubectl -n prometheus-operator get svc prometheus-operator-grafana | awk 'FNR == 2 {print $4}'
+printf "%s\n"  "The URL for Online Boutique is: http://$GRAFANA_LB"
 ```
 
 ```
