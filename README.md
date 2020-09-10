@@ -210,7 +210,7 @@ Update the Message of the Day
 ```
 Reference commands to the various URLs in this tutorial
 ****************************************************
-* Online Boutique is here: echo $DROPLET_ADDR       *
+* Online Boutique is here: echo $DROPLET_ADDR      *
 * Octant is here: echo $DROPLET_ADDR:8900          *
 * Grafana is here: echo $GRAFANA_LB                *
 * Locust is here: echo $DROPLET_ADDR:8089          *
@@ -607,7 +607,7 @@ If you closed any of the User Interfaces please open them again using the comman
 ```
 Reference commands to the various URLs in this tutorial
 ****************************************************
-* Online Boutique is here: echo $CONTOUR_LB        *
+* Online Boutique is here: echo $DROPLET_ADDR      *
 * Octant is here: echo $DROPLET_ADDR:8900          *
 * Grafana is here: echo $GRAFANA_LB                *
 * Locust is here: echo $DROPLET_ADDR:8089          *
