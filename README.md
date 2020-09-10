@@ -203,6 +203,21 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
   * Run this command to the digital-ocean-cluster credentials to kubeconfig
     * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
 
+Update the Message of the Day
+
+`vi /etc/motd`
+
+```
+Reference commands to the various URLs in this tutorial
+****************************************************
+* Online Boutique is here: echo $DROPLET_ADDR       *
+* Octant is here: echo $DROPLET_ADDR:8900          *
+* Grafana is here: echo $GRAFANA_LB                *
+* Locust is here: echo $DROPLET_ADDR:8089          *
+****************************************************
+```
+
+
 #### 2.8.2 kubectl - Kubernetes Command Line Interface
 
 Please go to this repo [Kubernetes Tool](https://github.com/jamesbuckett/kubernetes-tools) and install the utilities before continuing. 
@@ -218,18 +233,6 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 
 * [kubectl](https://kubernetes.io/docs/reference/kubectl/overview) is the official Kubernetes command-line tool, which you’ll use to connect to and interact with the cluster.
 * The Kubernetes project provides [installation instructions](https://kubernetes.io/docs/tasks/tools/install-kubectl) for kubectl on a variety of platforms. 
-
-`vi /etc/motd`
-
-```
-Reference commands to the various URLs in this tutorial
-****************************************************
-* Online Boutique is here: echo $CONTOUR_LB        *
-* Octant is here: echo $DROPLET_ADDR:8900          *
-* Grafana is here: echo $GRAFANA_LB                *
-* Locust is here: echo $DROPLET_ADDR:8089          *
-****************************************************
-```
 
 Verify the alias
 ```
@@ -251,6 +254,7 @@ CoreDNS is running at https://e8d7b634-effb-4d9e-8995-4607e38ff95d.k8s.ondigital
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
+<!-- +
 #### 2.8.4 Install Contour Ingress
 
 What is [Countour](https://github.com/projectcontour/contour)?
@@ -276,6 +280,7 @@ Watch the output until this line changes
 Where `x.x.x.x` is a valid EXTERNAL-IP which is the IP address to access your Contour Ingress.
 
 The Load Balancer takes about four minutes to provision.
++ -->
 
 ## 3. Online Boutique - Micro-service Sample Application
 
@@ -343,11 +348,8 @@ deployment.apps/redis-cart              0/1     1            0           15s
 To Access Online Boutique 
 * Obtain the URL of Online Boutique.
 ```
-CONTOUR_LB=$(doctl compute load-balancer list | awk 'FNR == 2 {print $2}')
-export CONTOUR_LB
-echo "export CONTOUR_LB=$CONTOUR_LB" >> ~/.bashrc
 clear
-printf "%s\n"  "The URL for Online Boutique is: http://$CONTOUR_LB"
+printf "%s\n"  "The URL for Online Boutique is: http://$DROPLET_ADDR"
 ```
 
 * This is the URL of the Online Boutique
