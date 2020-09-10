@@ -340,9 +340,10 @@ deployment.apps/redis-cart              0/1     1            0           15s
 To Access Online Boutique 
 * Obtain the external IP address of Online Boutique.
 ```
+CONTOUR_LB=$(doctl compute load-balancer list | awk 'FNR == 2 {print $2}')
+export CONTOUR_LB
 clear
-printf "%s\n" "Online Boutique can be found at the IP address listed below:"
-kubectl -n ns-contour  get service contour-release | awk 'FNR == 2 {print $4}'
+printf "%s\n"  "The URL for Online Boutique is: http://$CONTOUR_LB"
 ```
 
 * This is the EXTERNAL-IP of the Online Boutique
