@@ -363,7 +363,7 @@ printf "%s\n"  "The URL for Online Boutique is: http://$BOUTIQUE_LB"
 Use Octant to explore Kubernetes
 * Select the `ns-microservices-demo` namespace top right 
 * Select Applications on right side 
-* The `adservice` is in an orange state
+* If the `adservice` is in an orange state
 * Select Workloads...Pods...`adservice-xxxxxxxx`
 * Scroll down to Events...Message
 
@@ -476,7 +476,7 @@ Start a new shell
 
 Change to locust directory: `cd locust`
 
-Start locust with this command: `locust --host="http://${CONTOUR_LB}" -u "${USERS:-10}" &`
+Start locust with this command: `locust --host="http://${BOUTIQUE_LB}" -u "${USERS:-10}" &`
 * $CONTOUR_LB is the  external IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
