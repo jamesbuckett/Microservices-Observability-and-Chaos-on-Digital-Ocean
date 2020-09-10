@@ -227,6 +227,7 @@ Reference commands to the various URL's in this tutorial
 * Online Boutique is here: echo $CONTOUR_LB        *
 * Octant is here: echo $DROPLET_ADDR:8900          *
 * Grafana is here: echo $GRAFANA_LB                *
+* Locust is here: echo $DROPLET_ADDR:8089          *
 ****************************************************
 ```
 
@@ -404,16 +405,10 @@ GRAFANA_LB=$(doctl compute load-balancer list | awk 'FNR == 3 {print $2}')
 export GRAFANA_LB
 echo "export GRAFANA_LB=$GRAFANA_LB" >> ~/.bashrc
 clear
-printf "%s\n"  "The URL for Online Boutique is: http://$GRAFANA_LB"
+printf "%s\n"  "The URL for Grafana is: http://$GRAFANA_LB"
 ```
 
-```
-root@digital-ocean-droplet:~# k -n prometheus-operator get svc prometheus-operator-grafana
-NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)        AGE
-prometheus-operator-grafana   LoadBalancer   10.245.220.96   x.x.x.x          80:30459/TCP   9m4s
-```
-
-* Paste the EXTERNAL-IP into your web browser.
+* Paste the URL into your web browser.
 * The default username and password are `admin` and `prom-operator` 
 * Once you have logged in the default Grafana Home dashboard will be displayed. 
 * To see cluster specific graphs enabled in this stack go to the “Home” menu in the upper left hand corner of your Grafana web browser page. 
@@ -474,23 +469,15 @@ Start a new shell
 
 Change to locust directory: `cd locust`
 
-Obtain the external IP address of Online Boutique.
-```
-FRONTEND_ADDR=$(kubectl -n ns-contour get service contour-release | awk 'FNR == 2 {print $4}')
-export FRONTEND_ADDR
-echo "export FRONTEND_ADDR=$FRONTEND_ADDR" >> ~/.bashrc
-. ~/.bashrc
-echo $FRONTEND_ADDR
-```
-* This is the EXTERNAL-IP of the Online Boutique.
+Start locust with this command: `locust --host="http://${CONTOUR_LB}" -u "${USERS:-10}" &`
+* $CONTOUR_LB is the  external IP of the Online Boutique.
 * Use that address to stress test the micro-services application.
 
-Start locust with this command: `locust --host="http://${FRONTEND_ADDR}" -u "${USERS:-10}" &`
-
+To Access Locust 
+* Obtain the URL of Locust.
 ```
 clear
-printf "%s\n" "Locust can be found at the IP address listed below:"
-printf "%s\n" "http://$DROPLET_ADDR:8089"
+printf "%s\n"  "The URL for Locust is: http://$DROPLET_ADDR:8089"
 ```
 
 Browse to : `http://DROPLET_ADDR:8089/`
