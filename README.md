@@ -210,7 +210,7 @@ Update the Message of the Day
 ```
 Reference commands to the various URLs in this tutorial
 ****************************************************
-* Online Boutique is here: echo $DROPLET_ADDR      *
+* Online Boutique is here: echo $BOUTIQUE_LB       *
 * Octant is here: echo $DROPLET_ADDR:8900          *
 * Grafana is here: echo $GRAFANA_LB                *
 * Locust is here: echo $DROPLET_ADDR:8089          *
@@ -346,10 +346,13 @@ deployment.apps/redis-cart              0/1     1            0           15s
 ```
 
 To Access Online Boutique 
-* Obtain the URL of Online Boutique.
+* Obtain the URL of Online Boutique .
 ```
+BOUTIQUE_LB=$(doctl compute load-balancer list | awk 'FNR == 2 {print $2}')
+export BOUTIQUE_LB
+echo "export BOUTIQUE_LB=$BOUTIQUE_LB" >> ~/.bashrc
 clear
-printf "%s\n"  "The URL for Online Boutique is: http://$DROPLET_ADDR"
+printf "%s\n"  "The URL for Online Boutique is: http://$BOUTIQUE_LB"
 ```
 
 * This is the URL of the Online Boutique
@@ -609,7 +612,7 @@ If you closed any of the User Interfaces please open them again using the comman
 ```
 Reference commands to the various URLs in this tutorial
 ****************************************************
-* Online Boutique is here: echo $DROPLET_ADDR      *
+* Online Boutique is here: echo $BOUTIQUE_LB       *
 * Octant is here: echo $DROPLET_ADDR:8900          *
 * Grafana is here: echo $GRAFANA_LB                *
 * Locust is here: echo $DROPLET_ADDR:8089          *
