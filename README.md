@@ -223,7 +223,7 @@ In your Linux terminal that you will use to interact with the Digital Ocean Kube
 
 ```
 ****************************************************
-* Online Boutique is here: echo $FRONTEND_ADDR     *
+* Online Boutique is here: echo $CONTOUR_LB        *
 * Octant is here: echo $DROPLET_ADDR:8900          *
 ****************************************************
 ```
@@ -373,7 +373,7 @@ Use Octant to explore Kubernetes
 - **** Follow the steps below **** -
 ```
 This is an untested imperative command to be verified: 
-* `kubectl patch service/prometheus-operator-grafana --type=LoadBalancer --namespace=prometheus-operator`
+* `kubectl patch service/prometheus-operator-grafana -p '{"spec":{"type":"LoadBalancer"}}' --namespace=prometheus-operator`
 
 If that command does not work do these declarative steps manually:
 
