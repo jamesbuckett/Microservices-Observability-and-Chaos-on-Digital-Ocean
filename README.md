@@ -203,21 +203,6 @@ Two binaries need to be installed on `digital-ocean-droplet` to interact with th
   * Run this command to the digital-ocean-cluster credentials to kubeconfig
     * `doctl kubernetes cluster kubeconfig save digital-ocean-cluster`
 
-Update the Message of the Day
-
-`vi /etc/motd`
-
-```
-Reference commands to the various URLs in this tutorial
-****************************************************
-* Online Boutique is here: echo $BOUTIQUE_LB       *
-* Octant is here: echo $DROPLET_ADDR:8900          *
-* Grafana is here: echo $GRAFANA_LB                *
-* Locust is here: echo $DROPLET_ADDR:8089          *
-****************************************************
-```
-
-
 #### 2.8.2 kubectl - Kubernetes Command Line Interface
 
 Please go to this repo [Kubernetes Tool](https://github.com/jamesbuckett/kubernetes-tools) and install the utilities before continuing. 
