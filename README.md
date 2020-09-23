@@ -751,4 +751,64 @@ Login to Digital Ocean
 * Gremlin - A Software as a Service Chaos Engineering platform..
 * Locust - A performance testing tool 
 
+<!-- ## 10. Limits and Requests 
+
+[Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)
+* Limits and requests for memory are measured in bytes. 
+* You can express memory as a plain integer or as a fixed-point integer using one of these suffixes: E, P, T, G, M, K. 
+* You can also use the power-of-two equivalents: Ei, Pi, Ti, Gi, **Mi**, Ki. 
+
+[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)
+* Limits and requests for CPU resources are measured in cpu units. 
+* One cpu, in Kubernetes, is equivalent to:
+ * 1 AWS vCPU
+ * 1 GCP Core
+ * 1 Azure vCore
+ * 1 IBM vCPU
+ * 1 Hyperthread on a bare-metal Intel processor with Hyperthreading
+* One CPU is equal to 1000 millicores.
+
+### Theory
+* Requests and limits are the mechanisms Kubernetes uses to control resources such as CPU and memory. 
+
+* Requests are what the container is guaranteed to get. Minimum. 
+  * If a container requests a resource, Kubernetes will only schedule it on a node that can give it that resource. 
+
+* Limits, on the other hand, make sure a container never goes above a certain value. Maximum. 
+  * The container is only allowed to go up to the limit, and then it is restricted.
+ 
+ ### Determining CPU and Memory
+ * Utilize Metrics Server to expose 
+ * The metric server collects and aggregates metrics from all kubelets
+ * Use command: 
+```
+kubens ns-microservices-demo
+kubectl top pods
+```
+Results
+```
+NAME                                     CPU(cores)   MEMORY(bytes)
+adservice-687b58699c-vwgqj               26m          94Mi
+cartservice-778cffc8f6-4zpm9             4m           20Mi
+checkoutservice-98cf4f4c-2tpd4           4m           17Mi
+currencyservice-c69c86b7c-lnrjb          3m           26Mi
+emailservice-5db6c8b59f-glxbp            8m           34Mi
+frontend-8d8958c77-9gj9m                 1m           7Mi
+paymentservice-698f684cf9-7twsw          5m           45Mi
+productcatalogservice-789c77b8dc-wsdpz   5m           9Mi
+recommendationservice-75d7cd8d5c-ft9v6   8m           61Mi
+redis-cart-5f59546cdd-88qfg              2m           9Mi
+shippingservice-7d87945947-x7mhd         8m           9Mi
+```
+
+* From the output you can see that the pod 'frontend-8d8958c77-9gj9m':
+  * memory utilised is 7Mi 
+  * Total CPU used is 1m.
+
+### [Vertical Pod Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler) 
+* Vertical Pod Autoscaler (VPA) frees the users from necessity of setting up-to-date resource limits and requests for the containers in their pods. 
+* When configured, it will set the requests automatically based on usage and thus allow proper scheduling onto nodes so that appropriate resource amount is available for each pod. 
+* It will also maintain ratios between limits and requests that were specified in initial containers configuration.  -->
+
+
 *End of Section*
