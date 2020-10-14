@@ -687,15 +687,15 @@ Two methods to clean up
 * CLI
 
 ### 8.1 CLI Method
-
-Run this to download a clean-up.sh script
+* This script deletes all assets on Digital Ocean
+* On `digital-ocean-droplet` run the following:
 ```
 cd ~/ && rm -R ~/clean-up
 clear
 cd ~/ && mkdir clean-up && cd clean-up
-wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/clean-up.sh
-chmod +x clean-up.sh
-sh clean-up.sh
+wget wget https://raw.githubusercontent.com/jamesbuckett/terraform-digital-ocean/master/prep/04-clean-up.sh
+chmod +x 04-clean-up.sh
+sh 04-clean-up.sh
 ```
 
 Or you can perform the same steps from the GUI below.
