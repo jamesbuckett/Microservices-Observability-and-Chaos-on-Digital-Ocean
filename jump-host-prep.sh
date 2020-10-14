@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Preparation
+# Preparation - Update the Operating System and install Python
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt install -y python3-pip -y
 
-# doctl
+# doctl - Install Digital Ocean command-line client
 cd ~/ && rm -R ~/doctl
 cd ~/ && mkdir doctl && cd doctl
 curl -LO https://github.com/digitalocean/doctl/releases/download/v1.46.0/doctl-1.46.0-linux-amd64.tar.gz 
