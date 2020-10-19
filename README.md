@@ -68,6 +68,10 @@
 * Install Load Testing with Locust against the Online Boutique micro-service application
 * Perform Chaos Engineering on the Online Boutique micro-service application
 
+The final state should be a setup similar to the diagram below.
+
+![image](https://user-images.githubusercontent.com/18049790/96426022-42e50400-122f-11eb-89b1-197ee4201033.png)
+
 ### 1.2 Requirements
 * 1.2.1 A Digital Ocean Account
   * A credit card or debit card is required to sign up to Digital Ocean
