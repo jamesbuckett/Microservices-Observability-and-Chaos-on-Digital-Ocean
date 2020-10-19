@@ -61,7 +61,6 @@
 * Deploy a Ubuntu jump host on Digital Ocean with SSH access
 * Deploy a Kubernetes cluster on Digital Ocean with Observability software pre-configured
 * Install command line tools and utilities
-* Deploy Loki for distributed logging on the cluster
 * Deploy the Online Boutique micro-services application onto the Kubernetes cluster on Digital Ocean
 * Verify operation of the Online Boutique micro-service application
 * Observe the Online Boutique micro-service with the Observability software
@@ -70,7 +69,7 @@
 
 The final state should be a setup similar to the diagram below.
 
-![image](https://user-images.githubusercontent.com/18049790/96426022-42e50400-122f-11eb-89b1-197ee4201033.png)
+![image](https://user-images.githubusercontent.com/18049790/96453661-5ef79e00-124d-11eb-9b27-e6dab24b1dc4.png)
 
 ### 1.2 Requirements
 * 1.2.1 A Digital Ocean Account
