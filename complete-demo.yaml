@@ -23,6 +23,7 @@ spec:
     metadata:
       labels:
         app: emailservice
+        app: online-boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -74,6 +75,7 @@ spec:
   selector:
     matchLabels:
       app: checkoutservice
+      app: online-boutique
   template:
     metadata:
       labels:
@@ -205,6 +207,7 @@ spec:
     metadata:
       labels:
         app: frontend
+        app: online-boutique
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
@@ -314,6 +317,7 @@ spec:
     metadata:
       labels:
         app: paymentservice
+        app: online-boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -363,6 +367,7 @@ spec:
     metadata:
       labels:
         app: productcatalogservice
+        app: online-boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -420,6 +425,7 @@ spec:
     metadata:
       labels:
         app: cartservice
+        app: online-boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -472,6 +478,7 @@ spec:
   selector:
     matchLabels:
       app: currencyservice
+      app: online-boutique
   template:
     metadata:
       labels:
@@ -532,6 +539,7 @@ spec:
     metadata:
       labels:
         app: shippingservice
+        app: online-boutique
     spec:
       containers:
       - name: server
@@ -589,6 +597,7 @@ spec:
     metadata:
       labels:
         app: redis-cart
+        app: online-boutique
     spec:
       containers:
       - name: redis
@@ -642,6 +651,7 @@ spec:
     metadata:
       labels:
         app: adservice
+        app: online-boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
