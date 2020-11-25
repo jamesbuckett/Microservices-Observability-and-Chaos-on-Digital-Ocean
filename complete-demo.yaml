@@ -23,7 +23,7 @@ spec:
     metadata:
       labels:
         app: emailservice
-        app: boutique
+        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -75,7 +75,7 @@ spec:
   selector:
     matchLabels:
       app: checkoutservice
-      app: boutique
+      application: boutique
   template:
     metadata:
       labels:
@@ -148,7 +148,7 @@ spec:
     metadata:
       labels:
         app: recommendationservice
-        app: boutique
+        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -208,7 +208,7 @@ spec:
     metadata:
       labels:
         app: frontend
-        app: boutique
+        application: boutique
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
@@ -318,7 +318,7 @@ spec:
     metadata:
       labels:
         app: paymentservice
-        app: boutique
+        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -368,7 +368,7 @@ spec:
     metadata:
       labels:
         app: productcatalogservice
-        app: boutique
+        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -426,7 +426,7 @@ spec:
     metadata:
       labels:
         app: cartservice
-        app: boutique
+        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -479,7 +479,7 @@ spec:
   selector:
     matchLabels:
       app: currencyservice
-      app: boutique
+      application: boutique
   template:
     metadata:
       labels:
@@ -540,7 +540,7 @@ spec:
     metadata:
       labels:
         app: shippingservice
-        app: boutique
+        application: boutique
     spec:
       containers:
       - name: server
@@ -598,7 +598,7 @@ spec:
     metadata:
       labels:
         app: redis-cart
-        app: boutique
+        application: boutique
     spec:
       containers:
       - name: redis
@@ -652,7 +652,7 @@ spec:
     metadata:
       labels:
         app: adservice
-        app: boutique
+        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
