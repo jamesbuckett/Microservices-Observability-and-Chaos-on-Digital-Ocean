@@ -23,7 +23,6 @@ spec:
     metadata:
       labels:
         app: emailservice
-        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -75,7 +74,6 @@ spec:
   selector:
     matchLabels:
       app: checkoutservice
-      application: boutique
   template:
     metadata:
       labels:
@@ -148,7 +146,6 @@ spec:
     metadata:
       labels:
         app: recommendationservice
-        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -208,7 +205,6 @@ spec:
     metadata:
       labels:
         app: frontend
-        application: boutique
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
@@ -266,39 +262,12 @@ spec:
               cpu: 200m
               memory: 128Mi
 ---
-# Expose frontend-external as ClusterIP
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: frontend
-# spec:
-#   type: ClusterIP
-#   selector:
-#     app: frontend
-#   ports:
-#   - name: http
-#     port: 80
-#     targetPort: 8080
-# ---
-# Non working Ingress definition
-# apiVersion: networking.k8s.io/v1beta1
-# kind: Ingress
-# metadata:
-#   name: online-boutique-ingress
-#   labels:
-#     app: frontend
-# spec:
-#   backend:
-#     serviceName: frontend
-#     servicePort: 80
----
-# Expose frontend-external as LoadBalancer
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-external
+  name: frontend
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: frontend
   ports:
@@ -306,6 +275,30 @@ spec:
     port: 80
     targetPort: 8080
 ---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: online-boutique-ingress
+  labels:
+    app: frontend
+spec:
+  backend:
+    serviceName: frontend
+    servicePort: 80
+---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: frontend-external
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: frontend
+#   ports:
+#   - name: http
+#     port: 80
+#     targetPort: 8080
+# ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -318,7 +311,6 @@ spec:
     metadata:
       labels:
         app: paymentservice
-        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -368,7 +360,6 @@ spec:
     metadata:
       labels:
         app: productcatalogservice
-        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -426,7 +417,6 @@ spec:
     metadata:
       labels:
         app: cartservice
-        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -479,7 +469,6 @@ spec:
   selector:
     matchLabels:
       app: currencyservice
-      application: boutique
   template:
     metadata:
       labels:
@@ -540,7 +529,6 @@ spec:
     metadata:
       labels:
         app: shippingservice
-        application: boutique
     spec:
       containers:
       - name: server
@@ -598,7 +586,6 @@ spec:
     metadata:
       labels:
         app: redis-cart
-        application: boutique
     spec:
       containers:
       - name: redis
@@ -652,7 +639,6 @@ spec:
     metadata:
       labels:
         app: adservice
-        application: boutique
     spec:
       terminationGracePeriodSeconds: 5
       containers:
