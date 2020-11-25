@@ -23,6 +23,7 @@ spec:
     metadata:
       labels:
         app: emailservice
+        chaos: experiment        
     spec:
       terminationGracePeriodSeconds: 5
       containers:
